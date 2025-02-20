@@ -1,0 +1,123 @@
+[gd_scene load_steps=15 format=3 uid="uid://d07p1oifqjbo8"]
+
+[ext_resource type="Script" path="res://mapnode.gd" id="1_dki71"]
+[ext_resource type="Script" path="res://parentnode.gd" id="1_gbgkq"]
+[ext_resource type="Texture2D" uid="uid://pu7ukuhuhvta" path="res://art/Soldier-Walk.png" id="2_1mwar"]
+[ext_resource type="Script" path="res://character.gd" id="3_g6qhl"]
+[ext_resource type="Texture2D" uid="uid://2l4n7gph5wwb" path="res://art/HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp" id="5_dgq6f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr3bx"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44enc"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4mnk"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyfpq"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2tad"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pbfb"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxk8w"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijx60"]
+atlas = ExtResource("2_1mwar")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wiqy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr3bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44enc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4mnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyfpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2tad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pbfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxk8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijx60")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Map" type="Node2D"]
+
+[node name="ParentNode" type="Node2D" parent="."]
+position = Vector2(591, 175)
+script = ExtResource("1_gbgkq")
+
+[node name="ColorRect" type="ColorRect" parent="ParentNode"]
+offset_right = 18.0
+offset_bottom = 23.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParentNode" node_paths=PackedStringArray("current_node")]
+z_index = 2
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_wiqy2")
+frame = 2
+speed_scale = 3.0
+script = ExtResource("3_g6qhl")
+current_node = NodePath("..")
+
+[node name="ChildNode1" type="Node2D" parent="ParentNode" node_paths=PackedStringArray("children_nodes")]
+position = Vector2(-95, 121)
+script = ExtResource("1_dki71")
+children_nodes = [NodePath("ChildNode3")]
+
+[node name="ColorRect" type="ColorRect" parent="ParentNode/ChildNode1"]
+offset_right = 22.0
+offset_bottom = 23.0
+
+[node name="ChildNode3" type="Node2D" parent="ParentNode/ChildNode1"]
+position = Vector2(-82, 200)
+script = ExtResource("1_dki71")
+
+[node name="ColorRect" type="ColorRect" parent="ParentNode/ChildNode1/ChildNode3"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = -1.0
+offset_bottom = -2.0
+
+[node name="ChildNode2" type="Node2D" parent="ParentNode"]
+position = Vector2(79, 116)
+script = ExtResource("1_dki71")
+
+[node name="ColorRect" type="ColorRect" parent="ParentNode/ChildNode2"]
+offset_right = 21.0
+offset_bottom = 26.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(41, 326)
+texture = ExtResource("5_dgq6f")
+metadata/_edit_lock_ = true
