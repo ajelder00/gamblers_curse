@@ -1,0 +1,20 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1740095329
+battle.gd::GDScript::-1::1740094189::0::1::::<>Node<>::
+battle.tscn::PackedScene::2776436922424779195::1740094189::0::1::::<><>::res://battle.gd
+character.gd::GDScript::-1::1740094189::0::1::::<>Node2D<>::
+character.tscn::PackedScene::7236576544678899007::1740094189::0::1::::<><>::uid://cdhkgmt1alym0::::res://icon.svg
+icon.svg::CompressedTexture2D::4998477088083078889::1740094189::1740095332::1::::<><>::
+map.tscn::PackedScene::8981001163627301097::1740094189::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://pu7ukuhuhvta::::res://art/Soldier-Walk.png<>res://character.gd<>uid://2l4n7gph5wwb::::res://art/HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp
+mapnode.gd::GDScript::-1::1740094189::0::1::::<>Node2D<>::
+parentnode.gd::GDScript::-1::1740094189::0::1::::<>Node2D<>::
+README.md::TextFile::-1::1739982881::0::1::::<><>::
+::res://art/::1740094189
+393e109a-a974-481f-999f-d4068443167b.webp::CompressedTexture2D::1100839304395804415::1740094189::1740095333::1::::<><>::
+hit.png::CompressedTexture2D::5915647659868195142::1740094189::1740095332::1::::<><>::
+HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp::CompressedTexture2D::1919592632340645125::1740094189::1740095333::1::::<><>::
+shuffe(move).png::CompressedTexture2D::4979951106323242818::1740094189::1740095332::1::::<><>::
+Soldier-Walk.png::CompressedTexture2D::1096099425772970546::1740094189::1740095332::1::::<><>::
+static idle.png::CompressedTexture2D::5018922595783250825::1740094189::1740095332::1::::<><>::
+wake.png::CompressedTexture2D::3793128452491033949::1740094189::1740095332::1::::<><>::
+::res://sprint1/::1739982882

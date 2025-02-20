@@ -15,16 +15,16 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		var next_node = null
 
-		if event.keycode == KEY_W:  # Move up to parent
+		if Input.is_action_pressed("up"):  # Move up to parent
 			next_node = get_parent_node()
-		elif event.keycode == KEY_A:  # Move to ChildNode1 or ChildNode3
+		elif Input.is_action_pressed("left"):  # Move to ChildNode1 or ChildNode3
 			if current_node.name == "ChildNode1":
 				next_node = get_child_by_name("ChildNode3")
 			else:
 				next_node = get_child_by_name("ChildNode1")
-		elif event.keycode == KEY_D:  # Move to ChildNode2
+		elif Input.is_action_pressed("right"):  # Move to ChildNode2
 			next_node = get_child_by_name("ChildNode2")
-		elif event.keycode == KEY_SPACE:  # Load battle.tscn if on ChildNode3
+		elif Input.is_action_pressed("space"):  # Load battle.tscn if on ChildNode3
 			if current_node.name == "ChildNode3":
 				load_battle_scene()
 				return  # Prevent movement when loading a new scene
