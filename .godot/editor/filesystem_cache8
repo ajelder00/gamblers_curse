@@ -1,6 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740096395
-battle.tscn::PackedScene::2776436922424779195::1740096395::0::1::::<><>::res://battle_scene/battle.gd
+::res://::1740096396
 character.gd::GDScript::-1::1740095767::0::1::::<>Node2D<>::
 character.tscn::PackedScene::7236576544678899007::1740096375::0::1::::<><>::uid://cdhkgmt1alym0::::res://art/icon.svg
 map.tscn::PackedScene::8981001163627301097::1740095842::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://pu7ukuhuhvta::::res://art/Soldier-Walk.png<>res://character.gd<>uid://2l4n7gph5wwb::::res://art/HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp
@@ -16,8 +15,11 @@ shuffe(move).png::CompressedTexture2D::4979951106323242818::1740094189::17400953
 Soldier-Walk.png::CompressedTexture2D::1096099425772970546::1740094189::1740095332::1::::<><>::
 static idle.png::CompressedTexture2D::5018922595783250825::1740094189::1740095332::1::::<><>::
 wake.png::CompressedTexture2D::3793128452491033949::1740094189::1740095332::1::::<><>::
-::res://battle_scene/::1740096395
+::res://battle_scene/::1740096511
 battle.gd::GDScript::-1::1740094189::0::1::::<>Node<>::
+battle.tscn::PackedScene::2776436922424779195::1740096395::0::1::::<><>::res://battle_scene/battle.gd
 battle_useable.gd::GDScript::-1::1740095924::0::1::::<>Node<>::
 battle_useable.tscn::PackedScene::5645406243143058044::1740095728::0::1::::<><>::
+::res://battle_scene/art/::1740096541
+Battle image.jpg::CompressedTexture2D::5165862119293261606::1740096350::1740096546::1::::<><>::
 ::res://sprint1/::1739982882

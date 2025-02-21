@@ -1,3 +1,4 @@
 res://map.tscn
 res://battle_useable.tscn
 res://character.gd
+res://battle_scene/battle_useable.tscn
