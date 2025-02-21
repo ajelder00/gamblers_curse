@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmoxasrwvjyhw"]
+[gd_scene load_steps=5 format=3 uid="uid://cmoxasrwvjyhw"]
 
 [ext_resource type="Script" path="res://battle_scene/battle_useable.gd" id="1_s7si0"]
+[ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_7rn7l"]
 [ext_resource type="Texture2D" uid="uid://cfum82qo5dmq5" path="res://battle_scene/art/Battle image.jpg" id="2_sb0uy"]
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="4_yxldu"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_s7si0")
+player = ExtResource("2_7rn7l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(587, 320)
 scale = Vector2(4.125, 4.125)
 texture = ExtResource("2_sb0uy")
+
+[node name="dummy_enemy" parent="." instance=ExtResource("4_yxldu")]
+position = Vector2(921, 435)
+
+[node name="dummy_player" parent="." instance=ExtResource("2_7rn7l")]
+position = Vector2(207, 467)

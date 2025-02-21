@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740096396
+::res://::1740154945
 character.gd::GDScript::-1::1740095767::0::1::::<>Node2D<>::
 character.tscn::PackedScene::7236576544678899007::1740096375::0::1::::<><>::uid://cdhkgmt1alym0::::res://art/icon.svg
-map.tscn::PackedScene::8981001163627301097::1740095842::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://pu7ukuhuhvta::::res://art/Soldier-Walk.png<>res://character.gd<>uid://2l4n7gph5wwb::::res://art/HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp
+map.tscn::PackedScene::8981001163627301097::1740154945::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://pu7ukuhuhvta::::res://art/Soldier-Walk.png<>res://character.gd<>uid://2l4n7gph5wwb::::res://art/HPLpDsWugmZCH-OXqqK5H_1sGEAetNnniX9snvHVV7M.webp
 mapnode.gd::GDScript::-1::1740094189::0::1::::<>Node2D<>::
 parentnode.gd::GDScript::-1::1740094189::0::1::::<>Node2D<>::
 README.md::TextFile::-1::1739982881::0::1::::<><>::
@@ -15,11 +15,18 @@ shuffe(move).png::CompressedTexture2D::4979951106323242818::1740094189::17400953
 Soldier-Walk.png::CompressedTexture2D::1096099425772970546::1740094189::1740095332::1::::<><>::
 static idle.png::CompressedTexture2D::5018922595783250825::1740094189::1740095332::1::::<><>::
 wake.png::CompressedTexture2D::3793128452491033949::1740094189::1740095332::1::::<><>::
-::res://battle_scene/::1740096511
+::res://battle_scene/::1740154945
 battle.gd::GDScript::-1::1740094189::0::1::::<>Node<>::
 battle.tscn::PackedScene::2776436922424779195::1740096395::0::1::::<><>::res://battle_scene/battle.gd
-battle_useable.gd::GDScript::-1::1740095924::0::1::::<>Node<>::
-battle_useable.tscn::PackedScene::5645406243143058044::1740095728::0::1::::<><>::
-::res://battle_scene/art/::1740096541
+battle_useable.gd::GDScript::-1::1740154370::0::1::::<>Node<>::
+battle_useable.tscn::PackedScene::5645406243143058044::1740154945::0::1::::<><>::res://battle_scene/battle_useable.gd<>uid://c8epku478rptj::::res://dummy_player/dummy_player.tscn<>uid://cfum82qo5dmq5::::res://battle_scene/art/Battle image.jpg<>uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn
+::res://battle_scene/art/::1740096546
 Battle image.jpg::CompressedTexture2D::5165862119293261606::1740096350::1740096546::1::::<><>::
+::res://dummy_enemy/::1740154946
+dummy_enemy.gd::GDScript::-1::1740154501::0::1::::<>Node2D<>::
+dummy_enemy.tscn::PackedScene::100967058046424783::1740154946::0::1::::<><>::res://dummy_enemy/dummy_enemy.gd<>uid://cdhkgmt1alym0::::res://art/icon.svg
+::res://dummy_player/::1740154945
+dummy_player.gd::GDScript::-1::1740154243::0::1::::<>Node2D<>::
+dummy_player.tscn::PackedScene::7098260428053105571::1740154988::0::1::::<><>::res://dummy_player/dummy_player.gd<>uid://cdhkgmt1alym0::::res://art/icon.svg<>res://dummy_player/label.gd
+label.gd::GDScript::-1::1740154923::0::1::::<>Label<>::
 ::res://sprint1/::1739982882

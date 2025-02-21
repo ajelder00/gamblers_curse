@@ -63,7 +63,7 @@ func move_to(new_node):
 		current_node = new_node
 
 func load_battle_scene():
-	var battle_scene = ResourceLoader.load("res://battle.tscn")  # Load the scene
+	var battle_scene = ResourceLoader.load("res://battle_scene/battle_useable.tscn")  # Load the scene
 	if battle_scene and battle_scene is PackedScene:
 		print("Loading battle.tscn scene...")
 		
