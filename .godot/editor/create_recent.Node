@@ -1,6 +1,6 @@
-Label
-CanvasLayer
 Button
+Label
 AnimatedSprite2D
+CanvasLayer
 Sprite2D
 Node

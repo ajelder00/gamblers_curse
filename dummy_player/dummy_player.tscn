@@ -1,51 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=17 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
-[ext_resource type="Texture2D" uid="uid://cdhkgmt1alym0" path="res://art/icon.svg" id="2_fq8lt"]
+[ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
 [ext_resource type="Script" path="res://dummy_player/dummy_health_bar.gd" id="3_0p23m"]
+[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="4_6on4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmfwc"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1288"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jqi1"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovqor"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t7gy"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(400, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx4sa"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ebwk"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc83d"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53obc"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulhgx"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcsrx"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(300, 500, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_40ksk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_mmfwc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_n1288")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_7jqi1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_ovqor")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_7t7gy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_xx4sa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_fq8lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fq8lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fq8lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fq8lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fq8lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fq8lt")
+"texture": SubResource("AtlasTexture_1ebwk")
 }],
-"loop": true,
-"name": &"default",
-"speed": 3.0
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc83d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53obc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulhgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcsrx")
+}],
+"loop": false,
+"name": &"get_hit",
+"speed": 5.0
 }]
 
 [node name="dummy_player" type="Node2D"]
@@ -54,14 +101,9 @@ script = ExtResource("1_qj2j2")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_40ksk")
-
-[node name="Button" type="Button" parent="."]
-offset_left = -62.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 62.0
-text = "Click to battle!"
+animation = &"get_hit"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0
@@ -71,4 +113,7 @@ offset_bottom = 115.0
 text = "Health: "
 script = ExtResource("3_0p23m")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Dice" parent="." instance=ExtResource("4_6on4u")]
+position = Vector2(118, -8)
+
+[connection signal="rolled" from="Dice" to="." method="_on_dice_rolled"]

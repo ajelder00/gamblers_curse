@@ -1,0 +1,128 @@
+[gd_scene load_steps=16 format=3 uid="uid://b1vwcx3yj158n"]
+
+[ext_resource type="Script" path="res://dice/dice.gd" id="1_mre03"]
+[ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="1_od3an"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npyju"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w0va"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rgp"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbvjq"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7potn"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45n0t"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8n7x"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5f5c"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj40s"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_265ua"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3yg5"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc8ml"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 224, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcjl4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npyju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w0va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbvjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7potn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45n0t")
+}],
+"loop": false,
+"name": &"faces",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8n7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5f5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj40s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_265ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3yg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc8ml")
+}],
+"loop": false,
+"name": &"roll",
+"speed": 5.0
+}]
+
+[node name="Dice" type="Node2D"]
+script = ExtResource("1_mre03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -20)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bcjl4")
+animation = &"roll"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -46.0
+offset_top = 45.0
+offset_right = 46.0
+offset_bottom = 80.0
+text = "You rolled a"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -35.0
+offset_top = 9.0
+offset_right = 36.0
+offset_bottom = 40.0
+text = "Roll Die!"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

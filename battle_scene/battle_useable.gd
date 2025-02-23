@@ -11,11 +11,19 @@ func _ready() -> void:
 	add_child(player)
 	add_child(enemy)
 	player.attack_signal.connect(_on_player_attack)
+	
 
 
 
 func _on_player_attack() -> void:
 	if player.health > 0 and enemy.health > 0:
+		var player_sprite = player.get_node("AnimatedSprite2D")
+		player_sprite.play("attack")
+		# todo fix animation playing timing everywhere
+		var enemy_sprite = enemy.get_node("AnimatedSprite2D")
+		enemy_sprite.play("get_hit")
+		await player_sprite.animation_finished
+		player_sprite.stop()
 		enemy.get_hit(player.hit())
 		player.get_hit(enemy.hit())
 	else:
