@@ -16,7 +16,6 @@ func _ready() -> void:
 
 func _on_player_attack() -> void:
 	if player.health > 0 and enemy.health > 0:
-		print("im hitsing!")
 		enemy.get_hit(player.hit())
 		player.get_hit(enemy.hit())
 	else:

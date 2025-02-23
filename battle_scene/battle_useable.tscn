@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://battle_scene/battle_useable.gd" id="1_s7si0"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_7rn7l"]
-[ext_resource type="Texture2D" uid="uid://cfum82qo5dmq5" path="res://battle_scene/art/Battle image.jpg" id="2_sb0uy"]
+[ext_resource type="Texture2D" uid="uid://bh4jcx7si10ln" path="res://battle_scene/d1aabc9ac5fc286971adca7ef220051c.jpg" id="4_rlvme"]
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="4_yxldu"]
 
 [node name="Node" type="Node"]
@@ -12,5 +12,10 @@ enemy_template = ExtResource("4_yxldu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(587, 320)
-scale = Vector2(4.125, 4.125)
-texture = ExtResource("2_sb0uy")
+scale = Vector2(2.275, 2.275)
+texture = ExtResource("4_rlvme")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(587, 320)
+scale = Vector2(2.275, 2.275)
+texture = ExtResource("4_rlvme")
