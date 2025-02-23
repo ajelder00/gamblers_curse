@@ -49,7 +49,9 @@ animations = [{
 }]
 
 [node name="dummy_player" type="Node2D"]
+position = Vector2(250, 404)
 script = ExtResource("1_qj2j2")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_40ksk")
@@ -68,3 +70,5 @@ offset_right = 63.0
 offset_bottom = 115.0
 text = "Health: "
 script = ExtResource("3_0p23m")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

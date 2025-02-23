@@ -7,15 +7,10 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_s7si0")
-player = ExtResource("2_7rn7l")
+player_template = ExtResource("2_7rn7l")
+enemy_template = ExtResource("4_yxldu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(587, 320)
 scale = Vector2(4.125, 4.125)
 texture = ExtResource("2_sb0uy")
-
-[node name="dummy_enemy" parent="." instance=ExtResource("4_yxldu")]
-position = Vector2(921, 435)
-
-[node name="dummy_player" parent="." instance=ExtResource("2_7rn7l")]
-position = Vector2(207, 467)
