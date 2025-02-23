@@ -1,4 +1,4 @@
-extends Node2D
+extends AnimatedSprite2D
 
 @export var current_node: Node2D  # Starting node (set in Inspector)
 var target_node: Node2D = null
@@ -9,6 +9,9 @@ func _ready():
 		return
 	global_position = current_node.global_position
 	print("Character starts at:", current_node.name)
+	
+	# Set default animation to 'idle'
+	$".".play("idle")
 
 # Handle input for movement and special actions
 func _input(event):
@@ -57,10 +60,23 @@ func move_to(new_node):
 
 		# Create a tween animation
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", new_node.global_position, 0.5) # 0.5 seconds smooth move
+		tween.tween_property(self, "global_position", new_node.global_position, 1) # 1 seconds smooth move
+
+		# Play 'walk' animation during movement
+		$".".play("walk")
+
+		# Flip sprite based on direction
+		$".".flip_h = new_node.global_position.x < global_position.x
+
+		# Set to 'idle' animation when tween is done
+		tween.connect("finished", Callable(self, "_on_tween_finished"))
 
 		# Update current node AFTER animation starts
 		current_node = new_node
+
+# Callback for tween completion
+func _on_tween_finished():
+	$".".play("idle")
 
 func load_battle_scene():
 	var battle_scene = ResourceLoader.load("res://battle_scene/battle_useable.tscn")  # Load the scene
