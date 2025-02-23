@@ -11,21 +11,16 @@ func _ready() -> void:
 	add_child(player)
 	add_child(enemy)
 	player.attack_signal.connect(_on_player_attack)
-	var success = player.attack_signal.connect(_on_player_attack)
-	if success == OK:
-		print("Connected attack_signal successfully!")
-	else:
-		print("Failed to connect attack_signal.")
 
-func battle() -> void:
-	while player.health > 0 and enemy.health > 0:
-		await player.attack_signal
+
+
+func _on_player_attack() -> void:
+	if player.health > 0 and enemy.health > 0:
 		print("im hitsing!")
 		enemy.get_hit(player.hit())
 		player.get_hit(enemy.hit())
-
-func _on_player_attack() -> void:
-	print("button clicked")
+	else:
+		print("hes already dead...")
 
 
 

@@ -16,4 +16,5 @@ func get_hit(enemy_damage):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if health == 0:
+		self.rotation_degrees = 90

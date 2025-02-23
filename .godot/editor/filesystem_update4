@@ -1,14 +1,8 @@
 res://map.tscn
-res://battle_useable.tscn
-res://character.gd
 res://battle_scene/battle_useable.tscn
-res://dummy_player.gd
 res://dummy_player/dummy_player.tscn
-res://battle_scene/battle_useable.gd
-res://enemy.gd
 res://dummy_enemy/dummy_enemy.tscn
-res://dummy_enemy/dummy_enemy.gd
-res://dummy_player/label.gd
-res://dummy_player/dummy_player.gd
-res://dummy_player/dummy_health_bar.gd
 res://character.tscn
+res://battle_scene/battle_useable.gd
+res://dummy_player/dummy_player.gd
+res://dummy_enemy/dummy_enemy.gd
