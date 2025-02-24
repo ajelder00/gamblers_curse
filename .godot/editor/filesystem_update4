@@ -6,3 +6,8 @@ res://character.tscn
 res://battle_scene/battle_useable.gd
 res://dummy_player/dummy_player.gd
 res://dummy_enemy/dummy_enemy.gd
+res://map_node.gd
+res://map_stuff/map_random.tscn
+res://map_stuff/map_node.tscn
+res://map_stuff/map_node.gd
+res://map_stuff/map_random.gd

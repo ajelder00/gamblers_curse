@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwxu20f11pe0w"]
+
+[ext_resource type="Texture2D" uid="uid://c5rydoq0vhk2f" path="res://art/skull.png" id="2_7x06v"]
+
+[node name="map_node" type="Node2D"]
+scale = Vector2(1.445, 1.445)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.692041, 9.53674e-07)
+scale = Vector2(0.824827, 0.827938)
+texture = ExtResource("2_7x06v")

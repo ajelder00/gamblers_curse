@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://battle_scene/battle_useable.gd" id="1_s7si0"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_7rn7l"]
-[ext_resource type="Texture2D" uid="uid://bh4jcx7si10ln" path="res://battle_scene/d1aabc9ac5fc286971adca7ef220051c.jpg" id="4_rlvme"]
+[ext_resource type="Texture2D" uid="uid://bh4jcx7si10ln" path="res://battle_scene/art/d1aabc9ac5fc286971adca7ef220051c.jpg" id="4_rlvme"]
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="4_yxldu"]
 
 [node name="Node" type="Node"]
