@@ -19,10 +19,13 @@ func _generate_map():
 		var num_nodes = randi_range(2, 3)  # Randomly pick between 3 and 4 nodes per level
 		var current_level_nodes = []
 		print(num_nodes)
-		
+		var coordinates = []
 		for i in range(num_nodes):
 			var new_node = child_node.instantiate()
-			new_node.position = Vector2(randi_range(1,4)*200, (level+2.25) * distance)  # Set position with distance spacing
+			new_node.position = Vector2(randi_range(1,4)*200, (level+2.25) * distance)
+			while new_node.position.x in coordinates:
+				new_node.position = Vector2(randi_range(1,4)*200, (level+2.25) * distance)
+			coordinates.append(new_node.position.x)
 			add_child(new_node)
 			current_level_nodes.append(new_node)
 		

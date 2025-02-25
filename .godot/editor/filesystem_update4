@@ -11,3 +11,4 @@ res://map_stuff/map_random.tscn
 res://map_stuff/map_node.tscn
 res://map_stuff/map_node.gd
 res://map_stuff/map_random.gd
+res://map_stuff/map_tutorial_stuff/new_script.gd
