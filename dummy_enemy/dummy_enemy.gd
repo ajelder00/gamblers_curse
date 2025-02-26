@@ -1,5 +1,5 @@
 extends Node2D
-var health = 90
+var health = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +24,3 @@ func get_hit(enemy_damage):
 		self.health = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if health == 0:
-		self.rotation_degrees = 90

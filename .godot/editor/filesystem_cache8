@@ -1,42 +1,42 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1740348808
-character.gd::GDScript::-1::1740348411::0::1::::<>AnimatedSprite2D<>::
-character.tscn::PackedScene::7236576544678899007::1740348494::0::1::::<><>::uid://cdhkgmt1alym0::::res://art/icon.svg
-export_presets.cfg::TextFile::-1::1740346725::0::1::::<><>::
-map.tscn::PackedScene::8981001163627301097::1740348494::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://c3fh4t3ol3hlj::::res://art/idle.png<>uid://brywskotyfuu0::::res://art/walk.png<>res://character.gd<>uid://bqvduyi06xkgy::::res://art/Pixel 3.mp3<>uid://ce7qn1wsp1pje::::res://art/map_temp.png
-mapnode.gd::GDScript::-1::1740346726::0::1::::<>Node2D<>::
-parentnode.gd::GDScript::-1::1740346726::0::1::::<>Node2D<>::
-README.md::TextFile::-1::1740346725::0::1::::<><>::
-::res://art/::1740347861
-icon.svg::CompressedTexture2D::4998477088083078889::1740346725::1740347488::1::::<><>::
-idle.png::CompressedTexture2D::6748928726844095979::1732307066::1740347858::1::::<><>::
-map_temp.png::CompressedTexture2D::5120652917704994674::1740344643::1740347540::1::::<><>::
-Pixel 3.mp3::AudioStreamMP3::3553013255690338388::1677441772::1740347757::1::::<><>::
-walk.png::CompressedTexture2D::3630544557524565273::1732307144::1740347858::1::::<><>::
-::res://battle_scene/::1740348494
-battle.gd::GDScript::-1::1740346725::0::1::::<>Node<>::
-battle.tscn::PackedScene::2776436922424779195::1740346725::0::1::::<><>::res://battle_scene/battle.gd
-battle_useable.gd::GDScript::-1::1740346725::0::1::::<>Node<>::
-battle_useable.tscn::PackedScene::5645406243143058044::1740348494::0::1::::<><>::res://battle_scene/battle_useable.gd<>uid://c8epku478rptj::::res://dummy_player/dummy_player.tscn<>uid://bh4jcx7si10ln::::res://battle_scene/d1aabc9ac5fc286971adca7ef220051c.jpg<>uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn
-d1aabc9ac5fc286971adca7ef220051c.jpg::CompressedTexture2D::2938160826850143351::1740346725::1740346754::1::::<><>::
-::res://battle_scene/art/::1740346774
-Battle image.jpg::CompressedTexture2D::5165862119293261606::1740346725::1740346754::1::::<><>::
-::res://dice/::1740348494
-dice.gd::GDScript::-1::1740346725::0::1::::<>Node2D<>::
-dice.tscn::PackedScene::4256023148940982215::1740348494::0::1::::<><>::res://dice/dice.gd<>uid://waxm1wajjcjc::::res://dice/six sided die.png
-six sided die.png::CompressedTexture2D::1545573880002384148::1740346725::1740346754::1::::<><>::
-::res://dummy_enemy/::1740348494
-dummy_enemy.gd::GDScript::-1::1740346725::0::1::::<>Node2D<>::
-dummy_enemy.tscn::PackedScene::100967058046424783::1740348494::0::1::::<><>::res://dummy_enemy/dummy_enemy.gd<>uid://bmm15wooa2k8q::::res://dummy_enemy/Orc.png<>uid://b1vwcx3yj158n::::res://dice/dice.tscn
-Orc.png::CompressedTexture2D::3255092733805416754::1740346725::1740346754::1::::<><>::
-::res://dummy_player/::1740348494
-dummy_health_bar.gd::GDScript::-1::1740346725::0::1::::<>Label<>::
-dummy_player.gd::GDScript::-1::1740346725::0::1::::<>Node2D<>::
-dummy_player.tscn::PackedScene::7098260428053105571::1740348494::0::1::::<><>::res://dummy_player/dummy_player.gd<>uid://bs5qo5cd7chbp::::res://dummy_player/Soldier.png<>res://dummy_player/dummy_health_bar.gd<>uid://b1vwcx3yj158n::::res://dice/dice.tscn
-Soldier.png::CompressedTexture2D::3712749253767678141::1740346725::1740346754::1::::<><>::
-::res://exports/::1740346774
-::res://exports/web/::1740346774
-index.apple-touch-icon.png::CompressedTexture2D::9120054403882100798::1740346725::1740346754::1::::<><>::
-index.icon.png::CompressedTexture2D::114838406911675378::1740346725::1740346754::1::::<><>::
-index.png::CompressedTexture2D::6814954058078464922::1740346725::1740346754::1::::<><>::
-::res://sprint1/::1740346765
+::res://::1740525770
+character.gd::GDScript::-1::1740353158::0::1::::<>AnimatedSprite2D<>::
+character.tscn::PackedScene::7236576544678899007::1740415033::0::1::::<><>::uid://cdhkgmt1alym0::::res://art/icon.svg
+export_presets.cfg::TextFile::-1::1740345781::0::1::::<><>::
+map.tscn::PackedScene::8981001163627301097::1740525713::0::1::::<><>::res://mapnode.gd<>res://parentnode.gd<>uid://c3fh4t3ol3hlj::::res://art/idle.png<>uid://brywskotyfuu0::::res://art/walk.png<>res://character.gd<>uid://bqvduyi06xkgy::::res://art/Pixel 3.mp3<>uid://ce7qn1wsp1pje::::res://art/map_temp.png
+mapnode.gd::GDScript::-1::1740095259::0::1::::<>Node2D<>::
+parentnode.gd::GDScript::-1::1740095259::0::1::::<>Node2D<>::
+README.md::TextFile::-1::1739826439::0::1::::<><>::
+::res://art/::1740525713
+icon.svg::CompressedTexture2D::4998477088083078889::1740341361::1740525779::1::::<><>::
+idle.png::CompressedTexture2D::6748928726844095979::1740353158::1740525779::1::::<><>::
+map_temp.png::CompressedTexture2D::5120652917704994674::1740353158::1740525781::1::::<><>::
+Pixel 3.mp3::AudioStreamMP3::3553013255690338388::1740353158::1740525779::1::::<><>::
+walk.png::CompressedTexture2D::3630544557524565273::1740353158::1740525779::1::::<><>::
+::res://battle_scene/::1740415033
+battle.gd::GDScript::-1::1740341361::0::1::::<>Node<>::
+battle.tscn::PackedScene::2776436922424779195::1740341361::0::1::::<><>::res://battle_scene/battle.gd
+battle_useable.gd::GDScript::-1::1740364754::0::1::::<>Node<>::
+battle_useable.tscn::PackedScene::5645406243143058044::1740415033::0::1::::<><>::res://battle_scene/battle_useable.gd<>uid://c8epku478rptj::::res://dummy_player/dummy_player.tscn<>uid://bh4jcx7si10ln::::res://battle_scene/d1aabc9ac5fc286971adca7ef220051c.jpg<>uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn
+d1aabc9ac5fc286971adca7ef220051c.jpg::CompressedTexture2D::2938160826850143351::1740341361::1740525780::1::::<><>::
+::res://battle_scene/art/::1740415028
+Battle image.jpg::CompressedTexture2D::5165862119293261606::1740341361::1740525779::1::::<><>::
+::res://dice/::1740415033
+dice.gd::GDScript::-1::1740344402::0::1::::<>Node2D<>::
+dice.tscn::PackedScene::4256023148940982215::1740415033::0::1::::<><>::res://dice/dice.gd<>uid://waxm1wajjcjc::::res://dice/six sided die.png
+six sided die.png::CompressedTexture2D::1545573880002384148::1740075791::1740525779::1::::<><>::
+::res://dummy_enemy/::1740525713
+dummy_enemy.gd::GDScript::-1::1740364754::0::1::::<>Node2D<>::
+dummy_enemy.tscn::PackedScene::100967058046424783::1740525713::0::1::::<><>::res://dummy_enemy/dummy_enemy.gd<>uid://bmm15wooa2k8q::::res://dummy_enemy/Orc.png<>uid://b1vwcx3yj158n::::res://dice/dice.tscn
+Orc.png::CompressedTexture2D::3255092733805416754::1740342931::1740525780::1::::<><>::
+::res://dummy_player/::1740525713
+dummy_health_bar.gd::GDScript::-1::1740341361::0::1::::<>Label<>::
+dummy_player.gd::GDScript::-1::1740364754::0::1::::<>Node2D<>::
+dummy_player.tscn::PackedScene::7098260428053105571::1740525713::0::1::::<><>::res://dummy_player/dummy_player.gd<>uid://bs5qo5cd7chbp::::res://dummy_player/Soldier.png<>res://dummy_player/dummy_health_bar.gd<>uid://b1vwcx3yj158n::::res://dice/dice.tscn
+Soldier.png::CompressedTexture2D::3712749253767678141::1740342715::1740525780::1::::<><>::
+::res://exports/::1740365232
+::res://exports/web/::1740525713
+index.apple-touch-icon.png::CompressedTexture2D::9120054403882100798::1740364876::1740525780::1::::<><>::
+index.icon.png::CompressedTexture2D::114838406911675378::1740364876::1740525780::1::::<><>::
+index.png::CompressedTexture2D::6814954058078464922::1740364876::1740525780::1::::<><>::
+::res://sprint1/::1739826505

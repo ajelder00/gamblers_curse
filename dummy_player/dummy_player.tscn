@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=21 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
@@ -32,6 +32,22 @@ region = Rect2(500, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ebwk"]
 atlas = ExtResource("2_2wf7a")
 region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxivn"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(0, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7isv"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(100, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo552"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6cs7"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(300, 600, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nc83d"]
 atlas = ExtResource("2_2wf7a")
@@ -79,6 +95,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uxivn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7isv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo552")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6cs7")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nc83d")
 }, {
 "duration": 1.0,
@@ -103,7 +136,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_40ksk")
-animation = &"get_hit"
+animation = &"dead"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -55.0

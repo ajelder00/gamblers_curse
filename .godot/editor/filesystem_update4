@@ -1,0 +1,10 @@
+res://battle_scene/battle_useable.tscn
+res://battle_scene/battle_useable.gd
+res://map.tscn
+res://dummy_player/dummy_player.tscn
+res://dummy_enemy/dummy_enemy.tscn
+res://character.tscn
+res://dice/dice.tscn
+res://dice_roller/dice_roller.tscn
+res://dummy_player/dummy_player.gd
+res://dummy_enemy/dummy_enemy.gd

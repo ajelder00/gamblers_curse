@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo56bcst8wlj"]
+[gd_scene load_steps=19 format=3 uid="uid://bo56bcst8wlj"]
 
 [ext_resource type="Script" path="res://dummy_enemy/dummy_enemy.gd" id="1_4fd5b"]
 [ext_resource type="Texture2D" uid="uid://bmm15wooa2k8q" path="res://dummy_enemy/Orc.png" id="2_dkdcx"]
@@ -27,6 +27,22 @@ region = Rect2(400, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30acn"]
 atlas = ExtResource("2_dkdcx")
 region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2dx2"]
+atlas = ExtResource("2_dkdcx")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oylr6"]
+atlas = ExtResource("2_dkdcx")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmtng"]
+atlas = ExtResource("2_dkdcx")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c50cp"]
+atlas = ExtResource("2_dkdcx")
+region = Rect2(300, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vadd5"]
 atlas = ExtResource("2_dkdcx")
@@ -71,6 +87,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j2dx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oylr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmtng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c50cp")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vadd5")
 }, {
 "duration": 1.0,
@@ -95,7 +128,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_rjcmx")
-animation = &"get_hit"
+animation = &"dead"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -52.0

@@ -1,6 +1,6 @@
 extends Node2D
 @onready var parent = get_parent()
-var health = 100
+var health = 10
 signal attack_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
