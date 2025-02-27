@@ -5,6 +5,9 @@ signal rolled
 @onready var original_scale = scale
 
 func _ready():
+	$AnimatedSprite2D.animation = "blank"
+	$Button.self_modulate.a = 0 
+	$Label.hide()
 	result = 0
 	
 
