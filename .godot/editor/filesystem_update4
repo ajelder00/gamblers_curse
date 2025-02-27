@@ -5,3 +5,5 @@ res://map_stuff/map_tutorial_stuff/map_connector.tscn
 res://map_stuff/map_tutorial_stuff/map_node.tscn
 res://overworldmap.tscn
 res://battle_scene/battle_useable.tscn
+res://dice/dice.gd
+res://global.gd

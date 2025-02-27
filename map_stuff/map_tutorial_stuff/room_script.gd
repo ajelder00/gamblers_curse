@@ -13,8 +13,8 @@ const ICONS := {
 	Room.Type.LOOT: [preload("res://map_stuff/map_tutorial_stuff/art/chest.png"), Vector2(ICON_SIZE,ICON_SIZE)],
 	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/skull_boss.png"), Vector2(4,4)]
 }
-@onready var sprite_2d: Sprite2D = $visuals/icons
-@onready var line_2d: Line2D = $visuals/line
+@onready var sprite_2d: Sprite2D = $Visuals/Icons
+@onready var x_out: Sprite2D = $Visuals/X
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var available := false : set = set_available
@@ -30,12 +30,12 @@ func set_available(new_value: bool) -> void:
 func set_room(new_data: Room) -> void:
 	room = new_data
 	position = room.position
-	line_2d.rotation_degrees = randi_range(0,360)
+	x_out.rotation_degrees += randi_range(0,10)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
 
 func show_selected() -> void:
-	line_2d.modulate = Color.WHITE
+	x_out.modulate = Color.WHITE
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("click"):
