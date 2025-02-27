@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4v4jdegbm6ek"]
+[gd_scene load_steps=4 format=3 uid="uid://b4v4jdegbm6ek"]
 
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map.gd" id="1_pskux"]
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map_randomizer.gd" id="2_j46t8"]
-
-[sub_resource type="Gradient" id="Gradient_cr3jx"]
-colors = PackedColorArray(0.0773833, 0.041, 0.1, 1, 0.0224, 0.0246934, 0.16, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ixjf1"]
-gradient = SubResource("Gradient_cr3jx")
-width = 30
+[ext_resource type="Texture2D" uid="uid://drkfj30sw606d" path="res://map_stuff/map_tutorial_stuff/art/map_background.png" id="3_lgen2"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_pskux")
@@ -36,4 +30,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_ixjf1")
+texture = ExtResource("3_lgen2")
