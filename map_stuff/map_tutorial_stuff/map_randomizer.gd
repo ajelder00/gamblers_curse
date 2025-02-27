@@ -1,16 +1,16 @@
 class_name MapGenerator
 extends Node
 
-const X_DIST := 30
-const Y_DIST := 25
+const X_DIST := 150
+const Y_DIST := 200
 const PLACEMENT_RANDOMNESS := 5
-const FLOORS := 4
-const MAP_WIDTH := 6
+const FLOORS := 6
+const MAP_WIDTH := 7
 const PATHS := 3
 
-var FIGHT_WEIGHT := 10.0
-var GAMBLE_WEIGHT := 3.5
-var ELITE_WEIGHT := 3.5
+var FIGHT_WEIGHT := 8
+var GAMBLE_WEIGHT := 2.5
+var ELITE_WEIGHT := 4.5
 var SHOP_WEIGHT := 2.5
 var LOOT_WEIGHT := 2.5
 var random_room_weights = {
@@ -64,7 +64,7 @@ func _get_random_starting_points() -> Array[int]:
 	var y_coordinates : Array[int]
 	var unique_points := 0
 	
-	while unique_points < 2:
+	while unique_points < 3:
 		unique_points = 0
 		y_coordinates = []
 		
@@ -140,9 +140,43 @@ func _setup_room_types() -> void:
 
 func _set_room_randomly(room: Room) -> void:
 	#If you want to make rules about what rooms can be at what level, go to the tutorial at the 1:00:00 mark
+	var consecutive_shop := true
+	var consecutive_loot := true
+	var consecutive_gambling := true
+	
 	var type_candidate: Room.Type
-	type_candidate = _get_candidate_by_weight()
+	while consecutive_loot or consecutive_shop or consecutive_gambling:
+		type_candidate = _get_candidate_by_weight()
+		
+		var is_shop := type_candidate == Room.Type.SHOP
+		var is_loot := type_candidate == Room.Type.LOOT
+		var is_gambling := type_candidate == Room.Type.CASINO
+		
+		consecutive_gambling =  _room_has_parent_of_type(room, Room.Type.CASINO) and is_gambling
+		consecutive_shop =  _room_has_parent_of_type(room, Room.Type.SHOP) and is_shop
+		consecutive_loot = _room_has_parent_of_type(room, Room.Type.LOOT) and is_loot
 	room.type = type_candidate
+
+func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
+	var parents: Array[Room] = []
+	
+	if room.column > 0 and room.row > 0:
+		var parent_candidate := map_data[room.row - 1][room.column - 1] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	if room.row > 0:
+		var parent_candidate := map_data[room.row - 1][room.column] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	if room.column < MAP_WIDTH - 1 and room.row > 0:
+		var parent_candidate := map_data[room.row - 1][room.column + 1] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	for parent: Room in parents:
+		if parent.type == type:
+			return true
+	return false
+
 
 func _get_candidate_by_weight() -> Room.Type:
 	var roll := randf_range(0.0, random_room_total_weight)

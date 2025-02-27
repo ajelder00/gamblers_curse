@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk876n6ua0f0r"]
 
-[ext_resource type="Texture2D" uid="uid://dx0f1dujlbj4q" path="res://map_stuff/map_tutorial_stuff/art/line.png" id="1_tkjfd"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg4"]
+load_path = "res://.godot/imported/line.png-43d842fa70337f797582920b6171e573.ctex"
 
 [node name="map_connector" type="Line2D"]
 texture_repeat = 2
-texture = ExtResource("1_tkjfd")
+width = 50.0
+texture = SubResource("CompressedTexture2D_boyg4")
 texture_mode = 1
