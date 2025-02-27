@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @export var current_node: Node2D  # Starting node (set in Inspector)
 var target_node: Node2D = null
 
+
 func _ready():
 	if current_node == null:
 		print("ERROR: current_node is not set! Assign it in the Inspector.")

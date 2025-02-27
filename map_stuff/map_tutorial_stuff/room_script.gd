@@ -2,13 +2,14 @@ class_name MapRoom
 extends Area2D
 
 signal selected(room:Room)
+
 const ICON_SIZE := 2.5
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
 	Room.Type.BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/battle.png"), Vector2(ICON_SIZE+1,ICON_SIZE+1)],
 	Room.Type.CASINO: [preload("res://map_stuff/map_tutorial_stuff/art/dice.png"), Vector2(ICON_SIZE+1.5,ICON_SIZE+1.5)],
 	Room.Type.SHOP: [preload("res://map_stuff/map_tutorial_stuff/art/coins.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.ELITE_BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/skull.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.ELITE_BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/skull.png"), Vector2(ICON_SIZE + 2,ICON_SIZE + 2)],
 	Room.Type.LOOT: [preload("res://map_stuff/map_tutorial_stuff/art/chest.png"), Vector2(ICON_SIZE,ICON_SIZE)],
 	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/skull_boss.png"), Vector2(4,4)]
 }

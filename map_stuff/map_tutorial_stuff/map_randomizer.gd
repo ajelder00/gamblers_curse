@@ -3,11 +3,11 @@ extends Node
 
 const X_DIST := 150
 const Y_DIST := 200
-const PLACEMENT_RANDOMNESS := 5
-const FLOORS := 6
+const PLACEMENT_RANDOMNESS := 7
 const MAP_WIDTH := 7
-const PATHS := 3
+const PATHS := 4
 
+var FLOORS := 6
 var FIGHT_WEIGHT := 8
 var GAMBLE_WEIGHT := 2.5
 var ELITE_WEIGHT := 4.5
@@ -36,6 +36,8 @@ func generate_map() -> Array[Array]:
 	_setup_random_room_weights()
 	_setup_room_types()
 	
+	_setup_start()
+	
 	return map_data
 
 func _generate_initial_grid() -> Array[Array]:
@@ -49,7 +51,7 @@ func _generate_initial_grid() -> Array[Array]:
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
 			
 			current_room.position = Vector2(X_DIST * j, Y_DIST * i) + offset
-			current_room.row = i
+			current_room.row = i + 1
 			current_room.column = j
 			current_room.next_rooms = []
 			
@@ -177,6 +179,19 @@ func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
 			return true
 	return false
 
+func _setup_start() -> void:
+	var start_room = Room.new()
+	var middle := floori(MAP_WIDTH*0.5)
+	start_room.column = middle
+	start_room.row = 0
+	start_room.position = Vector2(X_DIST * middle, -250)
+	start_room.type = Room.Type.BATTLE
+	for room in map_data[0]:
+		if room.next_rooms:
+			start_room.next_rooms.append(room)
+	map_data.insert(0,[start_room])
+	FLOORS += 1
+	
 
 func _get_candidate_by_weight() -> Room.Type:
 	var roll := randf_range(0.0, random_room_total_weight)

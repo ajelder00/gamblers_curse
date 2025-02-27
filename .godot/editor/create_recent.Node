@@ -1,9 +1,9 @@
-Marker2D
-Sprite2D
-Label
+TextureRect
 AudioListener2D
 AudioStreamPlayer2D
 Button
+Label
 AnimatedSprite2D
 CanvasLayer
+Sprite2D
 Node
