@@ -36,7 +36,8 @@ func generate_map() -> Array[Array]:
 			current_j = _setup_connection(i, current_j)
 	
 	_setup_boss()
-	
+	_setup_random_room_weights()
+	_setup_room_types()
 	
 	return map_data
 
@@ -139,3 +140,17 @@ func _setup_room_types() -> void:
 			for next_room in room.next_rooms:
 				if next_room.type == Room.Type.NOT_ASSIGNED:
 					_set_room_randomly(next_room)
+
+func _set_room_randomly(room: Room) -> void:
+	#If you want to make rules about what rooms can be at what level, go to the tutorial at the 1:00:00 mark
+	var type_candidate: Room.Type
+	type_candidate = _get_candidate_by_weight()
+	room.type = type_candidate
+
+func _get_candidate_by_weight() -> Room.Type:
+	var roll := randf_range(0.0, random_room_total_weight)
+	
+	for type: Room.Type in random_room_weights:
+		if random_room_weights[type] > roll:
+			return type
+	return Room.Type.BATTLE
