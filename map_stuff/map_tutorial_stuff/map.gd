@@ -98,7 +98,9 @@ func _on_map_selected(room: Room) -> void:
 	floors_climbed += 1
 	map_exited.emit(room)
 	
+	# test code, delete once signals implemented
 	var battle = new_scene.instantiate()
 	get_tree().root.add_child(battle)
 	get_tree().change_scene_to_packed(battle)
+	hide_map()
 	

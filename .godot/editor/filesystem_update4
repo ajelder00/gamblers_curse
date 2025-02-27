@@ -8,3 +8,5 @@ res://maporiginal.tscn
 res://character.gd
 res://overworldmap.tscn
 res://battle_scene/battle_useable.tscn
+res://dice/dice.gd
+res://global.gd
