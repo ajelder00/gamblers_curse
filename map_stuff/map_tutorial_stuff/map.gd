@@ -13,6 +13,7 @@ signal map_exited
 @onready var visuals: Node2D = $Visuals
 @onready var camera_2d: Camera2D = $Scroller
 
+var new_scene = preload("res://battle_scene/battle_useable.tscn")
 
 var map_data: Array[Array]
 var floors_climbed: int
@@ -96,3 +97,8 @@ func _on_map_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	map_exited.emit(room)
+	
+	var battle = new_scene.instantiate()
+	get_tree().root.add_child(battle)
+	get_tree().change_scene_to_packed(battle)
+	

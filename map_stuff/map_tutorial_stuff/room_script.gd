@@ -2,6 +2,7 @@ class_name MapRoom
 extends Area2D
 
 signal selected(room:Room)
+
 const ICON_SIZE := 2.5
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
