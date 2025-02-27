@@ -1,1 +1,6 @@
+res://dice/dice.tscn
+res://dice/dice.gd
 res://map_stuff/map_tutorial_stuff/map.tscn
+res://dice_roller/dice_roller.tscn
+res://battle_scene/battle_useable.tscn
+res://dice_roller/dice_roller.gd
