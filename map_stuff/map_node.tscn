@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwxu20f11pe0w"]
+[gd_scene load_steps=3 format=3 uid="uid://bwxu20f11pe0w"]
 
+[ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map_randomizer.gd" id="1_nw435"]
 [ext_resource type="Texture2D" uid="uid://c5rydoq0vhk2f" path="res://art/skull.png" id="2_7x06v"]
 
 [node name="map_node" type="Node2D"]
 scale = Vector2(1.445, 1.445)
+script = ExtResource("1_nw435")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.692041, 9.53674e-07)
