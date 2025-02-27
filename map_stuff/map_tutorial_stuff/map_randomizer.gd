@@ -3,9 +3,9 @@ extends Node
 
 const X_DIST := 150
 const Y_DIST := 200
-const PLACEMENT_RANDOMNESS := 5
+const PLACEMENT_RANDOMNESS := 7
 const MAP_WIDTH := 7
-const PATHS := 3
+const PATHS := 4
 
 var FLOORS := 6
 var FIGHT_WEIGHT := 8
@@ -190,6 +190,7 @@ func _setup_start() -> void:
 		if room.next_rooms:
 			start_room.next_rooms.append(room)
 	map_data.insert(0,[start_room])
+	FLOORS += 1
 	
 
 func _get_candidate_by_weight() -> Room.Type:

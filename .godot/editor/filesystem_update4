@@ -2,3 +2,5 @@ res://map_stuff/map_tutorial_stuff/map.tscn
 res://map_stuff/map_tutorial_stuff/room_script.gd
 res://map_stuff/map_tutorial_stuff/map.gd
 res://map_stuff/map_tutorial_stuff/map_randomizer.gd
+res://map_stuff/map_tutorial_stuff/map_connector.tscn
+res://map_stuff/map_tutorial_stuff/map_node.tscn
