@@ -22,5 +22,6 @@ func get_hit(enemy_damage):
 	self.health -= enemy_damage
 	if self.health < 0:
 		self.health = 0
+	$Label.text = "Health: " + str(health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

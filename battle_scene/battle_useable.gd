@@ -22,22 +22,30 @@ func _ready() -> void:
 
 
 func _on_player_attack() -> void:
-	if player.health > 0 and enemy.health > 0:
-		var player_sprite = player.get_node("AnimatedSprite2D")
+	if Global.player_health > 0 and enemy.health > 0:
+		# ----- Player Turn -----  
 		player_sprite.play("attack")
-		# todo fix animation playing timing everywhere
-		var enemy_sprite = enemy.get_node("AnimatedSprite2D")
-		enemy_sprite.play("get_hit")
 		await player_sprite.animation_finished
-		player_sprite.stop()
-		enemy.get_hit(player.hit())
-		player.get_hit(enemy.hit())
-	else:
-		if player.health <= 0:
-			player_sprite.play("dead")
-		else:
+		
+		# ----- Update Enemy Health 
+		await enemy.get_hit(player.hit())
+		
+		# ----- Enemy Turn 
+		if enemy.health <= 0: 
 			enemy_sprite.play("dead")
-		print("hes already dead...")
+			print("You have vanquished your enemy.")
+			return
+			
+		player.get_hit(enemy.hit()) 
+		await enemy_sprite.animation_finished
+			
+		print("Full Turn")	
+		print("This is Player's health: ", Global.player_health)	
+		print("This is enemy's health: ", enemy.health)
+			
+		if Global.player_health <= 0: 
+			player_sprite.play("dead")
+			print("Your player has exited this world")
 
 
 
