@@ -2,7 +2,13 @@ class_name Dice
 extends Node2D
 
 var result
+enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
+	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
+	DTWO, RUSSIAN, DONEHUNDRED
+	}
 signal rolled
+
+@onready var type: Type = Dice.Type.STANDARD
 @onready var original_scale = scale
 
 func _ready():

@@ -10,7 +10,7 @@ var turn_total
 
 func _ready():
 	turn_total = 0
-	current_dice = []
+	current_dice = Global.dice
 	current_results = []
 	turn_results = []
 	var positions = [$StartPosition1, $StartPosition2, $StartPosition3, $StartPosition4, $StartPosition5]
