@@ -4,3 +4,6 @@
 /.godot/editor
 .godot/editor/battle_useable.tscn-editstate-43fc991c863303059ea253b6cc7924ae.cfg
 *.md5
+.godot/editor/create_recent.Node
+.godot/editor/editor_layout.cfg
+/.godot/editor
