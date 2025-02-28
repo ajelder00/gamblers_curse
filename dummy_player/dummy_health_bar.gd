@@ -9,6 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if parent!= null:
-		self.text = "Health: " + str(parent.health)
+		self.text = "Health: " + str(Global.player_health)
 	else:
 		self.text = "Health: N/A"
