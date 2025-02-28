@@ -1,7 +1,7 @@
 extends Node
 
 var money := 0
-var dice = Array[Dice]
+var dice : Array
 
 
 func add_dice(new_die: Dice) -> void:

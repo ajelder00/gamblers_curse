@@ -1,13 +1,11 @@
-<<<<<<< HEAD
+TextureRect
+CanvasLayer
+AnimationPlayer
 Label
+AnimatedSprite2D
 Sprite2D
 Button
-=======
 Sprite2D
->>>>>>> 8e1afb5dc2c4d0bb05211e714dd8e588b0811f39
-TextureRect
 AudioListener2D
 AudioStreamPlayer2D
-AnimatedSprite2D
-CanvasLayer
 Node

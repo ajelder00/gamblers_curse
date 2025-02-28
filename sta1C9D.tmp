@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bm7i4oavvhgpg" path="res://art/start_screen_anim/start_screen_animated5.png" id="5_b00c7"]
 [ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="7_trnnl"]
 
+[sub_resource type="SystemFont" id="SystemFont_k5w3j"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1gsft"]
 animations = [{
 "frames": [{
@@ -31,8 +33,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="SystemFont" id="SystemFont_k5w3j"]
-
 [sub_resource type="Animation" id="Animation_7dwbr"]
 resource_name = "big"
 length = 0.5
@@ -51,26 +51,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:offset")
+tracks/1/path = NodePath("CanvasLayer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(576, 324), Vector2(577.355, 324)]
+"values": [Vector2(1.03, 1.03), Vector2(1.15, 1.15)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer:scale")
+tracks/2/path = NodePath("CanvasLayer:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.03, 1.03), Vector2(1.15, 1.15)]
+"values": [Vector2(576, 324), Vector2(577.355, 324)]
 }
 
 [sub_resource type="Animation" id="Animation_tyud5"]
@@ -90,26 +90,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:offset")
+tracks/1/path = NodePath("CanvasLayer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(576, 324)]
+"values": [Vector2(1.03, 1.03)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer:scale")
+tracks/2/path = NodePath("CanvasLayer:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1.03, 1.03)]
+"values": [Vector2(576, 324)]
 }
 
 [sub_resource type="Animation" id="Animation_7u83v"]
@@ -118,26 +118,26 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer:offset")
+tracks/0/path = NodePath("CanvasLayer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(577.355, 324), Vector2(576.945, 324)]
+"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:scale")
+tracks/1/path = NodePath("CanvasLayer:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
+"values": [Vector2(577.355, 324), Vector2(576.945, 324)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mkh6n"]
@@ -149,27 +149,17 @@ _data = {
 
 [node name="Start_menu" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(576, 324)
-scale = Vector2(1.03, 1.03)
-transform = Transform2D(1.03, 0, 0, 1.03, 576, 324)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = -63.4147
-offset_top = -24.3903
-offset_right = 40.5853
-offset_bottom = 36.6097
-mouse_filter = 2
-texture = ExtResource("7_trnnl")
-
-[node name="Play2" type="Label" parent="CanvasLayer"]
-offset_left = -47.5728
-offset_top = -3.8835
-offset_right = 31.4272
-offset_bottom = 26.1165
-theme_override_font_sizes/font_size = 25
+[node name="Play" type="Button" parent="."]
+top_level = true
+z_index = 9
+z_as_relative = false
+offset_left = 593.0
+offset_top = 291.0
+offset_right = 682.0
+offset_bottom = 350.0
+theme_override_fonts/font = SubResource("SystemFont_k5w3j")
 text = "PLAY"
-horizontal_alignment = 1
+script = ExtResource("2_wyj30")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 z_index = -2
@@ -177,7 +167,7 @@ position = Vector2(575, 327)
 scale = Vector2(0.752604, 0.681885)
 sprite_frames = SubResource("SpriteFrames_1gsft")
 autoplay = "default"
-frame_progress = 0.961157
+frame_progress = 0.698833
 
 [node name="Credits" type="Button" parent="."]
 offset_left = 521.0
@@ -211,15 +201,27 @@ libraries = {
 "": SubResource("AnimationLibrary_mkh6n")
 }
 
-[node name="Play" type="Button" parent="."]
-top_level = true
-offset_left = 522.0
-offset_top = 301.0
-offset_right = 611.0
-offset_bottom = 360.0
-theme_override_fonts/font = SubResource("SystemFont_k5w3j")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(576, 324)
+scale = Vector2(1.03, 1.03)
+transform = Transform2D(1.03, 0, 0, 1.03, 576, 324)
+
+[node name="Play2" type="Label" parent="CanvasLayer"]
+offset_left = -47.5728
+offset_top = -3.8835
+offset_right = 31.4272
+offset_bottom = 26.1165
+theme_override_font_sizes/font_size = 25
 text = "PLAY"
-script = ExtResource("2_wyj30")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -24
+offset_left = -63.4147
+offset_top = -24.3903
+offset_right = 40.5853
+offset_bottom = 36.6097
+texture = ExtResource("7_trnnl")
 
 [connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]
