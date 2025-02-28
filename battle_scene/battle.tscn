@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1_gchhe"]
 
-
 [sub_resource type="SystemFont" id="SystemFont_ljfo5"]
 
 [node name="Map" type="Node2D"]

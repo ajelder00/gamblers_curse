@@ -1,1 +1,9 @@
 res://map_stuff/map_tutorial_stuff/map.tscn
+res://Casino.tscn
+res://casino_sprite.gd
+res://map.tscn
+res://battle_scene/battle.tscn
+res://battle_scene/battle_useable.tscn
+res://Global.gd
+res://casino.gd
+res://character.gd

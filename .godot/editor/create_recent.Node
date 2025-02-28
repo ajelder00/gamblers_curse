@@ -1,7 +1,11 @@
+OptionButton
+Label
+SpinBox
+Button
+TileMap
+Node2D
 AudioListener2D
 AudioStreamPlayer2D
-Button
-Label
 AnimatedSprite2D
 CanvasLayer
 Sprite2D

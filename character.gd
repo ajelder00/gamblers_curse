@@ -31,6 +31,9 @@ func _input(event):
 			if current_node.name == "ChildNode3":
 				load_battle_scene()
 				return  # Prevent movement when loading a new scene
+			elif current_node.name == "ChildNode2":
+				load_casino_scene()
+				return # Prevent movement when loading a new scene
 
 		if next_node:
 			move_to(next_node)
@@ -98,3 +101,21 @@ func load_battle_scene():
 		get_tree().set_current_scene(new_scene)
 	else:
 		print("ERROR: Unable to load battle.tscn scene!")
+		
+func load_casino_scene(): 
+	var casino_scene = ResourceLoader.load("res://Casino.tscn")
+	
+	if casino_scene and casino_scene is PackedScene: 
+		var new_scene = casino_scene.instantiate()
+		var current_scene = get_tree().get_current_scene()
+		if current_scene:
+			current_scene.queue_free()
+		
+		# Add the new scene as a child of the root viewport
+		get_tree().root.add_child(new_scene)
+		
+		# Set the new scene as the current active scene
+		get_tree().set_current_scene(new_scene)
+	else:
+		print("ERROR: Unable to load battle.tscn scene!")
+	
