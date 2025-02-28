@@ -8,8 +8,9 @@ enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS,
 	}
 signal rolled
 
-@onready var type: Type = Dice.Type.STANDARD
+@onready var type: Type
 @onready var original_scale = scale
+@onready var faces := 6
 
 func _ready():
 	$AnimatedSprite2D.animation = "blank"
@@ -18,21 +19,12 @@ func _ready():
 	result = 0
 	
 
-func roll_die(faces = 6):
-	var roll = randi_range(1, faces)
-	result = roll
-	emit_signal("rolled")
-	$AnimatedSprite2D.animation = "roll"
-	$AnimatedSprite2D.play()
-	await $AnimatedSprite2D.animation_finished
-	$AnimatedSprite2D.stop()
-	$Label.text = "You rolled a " + str(roll)
-	$AnimatedSprite2D.animation = "faces"
-	$AnimatedSprite2D.frame = roll - 1
+func roll_die(faces) -> void:
+	pass
 
 
 func _on_button_pressed() -> void:
-	roll_die()
+	roll_die(faces)
 
 
 func _on_button_mouse_entered() -> void:
