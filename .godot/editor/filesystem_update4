@@ -1,29 +1,8 @@
 res://map_stuff/map_tutorial_stuff/map.tscn
-res://battle_scene/battle_useable.gd
-res://dummy_enemy/dummy_enemy.gd
-res://global.gd
 res://map_stuff/map_tutorial_stuff/map_connector.tscn
 res://map_stuff/map_tutorial_stuff/map_node.tscn
 res://battle_scene/battle_useable.tscn
-<<<<<<< HEAD
-<<<<<<< HEAD
-res://dice/dice.tscn
-res://start_menu/start_menu.tscn
-res://dice/dice.gd
-res://dice_roller/dice_roller.gd
-res://global.gd
-res://Casino.tscn
-res://dummy_player/character.tscn
-res://dummy_player/dummy_player.tscn
-res://dice/risky/risky_dice.gd
-res://dice/risky/risky_dice.tscn
-res://dice/standard/standard_dice.tscn
-res://dice/standard/standard_dice.gd
-=======
 res://map_stuff/map_tutorial_stuff/map.gd
 res://Casino.tscn
->>>>>>> a0d75cce0e3c4665928d3932a41306d3428b3bdf
-=======
-res://dummy_player/dummy_player.gd
-res://dummy_player/dummy_health_bar.gd
->>>>>>> 7094124afd5c19d8230e98166f5f835608fe96b7
+res://start_menu/start_menu.tscn
+res://start_menu/logo.gd

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbga2cpf6dlb1"
+path="res://.godot/imported/02 Town 2 LOOP.wav-870a1818b12b5904163d0f9450dd05b5.sample"
+
+[deps]
+
+source_file="res://music/RPG Music Starter Pack/02 Town 2 LOOP.wav"
+dest_files=["res://.godot/imported/02 Town 2 LOOP.wav-870a1818b12b5904163d0f9450dd05b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

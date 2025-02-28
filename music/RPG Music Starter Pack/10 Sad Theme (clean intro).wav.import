@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bin51fanid3l5"
+path="res://.godot/imported/10 Sad Theme (clean intro).wav-a4f4ea1ea6e4c9d075dfd1245f2d21e7.sample"
+
+[deps]
+
+source_file="res://music/RPG Music Starter Pack/10 Sad Theme (clean intro).wav"
+dest_files=["res://.godot/imported/10 Sad Theme (clean intro).wav-a4f4ea1ea6e4c9d075dfd1245f2d21e7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

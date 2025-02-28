@@ -1,3 +1,4 @@
+AudioStreamPlayer2D
 Dice
 AnimationPlayer
 Node2D
@@ -8,5 +9,4 @@ CanvasLayer
 AnimatedSprite2D
 Button
 AudioListener2D
-AudioStreamPlayer2D
 Node

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cusijnus05n37"
+path="res://.godot/imported/07 Happy Theme (clean intro).wav-83aa8f1a6971e045c5b614b50a811841.sample"
+
+[deps]
+
+source_file="res://music/RPG Music Starter Pack/07 Happy Theme (clean intro).wav"
+dest_files=["res://.godot/imported/07 Happy Theme (clean intro).wav-83aa8f1a6971e045c5b614b50a811841.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

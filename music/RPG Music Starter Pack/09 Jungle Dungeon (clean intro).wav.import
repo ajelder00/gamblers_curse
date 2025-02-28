@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bseaxndq6q5ak"
+path="res://.godot/imported/09 Jungle Dungeon (clean intro).wav-1a2c1d3dc80b44b757f81b2176c83099.sample"
+
+[deps]
+
+source_file="res://music/RPG Music Starter Pack/09 Jungle Dungeon (clean intro).wav"
+dest_files=["res://.godot/imported/09 Jungle Dungeon (clean intro).wav-1a2c1d3dc80b44b757f81b2176c83099.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

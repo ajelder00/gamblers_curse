@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpoyatq8n1rbk"
+path="res://.godot/imported/03 Cave Dungeon LOOP.wav-05ea57df8f922effe2aa8227c20ea45a.sample"
+
+[deps]
+
+source_file="res://music/RPG Music Starter Pack/03 Cave Dungeon LOOP.wav"
+dest_files=["res://.godot/imported/03 Cave Dungeon LOOP.wav-05ea57df8f922effe2aa8227c20ea45a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
