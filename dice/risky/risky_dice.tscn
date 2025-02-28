@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbj4j5h8b8fvl"]
+
+[ext_resource type="Script" path="res://dice/risky/risky_dice.gd" id="1_koe1g"]
+
+[node name="RiskyDice" type="Node2D"]
+script = ExtResource("1_koe1g")
