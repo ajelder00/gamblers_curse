@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2y6u6kixvwin"]
+[gd_scene load_steps=26 format=3 uid="uid://b2y6u6kixvwin"]
 
 [ext_resource type="Texture2D" uid="uid://bqtueem76kw1d" path="res://art/start_screen_anim/start_screen_animated1.png" id="1_1a3qo"]
 [ext_resource type="Texture2D" uid="uid://dollvadjbwo" path="res://art/start_screen_anim/start_screen_animated2.png" id="2_xmq6m"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="7_86kho"]
 [ext_resource type="Script" path="res://start_menu/credits.gd" id="8_y3dgf"]
 [ext_resource type="Script" path="res://start_menu/exit.gd" id="9_13ry0"]
+[ext_resource type="Texture2D" uid="uid://bmp8x22e1y54d" path="res://art/gc_logo.png" id="10_dewif"]
+[ext_resource type="Script" path="res://start_menu/logo.gd" id="11_0jr5u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1gsft"]
 animations = [{
@@ -314,16 +316,7 @@ scale = Vector2(0.757161, 0.681885)
 sprite_frames = SubResource("SpriteFrames_1gsft")
 autoplay = "default"
 frame_progress = 0.961157
-
-[node name="Title" type="Label" parent="."]
-offset_left = 254.0
-offset_top = 76.0
-offset_right = 904.0
-offset_bottom = 218.0
-theme_override_font_sizes/font_size = 68
-text = "GAMBLER'S CURSE"
-horizontal_alignment = 1
-vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="PlayController" type="Node2D" parent="."]
 
@@ -421,6 +414,12 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_7gr3x")
 }
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(560, 183)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_dewif")
+script = ExtResource("11_0jr5u")
 
 [connection signal="mouse_entered" from="PlayController/PlayButton" to="PlayController/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayController/PlayButton" to="PlayController/PlayButton" method="_on_mouse_exited"]
