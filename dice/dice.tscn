@@ -62,7 +62,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uu4fo")
 }],
 "loop": true,
-"name": &"blank",
+"name": &"blank_standard",
 "speed": 5.0
 }, {
 "frames": [{
@@ -85,7 +85,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_45n0t")
 }],
 "loop": false,
-"name": &"faces",
+"name": &"faces_standard",
 "speed": 5.0
 }, {
 "frames": [{
@@ -108,7 +108,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bc8ml")
 }],
 "loop": false,
-"name": &"roll",
+"name": &"roll_standard",
 "speed": 5.0
 }]
 
@@ -118,7 +118,7 @@ script = ExtResource("1_mre03")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"blank"
+animation = &"roll_standard"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -46.0

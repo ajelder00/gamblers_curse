@@ -13,7 +13,7 @@ signal rolled
 @onready var faces := 6
 
 func _ready():
-	$AnimatedSprite2D.animation = "blank"
+	$AnimatedSprite2D.animation = "blank_standard"
 	$Button.self_modulate.a = 0 
 	$Label.hide()
 	result = 0

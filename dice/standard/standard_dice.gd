@@ -1,9 +1,7 @@
 extends Dice
 
-
-
-
-
+func _ready() -> void:
+	type = Dice.Type.STANDARD
 
 # Called when the node enters the scene tree for the first time.
 func roll_die(faces) -> void:
