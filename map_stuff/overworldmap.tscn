@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://ce7qn1wsp1pje" path="res://art/map_temp.png" id="6_87d4l"]
 [ext_resource type="AudioStream" uid="uid://bqvduyi06xkgy" path="res://art/Pixel 3.mp3" id="7_tj7yj"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qqiq"]
 atlas = ExtResource("2_gs2th")
 region = Rect2(0, 80, 80, 80)
