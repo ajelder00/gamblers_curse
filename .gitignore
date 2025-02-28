@@ -1,0 +1,6 @@
+*.cfg
+*.cfg
+*.cfg
+/.godot/editor
+.godot/editor/battle_useable.tscn-editstate-43fc991c863303059ea253b6cc7924ae.cfg
+*.md5

@@ -1,0 +1,146 @@
+[gd_scene load_steps=21 format=3 uid="uid://crw6b3fj48bbw"]
+
+[ext_resource type="Script" path="res://parentnode.gd" id="1_cyli8"]
+[ext_resource type="Texture2D" uid="uid://c3fh4t3ol3hlj" path="res://art/idle.png" id="2_gs2th"]
+[ext_resource type="Texture2D" uid="uid://brywskotyfuu0" path="res://art/walk.png" id="3_f3s0n"]
+[ext_resource type="Script" path="res://character.gd" id="4_j1j8p"]
+[ext_resource type="Script" path="res://mapnode.gd" id="5_c10dk"]
+[ext_resource type="Texture2D" uid="uid://ce7qn1wsp1pje" path="res://art/map_temp.png" id="6_87d4l"]
+[ext_resource type="AudioStream" uid="uid://bqvduyi06xkgy" path="res://art/Pixel 3.mp3" id="7_tj7yj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qqiq"]
+atlas = ExtResource("2_gs2th")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r64f"]
+atlas = ExtResource("2_gs2th")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc8kt"]
+atlas = ExtResource("2_gs2th")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhcei"]
+atlas = ExtResource("2_gs2th")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5vgk"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfnav"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st8qn"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwjri"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jje5m"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xl6g"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r5ct"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s67uo"]
+atlas = ExtResource("3_f3s0n")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wiqy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qqiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r64f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc8kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhcei")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5vgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfnav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st8qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwjri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jje5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xl6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r5ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s67uo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Map" type="Node2D"]
+
+[node name="ParentNode" type="Node2D" parent="."]
+position = Vector2(695, 156)
+script = ExtResource("1_cyli8")
+
+[node name="Player" type="AnimatedSprite2D" parent="ParentNode" node_paths=PackedStringArray("current_node")]
+z_index = 2
+position = Vector2(3, 0.999985)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_wiqy2")
+animation = &"idle"
+speed_scale = 3.0
+script = ExtResource("4_j1j8p")
+current_node = NodePath("..")
+
+[node name="ChildNode1" type="Node2D" parent="ParentNode" node_paths=PackedStringArray("children_nodes")]
+position = Vector2(-238, 32)
+script = ExtResource("5_c10dk")
+children_nodes = [NodePath("ChildNode3")]
+
+[node name="ChildNode3" type="Node2D" parent="ParentNode/ChildNode1"]
+position = Vector2(-282, 72)
+script = ExtResource("5_c10dk")
+
+[node name="ChildNode2" type="Node2D" parent="ParentNode"]
+position = Vector2(236, 193)
+script = ExtResource("5_c10dk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575, 335)
+scale = Vector2(0.566602, 0.679612)
+texture = ExtResource("6_87d4l")
+metadata/_edit_lock_ = true
+
+[node name="background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_tj7yj")
+autoplay = true
