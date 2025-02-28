@@ -1,0 +1,400 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2y6u6kixvwin"]
+
+[ext_resource type="Texture2D" uid="uid://bqtueem76kw1d" path="res://art/start_screen_anim/start_screen_animated1.png" id="1_1a3qo"]
+[ext_resource type="Texture2D" uid="uid://dollvadjbwo" path="res://art/start_screen_anim/start_screen_animated2.png" id="2_xmq6m"]
+[ext_resource type="Texture2D" uid="uid://t23bw5dx8eva" path="res://art/start_screen_anim/start_screen_animated3.png" id="3_drctf"]
+[ext_resource type="Texture2D" uid="uid://dtad70b8b6202" path="res://art/start_screen_anim/start_screen_animated4.png" id="4_ttbiv"]
+[ext_resource type="Texture2D" uid="uid://bm7i4oavvhgpg" path="res://art/start_screen_anim/start_screen_animated5.png" id="5_rmcaq"]
+[ext_resource type="Script" path="res://start_menu/play.gd" id="6_usigc"]
+[ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="7_86kho"]
+[ext_resource type="Script" path="res://start_menu/credits.gd" id="8_y3dgf"]
+[ext_resource type="Script" path="res://start_menu/exit.gd" id="9_13ry0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1gsft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1a3qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xmq6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_drctf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ttbiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rmcaq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SystemFont" id="SystemFont_k5w3j"]
+
+[sub_resource type="Animation" id="Animation_tyud5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play2/ButtonTexture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Play2/Play:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Exit/ExitTexture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Exit/Exit:theme_override_font_sizes/font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Credits/CreditsTexture:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.815, 2.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Credits/Credits:theme_override_font_sizes/font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+
+[sub_resource type="Animation" id="Animation_q4l01"]
+resource_name = "big_credits"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/CreditsTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.815, 2.5), Vector2(4.181, 2.74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits/Credits:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 28]
+}
+
+[sub_resource type="Animation" id="Animation_w0xpo"]
+resource_name = "big_exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exit/ExitTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(2.74, 2.74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Exit/Exit:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 28]
+}
+
+[sub_resource type="Animation" id="Animation_7dwbr"]
+resource_name = "big_play"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play2/ButtonTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.507, 2.507), Vector2(2.747, 2.747)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Play2/Play:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 28]
+}
+
+[sub_resource type="Animation" id="Animation_q7wfm"]
+resource_name = "small_credits"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/CreditsTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.192, 2.747), Vector2(3.815, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits/Credits:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [28, 25]
+}
+
+[sub_resource type="Animation" id="Animation_ync5w"]
+resource_name = "small_exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exit/ExitTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.747, 2.747), Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Exit/Exit:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [28, 25]
+}
+
+[sub_resource type="Animation" id="Animation_7u83v"]
+resource_name = "small_play"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play2/ButtonTexture:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.747, 2.747), Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Play2/Play:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [28, 25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mkh6n"]
+_data = {
+"RESET": SubResource("Animation_tyud5"),
+"big_credits": SubResource("Animation_q4l01"),
+"big_exit": SubResource("Animation_w0xpo"),
+"big_play": SubResource("Animation_7dwbr"),
+"small_credits": SubResource("Animation_q7wfm"),
+"small_exit": SubResource("Animation_ync5w"),
+"small_play": SubResource("Animation_7u83v")
+}
+
+[node name="Start_menu" type="Node2D"]
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+z_index = -2
+position = Vector2(566.5, 328)
+scale = Vector2(0.757161, 0.681885)
+sprite_frames = SubResource("SpriteFrames_1gsft")
+autoplay = "default"
+frame_progress = 0.961157
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 477.0
+offset_top = 382.0
+offset_right = 651.0
+offset_bottom = 439.0
+theme_override_fonts/font = SubResource("SystemFont_k5w3j")
+text = "CREDITS"
+script = ExtResource("8_y3dgf")
+
+[node name="CreditsTexture" type="Sprite2D" parent="Credits"]
+position = Vector2(86.32, 25.964)
+scale = Vector2(3.815, 2.5)
+texture = ExtResource("7_86kho")
+
+[node name="Credits" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 16.32
+offset_top = 7.96399
+offset_right = 155.32
+offset_bottom = 51.964
+theme_override_font_sizes/font_size = 25
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 520.0
+offset_top = 464.0
+offset_right = 609.0
+offset_bottom = 523.0
+theme_override_fonts/font = SubResource("SystemFont_k5w3j")
+text = "EXIT"
+script = ExtResource("9_13ry0")
+
+[node name="ExitTexture" type="Sprite2D" parent="Exit"]
+position = Vector2(44, 27)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_86kho")
+
+[node name="Exit" type="Label" parent="Exit"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 86.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 25
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 171.0
+offset_right = 744.0
+offset_bottom = 282.0
+theme_override_font_sizes/font_size = 33
+text = "GAMBLER'S CURSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mkh6n")
+}
+
+[node name="Play2" type="Node2D" parent="."]
+
+[node name="PlayButton" type="Button" parent="Play2"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+offset_left = 522.0
+offset_top = 301.0
+offset_right = 611.0
+offset_bottom = 360.0
+theme_override_fonts/font = SubResource("SystemFont_k5w3j")
+text = "PLAY"
+script = ExtResource("6_usigc")
+
+[node name="ButtonTexture" type="Sprite2D" parent="Play2"]
+position = Vector2(566, 328)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_86kho")
+
+[node name="Play" type="Label" parent="Play2"]
+offset_left = 528.0
+offset_top = 310.0
+offset_right = 608.0
+offset_bottom = 354.0
+theme_override_font_sizes/font_size = 25
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Credits" to="Credits" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Credits" to="Credits" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Exit" to="Exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Exit" to="Exit" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Play2/PlayButton" to="Play2/PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Play2/PlayButton" to="Play2/PlayButton" method="_on_mouse_exited"]

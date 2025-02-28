@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gambler's Curse"
-run/main_scene="res://start_menu.tscn"
+run/main_scene="res://start_menu/start_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://art/icon.svg"
 
@@ -25,7 +25,7 @@ window/stretch/mode="viewport"
 
 [gui]
 
-theme/custom_font="res://Minecraft.ttf"
+theme/custom_font="res://art/Minecraft.ttf"
 
 [input]
 

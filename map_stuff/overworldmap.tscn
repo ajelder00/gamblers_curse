@@ -1,12 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://d07p1oifqjbo8"]
 
-[ext_resource type="Script" path="res://parentnode.gd" id="1_cyli8"]
+[ext_resource type="Script" path="res://map_stuff/parentnode.gd" id="1_cyli8"]
 [ext_resource type="Texture2D" uid="uid://c3fh4t3ol3hlj" path="res://art/idle.png" id="2_gs2th"]
 [ext_resource type="Texture2D" uid="uid://brywskotyfuu0" path="res://art/walk.png" id="3_f3s0n"]
-[ext_resource type="Script" path="res://character.gd" id="4_j1j8p"]
-[ext_resource type="Script" path="res://mapnode.gd" id="5_c10dk"]
+[ext_resource type="Script" path="res://dummy_player/character.gd" id="4_j1j8p"]
+[ext_resource type="Script" path="res://map_stuff/mapnode.gd" id="5_c10dk"]
 [ext_resource type="Texture2D" uid="uid://ce7qn1wsp1pje" path="res://art/map_temp.png" id="6_87d4l"]
 [ext_resource type="AudioStream" uid="uid://bqvduyi06xkgy" path="res://art/Pixel 3.mp3" id="7_tj7yj"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qqiq"]
 atlas = ExtResource("2_gs2th")

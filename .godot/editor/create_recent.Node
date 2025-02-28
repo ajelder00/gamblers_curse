@@ -1,11 +1,11 @@
+AnimationPlayer
+Node2D
+Label
+Sprite2D
 TextureRect
 CanvasLayer
-AnimationPlayer
-Label
 AnimatedSprite2D
-Sprite2D
 Button
-Sprite2D
 AudioListener2D
 AudioStreamPlayer2D
 Node
