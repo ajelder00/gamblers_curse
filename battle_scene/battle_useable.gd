@@ -44,7 +44,8 @@ func _on_player_attack() -> void:
 		print("This is enemy's health: ", enemy.health)
 		
 		# code for getting new hand from Dice Roller, this makes it so it shows the dice faces and roll total
-		player.get_node("Dice Roller").new_hand()
+		var player_roller = player.get_node("Dice Roller")
+		player_roller.new_hand()
 		
 		if Global.player_health <= 0: 
 			player_sprite.play("dead")
