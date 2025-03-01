@@ -8,7 +8,6 @@ signal turn_over
 @onready var current_rolls = ORIGINAL_ROLLS
 var current_dice
 var current_results
-var turn_results
 var turn_total
 var prev_total
 var positions = []
@@ -17,7 +16,6 @@ func _ready():
 	turn_total = 0
 	current_dice = Global.dice
 	current_results = []
-	turn_results = []
 	positions = [$StartPosition1, $StartPosition2, $StartPosition3, $StartPosition4, $StartPosition5]
 	for start_position in positions:
 		var die = die_template.instantiate()
@@ -45,7 +43,6 @@ func new_hand():
 	
 	current_dice = []
 	current_results = []
-	turn_results = []
 	for start_position in positions:
 		var die = die_template.instantiate()
 		add_child(die)
@@ -61,8 +58,10 @@ func get_new_roll():
 	var index = 0
 	for die in current_dice:
 		if die.result != current_results[index]:
-			turn_results.append(die.result)
 			turn_total += die.result
+			current_results[index] = die.result
+		
+		index += 1
 		
 
 func on_die_rolled():
