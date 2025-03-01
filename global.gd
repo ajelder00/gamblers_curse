@@ -1,7 +1,7 @@
 extends Node
 
 var coins := 0
-var dice : Array
+@onready var dice : Array
 var player_health = 10 
 
 func add_dice(new_die: Dice, type: Dice.Type) -> void:

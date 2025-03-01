@@ -1,3 +1,4 @@
+res://dummy_enemy
 res://start_menu
 res://battle_scene
 res://battle_scene/art
@@ -8,5 +9,4 @@ res://map_stuff/map_tutorial_stuff
 =======
 >>>>>>> 8e1afb5dc2c4d0bb05211e714dd8e588b0811f39
 res://map_stuff/map_tutorial_stuff/art
-res://dummy_enemy
 res://dummy_player

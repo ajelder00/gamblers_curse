@@ -1,5 +1,5 @@
 extends Node2D
-var health = 10
+var health = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +12,7 @@ func hit():
 	$Label.text = "Health: " + str(health)
 	$AnimatedSprite2D.animation = "attack"
 	$AnimatedSprite2D.play()
-	$Dice.roll_die()
+	$Dice.roll_die(6)
 	var damage = $Dice.result
 	return damage
 

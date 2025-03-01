@@ -20,7 +20,16 @@ func _ready():
 	
 
 func roll_die(faces) -> void:
-	pass
+	var roll = randi_range(1, faces)
+	result = roll
+	emit_signal("rolled")
+	$AnimatedSprite2D.animation = "roll"
+	$AnimatedSprite2D.play()
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.stop()
+	$Label.text = "You rolled a " + str(roll)
+	$AnimatedSprite2D.animation = "faces"
+	$AnimatedSprite2D.frame = roll - 1
 
 
 func _on_button_pressed() -> void:

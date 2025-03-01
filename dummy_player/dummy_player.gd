@@ -8,8 +8,7 @@ func _ready() -> void:
 
 func hit():
 	$Label.text = "Health: " + str(Global.player_health)
-	$AnimatedSprite2D.play("attack")
-	var damage = $Dice.result
+	var damage = $"Dice Roller".prev_total
 	return damage
 
 func get_hit(enemy_damage):
@@ -24,5 +23,6 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_dice_rolled() -> void:
+func _on_dice_roller_turn_over() -> void:
+	
 	attack_signal.emit()

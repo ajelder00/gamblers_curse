@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bo56bcst8wlj"]
+[gd_scene load_steps=20 format=3 uid="uid://bo56bcst8wlj"]
 
 [ext_resource type="Script" path="res://dummy_enemy/dummy_enemy.gd" id="1_4fd5b"]
 [ext_resource type="Texture2D" uid="uid://bmm15wooa2k8q" path="res://dummy_enemy/Orc.png" id="2_dkdcx"]
@@ -27,6 +27,10 @@ region = Rect2(400, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30acn"]
 atlas = ExtResource("2_dkdcx")
 region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2cb4"]
+atlas = ExtResource("2_dkdcx")
+region = Rect2(0, 200, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2dx2"]
 atlas = ExtResource("2_dkdcx")
@@ -80,6 +84,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_30acn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2cb4")
 }],
 "loop": false,
 "name": &"attack",
@@ -128,7 +135,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_rjcmx")
-animation = &"dead"
+animation = &"attack"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -52.0
