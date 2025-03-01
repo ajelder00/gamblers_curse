@@ -12,7 +12,7 @@ func hit():
 	$Label.text = "Health: " + str(health)
 	$AnimatedSprite2D.animation = "attack"
 	$AnimatedSprite2D.play()
-	$Dice.roll_die()
+	$Dice.roll_die(6)
 	var damage = $Dice.result
 	return damage
 

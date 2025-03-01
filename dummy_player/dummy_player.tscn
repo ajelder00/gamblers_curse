@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
 [ext_resource type="Script" path="res://dummy_player/dummy_health_bar.gd" id="3_0p23m"]
-[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="4_6on4u"]
+[ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="4_fdqlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmfwc"]
 atlas = ExtResource("2_2wf7a")
@@ -146,7 +146,7 @@ offset_bottom = 115.0
 text = "Health: "
 script = ExtResource("3_0p23m")
 
-[node name="Dice" parent="." instance=ExtResource("4_6on4u")]
-position = Vector2(118, -8)
+[node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
+position = Vector2(26, 147)
 
-[connection signal="rolled" from="Dice" to="." method="_on_dice_rolled"]
+[connection signal="turn_over" from="Dice Roller" to="." method="_on_dice_roller_turn_over"]
