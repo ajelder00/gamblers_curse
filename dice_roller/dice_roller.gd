@@ -68,7 +68,8 @@ func on_die_rolled():
 	get_new_roll()
 	$Label.text = "Rolls Left: " + str(current_rolls) + " Current Total: " + str(turn_total)
 	if current_rolls == 0:
-		print("current rolls 0")
+		for die in current_dice:
+			die.get_node("Button").hide()
 		prev_total = turn_total
 		turn_over.emit() 
 	

@@ -34,6 +34,7 @@ func roll_die(faces) -> void:
 
 func _on_button_pressed() -> void:
 	roll_die(faces)
+	$Button.hide()
 
 
 func _on_button_mouse_entered() -> void:
