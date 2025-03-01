@@ -1,6 +1,6 @@
 extends Node2D
 @onready var parent = get_parent()
-@onready var dice: Dice = $StandardDice
+
 signal attack_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +9,7 @@ func _ready() -> void:
 func hit():
 	$Label.text = "Health: " + str(Global.player_health)
 	$AnimatedSprite2D.play("attack")
-	var damage = dice
+	var damage = $Dice.result
 	return damage
 
 func get_hit(enemy_damage):
