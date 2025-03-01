@@ -13,7 +13,6 @@ enemy_template = ExtResource("4_yxldu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(587, 320)
 scale = Vector2(2.275, 2.275)
-texture = ExtResource("4_rlvme")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(587, 320)
