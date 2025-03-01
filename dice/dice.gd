@@ -8,7 +8,7 @@ enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS,
 	}
 signal rolled
 
-@onready var type: Type
+@onready var type: Type = Type.STANDARD
 @onready var original_scale = scale
 @onready var faces := 6
 
