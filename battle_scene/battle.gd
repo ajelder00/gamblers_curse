@@ -2,6 +2,16 @@ extends Node
 
 @export var speed: float = 0.05  # Time delay between letters
 
+#variables needed for battle logic
+@export var player_template: PackedScene
+@export var enemy_template: PackedScene
+
+var player
+var player_sprite
+var enemy
+var enemy_sprite
+
+
 var messages: Array = [
 	"> A WILD DUNGEON GOBLIN APPEARED!",
 	"> CHOOSE DICE TO ROLL..."
@@ -41,6 +51,66 @@ func _ready() -> void:
 
 	# Update health display initially
 	update_health_display()
+	
+	# starting initializing player and such
+	player_template = preload("res://dummy_player/dummy_player.tscn")
+	enemy_template = preload("res://dummy_enemy/dummy_enemy.tscn")
+	player = player_template.instantiate()
+	enemy = enemy_template.instantiate()
+	add_child(player)
+	add_child(enemy)
+	player.attack_signal.connect(_on_player_attack)
+	player_sprite = player.get_node("AnimatedSprite2D")
+	player_sprite.animation = "attack"
+	enemy_sprite = enemy.get_node("AnimatedSprite2D")
+	var dice_roller = player.get_node("Dice Roller")
+	
+	# Setting player dice positions
+	var player_dice_markers = $DiceBG.get_children()
+	dice_roller.set_positions(player_dice_markers)
+	dice_roller.new_hand()
+	
+	# Setting enemy dice position
+	var enemy_dice = enemy.get_node("Dice")
+	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
+	enemy_dice.global_position = enemy_dice_marker.global_position
+	
+	# hiding old hud elements (can probably delete them in the nodes
+	dice_roller.get_node("DiceBox").hide()
+	dice_roller.get_node("Label").hide()
+	enemy.get_node("Label").hide()
+	player.get_node("Label").hide()
+	
+	
+
+func _on_player_attack():
+	if Global.player_health > 0 and enemy.health > 0:
+		# ----- Player Turn -----  
+		player_sprite.play("attack")
+		await player_sprite.animation_finished
+		
+		# ----- Update Enemy Health 
+		await enemy.get_hit(player.hit())
+		
+		# ----- Enemy Turn 
+		if enemy.health <= 0: 
+			enemy_sprite.play("dead")
+			print("You have vanquished your enemy.")
+			return
+			
+		player.get_hit(enemy.hit()) 
+		await enemy_sprite.animation_finished
+			
+		print("Full Turn")	
+		print("This is Player's health: ", Global.player_health)	
+		print("This is enemy's health: ", enemy.health)
+		
+		# code for getting new hand from Dice Roller, this makes it so it shows the dice faces and roll total
+		player.get_node("Dice Roller").new_hand()
+			
+		if Global.player_health <= 0: 
+			player_sprite.play("dead")
+			print("Your player has exited this world")
 
 func start_typing() -> void:
 	if message_index >= messages.size():

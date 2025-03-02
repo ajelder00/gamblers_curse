@@ -11,7 +11,6 @@ signal turn_over
 var current_dice
 var current_results
 var turn_total
-var prev_total
 var positions = []
 
 func _ready():
@@ -29,7 +28,7 @@ func _ready():
 		# since dice bucket is a collection of scripts, then it just sets the script to the new dice node
 		die.set_script(dice_bucket[random_index])
 		add_child(die)
-		die.position = start_position.position
+		die.global_position = start_position.global_position
 		die.rolled.connect(on_die_rolled)
 		current_dice.append(die)
 		current_results.append(die.result)
@@ -59,7 +58,7 @@ func new_hand():
 		# since dice bucket is a collection of scripts, then it just sets the script to the new dice node
 		die.set_script(dice_bucket[random_index])
 		add_child(die)
-		die.position = start_position.position
+		die.global_position = start_position.global_position
 		die.rolled.connect(on_die_rolled)
 		current_dice.append(die)
 		current_results.append(die.result)
@@ -85,6 +84,8 @@ func on_die_rolled():
 	if current_rolls == 0:
 		for die in current_dice:
 			die.get_node("Button").hide()
-		prev_total = turn_total
 		turn_over.emit() 
+
+func set_positions(new_positions: Array):
+	positions = new_positions
 	

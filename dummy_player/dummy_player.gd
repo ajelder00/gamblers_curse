@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func hit():
 	$Label.text = "Health: " + str(Global.player_health)
-	var damage = $"Dice Roller".prev_total
+	var damage = $"Dice Roller".turn_total
 	return damage
 
 func get_hit(enemy_damage):
