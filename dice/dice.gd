@@ -45,3 +45,6 @@ func _on_button_mouse_entered() -> void:
 func _on_button_mouse_exited() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", original_scale, 0.2).set_trans(Tween.TRANS_SINE)
+	
+func get_parent_node():
+	return get_parent()

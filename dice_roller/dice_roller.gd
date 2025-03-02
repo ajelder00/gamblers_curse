@@ -6,6 +6,8 @@ signal turn_over
 
 @onready var ORIGINAL_ROLLS = 3
 @onready var current_rolls = ORIGINAL_ROLLS
+@onready var dice_bucket = Global.dummy_dice
+@onready var dice_bucket_size = dice_bucket.size()
 var current_dice
 var current_results
 var turn_total
@@ -14,11 +16,18 @@ var positions = []
 
 func _ready():
 	turn_total = 0
-	current_dice = Global.dice
+	current_dice = []
 	current_results = []
 	positions = [$StartPosition1, $StartPosition2, $StartPosition3, $StartPosition4, $StartPosition5]
+	
 	for start_position in positions:
+		# instantiate dice node
 		var die = die_template.instantiate()
+		
+		#gets random index in dice bucket
+		var random_index = randi_range(0, dice_bucket_size - 1)
+		# since dice bucket is a collection of scripts, then it just sets the script to the new dice node
+		die.set_script(dice_bucket[random_index])
 		add_child(die)
 		die.position = start_position.position
 		die.rolled.connect(on_die_rolled)
@@ -42,7 +51,13 @@ func new_hand():
 	current_dice = []
 	current_results = []
 	for start_position in positions:
+		# instantiate dice node
 		var die = die_template.instantiate()
+		
+		#gets random index in dice bucket
+		var random_index = randi_range(0, dice_bucket_size - 1)
+		# since dice bucket is a collection of scripts, then it just sets the script to the new dice node
+		die.set_script(dice_bucket[random_index])
 		add_child(die)
 		die.position = start_position.position
 		die.rolled.connect(on_die_rolled)
