@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfs6rmdrg7dhb"]
+[gd_scene load_steps=4 format=3 uid="uid://bfs6rmdrg7dhb"]
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
-[ext_resource type="Script" path="res://battle_scene/enemy_health.gd" id="2_dd7i6"]
-[ext_resource type="Script" path="res://battle_scene/roll_message.gd" id="2_ud4uq"]
 [ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="2_xrc03"]
-[ext_resource type="Script" path="res://battle_scene/player_health_num.gd" id="3_v53l4"]
 [ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_4c6ya"]
-[ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_yvfij"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1")
@@ -51,7 +47,6 @@ offset_bottom = 414.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 19
 horizontal_alignment = 2
-script = ExtResource("3_v53l4")
 
 [node name="DiceBG" type="ColorRect" parent="."]
 offset_left = 529.0
@@ -110,10 +105,6 @@ offset_right = 374.0
 offset_bottom = 559.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 19
-text = "> THE FATED ONE ROLLED A 6!
-
-> DUNGEON GOBLIN DAMAGED FOR 6HP."
-script = ExtResource("2_ud4uq")
 
 [node name="EnemyHealth" type="ColorRect" parent="."]
 z_index = -1
@@ -122,7 +113,6 @@ offset_top = 65.0
 offset_right = 467.0
 offset_bottom = 105.0
 color = Color(1, 0.28, 0.38, 1)
-script = ExtResource("2_dd7i6")
 
 [node name="PlayerHealth" type="ColorRect" parent="."]
 z_index = -1
@@ -131,7 +121,6 @@ offset_top = 416.0
 offset_right = 1096.0
 offset_bottom = 456.0
 color = Color(0.47, 0.99, 0.36, 1)
-script = ExtResource("5_yvfij")
 
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4c6ya")

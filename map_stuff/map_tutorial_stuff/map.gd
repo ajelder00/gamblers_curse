@@ -13,7 +13,7 @@ signal map_exited
 @onready var visuals: Node2D = $Visuals
 @onready var camera_2d: Camera2D = $Scroller
 
-var new_scene = preload("res://battle_scene/battle_useable.tscn")
+var new_scene = preload("res://battle_scene/battle.tscn")
 
 var map_data: Array[Array]
 var floors_climbed: int
