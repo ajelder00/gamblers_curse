@@ -8,27 +8,39 @@ var messages: Array = [
 ]  
 var message_index: int = 0
 var roll_message_label: Label
+var player_health_label: Label
+var player_health_bar: ColorRect
+var max_health: float = 100.0  # Adjust based on your game
 
 func _ready() -> void:
 	print("battle.gd script is running!")
 
-	# Print all child nodes to debug
+	# Debug: Print all child nodes
 	print("Listing all child nodes of Battle:")
 	for child in get_children():
 		print(" -", child.name)
 
-	# Attempt to get the Roll Message label
+	# Get UI elements
 	roll_message_label = $'Roll Message'  
+	player_health_label = $'PlayerHealthNum'
+	player_health_bar = $'PlayerHealth'
 
+	# Check if elements are found
 	if roll_message_label == null:
-		print("ERROR: 'Roll Message' label still not found! Check scene structure.")
-		return
+		print("ERROR: 'Roll Message' label not found!")
+	if player_health_label == null:
+		print("ERROR: 'PlayerHealthNum' label not found!")
+	if player_health_bar == null:
+		print("ERROR: 'PlayerHealth' bar not found!")
 
-	print("SUCCESS: Found 'Roll Message' label!")
-	roll_message_label.visible = true
-	roll_message_label.text = ""  # Start empty
+	# Start the message typing effect
+	if roll_message_label:
+		roll_message_label.visible = true
+		roll_message_label.text = ""  # Start empty
+		start_typing()
 
-	start_typing()
+	# Update health display initially
+	update_health_display()
 
 func start_typing() -> void:
 	if message_index >= messages.size():
@@ -49,3 +61,17 @@ func start_typing() -> void:
 	if message_index < messages.size():
 		roll_message_label.text = ""  # Clear text before starting next message
 		start_typing()
+
+func update_health_display() -> void:
+	if player_health_label and player_health_bar:
+		var player_health = Global.player_health  # Get global health variable
+		player_health_label.text = str(player_health) + " HP"
+
+		# Ensure the parent is a Control node to get proper width
+		var parent_control = player_health_bar.get_parent() as Control
+		if parent_control:
+			var max_width = parent_control.get_rect().size.x  # Get full width
+			var health_ratio = clamp(player_health / max_health, 0.0, 1.0)
+
+			# Adjust health bar width from right to left
+			player_health_bar.set_size(Vector2(max_width * health_ratio, player_health_bar.get_rect().size.y))
