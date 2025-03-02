@@ -1,6 +1,6 @@
 Dice
-AnimationPlayer
 Node2D
+AnimationPlayer
 Label
 Sprite2D
 TextureRect

@@ -1,11 +1,39 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1vwcx3yj158n"]
+[gd_scene load_steps=30 format=3 uid="uid://b1vwcx3yj158n"]
 
 [ext_resource type="Script" path="res://dice/dice.gd" id="1_mre03"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="1_od3an"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn0rh"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 192, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uu4fo"]
 atlas = ExtResource("1_od3an")
 region = Rect2(0, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wafwk"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n46o2"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rpey"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx6s1"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqfl"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y02yr"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npyju"]
 atlas = ExtResource("1_od3an")
@@ -30,6 +58,30 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_45n0t"]
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxv84"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4466e"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ej4u"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wpll"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elst8"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dpyq"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 256, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8n7x"]
 atlas = ExtResource("1_od3an")
@@ -59,10 +111,41 @@ region = Rect2(80, 224, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rn0rh")
+}],
+"loop": false,
+"name": &"blank_risky",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uu4fo")
 }],
 "loop": true,
 "name": &"blank_standard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wafwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n46o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rpey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx6s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srqfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y02yr")
+}],
+"loop": false,
+"name": &"faces_risky",
 "speed": 5.0
 }, {
 "frames": [{
@@ -86,6 +169,29 @@ animations = [{
 }],
 "loop": false,
 "name": &"faces_standard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxv84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4466e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ej4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wpll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elst8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dpyq")
+}],
+"loop": false,
+"name": &"roll_risky",
 "speed": 5.0
 }, {
 "frames": [{
@@ -118,7 +224,7 @@ script = ExtResource("1_mre03")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"roll_standard"
+animation = &"blank_risky"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -46.0

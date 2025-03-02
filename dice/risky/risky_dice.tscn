@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbj4j5h8b8fvl"]
+[gd_scene load_steps=3 format=3 uid="uid://dbj4j5h8b8fvl"]
 
-[ext_resource type="Script" path="res://dice/risky/risky_dice.gd" id="1_koe1g"]
+[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="1_51gob"]
+[ext_resource type="Script" path="res://dice/risky/risky_dice.gd" id="2_1qb8g"]
 
-[node name="RiskyDice" type="Node2D"]
-script = ExtResource("1_koe1g")
+[node name="Dice" instance=ExtResource("1_51gob")]
+script = ExtResource("2_1qb8g")
