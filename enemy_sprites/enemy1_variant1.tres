@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://pc5qnfwg5ivr"]
+
+[ext_resource type="Texture2D" uid="uid://bmm15wooa2k8q" path="res://dummy_enemy/Orc.png" id="1_8f355"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2dx2"]
+atlas = ExtResource("1_8f355")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oylr6"]
+atlas = ExtResource("1_8f355")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmtng"]
+atlas = ExtResource("1_8f355")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c50cp"]
+atlas = ExtResource("1_8f355")
+region = Rect2(300, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vadd5"]
+atlas = ExtResource("1_8f355")
+region = Rect2(0, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlbsd"]
+atlas = ExtResource("1_8f355")
+region = Rect2(100, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hd5"]
+atlas = ExtResource("1_8f355")
+region = Rect2(200, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spq18"]
+atlas = ExtResource("1_8f355")
+region = Rect2(300, 400, 100, 100)
+
+[resource]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2dx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oylr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmtng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c50cp")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vadd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlbsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spq18")
+}],
+"loop": false,
+"name": &"get_hit",
+"speed": 5.0
+}]

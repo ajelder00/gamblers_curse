@@ -49,9 +49,6 @@ func rolling_animation(roll) -> void:
 	animation_player.animation = ANIMS[type][2]
 	animation_player.frame = roll - 1
 
-
-
-
 func _on_button_pressed() -> void:
 	roll_die(faces)
 	button.hide()

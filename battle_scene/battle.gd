@@ -52,13 +52,22 @@ func _ready() -> void:
 	# Update health display initially
 	update_health_display()
 	
-	# starting initializing player and such
+	# initializing player, enemy scenes + random enemy spawn 
 	player_template = preload("res://dummy_player/dummy_player.tscn")
-	enemy_template = preload("res://dummy_enemy/dummy_enemy.tscn")
+	
+	var enemy_tiers = [
+		preload("res://dummy_enemy/enemy_tier1.tscn"),
+		preload("res://dummy_enemy/enemy_tier2.tscn"),
+		preload("res://dummy_enemy/enemy_tier3.tscn")
+		]
+	
+	# starting initializing player and such
 	player = player_template.instantiate()
-	enemy = enemy_template.instantiate()
 	add_child(player)
+	var selected_enemy_template = enemy_tiers[randi() % enemy_tiers.size()]
+	enemy = selected_enemy_template.instantiate()
 	add_child(enemy)
+	
 	player.attack_signal.connect(_on_player_attack)
 	player_sprite = player.get_node("AnimatedSprite2D")
 	player_sprite.animation = "attack"
