@@ -72,6 +72,7 @@ func get_new_roll():
 	for die in current_dice:
 		if die.result != current_results[index]:
 			turn_total += die.result
+			print(turn_total)
 			current_results[index] = die.result
 			
 		index += 1

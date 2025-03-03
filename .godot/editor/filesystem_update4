@@ -27,3 +27,4 @@ res://dummy_player/dummy_player.tscn
 res://start_menu/play.gd
 res://map_stuff/map_controller.tscn
 res://map_stuff/map_controller.gd
+res://dice_roller/dice_roller.gd
