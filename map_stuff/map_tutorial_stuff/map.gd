@@ -12,6 +12,7 @@ signal map_exited
 @onready var rooms: Node2D = %Rooms
 @onready var visuals: Node2D = $Visuals
 @onready var camera_2d: Camera2D = $Scroller
+@onready var parent = get_parent()
 
 var new_scene = preload("res://battle_scene/battle.tscn")
 
@@ -64,6 +65,7 @@ func unlock_next_rooms() -> void:
 func show_map() -> void:
 	show()
 	camera_2d.enabled = true
+	unlock_next_rooms()
 
 func hide_map() -> void:
 	hide()
@@ -100,7 +102,6 @@ func _on_map_selected(room: Room) -> void:
 	
 	# test code, delete once signals implemented
 	var battle = new_scene.instantiate()
-	get_tree().root.add_child(battle)
-	get_tree().change_scene_to_packed(battle)
+	parent.add_child(battle)
 	hide_map()
 	

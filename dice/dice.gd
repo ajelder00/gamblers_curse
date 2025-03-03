@@ -39,7 +39,7 @@ func roll_die(faces) -> void:
 	
 	
 func rolling_animation(roll) -> void:
-	print(str(roll) + "dog woof")
+	print("Rolled a " + str(roll))
 	emit_signal("rolled")
 	animation_player.animation = ANIMS[type][1]
 	animation_player.play()

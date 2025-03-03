@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drkfj30sw606d" path="res://map_stuff/map_tutorial_stuff/art/map_background.png" id="3_lgen2"]
 
 [node name="Map" type="Node2D"]
+z_as_relative = false
 script = ExtResource("1_pskux")
 
 [node name="Visuals" type="Node2D" parent="."]

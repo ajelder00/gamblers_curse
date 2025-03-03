@@ -105,7 +105,7 @@ func _on_player_attack():
 		if enemy.health <= 0: 
 			enemy_sprite.play("dead")
 			print("You have vanquished your enemy.")
-			return
+			queue_free()
 			
 		player.get_hit(enemy.hit()) 
 		await enemy_sprite.animation_finished

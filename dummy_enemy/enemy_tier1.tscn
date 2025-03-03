@@ -12,7 +12,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_fy8pg")
-animation = &"attack"
+animation = &"get_hit"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -52.0
