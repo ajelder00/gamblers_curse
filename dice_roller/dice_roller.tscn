@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://fe8ac0h8ymr3"]
+[gd_scene load_steps=3 format=3 uid="uid://fe8ac0h8ymr3"]
 
 [ext_resource type="Script" path="res://dice_roller/dice_roller.gd" id="1_6tiu3"]
-[ext_resource type="PackedScene" uid="uid://dbj4j5h8b8fvl" path="res://dice/risky/risky_dice.tscn" id="2_aynog"]
 [ext_resource type="Texture2D" uid="uid://ckiodcdlonfyy" path="res://dice_roller/dice_roller_art/ChoiceBox.png" id="3_lfomk"]
 
 [node name="Dice Roller" type="Node2D"]
 position = Vector2(187, 70)
 script = ExtResource("1_6tiu3")
-die_template = ExtResource("2_aynog")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="."]

@@ -1,10 +1,10 @@
 extends Node
 
-var standard = load("res://dice/standard/standard_dice.gd")
-var risky = load("res://dice/risky/risky_dice.gd")
+var standard = load("res://dice/standard/standard_dice.tscn")
+var risky = load("res://dice/risky/risky_dice.tscn")
 
 var coins := 10
-var dummy_dice : Array = [risky, standard]
+var dummy_dice: Array = [standard, risky]
 var dice : Array
 
 ## shop inventory to initialize all the dice

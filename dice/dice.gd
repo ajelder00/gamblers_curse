@@ -14,7 +14,7 @@ const ANIMS := {
 }
 
 
-signal rolled
+signal rolled(value: int)
 
 @export var type: Type = Type.STANDARD
 @export var original_scale = scale
@@ -30,17 +30,21 @@ func _ready():
 	label.hide()
 	result = 0
 	
-	
+
+func _on_button_pressed() -> void:
+	roll_die(faces)
+	button.hide()
+
+
 
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)
 	rolling_animation(result)
 
-	
-	
+
 func rolling_animation(roll) -> void:
 	print("Rolled a " + str(roll))
-	emit_signal("rolled")
+	emit_signal("rolled", roll)
 	animation_player.animation = ANIMS[type][1]
 	animation_player.play()
 	await animation_player.animation_finished
@@ -49,9 +53,7 @@ func rolling_animation(roll) -> void:
 	animation_player.animation = ANIMS[type][2]
 	animation_player.frame = roll - 1
 
-func _on_button_pressed() -> void:
-	roll_die(faces)
-	button.hide()
+
 
 
 func _on_button_mouse_entered() -> void:
