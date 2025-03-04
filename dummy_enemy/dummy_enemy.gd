@@ -1,45 +1,64 @@
 extends Node2D
 class_name DummyEnemy  
 
-
-var health: int 
+# --- Enemy Properties ---
+var health: int = 200
 var tier_multiplier: int 
-var enemy_type: String 
-var sprite_variants: Array  # Array of `SpriteFrames` resources
+enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
+var damage
 
+const ANIMS := {
+	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman"],
+	Type.GOBLIN: ["attack_goblin", "damage_goblin", "dead_goblin"],
+	Type.KNIGHT: ["attack_knight", "damage_knight", "dead_knight"],
+	Type.LANCER: ["attack_lancer", "damage_lancer", "dead_lancer"],
+	Type.ORCRIDER: ["attack_orcrider", "damage_orcrider", "dead_orcrider"],
+	Type.SKELETON: ["attack_skeleton", "damage_skeleton", "dead_skeleton"],
+	Type.WIZARD: ["attack_wizard", "damage_wizard", "dead_wizard"],
+	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf"],
+}
 
-# Called when the node enters the scene tree for the first time.
+# --- References to Nodes ---
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_label: Label = $Label
+@onready var dice: Node = $Dice
+@onready var dice_button: Button = $Dice/Button
+
+@export var type: Type = Type.GOBLIN
+# --- Initialization ---
 func _ready() -> void:
 	initialize_enemy()
-	$Label.text = "Health: " + str(health)
-	$AnimatedSprite2D.flip_h = true
-	$Dice/Button.hide()
-	assign_random_sprite()
-	
-func assign_random_sprite():
-	if sprite_variants.size() > 0:
-		var random_sprite = sprite_variants[randi() % sprite_variants.size()]
-		$AnimatedSprite2D.sprite_frames = random_sprite  # Load random sprite frames
-		var animations = $AnimatedSprite2D.sprite_frames.get_animation_names()
-		$AnimatedSprite2D.animation = animations[0]
-		$AnimatedSprite2D.play()
+	setup_ui()
 
-func hit():
-	$Label.text = "Health: " + str(health)
-	$AnimatedSprite2D.animation = "attack"
-	$AnimatedSprite2D.play()
-	$Dice.roll_die(6)
-	var damage = $Dice.result * tier_multiplier
+
+# --- Setup UI Elements ---
+func setup_ui() -> void:
+	update_health_label()
+	sprite.flip_h = true
+	dice_button.hide()
+
+# --- Enemy Attack ---
+func hit() -> int:
+	sprite.play(ANIMS[type][0])
+	update_health_label()
+	dice.roll_die(dice.faces)
 	return damage
 
-func get_hit(enemy_damage):
-	$AnimatedSprite2D.play("get_hit")
-	await $AnimatedSprite2D.animation_finished
-	self.health -= enemy_damage
-	if self.health < 0:
-		self.health = 0
-	$Label.text = "Health: " + str(health)
+# --- Enemy Takes Damage ---
+func get_hit(enemy_damage: int) -> void:
+	sprite.play(ANIMS[type][0])
+	await sprite.animation_finished
+	health = max(0, health - enemy_damage)  # Prevent negative health
+	update_health_label()
 
-# Function to initialize enemy values (to be overridden by subclasses)
-func initialize_enemy():
+# --- Updates the Health Label ---
+func update_health_label() -> void:
+	health_label.text = "Health: " + str(health)
+
+# --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
+func initialize_enemy() -> void:
 	pass
+
+
+func _on_dice_rolled(value):
+	damage = value

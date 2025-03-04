@@ -17,15 +17,20 @@ func _ready():
 	new_hand()
 	
 func new_hand():
+	current_dice = []
+	for child in get_children():
+		if child is Dice:
+			child.queue_free()
 	current_rolls = ORIGINAL_ROLLS
 	turn_total = 0
-	for i in range(5):
+	for position in positions:
 		# instantiate dice node
 		var die = dice_bucket[randi_range(0, len(dice_bucket)-1)].instantiate()
 		add_child(die)
-		die.global_position = positions[i].global_position
+		die.global_position = position.global_position
 		die.rolled.connect(on_die_rolled)
 		current_dice.append(die)
+		await get_tree().create_timer(0.1).timeout
 	$Label.text = "Rolls Left: " + str(current_rolls) + " Current Total: " + str(turn_total)
 
 func on_die_rolled(roll_amount: int):
@@ -39,5 +44,16 @@ func on_die_rolled(roll_amount: int):
 		turn_over.emit() 
 #
 func set_positions(new_positions: Array):
+	await get_tree().create_timer(1).timeout
+	var starting_dice = get_dice_children()
 	positions = new_positions
+	for i in range(5):
+		starting_dice[i].global_position = positions[i].global_position
 	
+	
+func get_dice_children() -> Array:
+	var children_of_type = []
+	for child in get_children():
+		if child is Dice:
+			children_of_type.append(child)
+	return children_of_type

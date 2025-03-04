@@ -23,3 +23,6 @@ res://dummy_player/dummy_player.tscn
 res://map_stuff/map_controller.tscn
 res://global.gd
 res://dice/dice.gd
+res://dummy_enemy/dummy_enemy.gd
+res://enemy1_variant1.tres
+res://battle_scene/battle.gd
