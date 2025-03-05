@@ -56,18 +56,11 @@ func _setup_player() -> void:
 	var dice_roller = player.get_node("Dice Roller")
 	var player_dice_markers = $DiceBG.get_children()
 	dice_roller.set_positions(player_dice_markers)
-	_hide_unused_ui(dice_roller)
 
 func _setup_enemy() -> void:
 	var enemy_dice = enemy.get_node("Dice") #This will need to change later to accomodate different dice types but also maybe not idk
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
-	enemy.get_node("Label").hide()
-
-func _hide_unused_ui(dice_roller) -> void:
-	dice_roller.get_node("DiceBox").hide()
-	dice_roller.get_node("Label").hide()
-	player.get_node("Label").hide()
 
 func _start_battle() -> void:
 	if roll_message_label:

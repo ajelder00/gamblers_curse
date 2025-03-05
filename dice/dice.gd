@@ -19,7 +19,6 @@ signal rolled(value: int)
 @export var type: Type = Type.STANDARD
 @export var original_scale = scale
 
-@onready var label := $Label
 @onready var animation_player := $AnimatedSprite2D
 @onready var button := $Button
 @onready var faces := 6
@@ -27,7 +26,6 @@ signal rolled(value: int)
 func _ready():
 	animation_player.animation = ANIMS[type][0]
 	button.self_modulate.a = 0 
-	label.hide()
 	result = 0
 	
 
@@ -49,7 +47,6 @@ func rolling_animation(roll) -> void:
 	animation_player.play()
 	await animation_player.animation_finished
 	animation_player.stop()
-	label.text = "You rolled a " + str(roll)
 	animation_player.animation = ANIMS[type][2]
 	animation_player.frame = roll - 1
 

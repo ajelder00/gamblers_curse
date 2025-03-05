@@ -4,11 +4,9 @@ extends Node2D
 signal attack_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Label.text = "Health: " + str(Global.player_health)
 	$"Dice Roller".turn_over.connect(_on_dice_roller_turn_over)
 
 func hit():
-	$Label.text = "Health: " + str(Global.player_health)
 	var damage = $"Dice Roller".turn_total
 	return damage
 

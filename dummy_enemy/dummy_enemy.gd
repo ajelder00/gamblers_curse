@@ -20,7 +20,6 @@ const ANIMS := {
 
 # --- References to Nodes ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_label: Label = $Label
 @onready var dice: Node = $Dice
 @onready var dice_button: Button = $Dice/Button
 
@@ -33,14 +32,12 @@ func _ready() -> void:
 
 # --- Setup UI Elements ---
 func setup_ui() -> void:
-	update_health_label()
 	sprite.flip_h = true
 	dice_button.hide()
 
 # --- Enemy Attack ---
 func hit() -> int:
 	sprite.play(ANIMS[type][0])
-	update_health_label()
 	dice.roll_die(dice.faces)
 	return damage
 
@@ -49,11 +46,7 @@ func get_hit(enemy_damage: int) -> void:
 	sprite.play(ANIMS[type][0])
 	await sprite.animation_finished
 	health = max(0, health - enemy_damage)  # Prevent negative health
-	update_health_label()
 
-# --- Updates the Health Label ---
-func update_health_label() -> void:
-	health_label.text = "Health: " + str(health)
 
 # --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
 func initialize_enemy() -> void:

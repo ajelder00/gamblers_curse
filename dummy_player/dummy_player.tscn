@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=20 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
-[ext_resource type="Script" path="res://dummy_player/dummy_health_bar.gd" id="3_0p23m"]
 [ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="4_fdqlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmfwc"]
@@ -137,14 +136,6 @@ metadata/_edit_group_ = true
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_40ksk")
 animation = &"dead"
-
-[node name="Label" type="Label" parent="."]
-offset_left = -55.0
-offset_top = 70.0
-offset_right = 63.0
-offset_bottom = 115.0
-text = "Health: "
-script = ExtResource("3_0p23m")
 
 [node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
 position = Vector2(26, 147)

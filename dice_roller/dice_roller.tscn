@@ -1,23 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://fe8ac0h8ymr3"]
+[gd_scene load_steps=2 format=3 uid="uid://fe8ac0h8ymr3"]
 
 [ext_resource type="Script" path="res://dice_roller/dice_roller.gd" id="1_6tiu3"]
-[ext_resource type="Texture2D" uid="uid://ckiodcdlonfyy" path="res://dice_roller/dice_roller_art/ChoiceBox.png" id="3_lfomk"]
 
 [node name="Dice Roller" type="Node2D"]
 position = Vector2(187, 70)
 script = ExtResource("1_6tiu3")
 metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -35.0
-offset_top = 72.0
-offset_right = 57.0
-offset_bottom = 95.0
-text = "Sample text"
-
-[node name="DiceBox" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
-texture = ExtResource("3_lfomk")
 
 [node name="StartPosition1" type="Marker2D" parent="."]
 position = Vector2(-110, 0)

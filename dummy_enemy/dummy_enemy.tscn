@@ -1024,13 +1024,6 @@ scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_aua4h")
 animation = &"dead_goblin"
 
-[node name="Label" type="Label" parent="."]
-offset_left = -52.0
-offset_top = 81.0
-offset_right = 58.0
-offset_bottom = 131.0
-text = "Health: "
-
 [node name="Dice" parent="." instance=ExtResource("3_nxqwa")]
 position = Vector2(-165, 10)
 

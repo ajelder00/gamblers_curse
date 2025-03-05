@@ -226,13 +226,6 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
 animation = &"blank_risky"
 
-[node name="Label" type="Label" parent="."]
-offset_left = -46.0
-offset_top = 45.0
-offset_right = 46.0
-offset_bottom = 80.0
-text = "You rolled a"
-
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0
 offset_top = -25.0

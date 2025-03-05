@@ -31,13 +31,11 @@ func new_hand():
 		die.rolled.connect(on_die_rolled)
 		current_dice.append(die)
 		await get_tree().create_timer(0.1).timeout
-	$Label.text = "Rolls Left: " + str(current_rolls) + " Current Total: " + str(turn_total)
 
 func on_die_rolled(roll_amount: int):
 	current_rolls -= 1
 	turn_total += roll_amount
 	print("Turn total:" + str(turn_total))
-	$Label.text = "Rolls Left: " + str(current_rolls) + " Current Total: " + str(turn_total)
 	if current_rolls == 0:
 		for die in current_dice:
 			die.get_node("Button").hide()
