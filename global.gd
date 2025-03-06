@@ -2,10 +2,13 @@ extends Node
 
 var standard = load("res://dice/standard/standard_dice.tscn")
 var risky = load("res://dice/risky/risky_dice.tscn")
+var poison = load("res://dice/poison/poison_dice.tscn")
 
 var coins := 10
-var dummy_dice: Array = [standard, risky]
+var dummy_dice: Array = [standard, risky, poison]
 var dice : Array
+const POISON_DAMAGE = 3
+enum Status{NOTHING, POISON, BLINDNESS, SHIELD}
 
 ## shop inventory to initialize all the dice
 var shop_dice = [

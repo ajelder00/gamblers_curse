@@ -2,6 +2,8 @@ class_name Dice
 extends Node2D
 
 var result
+var status_effect = [Global.Status.NOTHING, duration]
+
 
 enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
 	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
@@ -10,18 +12,24 @@ enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS,
 
 const ANIMS := {
 	Type.STANDARD: ["blank_standard", "roll_standard", "faces_standard"],
-	Type.RISKY: ["blank_risky", "roll_risky", "faces_risky"]
+	Type.RISKY: ["blank_risky", "roll_risky", "faces_risky"],
+	Type.POISON: ["blank_poison", "roll_poison", "faces_poison"]
+}
+const TYPE_NAMES := {
+	Type.STANDARD: ["Standard"],
+	Type.RISKY: ["Risky"],
+	Type.POISON: ["Poison"]
 }
 
+signal rolled(value: int, effect: Array)
 
-signal rolled(value: int)
-
-@export var type: Type = Type.STANDARD
-@export var original_scale = scale
+var type: Type = Type.STANDARD
+var original_scale = scale
 
 @onready var animation_player := $AnimatedSprite2D
 @onready var button := $Button
 @onready var faces := 6
+@onready var duration := 3
 
 func _ready():
 	animation_player.animation = ANIMS[type][0]
@@ -42,7 +50,7 @@ func roll_die(faces) -> void:
 
 func rolling_animation(roll) -> void:
 	print("Rolled a " + str(roll))
-	emit_signal("rolled", roll)
+	emit_signal("rolled", roll, status_effect)
 	animation_player.animation = ANIMS[type][1]
 	animation_player.play()
 	await animation_player.animation_finished

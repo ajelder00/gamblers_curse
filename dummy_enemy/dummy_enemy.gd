@@ -5,8 +5,10 @@ class_name DummyEnemy
 var health: int = 200
 var tier_multiplier: int 
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
-var damage
-
+var damage : int
+var self_statuses := []
+var statuses_to_apply := []
+var accuracy : float = 1.0
 const ANIMS := {
 	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman"],
 	Type.GOBLIN: ["attack_goblin", "damage_goblin", "dead_goblin"],
@@ -17,6 +19,8 @@ const ANIMS := {
 	Type.WIZARD: ["attack_wizard", "damage_wizard", "dead_wizard"],
 	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf"],
 }
+
+
 
 # --- References to Nodes ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -36,16 +40,22 @@ func setup_ui() -> void:
 	dice_button.hide()
 
 # --- Enemy Attack ---
-func hit() -> int:
+func hit() -> Array:
 	sprite.play(ANIMS[type][0])
 	dice.roll_die(dice.faces)
-	return damage
+	if accuracy >= randf_range(0, 1):
+		return [damage, dice.status_effect]
+	else: 
+		return [0, 0]  # TODO: add into the battle text a thing ab how the enemy missed cause blind
 
 # --- Enemy Takes Damage ---
-func get_hit(enemy_damage: int) -> void:
+func get_hit(damage_status: Array) -> void:
+	for effect in damage_status[1]:
+		self_statuses.append(effect)
+	apply_status_self(self_statuses) # TODO: Update each effect for an animation/sprite
 	sprite.play(ANIMS[type][0])
 	await sprite.animation_finished
-	health = max(0, health - enemy_damage)  # Prevent negative health
+	health = max(0, health - damage_status[0])  # Prevent negative health
 
 
 # --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
@@ -53,5 +63,27 @@ func initialize_enemy() -> void:
 	pass
 
 
-func _on_dice_rolled(value):
+func _on_dice_rolled(value, status_effect):
 	damage = value
+	if status_effect:
+		statuses_to_apply.append(status_effect)
+	
+func apply_status_self(effect_names) -> void:
+	for effect in effect_names:
+		match effect[0]:
+			Global.Status.POISON:
+				if effect[1] > 0: # The dice returns effect[type, duration], so effect[1] is duration
+					health = max(0, health - Global.POISON_DAMAGE)
+					print("Poisened for " + str(Global.POISON_DAMAGE) + " Damage")
+					effect[1] -= 1
+					sprite.modulate = Color(0, 1, 0)
+				elif effect[1] <= 0:
+					self_statuses.erase(effect)
+					sprite.modulate = Color(1, 1, 1)
+
+			Global.Status.BLINDNESS:
+				if effect[1] > 0:
+					accuracy = 0.5
+					effect[1] -= 1
+				elif effect[1] <= 0:
+					accuracy = 1.0

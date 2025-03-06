@@ -5,8 +5,8 @@ signal turn_over
 @onready var ORIGINAL_ROLLS = 3
 @onready var current_rolls = ORIGINAL_ROLLS
 @onready var dice_bucket = Global.dummy_dice
-@onready var dice_bucket_size = dice_bucket.size()
 @onready var positions := [$StartPosition1, $StartPosition2, $StartPosition3, $StartPosition4, $StartPosition5]
+@onready var parent = get_parent()
 var current_dice = []
 var current_results
 var turn_total
@@ -17,6 +17,8 @@ func _ready():
 	new_hand()
 	
 func new_hand():
+	if parent is Node2D:
+		parent.dice_effects = []
 	current_dice = []
 	for child in get_children():
 		if child is Dice:
@@ -25,16 +27,20 @@ func new_hand():
 	turn_total = 0
 	for position in positions:
 		# instantiate dice node
-		var die = dice_bucket[randi_range(0, len(dice_bucket)-1)].instantiate()
+		var index = randi_range(0, len(dice_bucket)-1)
+		var die = dice_bucket[index].instantiate()
 		add_child(die)
 		die.global_position = position.global_position
-		die.rolled.connect(on_die_rolled)
 		current_dice.append(die)
 		await get_tree().create_timer(0.1).timeout
+		die.rolled.connect(on_die_rolled)
 
-func on_die_rolled(roll_amount: int):
+func on_die_rolled(roll_amount: int, effect: Array):
 	current_rolls -= 1
 	turn_total += roll_amount
+	if parent is Node2D:
+		parent.dice_effects.append(effect)
+	
 	print("Turn total:" + str(turn_total))
 	if current_rolls == 0:
 		for die in current_dice:
