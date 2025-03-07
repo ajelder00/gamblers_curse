@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=21 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
@@ -64,6 +64,10 @@ region = Rect2(200, 500, 100, 100)
 atlas = ExtResource("2_2wf7a")
 region = Rect2(300, 500, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftcqd"]
+atlas = ExtResource("2_2wf7a")
+region = Rect2(0, 200, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_40ksk"]
 animations = [{
 "frames": [{
@@ -121,6 +125,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rcsrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftcqd")
 }],
 "loop": false,
 "name": &"get_hit",
@@ -135,7 +142,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_40ksk")
-animation = &"dead"
+animation = &"get_hit"
 
 [node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
 position = Vector2(26, 147)

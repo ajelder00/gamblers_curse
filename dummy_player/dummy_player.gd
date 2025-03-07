@@ -4,6 +4,12 @@ extends Node2D
 @onready var roller = $"Dice Roller"
 @onready var sprite = $"AnimatedSprite2D"
 
+# Music stuff
+@onready var attack_sound = AudioStreamPlayer.new()
+@onready var attack_sound_path = load("res://dummy_player/dummy_player_sounds/07_human_atk_sword_2.wav")
+@onready var hit_sound = AudioStreamPlayer.new()
+@onready var hit_sound_path = load("res://dummy_player/dummy_player_sounds/11_human_damage_1.wav")
+
 var dice_effects := []
 
 signal attack_signal
@@ -12,6 +18,12 @@ signal attack_signal
 
 func _ready() -> void:
 	roller.turn_over.connect(_on_dice_roller_turn_over)
+	
+	# Adding music as children and setting path
+	add_child(attack_sound)
+	attack_sound.stream = attack_sound_path
+	add_child(hit_sound)
+	hit_sound.stream = hit_sound_path
 
 func hit() -> Array :
 	var damage = roller.turn_total
@@ -19,6 +31,7 @@ func hit() -> Array :
 
 func get_hit(enemy_damage):
 	sprite.play("get_hit")
+	hit_sound.play()
 	await sprite.animation_finished
 	Global.player_health -= enemy_damage[0]
 	if Global.player_health < 0:
@@ -29,4 +42,10 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_dice_roller_turn_over() -> void:
+	attack_sound.play()
 	attack_signal.emit()
+
+# Plays the attack sound, as a function since battle is going to call it
+# Prevents the need to create another path to a child of player
+func play_attack_sound():
+	attack_sound.play()

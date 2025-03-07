@@ -27,11 +27,26 @@ const ANIMS := {
 @onready var dice: Node = $Dice
 @onready var dice_button: Button = $Dice/Button
 
+# Sound variables
+@onready var attack_sound = AudioStreamPlayer.new()
+@onready var attack_sound_path = load("res://dummy_enemy/dummy_enemy_sounds/17_orc_atk_sword_1.wav")
+@onready var hit_sound = AudioStreamPlayer.new()
+@onready var hit_sound_path = load("res://dummy_enemy/dummy_enemy_sounds/21_orc_damage_1.wav")
+
 @export var type: Type = Type.GOBLIN
 # --- Initialization ---
 func _ready() -> void:
 	initialize_enemy()
 	setup_ui()
+	
+	# fixes animation
+	sprite.animation = ANIMS[type][0]
+	
+	# Adding music as children and setting path
+	add_child(attack_sound)
+	attack_sound.stream = attack_sound_path
+	add_child(hit_sound)
+	hit_sound.stream = hit_sound_path
 
 
 # --- Setup UI Elements ---
@@ -41,6 +56,7 @@ func setup_ui() -> void:
 
 # --- Enemy Attack ---
 func hit() -> Array:
+	attack_sound.play()
 	sprite.play(ANIMS[type][0])
 	dice.roll_die(dice.faces)
 	if accuracy >= randf_range(0, 1):
@@ -53,8 +69,7 @@ func get_hit(damage_status: Array) -> void:
 	for effect in damage_status[1]:
 		self_statuses.append(effect)
 	apply_status_self(self_statuses) # TODO: Update each effect for an animation/sprite
-	sprite.play(ANIMS[type][0])
-	await sprite.animation_finished
+	
 	health = max(0, health - damage_status[0])  # Prevent negative health
 
 

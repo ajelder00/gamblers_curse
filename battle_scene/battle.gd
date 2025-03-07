@@ -8,6 +8,7 @@ var player
 var player_sprite
 var enemy
 var enemy_sprite
+var enemy_animation_names
 
 var messages: Array = [
 	"> A WILD DUNGEON GOBLIN APPEARED!",
@@ -56,11 +57,16 @@ func _setup_player() -> void:
 	var dice_roller = player.get_node("Dice Roller")
 	var player_dice_markers = $DiceBG.get_children()
 	dice_roller.set_positions(player_dice_markers)
+	player_sprite.animation = "attack"
 
 func _setup_enemy() -> void:
 	var enemy_dice = enemy.get_node("Dice") 
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
+	enemy_sprite
+	
+	# setting up animation to be called from battle instead of inside enemy
+	enemy_animation_names = enemy.ANIMS[enemy.type]
 
 func _start_battle() -> void:
 	if roll_message_label:
@@ -86,6 +92,8 @@ func _on_player_attack() -> void:
 
 func _player_turn() -> void:
 	player_sprite.play("attack")
+	# plays enemy getting damaged animation
+	enemy_sprite.play(enemy_animation_names[1])
 	await player_sprite.animation_finished
 	await enemy.get_hit(player.hit())
 	_update_health_display()  # 🔥 Update after attack
@@ -96,7 +104,10 @@ func _player_turn() -> void:
 func _enemy_turn() -> void:
 	player.get_hit(enemy.hit())
 	_update_health_display()
-	await enemy_sprite.animation_finished
+	
+	
+	# enemy_sprite.play("attack")
+	# await enemy_sprite.animation_finished
 
 func _handle_enemy_defeat() -> void:
 	enemy_sprite.play("dead")
