@@ -133,7 +133,7 @@ script = ExtResource("1_qj2j2")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_40ksk")
 animation = &"dead"
 

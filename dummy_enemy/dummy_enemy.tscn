@@ -1015,12 +1015,13 @@ animations = [{
 }]
 
 [node name="dummy_enemy" type="Node2D"]
+z_index = -1
 position = Vector2(912, 343)
 script = ExtResource("1_4fd5b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
 animation = &"dead_goblin"
 
