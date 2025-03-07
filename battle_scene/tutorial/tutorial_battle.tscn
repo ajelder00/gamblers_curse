@@ -1,0 +1,228 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjjijc6hrlkks"]
+
+[ext_resource type="Script" path="res://battle_scene/tutorial/tutorial_battle.gd" id="1_hkrh2"]
+[ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_h46ts"]
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_is5eh"]
+[ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="4_kr7i3"]
+[ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_llhlx"]
+[ext_resource type="Texture2D" uid="uid://c8p8itidoumac" path="res://art/tutorial_grey.png" id="6_xm2jd"]
+[ext_resource type="Texture2D" uid="uid://cq6rw2o5x1uqx" path="res://art/arrow.png" id="7_ycqga"]
+
+[sub_resource type="Animation" id="Animation_6a2q2"]
+resource_name = "Arrow_movement"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialGraphics/Arrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6.18, 6.18), Vector2(6.77, 6.77), Vector2(6.18, 6.18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialGraphics/Arrow:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.56905, 1.56905]
+}
+
+[sub_resource type="Animation" id="Animation_ikptf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialGraphics/Arrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6.18, 6.18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialGraphics/Arrow:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.56905]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qhl3"]
+_data = {
+"Arrow_movement": SubResource("Animation_6a2q2"),
+"RESET": SubResource("Animation_ikptf")
+}
+
+[node name="TutorialBattle" type="Node2D"]
+script = ExtResource("1_hkrh2")
+player_template = ExtResource("2_h46ts")
+enemy_template = ExtResource("3_is5eh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(585, 330)
+scale = Vector2(4.32639, 4.32639)
+texture = ExtResource("4_kr7i3")
+
+[node name="MonsterName" type="Label" parent="."]
+offset_left = 102.0
+offset_top = 54.0
+offset_right = 278.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "DUNGEON GOBLIN"
+
+[node name="MonsterHealthNum" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 54.0
+offset_right = 496.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "1"
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = 729.0
+offset_top = 394.0
+offset_right = 905.0
+offset_bottom = 414.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "THE FATED ONE"
+
+[node name="PlayerHealthNum" type="Label" parent="."]
+offset_left = 927.0
+offset_top = 394.0
+offset_right = 1103.0
+offset_bottom = 414.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 2
+
+[node name="DiceBG" type="ColorRect" parent="."]
+offset_left = 529.0
+offset_top = 524.0
+offset_right = 920.0
+offset_bottom = 593.0
+color = Color(0.03, 0.02, 0.05, 0.13)
+
+[node name="Marker5" type="Marker2D" parent="DiceBG"]
+position = Vector2(333, 35)
+
+[node name="Marker4" type="Marker2D" parent="DiceBG"]
+position = Vector2(263, 35)
+
+[node name="Marker3" type="Marker2D" parent="DiceBG"]
+position = Vector2(193, 35)
+
+[node name="Marker2" type="Marker2D" parent="DiceBG"]
+position = Vector2(123, 35)
+
+[node name="Marker1" type="Marker2D" parent="DiceBG"]
+position = Vector2(53, 35)
+
+[node name="EnemyDiceBG" type="ColorRect" parent="."]
+offset_left = 992.0
+offset_top = 523.0
+offset_right = 1065.0
+offset_bottom = 592.0
+color = Color(0.03, 0.02, 0.05, 0.13)
+
+[node name="EnemyMarker" type="Marker2D" parent="EnemyDiceBG"]
+position = Vector2(37, 35)
+
+[node name="Enemy Dice" type="Label" parent="."]
+offset_left = 985.0
+offset_top = 600.0
+offset_right = 1073.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "ENEMY DICE"
+
+[node name="Player Dice" type="Label" parent="."]
+offset_left = 673.0
+offset_top = 599.0
+offset_right = 771.0
+offset_bottom = 614.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "PLAYER DICE"
+
+[node name="Roll Message" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 535.0
+offset_right = 374.0
+offset_bottom = 559.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="EnemyHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 161.0
+offset_top = 65.0
+offset_right = 467.0
+offset_bottom = 105.0
+color = Color(1, 0.28, 0.38, 1)
+
+[node name="PlayerHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 788.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+color = Color(0.47, 0.99, 0.36, 1)
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_llhlx")
+autoplay = true
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -3
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 1421.0
+offset_bottom = 833.0
+color = Color(0.03, 0.02, 0.05, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0qhl3")
+}
+autoplay = "Arrow_movement"
+
+[node name="TutorialGraphics" type="Node2D" parent="."]
+z_index = 5
+
+[node name="TutorialGray" type="Sprite2D" parent="TutorialGraphics"]
+position = Vector2(776, 348)
+scale = Vector2(2.815, 2.815)
+texture = ExtResource("6_xm2jd")
+
+[node name="Arrow" type="Sprite2D" parent="TutorialGraphics"]
+position = Vector2(141.46, 243)
+rotation = -1.07687
+scale = Vector2(6.18, 6.18)
+skew = -1.56905
+texture = ExtResource("7_ycqga")
+
+[node name="Tutorial Text" type="Label" parent="TutorialGraphics"]
+offset_right = 40.0
+offset_bottom = 16.0

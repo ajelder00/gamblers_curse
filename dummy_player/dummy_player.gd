@@ -29,4 +29,4 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_dice_roller_turn_over() -> void:
-	attack_signal.emit()
+	attack_signal.emit() 

@@ -18,3 +18,7 @@ res://dice/poison/poison_dice.tscn
 res://poison_dice.gd
 res://dice/risky/risky_dice.gd
 res://dice/poison/poison_dice.gd
+res://battle_scene/tutorial/tutorial_battle.tscn
+res://battle_scene/tutorial/tutorial_battle.gd
+res://casino/Casino.tscn
+res://shop/shop.tscn

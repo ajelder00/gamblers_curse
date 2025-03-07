@@ -1,8 +1,8 @@
-Dice
-Node2D
-AnimationPlayer
 Label
 Sprite2D
+AnimationPlayer
+Node2D
+Dice
 TextureRect
 CanvasLayer
 AnimatedSprite2D
