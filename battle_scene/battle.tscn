@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfs6rmdrg7dhb"]
+[gd_scene load_steps=7 format=3 uid="uid://bfs6rmdrg7dhb"]
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_bjksa"]
 [ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="2_xrc03"]
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_ls7fd"]
 [ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_4c6ya"]
+[ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_c574w"]
 
 [node name="Battle" type="Node2D"]
 z_index = 5
@@ -116,7 +117,7 @@ theme_override_font_sizes/font_size = 19
 z_index = -1
 offset_left = 161.0
 offset_top = 65.0
-offset_right = 467.0
+offset_right = 468.0
 offset_bottom = 105.0
 color = Color(1, 0.28, 0.38, 1)
 
@@ -126,7 +127,9 @@ offset_left = 788.0
 offset_top = 416.0
 offset_right = 1096.0
 offset_bottom = 456.0
+size_flags_horizontal = 3
 color = Color(0.47, 0.99, 0.36, 1)
+script = ExtResource("5_c574w")
 
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4c6ya")

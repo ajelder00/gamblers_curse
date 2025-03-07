@@ -31,13 +31,22 @@ var original_scale = scale
 @onready var faces := 6
 @onready var duration := 3
 
+# Sound effects
+@onready var roll_sound = AudioStreamPlayer.new()
+@onready var roll_sound_path = load("res://dice/dice_sounds/01_chest_open_2.wav")
+
 func _ready():
 	animation_player.animation = ANIMS[type][0]
 	button.self_modulate.a = 0 
 	result = 0
 	
+	# Sound set up
+	add_child(roll_sound)
+	roll_sound.stream = roll_sound_path
+	
 
 func _on_button_pressed() -> void:
+	roll_sound.play()
 	roll_die(faces)
 	button.hide()
 
