@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjjijc6hrlkks"]
+[gd_scene load_steps=13 format=3 uid="uid://cjjijc6hrlkks"]
 
 [ext_resource type="Script" path="res://battle_scene/tutorial/tutorial_battle.gd" id="1_hkrh2"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_h46ts"]
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_is5eh"]
 [ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="4_kr7i3"]
+[ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_8mrdj"]
 [ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_llhlx"]
 [ext_resource type="Texture2D" uid="uid://c8p8itidoumac" path="res://art/tutorial_grey.png" id="6_xm2jd"]
 [ext_resource type="Texture2D" uid="uid://cq6rw2o5x1uqx" path="res://art/arrow.png" id="7_ycqga"]
+[ext_resource type="Texture2D" uid="uid://cvhhsddvn04ty" path="res://image.png" id="9_0s0wc"]
 
 [sub_resource type="Animation" id="Animation_6a2q2"]
 resource_name = "Arrow_movement"
@@ -89,13 +91,14 @@ theme_override_font_sizes/font_size = 19
 text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
-offset_left = 320.0
+offset_left = 280.0
 offset_top = 54.0
-offset_right = 496.0
+offset_right = 456.0
 offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 19
 text = "1"
+horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
 offset_left = 729.0
@@ -177,7 +180,7 @@ theme_override_font_sizes/font_size = 19
 z_index = -1
 offset_left = 161.0
 offset_top = 65.0
-offset_right = 467.0
+offset_right = 469.0
 offset_bottom = 105.0
 color = Color(1, 0.28, 0.38, 1)
 
@@ -188,19 +191,20 @@ offset_top = 416.0
 offset_right = 1096.0
 offset_bottom = 456.0
 color = Color(0.47, 0.99, 0.36, 1)
+script = ExtResource("5_8mrdj")
 
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_llhlx")
 autoplay = true
 
-[node name="Background" type="ColorRect" parent="."]
-z_index = -3
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 1421.0
-offset_bottom = 833.0
-color = Color(0.03, 0.02, 0.05, 1)
-metadata/_edit_lock_ = true
+[node name="ClickBlocker" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+offset_left = -34.0
+offset_top = -24.0
+offset_right = 1241.0
+offset_bottom = 711.0
+color = Color(0.321569, 0.694118, 0.705882, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -212,13 +216,14 @@ autoplay = "Arrow_movement"
 z_index = 5
 
 [node name="TutorialGray" type="Sprite2D" parent="TutorialGraphics"]
-position = Vector2(776, 348)
+z_index = -7
+position = Vector2(796, 363)
 scale = Vector2(2.815, 2.815)
 texture = ExtResource("6_xm2jd")
 
 [node name="Arrow" type="Sprite2D" parent="TutorialGraphics"]
-position = Vector2(141.46, 243)
-rotation = -1.07687
+position = Vector2(450, 380)
+rotation = 0.790634
 scale = Vector2(6.18, 6.18)
 skew = -1.56905
 texture = ExtResource("7_ycqga")
@@ -226,3 +231,9 @@ texture = ExtResource("7_ycqga")
 [node name="Tutorial Text" type="Label" parent="TutorialGraphics"]
 offset_right = 40.0
 offset_bottom = 16.0
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(485, 192)
+scale = Vector2(1.06941, 1.06941)
+texture = ExtResource("9_0s0wc")

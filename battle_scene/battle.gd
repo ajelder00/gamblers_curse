@@ -9,6 +9,7 @@ var player_sprite
 var enemy
 var enemy_sprite
 var enemy_animation_names
+var enemy_starting_health: float  # Store the enemy's starting health
 
 var messages: Array = [
 	"> A WILD DUNGEON GOBLIN APPEARED!",
@@ -19,24 +20,29 @@ var message_index: int = 0
 var roll_message_label: Label
 var player_health_label: Label
 var enemy_health_label: Label  
+var enemy_health_bar: ColorRect  # This will now be set in _get_ui_elements()
 
-const MAX_HEALTH: float = 100.0
+const MAX_HEALTH_BAR_WIDTH: float = 308.0
 
 func _ready() -> void:
 	_get_ui_elements()
+	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()
 	_setup_player()
 	_setup_enemy()
 	_start_battle()
 	_update_health_display()
 
-func _process(delta: float) -> void:
-	_update_health_display()
+func _process(_delta: float) -> void:
+	pass
+
+# ------------------- UI Setup -------------------
 
 func _get_ui_elements() -> void:
 	roll_message_label = $'Roll Message'  
 	player_health_label = $'PlayerHealthNum'
-	enemy_health_label = $'EnemyHealthNum'
+	enemy_health_label = $'MonsterHealthNum'
+	enemy_health_bar = $'EnemyHealth'  # <-- Now correctly fetching "EnemyHealth" (ColorRect)
 
 func _initialize_combatants() -> void:
 	player = player_template.instantiate()
@@ -48,10 +54,12 @@ func _initialize_combatants() -> void:
 	enemy_sprite = enemy.get_node("AnimatedSprite2D")
 	enemy.position.y -= 130
 	player.position.y -= 30
-
-
 	
-	player.attack_signal.connect(_on_player_attack)
+	# Connect player's attack signal
+	if player.has_signal("attack_signal"):
+		player.attack_signal.connect(_on_player_attack)
+
+# ------------------- Player Setup -------------------
 
 func _setup_player() -> void:
 	var dice_roller = player.get_node("Dice Roller")
@@ -59,14 +67,24 @@ func _setup_player() -> void:
 	dice_roller.set_positions(player_dice_markers)
 	player_sprite.animation = "attack"
 
+# ------------------- Enemy Setup -------------------
+
 func _setup_enemy() -> void:
 	var enemy_dice = enemy.get_node("Dice") 
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
-	enemy_sprite
+	enemy_dice.z_index = 1
 	
-	# setting up animation to be called from battle instead of inside enemy
-	enemy_animation_names = enemy.ANIMS[enemy.type]
+	# Ensure the enemy has the necessary properties
+	if enemy.has_method("hit") and enemy.has_method("get_hit") and enemy.has_meta("health"):
+		enemy.health = enemy.get_meta("health")  # Get initial health from enemy metadata
+		enemy_starting_health = enemy.health  # Store the actual starting health
+
+	# Setting up animation names
+	if "ANIMS" in enemy and "type" in enemy:
+		enemy_animation_names = enemy.ANIMS[enemy.type]
+
+# ------------------- Battle Flow -------------------
 
 func _start_battle() -> void:
 	if roll_message_label:
@@ -76,7 +94,7 @@ func _start_battle() -> void:
 	_update_health_display()
 
 func _on_player_attack() -> void:
-	if Global.player_health > 0 and enemy.health > 0:
+	if Global.player_health > 0 and enemy and enemy.health > 0:
 		_player_turn()
 		await get_tree().create_timer(1).timeout
 		_enemy_turn()
@@ -87,34 +105,39 @@ func _on_player_attack() -> void:
 
 		_update_health_display()
 
-		if Global.player_health <= 0: 
-			_handle_player_defeat()
-
 func _player_turn() -> void:
+	if not enemy or enemy.health <= 0:
+		return
+
 	player_sprite.play("attack")
-	# plays enemy getting damaged animation
-	enemy_sprite.play(enemy_animation_names[1])
+	enemy_sprite.play(enemy_animation_names[1])  # Enemy hit animation
 	await player_sprite.animation_finished
-	await enemy.get_hit(player.hit())
-	_update_health_display()  # 🔥 Update after attack
+	enemy.get_hit(player.hit())
+
+	_update_health_display()
 
 	if enemy.health <= 0:
 		_handle_enemy_defeat()
 
 func _enemy_turn() -> void:
+	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
+		return
+
 	player.get_hit(enemy.hit())
 	_update_health_display()
-	
-	
-	# enemy_sprite.play("attack")
-	# await enemy_sprite.animation_finished
+
+# ------------------- Defeat Handling -------------------
 
 func _handle_enemy_defeat() -> void:
-	enemy_sprite.play("dead")
-	queue_free()
+	if enemy:
+		enemy_sprite.play("dead")
+		enemy.queue_free()
+		enemy = null  # Prevent further access
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")
+
+# ------------------- Message Typing -------------------
 
 func _start_typing() -> void:
 	if message_index >= messages.size():
@@ -134,6 +157,19 @@ func _start_typing() -> void:
 		roll_message_label.text = ""
 		_start_typing()
 
+# ------------------- Health Display -------------------
+
 func _update_health_display() -> void:
+	
+	# var enemy_max_health set equal to the max range based on the enemy tier
+
 	if player_health_label:
 		player_health_label.text = str(Global.player_health) + " HP"
+	if enemy_health_label and enemy:
+		enemy_health_label.text = str(enemy.health) + " HP"
+
+	# Ensure the health bar size updates properly
+	if enemy_health_bar and enemy:
+		var health_ratio = enemy.health / 200.0
+		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
+		enemy_health_bar.size.x = new_size
