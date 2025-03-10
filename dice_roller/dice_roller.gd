@@ -14,6 +14,14 @@ var turn_total
 func _ready():
 	turn_total = 0
 	current_results = []
+	
+	# Grabs the positions from the battle scene
+	if self.get_parent().get_parent():
+		var battle = self.get_parent().get_parent()
+		positions = battle.get_node("DiceBG").get_children()
+		positions.reverse()
+
+	self.set_positions(positions)
 	new_hand()
 	
 func new_hand():

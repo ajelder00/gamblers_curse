@@ -62,9 +62,6 @@ func _initialize_combatants() -> void:
 # ------------------- Player Setup -------------------
 
 func _setup_player() -> void:
-	var dice_roller = player.get_node("Dice Roller")
-	var player_dice_markers = $DiceBG.get_children()
-	dice_roller.set_positions(player_dice_markers)
 	player_sprite.animation = "attack"
 
 # ------------------- Enemy Setup -------------------
