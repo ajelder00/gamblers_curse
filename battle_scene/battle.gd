@@ -157,6 +157,7 @@ func _start_typing() -> void:
 # ------------------- Health Display -------------------
 
 func _update_health_display() -> void:
+	# dummy text
 	
 	# var enemy_max_health set equal to the max range based on the enemy tier
 
