@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjjijc6hrlkks"]
+[gd_scene load_steps=15 format=3 uid="uid://cjjijc6hrlkks"]
 
 [ext_resource type="Script" path="res://battle_scene/tutorial/tutorial_battle.gd" id="1_hkrh2"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_h46ts"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c8p8itidoumac" path="res://art/tutorial_grey.png" id="6_xm2jd"]
 [ext_resource type="Texture2D" uid="uid://cq6rw2o5x1uqx" path="res://art/arrow.png" id="7_ycqga"]
 [ext_resource type="Texture2D" uid="uid://cvhhsddvn04ty" path="res://image.png" id="9_0s0wc"]
+[ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="10_t78bx"]
+[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="11_ax6dj"]
 
 [sub_resource type="Animation" id="Animation_6a2q2"]
 resource_name = "Arrow_movement"
@@ -234,6 +236,18 @@ offset_bottom = 16.0
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
-position = Vector2(485, 192)
-scale = Vector2(1.06941, 1.06941)
+position = Vector2(485, 207.563)
+scale = Vector2(1.06941, 1.10682)
 texture = ExtResource("9_0s0wc")
+script = ExtResource("10_t78bx")
+
+[node name="PlayerPlatform" type="Sprite2D" parent="."]
+position = Vector2(207, 471)
+scale = Vector2(9, 9)
+texture = ExtResource("11_ax6dj")
+
+[node name="EnemyPlatform" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(909, 309)
+scale = Vector2(9, 9)
+texture = ExtResource("11_ax6dj")

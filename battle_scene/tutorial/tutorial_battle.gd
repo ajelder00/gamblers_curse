@@ -12,8 +12,8 @@ var enemy_animation_names
 var enemy_starting_health: float  
 
 var messages = [
-	"> WELCOME TO YOUR FIRST\n  BATTLE!",
 	"> A WILD DUNGEON GOBLIN\n  APPEARED!",
+	"> WELCOME TO YOUR FIRST\n  BATTLE!",
 	"> YOU WILL ROLL DICE\n  TO VANQUISH YOUR ENEMIES...",
 	"> CLICK ON THREE DICE\n  TO ROLL ON EACH TURN..."
 ]
@@ -170,6 +170,7 @@ func _player_turn() -> void:
 	enemy_sprite.play(enemy_animation_names[1])  
 	await player_sprite.animation_finished
 	enemy.get_hit(player.hit())
+	_update_health_display()
 
 	if enemy.health <= 0:
 		_handle_enemy_defeat()
@@ -196,9 +197,36 @@ func _enemy_turn() -> void:
 
 func _handle_enemy_defeat() -> void:
 	if enemy:
-		enemy_sprite.play("dead")
-		enemy.queue_free()
-		enemy = null  
+		# Play the "dead_enemy" animation
+		enemy_sprite.play("dead_goblin")
+		
+		# Disable player from interacting with dice
+		player.get_node("Dice Roller").visible = false
+		# Show "Vanquished" and gold messages
+		roll_message_label.text = ""
+		await _start_custom_typing("> CONGRATS! YOU VANQUISHED YOUR ENEMY.")
+		await get_tree().create_timer(1).timeout  # Wait for a moment
+
+		roll_message_label.text = ""
+		await _start_custom_typing("> YOU EARNED 10 GOLD!")
+
+		# Fade the enemy and move it down during the typewriter effect
+		var tween = get_tree().create_tween()
+		tween.tween_property(enemy, "modulate", Color(1, 1, 1, 0), 1.0)
+		tween.tween_property(enemy, "position", enemy.position + Vector2(0, 50), 1.0)
+
+		# Wait until the tween animation is finished
+		await tween.finished
+		
+		roll_message_label.text = ""
+		await _start_custom_typing("> YOU CAN USE GOLD TO BUY DICE AT \n THE SHOP!")
+		await get_tree().create_timer(1).timeout  # Wait for a moment
+
+		roll_message_label.text = ""
+		await _start_custom_typing("> RETURNING TO MAP...")
+		await get_tree().create_timer(1).timeout  # Wait for a moment
+
+
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")
@@ -241,6 +269,6 @@ func _update_health_display() -> void:
 		enemy_health_label.text = str(enemy.health) + " HP"
 
 	if enemy_health_bar and enemy:
-		var health_ratio = enemy.health / 200.0
+		var health_ratio = enemy.health / 50.0
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size

@@ -4,7 +4,6 @@ extends Node2D
 var result
 var status_effect = [Global.Status.NOTHING, duration]
 
-
 enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
 	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
 	DTWO, RUSSIAN, DONEHUNDRED
@@ -34,6 +33,7 @@ var original_scale = scale
 # Sound effects
 @onready var roll_sound = AudioStreamPlayer.new()
 @onready var roll_sound_path = load("res://dice/dice_sounds/01_chest_open_2.wav")
+@onready var name_label = $NameLabel  # Reference to the Label node you want to show/hide
 
 func _ready():
 	animation_player.animation = ANIMS[type][0]
@@ -44,18 +44,17 @@ func _ready():
 	add_child(roll_sound)
 	roll_sound.stream = roll_sound_path
 	
+	# Initially hide the name label
+	name_label.visible = false
 
 func _on_button_pressed() -> void:
 	roll_sound.play()
 	roll_die(faces)
 	button.hide()
 
-
-
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)
 	rolling_animation(result)
-
 
 func rolling_animation(roll) -> void:
 	print("Rolled a " + str(roll))
@@ -67,17 +66,18 @@ func rolling_animation(roll) -> void:
 	animation_player.animation = ANIMS[type][2]
 	animation_player.frame = roll - 1
 
-
-
-
+# Show the label with dice name when mouse enters button
 func _on_button_mouse_entered() -> void:
+	name_label.text = TYPE_NAMES[type][0]  # Show the dice type name in the label
+	name_label.visible = true  # Make the label visible
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", original_scale * 1.2, 0.2).set_trans(Tween.TRANS_SINE)
 
-
+# Hide the label when mouse exits the button
 func _on_button_mouse_exited() -> void:
+	name_label.visible = false  # Hide the label when the mouse exits
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", original_scale, 0.2).set_trans(Tween.TRANS_SINE)
-	
+
 func get_parent_node():
 	return get_parent()

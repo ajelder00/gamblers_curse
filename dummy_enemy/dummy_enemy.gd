@@ -2,7 +2,7 @@ extends Node2D
 class_name DummyEnemy  
 
 # --- Enemy Properties ---
-var health: int = 200
+var health: int = 50
 var tier_multiplier: int 
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
 var damage : int
