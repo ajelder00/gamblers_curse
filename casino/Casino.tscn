@@ -1,13 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://bynsu5gkn7lj5"]
+[gd_scene load_steps=21 format=3 uid="uid://cqj4i75p1x8ni"]
 
-[ext_resource type="Texture2D" uid="uid://4up8mqgqnhow" path="res://art/CasinoTileset.png" id="1_7sfet"]
-[ext_resource type="Script" path="res://casino/casino.gd" id="1_gk3tb"]
-[ext_resource type="Texture2D" uid="uid://c3fh4t3ol3hlj" path="res://art/idle.png" id="2_ubkjj"]
-[ext_resource type="Texture2D" uid="uid://brywskotyfuu0" path="res://art/walk.png" id="3_nmprm"]
-[ext_resource type="Script" path="res://casino/casino_sprite.gd" id="4_aaneu"]
+[ext_resource type="Script" path="res://casino/casino.gd" id="1_hjk5i"]
+[ext_resource type="Texture2D" uid="uid://4up8mqgqnhow" path="res://art/CasinoTileset.png" id="2_le5d3"]
+[ext_resource type="Texture2D" uid="uid://c3fh4t3ol3hlj" path="res://art/idle.png" id="3_jdsfa"]
+[ext_resource type="Texture2D" uid="uid://brywskotyfuu0" path="res://art/walk.png" id="4_18ilh"]
+[ext_resource type="Script" path="res://casino/casino_sprite.gd" id="5_e13t5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ddivc"]
-texture = ExtResource("1_7sfet")
+texture = ExtResource("2_le5d3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1237,51 +1237,51 @@ texture = ExtResource("1_7sfet")
 sources/0 = SubResource("TileSetAtlasSource_ddivc")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qqiq"]
-atlas = ExtResource("2_ubkjj")
+atlas = ExtResource("3_jdsfa")
 region = Rect2(0, 80, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0r64f"]
-atlas = ExtResource("2_ubkjj")
+atlas = ExtResource("3_jdsfa")
 region = Rect2(80, 80, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rc8kt"]
-atlas = ExtResource("2_ubkjj")
+atlas = ExtResource("3_jdsfa")
 region = Rect2(160, 80, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhcei"]
-atlas = ExtResource("2_ubkjj")
+atlas = ExtResource("3_jdsfa")
 region = Rect2(240, 80, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5vgk"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfnav"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(80, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_st8qn"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(160, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwjri"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(240, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jje5m"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(320, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xl6g"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2r5ct"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(480, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s67uo"]
-atlas = ExtResource("3_nmprm")
+atlas = ExtResource("4_18ilh")
 region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ofwn6"]
@@ -1334,7 +1334,7 @@ animations = [{
 }]
 
 [node name="Casino" type="Node2D"]
-script = ExtResource("1_gk3tb")
+script = ExtResource("1_hjk5i")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(556, 324)
@@ -1354,7 +1354,7 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ofwn6")
 animation = &"idle"
 speed_scale = 3.0
-script = ExtResource("4_aaneu")
+script = ExtResource("5_e13t5")
 
 [node name="ButtonBet" type="Button" parent="."]
 offset_left = 638.0
