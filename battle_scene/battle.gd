@@ -128,6 +128,7 @@ func _enemy_turn() -> void:
 func _handle_enemy_defeat() -> void:
 	if enemy:
 		enemy_sprite.play("dead")
+		Global.coins += enemy.coins
 		enemy.queue_free()
 		enemy = null  # Prevent further access
 

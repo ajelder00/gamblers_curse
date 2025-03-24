@@ -9,6 +9,8 @@ var damage : int
 var self_statuses := []
 var statuses_to_apply := []
 var accuracy : float = 1.0
+var coins: int = randi_range(0,10)
+
 const ANIMS := {
 	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman"],
 	Type.GOBLIN: ["attack_goblin", "damage_goblin", "dead_goblin"],
