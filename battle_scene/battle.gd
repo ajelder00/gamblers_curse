@@ -131,6 +131,8 @@ func _handle_enemy_defeat() -> void:
 		Global.coins += enemy.coins
 		enemy.queue_free()
 		enemy = null  # Prevent further access
+		await get_tree().create_timer(1).timeout
+		queue_free()
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")

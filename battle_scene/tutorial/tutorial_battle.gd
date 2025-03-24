@@ -225,6 +225,7 @@ func _handle_enemy_defeat() -> void:
 		roll_message_label.text = ""
 		await _start_custom_typing("> RETURNING TO MAP...")
 		await get_tree().create_timer(1).timeout  # Wait for a moment
+		queue_free()
 
 
 

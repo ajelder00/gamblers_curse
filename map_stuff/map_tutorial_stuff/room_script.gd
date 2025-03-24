@@ -11,7 +11,8 @@ const ICONS := {
 	Room.Type.SHOP: [preload("res://map_stuff/map_tutorial_stuff/art/coins.png"), Vector2(ICON_SIZE,ICON_SIZE)],
 	Room.Type.ELITE_BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/skull.png"), Vector2(ICON_SIZE + 2,ICON_SIZE + 2)],
 	Room.Type.LOOT: [preload("res://map_stuff/map_tutorial_stuff/art/chest.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/skull_boss.png"), Vector2(4,4)]
+	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/skull_boss.png"), Vector2(4,4)],
+	Room.Type.TUTORIAL: [preload("res://map_stuff/map_tutorial_stuff/art/battle.png"), Vector2(ICON_SIZE+1,ICON_SIZE+1)],
 }
 @onready var sprite_2d: Sprite2D = $Visuals/Icons
 @onready var x_out: Sprite2D = $Visuals/X

@@ -185,7 +185,7 @@ func _setup_start() -> void:
 	start_room.column = middle
 	start_room.row = 0
 	start_room.position = Vector2(X_DIST * middle, -250)
-	start_room.type = Room.Type.BATTLE
+	start_room.type = Room.Type.TUTORIAL
 	for room in map_data[0]:
 		if room.next_rooms:
 			start_room.next_rooms.append(room)

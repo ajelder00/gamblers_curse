@@ -65,6 +65,8 @@ func fade_in_map():
 	map_rect.visible = true
 	var map_tween = create_tween()
 	map_tween.tween_property(map_rect, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_LINEAR)
+	await get_tree().create_timer(1.8).timeout 
+	queue_free() 
 
 func typewriter_effect(message: String):
 	for i in message.length():

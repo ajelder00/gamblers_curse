@@ -4,6 +4,11 @@ extends Node2D
 const SCROLL_SPEED := 45
 const MAP_ROOM = preload("res://map_stuff/map_tutorial_stuff/map_node.tscn")
 const MAP_LINE = preload("res://map_stuff/map_tutorial_stuff/map_connector.tscn")
+const BATTLE = preload("res://battle_scene/battle.tscn")
+const LOOT = preload("res://loot.tscn")
+const SHOP = preload("res://shop/shop.tscn")
+const CASINO = preload("res://casino/Casino.tscn")
+const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 
 signal map_exited
 
@@ -14,8 +19,6 @@ signal map_exited
 @onready var camera_2d: Camera2D = $Scroller
 @onready var parent = get_parent()
 @onready var background = $MapBackground/Background
-
-var new_scene = preload("res://battle_scene/battle.tscn")
 
 var map_data: Array[Array]
 var floors_climbed: int
@@ -99,13 +102,23 @@ func _on_map_selected(room: Room) -> void:
 	for map_room: MapRoom in rooms.get_children():
 		if map_room.room.row == room.row:
 			map_room.available = false
-	
 	last_room = room
 	floors_climbed += 1
-	map_exited.emit(room)
+	map_exited.emit(room) #I dont know what this signal does, but It scares me to delete it
 	
-	# test code, delete once signals implemented
-	var battle = new_scene.instantiate()
-	parent.add_child(battle)
+	var scene_to_load # Here down handles how the room is loaded
+	match room.type:
+		Room.Type.BATTLE:
+			scene_to_load = BATTLE
+		Room.Type.LOOT:
+			scene_to_load = LOOT
+		Room.Type.SHOP:
+			scene_to_load = SHOP
+		Room.Type.CASINO:
+			scene_to_load = CASINO
+		Room.Type.TUTORIAL:
+			scene_to_load = TUTORIAL
+	
+	parent.add_child(scene_to_load.instantiate())
 	hide_map()
 	
