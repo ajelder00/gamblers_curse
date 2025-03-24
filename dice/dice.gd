@@ -12,12 +12,14 @@ enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS,
 const ANIMS := {
 	Type.STANDARD: ["blank_standard", "roll_standard", "faces_standard"],
 	Type.RISKY: ["blank_risky", "roll_risky", "faces_risky"],
-	Type.POISON: ["blank_poison", "roll_poison", "faces_poison"]
+	Type.POISON: ["blank_poison", "roll_poison", "faces_poison"],
+	Type.HEALING: ["blank_standard", "roll_standard", "faces_standard"]
 }
 const TYPE_NAMES := {
 	Type.STANDARD: ["Standard"],
 	Type.RISKY: ["Risky"],
-	Type.POISON: ["Poison"]
+	Type.POISON: ["Poison"],
+	Type.HEALING: ["Healing"]
 }
 
 signal rolled(value: int, effect: Array)
