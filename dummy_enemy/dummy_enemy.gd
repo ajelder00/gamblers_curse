@@ -12,14 +12,14 @@ var accuracy : float = 1.0
 var coins: int = randi_range(0,10)
 
 const ANIMS := {
-	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman"],
-	Type.GOBLIN: ["attack_goblin", "damage_goblin", "dead_goblin"],
-	Type.KNIGHT: ["attack_knight", "damage_knight", "dead_knight"],
-	Type.LANCER: ["attack_lancer", "damage_lancer", "dead_lancer"],
-	Type.ORCRIDER: ["attack_orcrider", "damage_orcrider", "dead_orcrider"],
-	Type.SKELETON: ["attack_skeleton", "damage_skeleton", "dead_skeleton"],
-	Type.WIZARD: ["attack_wizard", "damage_wizard", "dead_wizard"],
-	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf"],
+	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman", "idle_axeman"],
+	Type.GOBLIN: ["attack_goblin", "damage_goblin", "dead_goblin", "idle_goblin"],
+	Type.KNIGHT: ["attack_knight", "damage_knight", "dead_knight", "idle_knight"],
+	Type.LANCER: ["attack_lancer", "damage_lancer", "dead_lancer", "idle_lancer"],
+	Type.ORCRIDER: ["attack_orcrider", "damage_orcrider", "dead_orcrider", "idle_orcrider"],
+	Type.SKELETON: ["attack_skeleton", "damage_skeleton", "dead_skeleton", "idle_skeleton"],
+	Type.WIZARD: ["attack_wizard", "damage_wizard", "dead_wizard", "idle_wizard"],
+	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf", "idle_wolf"],
 }
 
 
