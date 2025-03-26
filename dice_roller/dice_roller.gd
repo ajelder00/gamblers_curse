@@ -36,9 +36,9 @@ func new_hand():
 		die.global_position = position.global_position
 		current_dice.append(die)
 		await get_tree().create_timer(0.1).timeout
-		die.rolled.connect(on_die_rolled)
+		die.rolled.connect(_on_die_rolled)
 
-func on_die_rolled(damage_packet: Damage):
+func _on_die_rolled(damage_packet: Damage):
 	current_rolls -= 1
 	current_results.append(damage_packet)
 	

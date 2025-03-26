@@ -14,7 +14,7 @@ var dice_effects := []
 
 signal attack_signal
 # Called when the node enters the scene tree for the first time.
-
+signal damage_over
 
 func _ready() -> void:
 	roller.turn_over.connect(_on_dice_roller_turn_over)
@@ -28,11 +28,13 @@ func _ready() -> void:
 func hit() -> Array :
 	return roller.current_results
 
-func get_hit(enemy_damage):
+func get_hit(enemy_damage: Damage):
 	sprite.play("get_hit")
 	hit_sound.play()
+	Global.player_health = max(0, Global.player_health - enemy_damage.damage_number)
+	parent.update_health_display()
 	await sprite.animation_finished
-	Global.player_health -= enemy_damage[0]
+
 	if Global.player_health < 0:
 		Global.player_health = 0
 

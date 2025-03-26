@@ -22,3 +22,4 @@ res://shop/shop.tscn
 res://casino/Casino.tscn
 res://battle_scene/battle.gd
 res://dummy_enemy/dummy_enemy.tscn
+res://casino/card_game.tscn

@@ -71,6 +71,7 @@ func _setup_enemy() -> void:
 	enemy_dice.global_position = enemy_dice_marker.global_position
 	enemy_dice.z_index = 1
 	enemy_starting_health = enemy.health  # Store the actual starting health
+	enemy.connect("damage_to_player", _on_enemy_damage)
 
 
 # ------------------- Battle Flow -------------------
@@ -88,22 +89,16 @@ func _on_player_attack() -> void:
 		await enemy.damage_over
 		print("Enemy Turn Starting")
 		_enemy_turn()
-		await get_tree().create_timer(1).timeout
-
-		await get_tree().create_timer(0.6).timeout
+		await player.damage_over
 		player.get_node("Dice Roller").new_hand()
-
-		update_health_display()
 
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
 		return
-
+	await get_tree().create_timer(1).timeout
 	player_sprite.play("attack") 
 	await player_sprite.animation_finished
 	enemy.get_hit(player.hit())
-
-	update_health_display()
 
 	if enemy.health <= 0:
 		_handle_enemy_defeat()
@@ -111,9 +106,11 @@ func _player_turn() -> void:
 func _enemy_turn() -> void:
 	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
 		return
+	enemy.dice.roll_die(enemy.dice.faces)
 
-	player.get_hit(enemy.hit())
-	update_health_display()
+func _on_enemy_damage(damage_packet: Damage) -> void:
+	await get_tree().create_timer(0.5).timeout
+	player.get_hit(damage_packet)
 
 # ------------------- Defeat Handling -------------------
 
@@ -152,9 +149,6 @@ func _start_typing() -> void:
 # ------------------- Health Display -------------------
 
 func update_health_display() -> void:
-	# dummy text
-	
-	# var enemy_max_health set equal to the max range based on the enemy tier
 
 	if player_health_label:
 		player_health_label.text = str(Global.player_health) + " HP"
