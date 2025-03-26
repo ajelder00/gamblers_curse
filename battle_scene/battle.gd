@@ -89,8 +89,6 @@ func _on_player_attack() -> void:
 		await enemy.damage_over
 		print("Enemy Turn Starting")
 		_enemy_turn()
-		await player.damage_over
-		player.get_node("Dice Roller").new_hand()
 
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
@@ -106,7 +104,11 @@ func _player_turn() -> void:
 func _enemy_turn() -> void:
 	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
 		return
-	enemy.dice.roll_die(enemy.dice.faces)
+	for i in range(3):
+		enemy.dice.roll_die(enemy.dice.faces)
+		await get_tree().create_timer(3).timeout #Im currently trying to make it so each attack waits til the other is done to do the next
+	player.get_node("Dice Roller").new_hand()
+
 
 func _on_enemy_damage(damage_packet: Damage) -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -157,7 +159,6 @@ func update_health_display() -> void:
 
 	# Ensure the health bar size updates properly
 	if enemy_health_bar and enemy:
-		print("Updating health display")
 		var health_ratio = float(enemy.health) / float(enemy_starting_health)
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size
