@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b81skn0wrv7ms"
+path="res://.godot/imported/05 Bustling Town LOOP.wav-75919302f9e6188e6eb56adae16dbb23.sample"
+
+[deps]
+
+source_file="res://music/05 Bustling Town LOOP.wav"
+dest_files=["res://.godot/imported/05 Bustling Town LOOP.wav-75919302f9e6188e6eb56adae16dbb23.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

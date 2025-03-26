@@ -5,8 +5,19 @@ extends Node2D
 @onready var label_coins: Label = $LabelCoins
 @onready var bet_amount: SpinBox = $HBoxContainer/BetAmount
 @onready var deal_button: Button = $DealButton
+@onready var display: Label = $"Display Label"
 
 var card_textures = {}
+var typing_speed = 0.005 # seconds between characters
+
+
+var messages = [
+	"Player, welcome to the Casino!\n
+	Here we play a simple card game, where you draw from a deck of 13 cards.\n 
+	Your card must beat the dealer's in order to win!\n 
+	If your card is higher, you win 2 times your bet, otherwise you lose your money!\n
+	You have a maximum of 5 turns to win as much money as you can!"
+]
 
 var player_card_value = 0
 var dealer_card_value = 0
@@ -14,9 +25,24 @@ var turns_taken = 0
 var max_turns = 5
 
 func _ready():
-	_update_coin_label()
 	randomize()
 	load_cards()
+	display_messages()
+	_update_coin_label()
+
+
+func display_messages():
+	for message in messages:
+		await type_text(message)
+		await get_tree().create_timer(3.0).timeout  # Pause between messages
+
+func type_text(message: String):
+	var current_text = ""
+	display.text = current_text
+	for character in message:
+		current_text += character
+		display.text = current_text
+		await get_tree().create_timer(typing_speed).timeout
 
 func _update_coin_label() -> void:
 	label_coins.text = "You currently have coins: %d" % Global.coins
@@ -105,3 +131,6 @@ func clear_table():
 	for child in get_children():
 		if child is Sprite2D:
 			child.queue_free()
+			
+
+		
