@@ -5,11 +5,13 @@ class_name DummyEnemy
 var health: int = 50
 var tier_multiplier: int 
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
-var damage : int
+var damage
 var self_statuses := []
 var statuses_to_apply := []
 var accuracy : float = 1.0
 var coins: int = randi_range(0,10)
+
+signal damage_over
 
 const ANIMS := {
 	Type.AXEMAN: ["attack_axeman", "damage_axeman", "dead_axeman", "idle_axeman"],
@@ -22,12 +24,11 @@ const ANIMS := {
 	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf", "idle_wolf"],
 }
 
-
-
 # --- References to Nodes ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dice: Node = $Dice
 @onready var dice_button: Button = $Dice/Button
+@onready var parent = get_parent()
 
 # Sound variables
 @onready var attack_sound = AudioStreamPlayer.new()
@@ -67,23 +68,36 @@ func hit() -> Array:
 		return [0, 0]  # TODO: add into the battle text a thing ab how the enemy missed cause blind
 
 # --- Enemy Takes Damage ---
-func get_hit(damage_status: Array) -> void:
-	for effect in damage_status[1]:
-		self_statuses.append(effect)
+func get_hit(damage_packet_list: Array) -> void:
+	for packet in damage_packet_list:
+		if packet.status != Global.Status.NOTHING:
+			if len(self_statuses) < 3:
+				self_statuses.append([packet.status, packet.duration])
+				print("Appended " + str(packet.status) + " to enemy")
+			elif len(self_statuses) >= 3:
+				print("Erased " + str(self_statuses[0]) + " from enemy statuses")
+				self_statuses.pop_front()
+				self_statuses.append([packet.status, packet.duration])
+				print("And appended " + str(packet.status))
+		if not packet.damage_number == 0:
+			sprite.animation = ANIMS[type][1]
+			sprite.play()
+			health = max(0, health - packet.damage_number)
+			parent.update_health_display() # applies damage and prevents negative health
+			await sprite.animation_finished
+			sprite.animation = ANIMS[type][3]
+	await get_tree().create_timer(1).timeout
 	apply_status_self(self_statuses) # TODO: Update each effect for an animation/sprite
 	
-	health = max(0, health - damage_status[0])  # Prevent negative health
+	
 
 
 # --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
 func initialize_enemy() -> void:
 	pass
 
-
-func _on_dice_rolled(value, status_effect):
-	damage = value
-	if status_effect:
-		statuses_to_apply.append(status_effect)
+func _on_dice_rolled(damage_packet: Damage):
+	damage = damage_packet.damage_number
 	
 func apply_status_self(effect_names) -> void:
 	for effect in effect_names:
@@ -94,6 +108,10 @@ func apply_status_self(effect_names) -> void:
 					print("Poisened for " + str(Global.POISON_DAMAGE) + " Damage")
 					effect[1] -= 1
 					sprite.modulate = Color(0, 1, 0)
+					sprite.animation = ANIMS[type][1]
+					sprite.play()
+					await sprite.animation_finished
+					sprite.animation = ANIMS[type][3]
 				elif effect[1] <= 0:
 					self_statuses.erase(effect)
 					sprite.modulate = Color(1, 1, 1)
@@ -104,3 +122,6 @@ func apply_status_self(effect_names) -> void:
 					effect[1] -= 1
 				elif effect[1] <= 0:
 					accuracy = 1.0
+	await get_tree().create_timer(1).timeout
+	damage_over.emit()
+	print("damage_over emitted")

@@ -9,9 +9,9 @@ func _ready() -> void:
 func roll_die(faces) -> void:
 	side = randi_range(1, faces)
 	if side < 6:
-		rolling_animation(0)
-		result = 0
+		var dmg = Damage.create(0, status_effect, duration, type)
+		rolling_animation(dmg)
 	else:
-		rolling_animation(21)
-		result = 21
+		var dmg = Damage.create(21, status_effect, duration, type)
+		rolling_animation(dmg)
 	

@@ -1,5 +1,4 @@
 extends Dice
-var side := 0
 
 func _ready():
 	type = Dice.Type.HEALING
@@ -7,9 +6,10 @@ func _ready():
 	super._ready()
 
 func roll_die(faces) -> void:
-	side = randi_range(1, faces)
-	rolling_animation(side)
-	Global.player_health += side
+	result = randi_range(1, faces)
+	var dmg = Damage.create(0, status_effect, duration, type)
+	rolling_animation(dmg)
+	Global.player_health += result
 	if Global.player_health > 100:
 		Global.player_health = 100
 	result = 0

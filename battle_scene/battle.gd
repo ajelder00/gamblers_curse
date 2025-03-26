@@ -8,8 +8,7 @@ var player
 var player_sprite
 var enemy
 var enemy_sprite
-var enemy_animation_names
-var enemy_starting_health: float  # Store the enemy's starting health
+var enemy_starting_health  # Store the enemy's starting health
 
 var messages: Array = [
 	"> A WILD DUNGEON GOBLIN APPEARED!",
@@ -31,7 +30,7 @@ func _ready() -> void:
 	_setup_player()
 	_setup_enemy()
 	_start_battle()
-	_update_health_display()
+	update_health_display()
 
 func _process(_delta: float) -> void:
 	pass
@@ -71,15 +70,8 @@ func _setup_enemy() -> void:
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
 	enemy_dice.z_index = 1
-	
-	# Ensure the enemy has the necessary properties
-	if enemy.has_method("hit") and enemy.has_method("get_hit") and enemy.has_meta("health"):
-		enemy.health = enemy.get_meta("health")  # Get initial health from enemy metadata
-		enemy_starting_health = enemy.health  # Store the actual starting health
+	enemy_starting_health = enemy.health  # Store the actual starting health
 
-	# Setting up animation names
-	if "ANIMS" in enemy and "type" in enemy:
-		enemy_animation_names = enemy.ANIMS[enemy.type]
 
 # ------------------- Battle Flow -------------------
 
@@ -88,30 +80,30 @@ func _start_battle() -> void:
 		roll_message_label.visible = true
 		roll_message_label.text = ""
 		_start_typing()
-	_update_health_display()
+	update_health_display()
 
 func _on_player_attack() -> void:
 	if Global.player_health > 0 and enemy and enemy.health > 0:
 		_player_turn()
-		await get_tree().create_timer(1).timeout
+		await enemy.damage_over
+		print("Enemy Turn Starting")
 		_enemy_turn()
 		await get_tree().create_timer(1).timeout
 
 		await get_tree().create_timer(0.6).timeout
 		player.get_node("Dice Roller").new_hand()
 
-		_update_health_display()
+		update_health_display()
 
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
 		return
 
-	player_sprite.play("attack")
-	enemy_sprite.play(enemy_animation_names[1])  # Enemy hit animation
+	player_sprite.play("attack") 
 	await player_sprite.animation_finished
 	enemy.get_hit(player.hit())
 
-	_update_health_display()
+	update_health_display()
 
 	if enemy.health <= 0:
 		_handle_enemy_defeat()
@@ -121,7 +113,7 @@ func _enemy_turn() -> void:
 		return
 
 	player.get_hit(enemy.hit())
-	_update_health_display()
+	update_health_display()
 
 # ------------------- Defeat Handling -------------------
 
@@ -159,7 +151,7 @@ func _start_typing() -> void:
 
 # ------------------- Health Display -------------------
 
-func _update_health_display() -> void:
+func update_health_display() -> void:
 	# dummy text
 	
 	# var enemy_max_health set equal to the max range based on the enemy tier
@@ -171,6 +163,7 @@ func _update_health_display() -> void:
 
 	# Ensure the health bar size updates properly
 	if enemy_health_bar and enemy:
-		var health_ratio = enemy.health / 200.0
+		print("Updating health display")
+		var health_ratio = float(enemy.health) / float(enemy_starting_health)
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size

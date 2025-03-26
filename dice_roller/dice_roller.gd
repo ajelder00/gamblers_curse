@@ -8,13 +8,9 @@ signal turn_over
 @onready var positions := [$StartPosition1, $StartPosition2, $StartPosition3, $StartPosition4, $StartPosition5]
 @onready var parent = get_parent()
 var current_dice = []
-var current_results
-var turn_total
+var current_results := []
 
 func _ready():
-	turn_total = 0
-	current_results = []
-	
 	# Grabs the positions from the battle scene
 	if self.get_parent().get_parent():
 		var battle = self.get_parent().get_parent()
@@ -25,14 +21,13 @@ func _ready():
 	new_hand()
 	
 func new_hand():
-	if parent is Node2D:
-		parent.dice_effects = []
 	current_dice = []
+	current_results = []
+	current_rolls = ORIGINAL_ROLLS
 	for child in get_children():
 		if child is Dice:
 			child.queue_free()
-	current_rolls = ORIGINAL_ROLLS
-	turn_total = 0
+
 	for position in positions:
 		# instantiate dice node
 		var index = randi_range(0, len(dice_bucket)-1)
@@ -43,13 +38,11 @@ func new_hand():
 		await get_tree().create_timer(0.1).timeout
 		die.rolled.connect(on_die_rolled)
 
-func on_die_rolled(roll_amount: int, effect: Array):
+func on_die_rolled(damage_packet: Damage):
 	current_rolls -= 1
-	turn_total += roll_amount
-	if parent is Node2D:
-		parent.dice_effects.append(effect)
+	current_results.append(damage_packet)
 	
-	print("Turn total:" + str(turn_total))
+	print("Roll stats: damage:" + str(damage_packet.damage_number) + " type: " + str(damage_packet.type) + " duration: " + str(damage_packet.duration))
 	if current_rolls == 0:
 		for die in current_dice:
 			die.get_node("Button").hide()

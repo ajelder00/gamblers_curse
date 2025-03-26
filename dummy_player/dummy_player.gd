@@ -26,8 +26,7 @@ func _ready() -> void:
 	hit_sound.stream = hit_sound_path
 
 func hit() -> Array :
-	var damage = roller.turn_total
-	return [damage, dice_effects]
+	return roller.current_results
 
 func get_hit(enemy_damage):
 	sprite.play("get_hit")

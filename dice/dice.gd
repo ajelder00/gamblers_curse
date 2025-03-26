@@ -2,7 +2,7 @@ class_name Dice
 extends Node2D
 
 var result
-var status_effect = [Global.Status.NOTHING, duration]
+var status_effect := Global.Status.NOTHING
 
 enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
 	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
@@ -22,7 +22,7 @@ const TYPE_NAMES := {
 	Type.HEALING: ["Healing"]
 }
 
-signal rolled(value: int, effect: Array)
+signal rolled(damage_packet: Damage)
 
 var type: Type = Type.STANDARD
 var original_scale = scale
@@ -56,17 +56,18 @@ func _on_button_pressed() -> void:
 
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)
-	rolling_animation(result)
+	var dmg = Damage.create(result, status_effect, duration, type)
+	rolling_animation(dmg)
 
 func rolling_animation(roll) -> void:
-	print("Rolled a " + str(roll))
-	emit_signal("rolled", roll, status_effect)
+	print("Rolled a " + str(roll.damage_number))
+	emit_signal("rolled", roll)
 	animation_player.animation = ANIMS[type][1]
 	animation_player.play()
 	await animation_player.animation_finished
 	animation_player.stop()
 	animation_player.animation = ANIMS[type][2]
-	animation_player.frame = roll - 1
+	animation_player.frame = roll.damage_number - 1
 
 # Show the label with dice name when mouse enters button
 func _on_button_mouse_entered() -> void:

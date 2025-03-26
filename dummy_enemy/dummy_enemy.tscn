@@ -1401,7 +1401,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"idle_wolf"
+animation = &"damage_goblin"
 
 [node name="Dice" parent="." instance=ExtResource("3_nxqwa")]
 position = Vector2(-165, 10)

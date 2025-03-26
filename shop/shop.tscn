@@ -7184,6 +7184,7 @@ texture = ExtResource("5_7x8t5")
 sources/1 = SubResource("TileSetAtlasSource_sb47g")
 
 [sub_resource type="SystemFont" id="SystemFont_pyajt"]
+subpixel_positioning = 0
 
 [sub_resource type="Animation" id="Animation_suhwe"]
 length = 0.001
