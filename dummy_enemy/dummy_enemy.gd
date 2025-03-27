@@ -50,6 +50,7 @@ var dice_button: Button = null
 @onready var hit_sound = AudioStreamPlayer.new()
 @onready var hit_sound_path = load("res://dummy_enemy/dummy_enemy_sounds/21_orc_damage_1.wav")
 
+#things that change
 var type: Type = Type.GOBLIN
 var immunities : Array = []
 var turns : int = 1
