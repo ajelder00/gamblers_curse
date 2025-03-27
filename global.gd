@@ -5,6 +5,8 @@ var risky = load("res://dice/risky/risky_dice.tscn")
 var poison = load("res://dice/poison/poison_dice.tscn")
 var healing = load("res://dice/healing/healing_dice.tscn")
 
+signal player_healed(heal_amount)
+
 var coins := 10
 var dummy_dice: Array = [standard, risky, poison, healing]
 var dice : Array
@@ -24,3 +26,7 @@ func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	
 func spend(spent) -> void:
 	coins -= spent
+
+func heal(health) -> void:
+	Global.player_health = min(Global.player_health + health, 100)
+	player_healed.emit(health)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqj4i75p1x8ni"]
+[gd_scene load_steps=21 format=3 uid="uid://d0wunemhtsia8"]
 
 [ext_resource type="Script" path="res://casino/casino.gd" id="1_hjk5i"]
 [ext_resource type="Texture2D" uid="uid://4up8mqgqnhow" path="res://art/CasinoTileset.png" id="2_le5d3"]

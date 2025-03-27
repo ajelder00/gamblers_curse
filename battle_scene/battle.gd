@@ -20,6 +20,7 @@ var roll_message_label: Label
 var player_health_label: Label
 var enemy_health_label: Label  
 var enemy_health_bar: ColorRect  # This will now be set in _get_ui_elements()
+var enemy_name: Label
 
 const MAX_HEALTH_BAR_WIDTH: float = 308.0
 
@@ -27,7 +28,6 @@ func _ready() -> void:
 	_get_ui_elements()
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()
-	_setup_player()
 	_setup_enemy()
 	_start_battle()
 	update_health_display()
@@ -42,6 +42,7 @@ func _get_ui_elements() -> void:
 	player_health_label = $'PlayerHealthNum'
 	enemy_health_label = $'MonsterHealthNum'
 	enemy_health_bar = $'EnemyHealth'  # <-- Now correctly fetching "EnemyHealth" (ColorRect)
+	enemy_name = $'MonsterName'
 
 func _initialize_combatants() -> void:
 	player = player_template.instantiate()
@@ -58,14 +59,11 @@ func _initialize_combatants() -> void:
 	if player.has_signal("attack_signal"):
 		player.attack_signal.connect(_on_player_attack)
 
-# ------------------- Player Setup -------------------
-
-func _setup_player() -> void:
-	player_sprite.animation = "attack"
 
 # ------------------- Enemy Setup -------------------
 
 func _setup_enemy() -> void:
+	enemy_name.text = enemy.NAMES[enemy.type]
 	var enemy_dice = enemy.get_node("Dice") 
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
@@ -89,8 +87,6 @@ func _on_player_attack() -> void:
 		await enemy.damage_over
 		print("Enemy Turn Starting")
 		_enemy_turn()
-		await player.damage_over
-		player.get_node("Dice Roller").new_hand()
 
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
@@ -98,6 +94,7 @@ func _player_turn() -> void:
 	await get_tree().create_timer(1).timeout
 	player_sprite.play("attack") 
 	await player_sprite.animation_finished
+	player_sprite.play("idle")
 	enemy.get_hit(player.hit())
 
 	if enemy.health <= 0:
@@ -106,7 +103,11 @@ func _player_turn() -> void:
 func _enemy_turn() -> void:
 	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
 		return
-	enemy.dice.roll_die(enemy.dice.faces)
+	for i in range(enemy.turns):
+		enemy.dice.roll_die(enemy.dice.faces)
+		await get_tree().create_timer(3).timeout #Im currently trying to make it so each attack waits til the other is done to do the next
+	player.get_node("Dice Roller").new_hand()
+
 
 func _on_enemy_damage(damage_packet: Damage) -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -157,7 +158,6 @@ func update_health_display() -> void:
 
 	# Ensure the health bar size updates properly
 	if enemy_health_bar and enemy:
-		print("Updating health display")
 		var health_ratio = float(enemy.health) / float(enemy_starting_health)
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size

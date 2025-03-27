@@ -740,7 +740,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4sdqk")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_axeman",
 "speed": 5.0
 }, {
@@ -789,7 +789,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4wdev")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_knight",
 "speed": 5.0
 }, {
@@ -818,7 +818,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c3d2j")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_lancer",
 "speed": 5.0
 }, {
@@ -850,7 +850,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jbrqa")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_orcrider",
 "speed": 5.0
 }, {
@@ -873,7 +873,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abb05")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_skeleton",
 "speed": 5.0
 }, {
@@ -896,7 +896,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n7bqx")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_wizard",
 "speed": 5.0
 }, {
@@ -928,7 +928,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kxqg2")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_wolf",
 "speed": 5.0
 }, {
@@ -945,7 +945,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b2rsn")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_axeman",
 "speed": 5.0
 }, {
@@ -982,7 +982,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o0nmp")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_knight",
 "speed": 5.0
 }, {
@@ -999,7 +999,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aii2d")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_lancer",
 "speed": 5.0
 }, {
@@ -1016,7 +1016,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x47jy")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_orcrider",
 "speed": 5.0
 }, {
@@ -1033,7 +1033,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nbry4")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_skeleton",
 "speed": 5.0
 }, {
@@ -1050,7 +1050,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_isbdy")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_wizard",
 "speed": 5.0
 }, {
@@ -1067,7 +1067,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0rsp7")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_wolf",
 "speed": 5.0
 }, {
@@ -1084,7 +1084,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b2rsn")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_axeman",
 "speed": 5.0
 }, {
@@ -1118,7 +1118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jjstt")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_knight",
 "speed": 5.0
 }, {
@@ -1135,7 +1135,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qa5fm")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_lancer",
 "speed": 5.0
 }, {
@@ -1152,7 +1152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s85rn")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_orcrider",
 "speed": 5.0
 }, {
@@ -1169,7 +1169,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xp0w2")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_skeleton",
 "speed": 5.0
 }, {
@@ -1186,7 +1186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4rjyr")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_wizard",
 "speed": 5.0
 }, {
@@ -1203,7 +1203,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dg1ur")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_wolf",
 "speed": 5.0
 }, {
@@ -1401,7 +1401,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"damage_goblin"
+animation = &"idle_lancer"
 
 [node name="Dice" parent="." instance=ExtResource("3_nxqwa")]
 position = Vector2(-165, 10)

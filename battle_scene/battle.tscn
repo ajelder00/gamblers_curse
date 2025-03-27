@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_bjksa"]
 [ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="2_xrc03"]
-[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_ls7fd"]
+[ext_resource type="PackedScene" uid="uid://bsqgeq53qjv6n" path="res://dummy_enemy/enemies/skeleton/skeleton.tscn" id="3_4uttb"]
 [ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_4c6ya"]
 [ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_c574w"]
 
@@ -12,7 +12,7 @@ z_index = 5
 z_as_relative = false
 script = ExtResource("1")
 player_template = ExtResource("2_bjksa")
-enemy_template = ExtResource("3_ls7fd")
+enemy_template = ExtResource("3_4uttb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(585, 330)
