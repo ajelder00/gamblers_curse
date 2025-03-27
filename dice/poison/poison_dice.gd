@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)
-	var dmg = Damage.create(result, status_effect, result, type)
+	var dmg = Damage.create(result, status_effect, result, type, (result/faces))
 	rolling_animation(dmg)

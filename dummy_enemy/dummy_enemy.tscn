@@ -1418,7 +1418,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"damage_knight"
+animation = &"dead_knight"
+frame = 3
+frame_progress = 1.0
 
 [node name="StatusIndicator1" type="Sprite2D" parent="."]
 position = Vector2(10, -147)

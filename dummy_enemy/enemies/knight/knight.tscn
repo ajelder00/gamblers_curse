@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhx6dop1uftj7"]
+
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="1_j8vtu"]
+[ext_resource type="Script" path="res://dummy_enemy/enemies/knight/knight.gd" id="2_6ksju"]
+[ext_resource type="PackedScene" uid="uid://65qg2jms12ux" path="res://dice/curse/curse_dice.tscn" id="3_c8ut7"]
+
+[node name="dummy_enemy" instance=ExtResource("1_j8vtu")]
+script = ExtResource("2_6ksju")
+
+[node name="Dice" parent="." index="4" instance=ExtResource("3_c8ut7")]

@@ -96,7 +96,7 @@ func move_player_in() -> void:
 	tween.tween_property(player, "global_position:x", 200, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _setup_enemy() -> void:
-	var enemy_dice = enemy.get_node("Dice") 
+	var enemy_dice = enemy.dice
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
 	enemy_dice.z_index = 1

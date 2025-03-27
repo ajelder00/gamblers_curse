@@ -42,15 +42,19 @@ func hit() -> Array :
 	return roller.current_results
 
 func get_hit(packet: Damage):
+	update_indicators()
 	for effect in current_effects: #Deletes any effects that ran out
 		if effect.duration == 0:
 			current_effects.erase(effect)
+			update_indicators()
 	sprite.play("get_hit")
-	if packet.status != Global.Status.NOTHING:
+	if packet.status != Global.Status.NOTHING and packet.accuracy >= randf_range(0,1):
 		if len(current_effects) < 3: # Adds the packet to the effects list if the effects list is less than 3
 			current_effects.append(packet)
+			update_indicators()
 		elif len(current_effects) >= 3: # Handles cases where the statuses list is full alr
 			replace_status(packet)
+			update_indicators()
 	hit_sound.play()
 	if not packet.damage_number == 0:
 		Global.player_health = max(0, Global.player_health - packet.damage_number)
@@ -95,18 +99,37 @@ func floating_text(text: String, color: Color) -> void:
 
 func _on_healed(heal_amount):
 	parent.update_health_display()
-	floating_text("+" + str(heal_amount), Color.GREEN_YELLOW)
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(0.6, 1.0, 0.6), 0.5)  # Fade to light pink in 0.5s
-	tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0), 0.5)  # Fade back to original in 0.5s
+	if Global.can_heal:
+		floating_text("+" + str(heal_amount), Color.GREEN_YELLOW)
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "modulate", Color(0.6, 1.0, 0.6), 0.5)  # Fade to green in 0.5s
+		tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0), 0.5)
+	else:
+		floating_text("Cursed! -" + str(heal_amount), Color.DARK_RED)
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "modulate", Color(0.6, 0.2, 0.8), 0.5)  # Fade to purple in 0.5s
+		tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0), 0.5)
 
 func apply_status_self(effect_names) -> void:
+	update_indicators()
 	for effect in effect_names:
 		match effect.status:
-			Global.Status.POISON:
-				pass
+			Global.Status.CURSE:
+				if effect.duration > 0:
+					Global.can_heal = false
+					effect.duration -= 1
+					update_indicators()
+					floating_text("Cursed", Color.DARK_ORCHID)
+					var tween = get_tree().create_tween()
+					tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
+					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
 			Global.Status.BLINDNESS:
 				pass
+	for effect in effect_names: #Deletes any effects that ran out
+		if effect.duration == 0:
+			effect_names.erase(effect)
+			update_indicators()
+		update_indicators()
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
 	await get_tree().create_timer(1).timeout

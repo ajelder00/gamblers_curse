@@ -1,9 +1,11 @@
-res://dummy_enemy/enemies/goblin
+res://dice
+res://dice/curse
+res://dummy_enemy/enemies/knight
 res://dummy_enemy
+res://dummy_enemy/enemies/goblin
 res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman
 res://dummy_enemy/enemies/headsman
 res://dice/headsman
-res://dice
 res://dice/blinding
 res://battle_scene/tutorial
 res://dice/poison

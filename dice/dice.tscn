@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b1vwcx3yj158n"]
+[gd_scene load_steps=66 format=3 uid="uid://b1vwcx3yj158n"]
 
 [ext_resource type="Script" path="res://dice/dice.gd" id="1_mre03"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="1_od3an"]
@@ -118,6 +118,18 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_45n0t"]
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoh08"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 384, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjelm"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 384, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eru4c"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 384, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4il7"]
 atlas = ExtResource("1_od3an")
@@ -373,6 +385,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_45n0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoh08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjelm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eru4c")
 }],
 "loop": false,
 "name": &"faces_standard",
@@ -513,7 +534,7 @@ color = Color(0, 0, 0, 0.384314)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"blank_standard"
+animation = &"faces_standard"
 
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0

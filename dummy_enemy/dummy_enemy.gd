@@ -34,8 +34,8 @@ const NAMES := {
 
 # --- References to Nodes ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dice: Node = $Dice
-@onready var dice_button: Button = $Dice/Button
+var dice: Node = null
+var dice_button: Button = null
 @onready var parent = get_parent()
 @onready var indicator1 = $StatusIndicator1
 @onready var indicator2 = $StatusIndicator2
@@ -66,6 +66,7 @@ func _ready() -> void:
 		indicator.modulate.a = 0.0
 	for label in label_list:
 		label.text = ""
+	set_dice()
 	initialize_enemy()
 	setup_ui()
 	dice.rolled.connect(_on_die_rolled)
@@ -78,6 +79,9 @@ func _ready() -> void:
 	add_child(hit_sound)
 	hit_sound.stream = hit_sound_path
 
+func set_dice() -> void:
+	dice = $Dice
+	dice_button = $Dice/Button
 
 # --- Setup UI Elements ---
 func setup_ui() -> void:
@@ -112,13 +116,14 @@ func get_hit(damage_packet_list: Array) -> void:
 			floating_text("Immune!", Color.WHITE_SMOKE)
 			await get_tree().create_timer(1).timeout
 			continue
-		if packet.status != Global.Status.NOTHING:
+		if packet.status != Global.Status.NOTHING and packet.accuracy >= randf_range(0,1):
 			if len(self_statuses) < 3: # Adds the packet to the effects list if the effects list is less than 3
 				self_statuses.append(packet)
 			elif len(self_statuses) >= 3: # Handles cases where the statuses list is full alr
 				replace_status(packet)
 			update_indicators()
 		if not packet.damage_number == 0: # Only runs if theres damage to implement
+			update_indicators()
 			sprite.play(ANIMS[type][1])
 			health = max(0, health - packet.damage_number)
 			floating_text(("-" + str(packet.damage_number)), Color.DARK_RED)
@@ -171,6 +176,7 @@ func apply_status_self(effect_names) -> void:
 		await get_tree().create_timer(1).timeout
 	accuracy = affected_accuracy
 	print("accuracy: " + str(accuracy))
+	update_indicators()
 	damage_over.emit()
 
 func replace_status(new_packet: Damage) -> void:
