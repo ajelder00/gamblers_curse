@@ -22,6 +22,7 @@ var roll_message_label: Label
 var player_health_label: Label
 var enemy_health_label: Label  
 var enemy_health_bar: ColorRect  # This will now be set in _get_ui_elements()
+var enemy_health_bar2: ColorRect
 var enemy_name: Label
 
 const MAX_HEALTH_BAR_WIDTH: float = 266
@@ -44,6 +45,7 @@ func _get_ui_elements() -> void:
 	player_health_label = $'PlayerHealthNum'
 	enemy_health_label = $'MonsterHealthNum'
 	enemy_health_bar = $'EnemyHealth'  # <-- Now correctly fetching "EnemyHealth" (ColorRect)
+	enemy_health_bar2 = $'EnemyHealth2'
 	enemy_name = $'MonsterName'
 
 func _initialize_combatants() -> void:
@@ -80,6 +82,8 @@ func _start_battle() -> void:
 	if roll_message_label:
 		roll_message_label.visible = true
 		roll_message_label.text = ""
+		# Slide in the UI container before starting to type messages.
+		await slide_in_text_ui()
 		_start_typing()
 	update_health_display()
 
@@ -124,7 +128,30 @@ func _handle_enemy_defeat() -> void:
 	enemy_sprite.play(enemy.ANIMS[enemy.type][2])
 	Global.coins += enemy.coins
 	await enemy_sprite.animation_finished
+	# Slide in the text UI for the defeat messages.
+	slide_in_text_ui()
+	# Define defeat messages.
+	var defeat_messages: Array = [
+		"> CONGRATS YOU DEFEATED THE ENEMY.",
+		"> YOU EARNED 10 GOLD",
+		"> RETURNING TO MAP..."
+	]
+	# Type out the defeat messages.
+	await _start_defeat_typing(defeat_messages)
+	# Slide out the text UI.
+	slide_out_text_ui()
+	# Fade in the map after messages.
 	fade_in_map()
+
+# New function to type out defeat messages.
+func _start_defeat_typing(defeat_messages: Array) -> void:
+	for message in defeat_messages:
+		roll_message_label.text = ""
+		for i in range(message.length()):
+			roll_message_label.text += message[i]
+			await get_tree().create_timer(speed).timeout
+		# Pause briefly between messages.
+		await get_tree().create_timer(1.0).timeout
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")
@@ -144,6 +171,11 @@ func _start_typing() -> void:
 		await get_tree().create_timer(speed).timeout  
 
 	await get_tree().create_timer(1.0).timeout  
+
+	# When the "CHOOSE DICE TO ROLL..." message (index 1) has been shown, slide out the UI.
+	if message_index == 1:
+		await slide_out_text_ui()
+
 	message_index += 1
 	if message_index < messages.size():
 		roll_message_label.text = ""
@@ -163,10 +195,42 @@ func update_health_display() -> void:
 		var health_ratio = float(enemy.health) / float(enemy_starting_health)
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size
+		enemy_health_bar2.size.x = new_size
+		
+func slide_in_text_ui() -> void:
+	# TextUI remains at its target y position while Roll Message now uses 535.
+	var target_text_y = 390.48
+	var target_roll_y = 535.0
+	var text_ui = $TextUI
+	var roll_message = $"Roll Message"
+	# Set starting positions 300 pixels below each target.
+	text_ui.position = Vector2(text_ui.position.x, target_text_y + 300)
+	roll_message.position = Vector2(roll_message.position.x, target_roll_y + 300)
+	# Define target positions.
+	var target_text_position = Vector2(text_ui.position.x, target_text_y)
+	var target_roll_position = Vector2(roll_message.position.x, target_roll_y)
+	# Create a tween to slide them into place simultaneously.
+	var tween = create_tween()
+	tween.parallel().tween_property(text_ui, "position", target_text_position, 1)
+	tween.parallel().tween_property(roll_message, "position", target_roll_position, 1)
+	await tween.finished
+
+func slide_out_text_ui() -> void:
+	var text_ui = $TextUI
+	var roll_message = $"Roll Message"
+	# TextUI slides out 300 pixels down as before.
+	var target_text_position = text_ui.position + Vector2(0, 300)
+	# For Roll Message, set a fixed target y of 235.
+	var target_roll_position = Vector2(roll_message.position.x, 835)
+	# Create a tween to slide both out simultaneously.
+	var tween = create_tween()
+	tween.parallel().tween_property(text_ui, "position", target_text_position, 1)
+	tween.parallel().tween_property(roll_message, "position", target_roll_position, 1)
+	await tween.finished
 
 func fade_in_map():
 	map_rect.visible = true
 	var map_tween = create_tween()
 	map_tween.tween_property(map_rect, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	await get_tree().create_timer(1.8).timeout 
-	queue_free() 
+	queue_free()
