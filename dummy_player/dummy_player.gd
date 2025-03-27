@@ -10,11 +10,12 @@ extends Node2D
 @onready var hit_sound = AudioStreamPlayer.new()
 @onready var hit_sound_path = load("res://dummy_player/dummy_player_sounds/11_human_damage_1.wav")
 
-var dice_effects := []
+var current_effects := []
 
 signal attack_signal
 # Called when the node enters the scene tree for the first time.
-
+signal damage_over
+signal effects_over
 
 func _ready() -> void:
 	Global.connect("player_healed", _on_healed)
@@ -29,20 +30,27 @@ func _ready() -> void:
 func hit() -> Array :
 	return roller.current_results
 
-func get_hit(enemy_damage: Damage):
+func get_hit(packet: Damage):
+	for effect in current_effects: #Deletes any effects that ran out
+		if effect.duration == 0:
+			current_effects.erase(effect)
 	sprite.play("get_hit")
+	if packet.status != Global.Status.NOTHING:
+		if len(current_effects) < 3: # Adds the packet to the effects list if the effects list is less than 3
+			current_effects.append(packet)
+		elif len(current_effects) >= 3: # Handles cases where the statuses list is full alr
+			replace_status(packet)
 	hit_sound.play()
-	Global.player_health = max(0, Global.player_health - enemy_damage.damage_number)
-	parent.update_health_display()
-	await sprite.animation_finished
-	sprite.play("idle")
-
-	if Global.player_health < 0:
-		Global.player_health = 0
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	if not packet.damage_number == 0:
+		Global.player_health = max(0, Global.player_health - packet.damage_number)
+		floating_text(("-" + str(packet.damage_number)), Color.DARK_RED)
+		parent.update_health_display()
+		await sprite.animation_finished
+		sprite.play("idle")
+	else:
+		floating_text("Miss", Color.WHITE_SMOKE)
+		await get_tree().create_timer(1).timeout
+	damage_over.emit()
 
 func _on_dice_roller_turn_over() -> void:
 	attack_sound.play()
@@ -75,8 +83,35 @@ func floating_text(text: String, color: Color) -> void:
 	label.queue_free()
 
 func _on_healed(heal_amount):
+	parent.update_health_display()
 	floating_text("+" + str(heal_amount), Color.GREEN_YELLOW)
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, "modulate", Color(0.6, 1.0, 0.6), 0.5)  # Fade to light pink in 0.5s
 	tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0), 0.5)  # Fade back to original in 0.5s
-	
+
+func apply_status_self(effect_names) -> void:
+	for effect in effect_names:
+		match effect.status:
+			Global.Status.POISON:
+				pass
+			Global.Status.BLINDNESS:
+				pass
+	if effect_names != []:
+		await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1).timeout
+	effects_over.emit()
+
+
+func replace_status(new_packet: Damage) -> void:
+	var current_lowest_value = 100
+	for packet in current_effects:
+		if packet.duration < current_lowest_value:
+			current_lowest_value = packet.duration
+	for packet in current_effects:
+		if (packet.status == new_packet.status) and (packet.duration == current_lowest_value) and (packet.duration <= new_packet.duration):
+			packet.duration = new_packet.duration
+			packet.damage_number = new_packet.damage_number
+			break
+		elif (packet.duration == current_lowest_value) and (packet.status != new_packet.status):
+			current_effects.erase(packet)
+			current_effects.append(new_packet)

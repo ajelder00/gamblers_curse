@@ -2,15 +2,14 @@ extends Node2D
 class_name DummyEnemy  
 
 # --- Enemy Properties ---
-var health: int = 50
 var tier_multiplier: int 
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
 var damage
 var self_statuses := []
 var statuses_to_apply := []
-var accuracy : float = 1.0
+var base_accuracy : float = 1.0
 var coins: int = randi_range(0,10)
-
+var accuracy = base_accuracy
 
 signal damage_over
 signal damage_to_player(damage_packet: Damage)
@@ -49,9 +48,12 @@ const NAMES := {
 @onready var hit_sound = AudioStreamPlayer.new()
 @onready var hit_sound_path = load("res://dummy_enemy/dummy_enemy_sounds/21_orc_damage_1.wav")
 
-@export var type: Type = Type.GOBLIN
-@export var immunities : Array = []
-@export var turns : int = 1
+var type: Type = Type.GOBLIN
+var immunities : Array = []
+var turns : int = 1
+var health : int = 50
+var tier : int = 1
+
 # --- Initialization ---
 func _ready() -> void:
 	initialize_enemy()
@@ -104,14 +106,11 @@ func get_hit(damage_packet_list: Array) -> void:
 			floating_text("Immune!", Color.WHITE_SMOKE)
 			await get_tree().create_timer(1).timeout
 			continue
-
 		if packet.status != Global.Status.NOTHING:
 			if len(self_statuses) < 3: # Adds the packet to the effects list if the effects list is less than 3
 				self_statuses.append(packet)
-
 			elif len(self_statuses) >= 3: # Handles cases where the statuses list is full alr
 				replace_status(packet)
-
 		if not packet.damage_number == 0: # Only runs if theres damage to implement
 			sprite.play(ANIMS[type][1])
 			health = max(0, health - packet.damage_number)
@@ -119,36 +118,42 @@ func get_hit(damage_packet_list: Array) -> void:
 			parent.update_health_display() # applies damage and prevents negative health
 			await sprite.animation_finished
 			sprite.play(ANIMS[type][3])
+		else:
+			floating_text("Miss", Color.WHITE_SMOKE)
+			await get_tree().create_timer(1).timeout
 	await get_tree().create_timer(1).timeout
 	apply_status_self(self_statuses) # TODO: Update each effect for an animation/sprite
 
 
 
 func apply_status_self(effect_names) -> void:
-	if len(effect_names) == 3:
-		print(str(effect_names[0].duration) + str(effect_names[1].duration) + str(effect_names[2].duration))
+	var affected_accuracy = base_accuracy
 	for effect in effect_names:
 		match effect.status:
 			Global.Status.POISON:
 				if effect.duration > 0: # The dice returns effect[type, duration], so effect[1] is duration
-					health = max(0, health - Global.POISON_DAMAGE)
+					health = max(0, health - effect.damage_number)
+					floating_text(("-" + str(effect.damage_number)), Color.GREEN)
 					parent.update_health_display()
 					effect.duration -= 1
 					sprite.modulate = Color(0, 1, 0)
-					sprite.animation = ANIMS[type][1]
-					sprite.play()
+					sprite.play(ANIMS[type][1])
 					await sprite.animation_finished
 					sprite.play(ANIMS[type][3])
 					sprite.modulate = Color(1, 1, 1)
 
 			Global.Status.BLINDNESS:
-				if effect[1] > 0:
-					accuracy = 0.5
-					effect[1] -= 1
-				elif effect[1] <= 0:
-					accuracy = 1.0
+				if effect.duration > 0:
+					var tween = get_tree().create_tween()
+					tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
+					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
+					affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
+					print(affected_accuracy)
+					effect.duration -= 1
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
+	accuracy = affected_accuracy
+	print("accuracy: " + str(accuracy))
 	damage_over.emit()
 
 func replace_status(new_packet: Damage) -> void:

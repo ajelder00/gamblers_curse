@@ -4,13 +4,14 @@ var standard = load("res://dice/standard/standard_dice.tscn")
 var risky = load("res://dice/risky/risky_dice.tscn")
 var poison = load("res://dice/poison/poison_dice.tscn")
 var healing = load("res://dice/healing/healing_dice.tscn")
+var blinding = load("res://dice/blinding/blinding_dice.tscn")
 
 signal player_healed(heal_amount)
 
 var coins := 10
-var dummy_dice: Array = [standard, risky, poison, healing]
+var dummy_dice: Array = [standard, risky, poison, healing, blinding]
+
 var dice : Array
-const POISON_DAMAGE = 3
 enum Status{NOTHING, POISON, BLINDNESS, SHIELD}
 
 ## shop inventory to initialize all the dice

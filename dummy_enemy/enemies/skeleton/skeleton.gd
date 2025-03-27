@@ -7,4 +7,5 @@ func _ready() -> void:
 	immunities = [Dice.Type.POISON]
 	turns = 2
 	health = 40
+	tier = 1
 	super._ready()

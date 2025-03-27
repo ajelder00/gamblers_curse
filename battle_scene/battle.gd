@@ -1,5 +1,7 @@
 extends Node
 
+@onready var map_rect = $Map
+
 @export var speed: float = 0.05  # Time delay between letters
 @export var player_template: PackedScene
 @export var enemy_template: PackedScene
@@ -97,15 +99,18 @@ func _player_turn() -> void:
 	player_sprite.play("idle")
 	enemy.get_hit(player.hit())
 
-	if enemy.health <= 0:
-		_handle_enemy_defeat()
-
 func _enemy_turn() -> void:
+	if enemy.health <= 0:
+		print("Enemy has died!")
+		_handle_enemy_defeat()
+		pass
 	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
 		return
 	for i in range(enemy.turns):
 		enemy.dice.roll_die(enemy.dice.faces)
-		await get_tree().create_timer(3).timeout #Im currently trying to make it so each attack waits til the other is done to do the next
+		await player.damage_over
+	player.apply_status_self(player.current_effects)
+	await player.effects_over
 	player.get_node("Dice Roller").new_hand()
 
 
@@ -116,13 +121,10 @@ func _on_enemy_damage(damage_packet: Damage) -> void:
 # ------------------- Defeat Handling -------------------
 
 func _handle_enemy_defeat() -> void:
-	if enemy:
-		enemy_sprite.play("dead")
-		Global.coins += enemy.coins
-		enemy.queue_free()
-		enemy = null  # Prevent further access
-		await get_tree().create_timer(1).timeout
-		queue_free()
+	enemy_sprite.play(enemy.ANIMS[enemy.type][2])
+	Global.coins += enemy.coins
+	await enemy_sprite.animation_finished
+	fade_in_map()
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")
@@ -161,3 +163,10 @@ func update_health_display() -> void:
 		var health_ratio = float(enemy.health) / float(enemy_starting_health)
 		var new_size = health_ratio * MAX_HEALTH_BAR_WIDTH
 		enemy_health_bar.size.x = new_size
+
+func fade_in_map():
+	map_rect.visible = true
+	var map_tween = create_tween()
+	map_tween.tween_property(map_rect, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_LINEAR)
+	await get_tree().create_timer(1.8).timeout 
+	queue_free() 
