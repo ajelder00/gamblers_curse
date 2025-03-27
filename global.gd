@@ -1,10 +1,10 @@
 extends Node
 
-var standard = load("res://dice/standard/standard_dice.tscn")
-var risky = load("res://dice/risky/risky_dice.tscn")
-var poison = load("res://dice/poison/poison_dice.tscn")
-var healing = load("res://dice/healing/healing_dice.tscn")
-var blinding = load("res://dice/blinding/blinding_dice.tscn")
+var standard := load("res://dice/standard/standard_dice.tscn")
+var risky := load("res://dice/risky/risky_dice.tscn")
+var poison := load("res://dice/poison/poison_dice.tscn")
+var healing := load("res://dice/healing/healing_dice.tscn")
+var blinding := load("res://dice/blinding/blinding_dice.tscn")
 
 signal player_healed(heal_amount)
 
@@ -13,7 +13,7 @@ var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 var dice : Array
 var can_heal : bool = true
 
-var difficulty: int = 0
+var difficulty: int = 5
 
 enum Status{NOTHING, POISON, BLINDNESS, SHIELD, CURSE}
 

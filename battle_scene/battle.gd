@@ -5,7 +5,19 @@ extends Node
 
 @export var speed: float = 0.05  # Time delay between letters
 @export var player_template: PackedScene
-@export var enemy_template: PackedScene
+
+var enemy_template
+
+var goblin := preload("res://dummy_enemy/enemies/goblin/goblin.tscn")
+var headsman := preload("res://dummy_enemy/enemies/headsman/headsman.tscn")
+var skeleton := preload("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
+var knight := preload("res://dummy_enemy/enemies/knight/knight.tscn")
+
+var enemies_by_tier = {
+	1: [goblin, skeleton],
+	2: [knight],
+	3: [headsman]
+}
 
 var player
 var player_sprite
@@ -32,7 +44,7 @@ const MAX_HEALTH_BAR_WIDTH: float = 266
 var diceopedia_target_position: Vector2
 
 func _ready() -> void:
-
+	enemy_template = pick_enemy(Global.difficulty)
 	_get_ui_elements()
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()
@@ -49,7 +61,23 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-# ------------------- UI Setup -------------------
+func pick_tier(difficulty: int) -> int:
+	var tier1_weight = max(0.0, 1.2 - (difficulty * 0.2))  
+	var tier3_weight = max(0.0, ((difficulty - 5) * 0.2))  
+	var tier2_weight = 1.0 - (tier1_weight + tier3_weight)  
+
+	var roll = randf()
+	
+	if roll < tier1_weight:
+		return 1
+	elif roll < tier1_weight + tier2_weight:
+		return 2
+	else:
+		return 3
+
+func pick_enemy(difficulty: int):
+	var tier = pick_tier(difficulty)
+	return enemies_by_tier[tier].pick_random()
 
 func _get_ui_elements() -> void:
 	roll_message_label = $'Roll Message'  

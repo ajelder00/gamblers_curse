@@ -28,3 +28,4 @@ res://dice/risky/risky_dice.tscn
 res://dice/poison/poison_dice.tscn
 res://dummy_enemy/enemies/headsman/headsman.tscn
 res://battle_scene/tutorial/tutorial_battle.gd
+res://battle_scene/battle.gd
