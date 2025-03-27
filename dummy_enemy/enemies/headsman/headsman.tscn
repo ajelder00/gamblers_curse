@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds8egsjw210jq"]
+
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="1_ynx0s"]
+[ext_resource type="Script" path="res://dummy_enemy/enemies/headsman/headsman.gd" id="2_8oj8u"]
+[ext_resource type="PackedScene" uid="uid://da8yj64ir10bv" path="res://dice/headsman/headsman_dice.tscn" id="3_ed5ln"]
+
+[node name="dummy_enemy" instance=ExtResource("1_ynx0s")]
+script = ExtResource("2_8oj8u")
+
+[node name="Dice" parent="." index="4" instance=ExtResource("3_ed5ln")]

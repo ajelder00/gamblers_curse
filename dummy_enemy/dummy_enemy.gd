@@ -5,8 +5,6 @@ class_name DummyEnemy
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
 var damage
 var self_statuses := []
-var base_accuracy : float = 1.0
-var coins: int = randi_range(0,10)
 var accuracy = base_accuracy
 
 signal damage_over
@@ -57,6 +55,8 @@ var immunities : Array = []
 var turns : int = 1
 var health : int = 50
 var tier : int = 1
+var coins: int = int(randi_range(0,10)*randf_range(tier,tier + 1))
+var base_accuracy : float = 1.0
 
 # --- Initialization ---
 func _ready() -> void:

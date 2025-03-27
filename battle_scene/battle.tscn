@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_bjksa"]
-[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_um61v"]
+[ext_resource type="PackedScene" uid="uid://ds8egsjw210jq" path="res://dummy_enemy/enemies/headsman/headsman.tscn" id="3_r3a52"]
 [ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="4_vkap7"]
 [ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="5_00xd6"]
 [ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_c574w"]
@@ -17,7 +17,7 @@ z_index = 5
 z_as_relative = false
 script = ExtResource("1")
 player_template = ExtResource("2_bjksa")
-enemy_template = ExtResource("3_um61v")
+enemy_template = ExtResource("3_r3a52")
 
 [node name="MonsterName" type="Label" parent="."]
 offset_left = 97.0

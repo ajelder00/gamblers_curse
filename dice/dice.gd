@@ -40,6 +40,7 @@ var original_scale = scale
 @onready var name_label = $NameLabel  # Reference to the Label node you want to show/hide
 
 func _ready():
+	var animation_player := $AnimatedSprite2D
 	animation_player.animation = ANIMS[type][0]
 	button.self_modulate.a = 0 
 	result = 0

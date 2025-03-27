@@ -27,3 +27,9 @@ res://dice/blinding/blinding_dice.tscn
 res://dice/blinding/blinding_dice.gd
 res://dice/poison/poison_dice.gd
 res://map_stuff/map_tutorial_stuff/map.gd
+res://dice/headsman/headsman_dice.tscn
+res://dice/headsman/headsman_dice.gd
+res://dummy_enemy/enemies/headsman/headsman.tscn
+res://dummy_enemy/enemies/headsman/headsman.gd
+res://dummy_enemy/enemies/goblin/goblin.tscn
+res://dummy_enemy/enemies/goblin/goblin.gd

@@ -1,15 +1,15 @@
-[gd_scene load_steps=205 format=3 uid="uid://bo56bcst8wlj"]
+[gd_scene load_steps=209 format=3 uid="uid://bo56bcst8wlj"]
 
 [ext_resource type="Script" path="res://dummy_enemy/dummy_enemy.gd" id="1_4fd5b"]
 [ext_resource type="Texture2D" uid="uid://bj8i71ksaxf83" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Attack01.png" id="2_4u18g"]
 [ext_resource type="Texture2D" uid="uid://5ijvhe4jtb1w" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc/Orc/Orc-Attack01.png" id="3_5nnqi"]
-[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="3_nxqwa"]
 [ext_resource type="Texture2D" uid="uid://dttqrmllcx4rs" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight Templar/Knight Templar/Knight Templar-Attack01.png" id="4_2c8wr"]
 [ext_resource type="Texture2D" uid="uid://cqaepjt8uuxhu" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Lancer/Lancer/Lancer-Attack03.png" id="5_jcy8n"]
 [ext_resource type="Texture2D" uid="uid://douxhjn4ojo26" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider-Attack02.png" id="6_7rml6"]
 [ext_resource type="Texture2D" uid="uid://bq55ohnbinm5t" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton-Attack01.png" id="7_2a7la"]
 [ext_resource type="Texture2D" uid="uid://8xn6oi0ywti3" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard-Attack01.png" id="8_mnyhl"]
 [ext_resource type="Texture2D" uid="uid://dne1pxhfirl4x" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf/Werewolf-Attack01.png" id="9_htso6"]
+[ext_resource type="Texture2D" uid="uid://dq0map0fkwobv" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Hurt.png" id="10_30puh"]
 [ext_resource type="Texture2D" uid="uid://c7sabvxkfiaqm" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Death.png" id="10_gvxos"]
 [ext_resource type="Texture2D" uid="uid://bmm15wooa2k8q" path="res://dummy_enemy/Orc.png" id="11_pbtxw"]
 [ext_resource type="Texture2D" uid="uid://cu25xxp3l7vio" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight Templar/Knight Templar/Knight Templar-Hurt.png" id="12_ixfbf"]
@@ -275,20 +275,20 @@ region = Rect2(700, 0, 100, 100)
 atlas = ExtResource("9_htso6")
 region = Rect2(800, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_go6mi"]
-atlas = ExtResource("10_gvxos")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpq8b"]
+atlas = ExtResource("10_30puh")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xn4qn"]
-atlas = ExtResource("10_gvxos")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n433e"]
+atlas = ExtResource("10_30puh")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_txmg6"]
-atlas = ExtResource("10_gvxos")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xekl7"]
+atlas = ExtResource("10_30puh")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2rsn"]
-atlas = ExtResource("10_gvxos")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmuuv"]
+atlas = ExtResource("10_30puh")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8qu6"]
@@ -405,6 +405,22 @@ region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rsp7"]
 atlas = ExtResource("17_688we")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go6mi"]
+atlas = ExtResource("10_gvxos")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn4qn"]
+atlas = ExtResource("10_gvxos")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txmg6"]
+atlas = ExtResource("10_gvxos")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2rsn"]
+atlas = ExtResource("10_gvxos")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s056t"]
@@ -935,16 +951,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_go6mi")
+"texture": SubResource("AtlasTexture_tpq8b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xn4qn")
+"texture": SubResource("AtlasTexture_n433e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_txmg6")
+"texture": SubResource("AtlasTexture_xekl7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b2rsn")
+"texture": SubResource("AtlasTexture_tmuuv")
 }],
 "loop": false,
 "name": &"damage_axeman",
@@ -1402,10 +1418,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"attack_goblin"
-
-[node name="Dice" parent="." instance=ExtResource("3_nxqwa")]
-position = Vector2(-165, 10)
+animation = &"damage_knight"
 
 [node name="StatusIndicator1" type="Sprite2D" parent="."]
 position = Vector2(10, -147)
@@ -1453,5 +1466,3 @@ theme_override_font_sizes/font_size = 16
 text = "2
 "
 metadata/_edit_use_anchors_ = true
-
-[connection signal="rolled" from="Dice" to="." method="_on_dice_rolled"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw70v7jx1e0hi"]
+
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="1_wvv2s"]
+[ext_resource type="Script" path="res://dummy_enemy/enemies/goblin/goblin.gd" id="2_bufgr"]
+[ext_resource type="PackedScene" uid="uid://bjovamca8hg6f" path="res://dice/standard/standard_dice.tscn" id="3_46iwp"]
+
+[node name="dummy_enemy" instance=ExtResource("1_wvv2s")]
+script = ExtResource("2_bufgr")
+
+[node name="Dice" parent="." index="4" instance=ExtResource("3_46iwp")]
