@@ -10,7 +10,7 @@ signal player_healed(heal_amount)
 
 var coins := 10
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
-var dice : Array
+var dice : Array 
 var can_heal : bool = true
 
 var difficulty: int = 0
