@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfs6rmdrg7dhb"]
+[gd_scene load_steps=12 format=3 uid="uid://bfs6rmdrg7dhb"]
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_bjksa"]
-[ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="2_xrc03"]
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_um61v"]
+[ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="4_vkap7"]
 [ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_4c6ya"]
 [ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_c574w"]
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="7_36q6x"]
+[ext_resource type="Texture2D" uid="uid://cvhhsddvn04ty" path="res://image.png" id="8_lixrj"]
+[ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="9_pf7aa"]
+[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="10_hx8di"]
+[ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="11_wutdn"]
 
 [node name="Battle" type="Node2D"]
 z_index = 5
@@ -14,70 +19,65 @@ script = ExtResource("1")
 player_template = ExtResource("2_bjksa")
 enemy_template = ExtResource("3_um61v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(585, 330)
-scale = Vector2(4.32639, 4.32639)
-texture = ExtResource("2_xrc03")
-
 [node name="MonsterName" type="Label" parent="."]
-offset_left = 102.0
-offset_top = 54.0
-offset_right = 278.0
-offset_bottom = 74.0
+offset_left = 97.0
+offset_top = 58.0
+offset_right = 273.0
+offset_bottom = 78.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
-offset_left = 335.0
-offset_top = 54.0
-offset_right = 465.0
-offset_bottom = 74.0
+z_index = 1
+offset_left = 377.0
+offset_top = 59.0
+offset_right = 483.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 729.0
-offset_top = 394.0
-offset_right = 905.0
-offset_bottom = 414.0
+offset_left = 707.0
+offset_top = 390.0
+offset_right = 838.0
+offset_bottom = 406.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 text = "THE FATED ONE"
 
 [node name="PlayerHealthNum" type="Label" parent="."]
-offset_left = 927.0
-offset_top = 394.0
-offset_right = 1103.0
-offset_bottom = 414.0
+z_index = 1
+offset_left = 1013.0
+offset_top = 387.0
+offset_right = 1095.0
+offset_bottom = 403.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 horizontal_alignment = 2
 
 [node name="DiceBG" type="ColorRect" parent="."]
-offset_left = 529.0
-offset_top = 524.0
-offset_right = 920.0
-offset_bottom = 593.0
+visible = false
+offset_left = 555.0
+offset_top = 523.0
+offset_right = 946.0
+offset_bottom = 592.0
 color = Color(0.03, 0.02, 0.05, 0.13)
 
 [node name="Marker5" type="Marker2D" parent="DiceBG"]
 position = Vector2(333, 35)
 
 [node name="Marker4" type="Marker2D" parent="DiceBG"]
-position = Vector2(263, 35)
+position = Vector2(271, 34)
 
 [node name="Marker3" type="Marker2D" parent="DiceBG"]
-position = Vector2(193, 35)
+position = Vector2(209, 34)
 
 [node name="Marker2" type="Marker2D" parent="DiceBG"]
-position = Vector2(123, 35)
+position = Vector2(146, 33)
 
 [node name="Marker1" type="Marker2D" parent="DiceBG"]
-position = Vector2(53, 35)
+position = Vector2(83, 34)
 
 [node name="EnemyDiceBG" type="ColorRect" parent="."]
+visible = false
 offset_left = 992.0
 offset_top = 523.0
 offset_right = 1065.0
@@ -87,62 +87,72 @@ color = Color(0.03, 0.02, 0.05, 0.13)
 [node name="EnemyMarker" type="Marker2D" parent="EnemyDiceBG"]
 position = Vector2(37, 35)
 
-[node name="Enemy Dice" type="Label" parent="."]
-offset_left = 985.0
-offset_top = 600.0
-offset_right = 1073.0
-offset_bottom = 615.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "ENEMY DICE"
-
-[node name="Player Dice" type="Label" parent="."]
-offset_left = 673.0
-offset_top = 599.0
-offset_right = 771.0
-offset_bottom = 614.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "PLAYER DICE"
-
 [node name="Roll Message" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 535.0
-offset_right = 374.0
-offset_bottom = 559.0
+z_index = 1
+offset_left = 43.0
+offset_top = 531.0
+offset_right = 234.0
+offset_bottom = 607.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
+autowrap_mode = 3
 
 [node name="EnemyHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 161.0
+offset_left = 219.0
 offset_top = 70.0
-offset_right = 161.0
+offset_right = 485.0
 offset_bottom = 110.0
-color = Color(1, 0.28, 0.38, 1)
+color = Color(0.878431, 0.333333, 0.337255, 1)
+
+[node name="EnemyHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 219.0
+offset_top = 102.0
+offset_right = 485.0
+offset_bottom = 124.0
+color = Color(0.603922, 0.239216, 0.239216, 1)
 
 [node name="PlayerHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 788.0
+offset_left = 829.0
 offset_top = 416.0
 offset_right = 1096.0
 offset_bottom = 456.0
 size_flags_horizontal = 3
-color = Color(0.47, 0.99, 0.36, 1)
+color = Color(0.368627, 0.882353, 0.333333, 1)
 script = ExtResource("5_c574w")
+
+[node name="PlayerHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 829.0
+offset_top = 436.0
+offset_right = 1105.0
+offset_bottom = 472.0
+size_flags_horizontal = 3
+color = Color(0.223529, 0.647059, 0.388235, 1)
+script = ExtResource("5_c574w")
+
+[node name="PlayerHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 829.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+size_flags_horizontal = 3
+color = Color(0.0117647, 0.00784314, 0.0352941, 1)
+
+[node name="EnemyHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 219.0
+offset_top = 80.0
+offset_right = 486.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+color = Color(0.0101796, 0.00784876, 0.0360428, 1)
 
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4c6ya")
 autoplay = true
-
-[node name="Background" type="ColorRect" parent="."]
-z_index = -3
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 1421.0
-offset_bottom = 833.0
-color = Color(0.03, 0.02, 0.05, 1)
-metadata/_edit_lock_ = true
 
 [node name="Map" type="ColorRect" parent="."]
 visible = false
@@ -151,3 +161,49 @@ z_index = 3
 offset_right = 1162.0
 offset_bottom = 664.0
 color = Color(0, 0, 0, 1)
+
+[node name="DiceUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(638, 377)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_vkap7")
+metadata/_edit_lock_ = true
+
+[node name="TextUI" type="Sprite2D" parent="."]
+position = Vector2(345, 385)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("7_36q6x")
+metadata/_edit_lock_ = true
+
+[node name="EnemyHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(407, -94)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("11_wutdn")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1017, 240)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("11_wutdn")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(399, 259)
+scale = Vector2(1.06941, 1.10682)
+texture = ExtResource("8_lixrj")
+script = ExtResource("9_pf7aa")
+metadata/_edit_lock_ = true
+
+[node name="PlayerPlatform" type="Sprite2D" parent="."]
+position = Vector2(254, 468)
+scale = Vector2(9, 9)
+texture = ExtResource("10_hx8di")
+
+[node name="EnemyPlatform" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(909, 309)
+scale = Vector2(9, 9)
+texture = ExtResource("10_hx8di")

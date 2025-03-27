@@ -1,6 +1,6 @@
 extends ColorRect
 
-const MAX_WIDTH: float = 308.0  # Maximum width of the health bar at full health
+const MAX_WIDTH: float = 266.0  # Maximum width of the health bar at full health
 const MAX_HEALTH: float = 100.0  # Maximum player health
 
 func _process(delta: float) -> void:

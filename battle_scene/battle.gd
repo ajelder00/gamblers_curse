@@ -24,7 +24,7 @@ var enemy_health_label: Label
 var enemy_health_bar: ColorRect  # This will now be set in _get_ui_elements()
 var enemy_name: Label
 
-const MAX_HEALTH_BAR_WIDTH: float = 308.0
+const MAX_HEALTH_BAR_WIDTH: float = 266
 
 func _ready() -> void:
 	_get_ui_elements()
