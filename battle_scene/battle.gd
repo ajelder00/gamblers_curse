@@ -5,6 +5,7 @@ extends Node
 
 @export var speed: float = 0.05  # Time delay between letters
 @export var player_template: PackedScene
+@export var override_enemy: bool = false
 
 var enemy_template
 
@@ -12,10 +13,11 @@ var goblin := preload("res://dummy_enemy/enemies/goblin/goblin.tscn")
 var headsman := preload("res://dummy_enemy/enemies/headsman/headsman.tscn")
 var skeleton := preload("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
 var knight := preload("res://dummy_enemy/enemies/knight/knight.tscn")
+var wolf := preload("res://dummy_enemy/enemies/wolf/wolf.tscn")
 
 var enemies_by_tier = {
 	1: [goblin, skeleton],
-	2: [knight],
+	2: [knight, wolf],
 	3: [headsman]
 }
 
@@ -44,7 +46,10 @@ const MAX_HEALTH_BAR_WIDTH: float = 266
 var diceopedia_target_position: Vector2
 
 func _ready() -> void:
-	enemy_template = pick_enemy(Global.difficulty)
+	if not override_enemy:
+		enemy_template = pick_enemy(Global.difficulty)
+	else:
+		enemy_template = wolf
 	_get_ui_elements()
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()

@@ -15,12 +15,13 @@ var can_heal : bool = true
 
 var difficulty: int = 5
 
-enum Status{NOTHING, POISON, BLINDNESS, SHIELD, CURSE}
+enum Status{NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING}
 
 const STATUS_PICS := {
 	Status.POISON: "res://art/poison_effect.png",
 	Status.BLINDNESS: "res://art/blindness_effect.png",
-	Status.CURSE: "res://art/curse_effect.png"
+	Status.CURSE: "res://art/curse_effect.png",
+	Status.BLEEDING: "res://art/bleeding_effect.png"
 }
 
 ## shop inventory to initialize all the dice

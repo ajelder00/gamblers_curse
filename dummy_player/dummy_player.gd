@@ -123,8 +123,18 @@ func apply_status_self(effect_names) -> void:
 					var tween = get_tree().create_tween()
 					tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
 					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
-			Global.Status.BLINDNESS:
-				pass
+			Global.Status.BLEEDING:
+				if effect.duration > 0:
+					Global.player_health = max(0, Global.player_health - effect.damage_number)
+					floating_text(("-" + str(effect.damage_number)), Color.RED)
+					parent.update_health_display()
+					effect.duration -= 1
+					update_indicators()
+					sprite.modulate = Color(1, 0, 0)
+					sprite.play("get_hit")
+					await sprite.animation_finished
+					sprite.play("idle")
+					sprite.modulate = Color(1, 1, 1)
 	for effect in effect_names: #Deletes any effects that ran out
 		if effect.duration == 0:
 			effect_names.erase(effect)
