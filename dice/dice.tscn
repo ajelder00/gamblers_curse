@@ -513,7 +513,7 @@ color = Color(0, 0, 0, 0.384314)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"roll_blind"
+animation = &"blank_standard"
 
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0
