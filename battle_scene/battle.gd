@@ -27,10 +27,7 @@ var enemy
 var enemy_sprite
 var enemy_starting_health  # Store the enemy's starting health
 
-var messages: Array = [
-	"> A WILD DUNGEON GOBLIN APPEARED!",
-	"> CHOOSE DICE TO ROLL..."
-]  
+var messages
 var message_index: int = 0
 
 var roll_message_label: Label
@@ -111,6 +108,10 @@ func _initialize_combatants() -> void:
 
 func _setup_enemy() -> void:
 	enemy_name.text = enemy.NAMES[enemy.type]
+	messages = [
+	"> A " + str(enemy_name.text) + " APPEARED!",
+	"> CHOOSE DICE TO ROLL..."
+]  
 	var enemy_dice = enemy.get_node("Dice") 
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
@@ -172,9 +173,10 @@ func _handle_enemy_defeat() -> void:
 	# Slide in the text UI for the defeat messages.
 	slide_in_text_ui()
 	# Define defeat messages.
+	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
 	var defeat_messages: Array = [
 		"> CONGRATS YOU DEFEATED THE ENEMY.",
-		"> YOU EARNED 10 GOLD",
+		"> YOU EARNED " + str(enemy.coins) + "GOLD",
 		"> RETURNING TO MAP..."
 	]
 	# Type out the defeat messages.
