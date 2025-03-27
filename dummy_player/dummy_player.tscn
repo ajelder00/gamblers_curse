@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=28 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
+[ext_resource type="Texture2D" uid="uid://csvdwmv1we" path="res://art/blindness_effect.png" id="4_2yikg"]
 [ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="4_fdqlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmfwc"]
@@ -193,5 +194,52 @@ animation = &"attack"
 
 [node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
 position = Vector2(26, 147)
+
+[node name="StatusIndicator1" type="Sprite2D" parent="."]
+position = Vector2(-8.5, -188.5)
+scale = Vector2(4.031, 4.031)
+texture = ExtResource("4_2yikg")
+
+[node name="Duration1" type="Label" parent="StatusIndicator1"]
+offset_left = -1.24039
+offset_top = 7.19424
+offset_right = 38.7596
+offset_bottom = 23.1942
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "3
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusIndicator2" type="Sprite2D" parent="."]
+position = Vector2(-87.5, -188.5)
+scale = Vector2(4.03125, 4.03125)
+texture = ExtResource("4_2yikg")
+
+[node name="Duration2" type="Label" parent="StatusIndicator2"]
+offset_left = -0.992248
+offset_top = 6.94574
+offset_right = 39.0078
+offset_bottom = 22.9457
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusIndicator3" type="Sprite2D" parent="."]
+position = Vector2(72.5, -188.5)
+scale = Vector2(4.031, 4.031)
+texture = ExtResource("4_2yikg")
+
+[node name="Duration3" type="Label" parent="StatusIndicator3"]
+offset_left = -1.24039
+offset_top = 6.94617
+offset_right = 38.7596
+offset_bottom = 22.9462
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "2
+"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="turn_over" from="Dice Roller" to="." method="_on_dice_roller_turn_over"]

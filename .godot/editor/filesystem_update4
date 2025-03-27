@@ -26,3 +26,4 @@ res://dummy_enemy/enemies/skeleton/skeleton.gd
 res://dice/blinding/blinding_dice.tscn
 res://dice/blinding/blinding_dice.gd
 res://dice/poison/poison_dice.gd
+res://map_stuff/map_tutorial_stuff/map.gd

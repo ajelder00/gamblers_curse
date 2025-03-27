@@ -10,8 +10,10 @@ signal player_healed(heal_amount)
 
 var coins := 10
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
-
 var dice : Array
+
+var difficulty: int = 0
+
 enum Status{NOTHING, POISON, BLINDNESS, SHIELD}
 
 const STATUS_PICS := {

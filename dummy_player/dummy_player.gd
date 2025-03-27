@@ -9,7 +9,12 @@ extends Node2D
 @onready var attack_sound_path = load("res://dummy_player/dummy_player_sounds/07_human_atk_sword_2.wav")
 @onready var hit_sound = AudioStreamPlayer.new()
 @onready var hit_sound_path = load("res://dummy_player/dummy_player_sounds/11_human_damage_1.wav")
-
+@onready var indicator1 = $StatusIndicator1
+@onready var indicator2 = $StatusIndicator2
+@onready var indicator3 = $StatusIndicator3
+@onready var indicator_label1 = $StatusIndicator1/Duration1
+@onready var indicator_label2 = $StatusIndicator2/Duration2
+@onready var indicator_label3 = $StatusIndicator3/Duration3
 var current_effects := []
 
 signal attack_signal
@@ -18,6 +23,12 @@ signal damage_over
 signal effects_over
 
 func _ready() -> void:
+	var indicator_list = [indicator1, indicator2, indicator3]
+	var label_list = [indicator_label1, indicator_label2, indicator_label3]
+	for indicator in indicator_list:
+		indicator.modulate.a = 0.0
+	for label in label_list:
+		label.text = ""
 	Global.connect("player_healed", _on_healed)
 	roller.turn_over.connect(_on_dice_roller_turn_over)
 	sprite.play("idle")
@@ -115,3 +126,30 @@ func replace_status(new_packet: Damage) -> void:
 		elif (packet.duration == current_lowest_value) and (packet.status != new_packet.status):
 			current_effects.erase(packet)
 			current_effects.append(new_packet)
+
+func update_indicators() -> void:
+	if indicator_label1.text == "0":
+		indicator1.modulate.a = 0
+	if indicator_label2.text == "0":
+		indicator1.modulate.a = 0
+	if indicator_label3.text == "0":
+		indicator1.modulate.a = 0
+
+	if len(current_effects) >= 1:
+		indicator1.texture = load(Global.STATUS_PICS[current_effects[0].status])
+		indicator_label1.text = str(current_effects[0].duration)
+		indicator1.modulate.a = 1.0
+	else:
+		indicator1.modulate.a = 0
+	if len(current_effects) >= 2:
+		indicator2.texture = load(Global.STATUS_PICS[current_effects[1].status])
+		indicator_label2.text = str(current_effects[1].duration)
+		indicator2.modulate.a = 1.0
+	else:
+		indicator2.modulate.a = 0
+	if len(current_effects) == 3:
+		indicator3.texture = load(Global.STATUS_PICS[current_effects[2].status])
+		indicator_label3.text = str(current_effects[2].duration)
+		indicator3.modulate.a = 1.0
+	else:
+		indicator3.modulate.a = 0

@@ -104,6 +104,7 @@ func _on_map_selected(room: Room) -> void:
 			map_room.available = false
 	last_room = room
 	floors_climbed += 1
+	Global.difficulty += 1
 	map_exited.emit(room) #I dont know what this signal does, but It scares me to delete it
 	
 	var scene_to_load # Here down handles how the room is loaded

@@ -2,11 +2,9 @@ extends Node2D
 class_name DummyEnemy  
 
 # --- Enemy Properties ---
-var tier_multiplier: int 
 enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF}
 var damage
 var self_statuses := []
-var statuses_to_apply := []
 var base_accuracy : float = 1.0
 var coins: int = randi_range(0,10)
 var accuracy = base_accuracy
@@ -105,10 +103,6 @@ func initialize_enemy() -> void:
 
 # --- Enemy Takes Damage ---
 func get_hit(damage_packet_list: Array) -> void:
-	for effect in self_statuses: #Deletes any effects that ran out
-		if effect.duration == 0:
-			self_statuses.erase(effect)
-
 	for packet in damage_packet_list: # Checks through each sent packet from the player
 		if packet.type == Dice.Type.HEALING:
 			Global.heal(packet.damage_number)
@@ -150,20 +144,28 @@ func apply_status_self(effect_names) -> void:
 					floating_text(("-" + str(effect.damage_number)), Color.GREEN)
 					parent.update_health_display()
 					effect.duration -= 1
+					update_indicators()
 					sprite.modulate = Color(0, 1, 0)
 					sprite.play(ANIMS[type][1])
 					await sprite.animation_finished
 					sprite.play(ANIMS[type][3])
 					sprite.modulate = Color(1, 1, 1)
-
 			Global.Status.BLINDNESS:
 				if effect.duration > 0:
+					effect.duration -= 1
+					update_indicators()
+					affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
+					floating_text(("-" + str(effect.damage_number*10)) + "%", Color.DARK_ORCHID)
 					var tween = get_tree().create_tween()
 					tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
 					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
-					affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
+
 					print(affected_accuracy)
-					effect.duration -= 1
+
+	for effect in self_statuses: #Deletes any effects that ran out
+		if effect.duration == 0:
+			self_statuses.erase(effect)
+			update_indicators()
 		update_indicators()
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
@@ -212,6 +214,13 @@ func floating_text(text: String, color: Color) -> void:
 	label.queue_free()
 
 func update_indicators() -> void:
+	if indicator_label1.text == "0":
+		indicator1.modulate.a = 0
+	if indicator_label2.text == "0":
+		indicator1.modulate.a = 0
+	if indicator_label3.text == "0":
+		indicator1.modulate.a = 0
+
 	if len(self_statuses) >= 1:
 		indicator1.texture = load(Global.STATUS_PICS[self_statuses[0].status])
 		indicator_label1.text = str(self_statuses[0].duration)
