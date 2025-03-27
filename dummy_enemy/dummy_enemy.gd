@@ -41,6 +41,12 @@ const NAMES := {
 @onready var dice: Node = $Dice
 @onready var dice_button: Button = $Dice/Button
 @onready var parent = get_parent()
+@onready var indicator1 = $StatusIndicator1
+@onready var indicator2 = $StatusIndicator2
+@onready var indicator3 = $StatusIndicator3
+@onready var indicator_label1 = $StatusIndicator1/Duration1
+@onready var indicator_label2 = $StatusIndicator2/Duration2
+@onready var indicator_label3 = $StatusIndicator3/Duration3
 
 # Sound variables
 @onready var attack_sound = AudioStreamPlayer.new()
@@ -56,6 +62,12 @@ var tier : int = 1
 
 # --- Initialization ---
 func _ready() -> void:
+	var indicator_list = [indicator1, indicator2, indicator3]
+	var label_list = [indicator_label1, indicator_label2, indicator_label3]
+	for indicator in indicator_list:
+		indicator.modulate.a = 0.0
+	for label in label_list:
+		label.text = ""
 	initialize_enemy()
 	setup_ui()
 	dice.rolled.connect(_on_die_rolled)
@@ -111,6 +123,7 @@ func get_hit(damage_packet_list: Array) -> void:
 				self_statuses.append(packet)
 			elif len(self_statuses) >= 3: # Handles cases where the statuses list is full alr
 				replace_status(packet)
+			update_indicators()
 		if not packet.damage_number == 0: # Only runs if theres damage to implement
 			sprite.play(ANIMS[type][1])
 			health = max(0, health - packet.damage_number)
@@ -127,6 +140,7 @@ func get_hit(damage_packet_list: Array) -> void:
 
 
 func apply_status_self(effect_names) -> void:
+	update_indicators()
 	var affected_accuracy = base_accuracy
 	for effect in effect_names:
 		match effect.status:
@@ -150,6 +164,7 @@ func apply_status_self(effect_names) -> void:
 					affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
 					print(affected_accuracy)
 					effect.duration -= 1
+		update_indicators()
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
 	accuracy = affected_accuracy
@@ -164,10 +179,16 @@ func replace_status(new_packet: Damage) -> void:
 	for packet in self_statuses:
 		if (packet.status == new_packet.status) and (packet.duration == current_lowest_value):
 			packet.duration = new_packet.duration
-			break
+			print("Replaced a same version")
+			return
 		elif packet.duration == current_lowest_value:
 			self_statuses.erase(packet)
 			self_statuses.append(new_packet)
+			print("Replaced a diff version")
+			return
+	self_statuses.erase(self_statuses[0])
+	self_statuses.append(new_packet)
+	print("Replaced first elkement")
 
 func floating_text(text: String, color: Color) -> void:
 	var label = Label.new()
@@ -189,3 +210,23 @@ func floating_text(text: String, color: Color) -> void:
 	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 0.75)
 	await tween.finished
 	label.queue_free()
+
+func update_indicators() -> void:
+	if len(self_statuses) >= 1:
+		indicator1.texture = load(Global.STATUS_PICS[self_statuses[0].status])
+		indicator_label1.text = str(self_statuses[0].duration)
+		indicator1.modulate.a = 1.0
+	else:
+		indicator1.modulate.a = 0
+	if len(self_statuses) >= 2:
+		indicator2.texture = load(Global.STATUS_PICS[self_statuses[1].status])
+		indicator_label2.text = str(self_statuses[1].duration)
+		indicator2.modulate.a = 1.0
+	else:
+		indicator2.modulate.a = 0
+	if len(self_statuses) == 3:
+		indicator3.texture = load(Global.STATUS_PICS[self_statuses[2].status])
+		indicator_label3.text = str(self_statuses[2].duration)
+		indicator3.modulate.a = 1.0
+	else:
+		indicator3.modulate.a = 0

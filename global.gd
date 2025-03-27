@@ -14,6 +14,11 @@ var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 var dice : Array
 enum Status{NOTHING, POISON, BLINDNESS, SHIELD}
 
+const STATUS_PICS := {
+	Status.POISON: "res://art/poison_effect.png",
+	Status.BLINDNESS: "res://art/blindness_effect.png"
+}
+
 ## shop inventory to initialize all the dice
 var shop_dice = [
 	{"type": "standard", "price": 5, "description": "A standard six-sided dice."},

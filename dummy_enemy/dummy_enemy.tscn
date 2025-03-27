@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=3 uid="uid://bo56bcst8wlj"]
+[gd_scene load_steps=205 format=3 uid="uid://bo56bcst8wlj"]
 
 [ext_resource type="Script" path="res://dummy_enemy/dummy_enemy.gd" id="1_4fd5b"]
 [ext_resource type="Texture2D" uid="uid://bj8i71ksaxf83" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Attack01.png" id="2_4u18g"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://b5nu62w55j1if" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="30_jrgyj"]
 [ext_resource type="Texture2D" uid="uid://bw2k63vq10s3m" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard.png" id="31_ck36o"]
 [ext_resource type="Texture2D" uid="uid://p1kinvdhg0k5" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf/Werewolf.png" id="32_b702e"]
+[ext_resource type="Texture2D" uid="uid://csvdwmv1we" path="res://art/blindness_effect.png" id="34_fwcyx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tvnm"]
 atlas = ExtResource("2_4u18g")
@@ -1394,16 +1395,63 @@ animations = [{
 
 [node name="dummy_enemy" type="Node2D"]
 z_index = -1
-position = Vector2(912, 343)
+position = Vector2(917, 331)
 script = ExtResource("1_4fd5b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"idle_lancer"
+animation = &"attack_goblin"
 
 [node name="Dice" parent="." instance=ExtResource("3_nxqwa")]
 position = Vector2(-165, 10)
+
+[node name="StatusIndicator1" type="Sprite2D" parent="."]
+position = Vector2(10, -147)
+scale = Vector2(4.031, 4.031)
+texture = ExtResource("34_fwcyx")
+
+[node name="Duration1" type="Label" parent="StatusIndicator1"]
+offset_left = -1.24039
+offset_top = 7.19424
+offset_right = 38.7596
+offset_bottom = 23.1942
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "3
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusIndicator2" type="Sprite2D" parent="."]
+position = Vector2(-69, -147)
+scale = Vector2(4.03125, 4.03125)
+texture = ExtResource("34_fwcyx")
+
+[node name="Duration2" type="Label" parent="StatusIndicator2"]
+offset_left = -0.992248
+offset_top = 6.94574
+offset_right = 39.0078
+offset_bottom = 22.9457
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusIndicator3" type="Sprite2D" parent="."]
+position = Vector2(91, -147)
+scale = Vector2(4.031, 4.031)
+texture = ExtResource("34_fwcyx")
+
+[node name="Duration3" type="Label" parent="StatusIndicator3"]
+offset_left = -1.24039
+offset_top = 6.94617
+offset_right = 38.7596
+offset_bottom = 22.9462
+scale = Vector2(0.37, 0.37)
+theme_override_font_sizes/font_size = 16
+text = "2
+"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="rolled" from="Dice" to="." method="_on_dice_rolled"]
