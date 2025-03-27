@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkuep5bqlahg5"]
+[gd_scene load_steps=5 format=3 uid="uid://bkuep5bqlahg5"]
 
 [ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="1_cxt4o"]
 [ext_resource type="Script" path="res://dummy_enemy/enemies/wolf/wolf.gd" id="2_x517p"]
 [ext_resource type="PackedScene" uid="uid://dhqam1wxi8xim" path="res://dice/bleeding/bleeding_dice.tscn" id="3_kur88"]
+[ext_resource type="Script" path="res://dice/bleeding/bleeding_dice.gd" id="4_m7qcc"]
 
 [node name="dummy_enemy" instance=ExtResource("1_cxt4o")]
 script = ExtResource("2_x517p")
 
 [node name="Dice" parent="." index="4" instance=ExtResource("3_kur88")]
+script = ExtResource("4_m7qcc")

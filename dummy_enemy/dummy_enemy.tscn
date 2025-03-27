@@ -947,7 +947,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_wolf",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1406,7 +1406,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_wolf",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="dummy_enemy" type="Node2D"]
@@ -1418,9 +1418,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"dead_knight"
-frame = 3
-frame_progress = 1.0
+animation = &"attack_wolf"
 
 [node name="StatusIndicator1" type="Sprite2D" parent="."]
 position = Vector2(10, -147)

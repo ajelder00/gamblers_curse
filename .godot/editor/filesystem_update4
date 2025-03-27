@@ -22,3 +22,6 @@ res://dummy_enemy/enemies/knight/knight.tscn
 res://dice/curse/curse_dice.tscn
 res://dummy_enemy/enemies/headsman/headsman.tscn
 res://dummy_enemy/enemies/wolf/wolf.tscn
+res://dice/poison/poison_dice.gd
+res://global.gd
+res://dice/bleeding/bleeding_dice.gd

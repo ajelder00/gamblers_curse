@@ -2,10 +2,8 @@ extends Dice
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.modulate = Color(1, 0, 0)
-	status_effect = Global.Status.BLEEDING
-	type = Dice.Type.STANDARD
-	faces = 6
+	type = Dice.Type.POISON
+	faces = 3
 	super._ready()
 
 func roll_die(faces) -> void:
