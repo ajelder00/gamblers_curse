@@ -96,7 +96,7 @@ offset_top = 416.0
 offset_right = 1096.0
 offset_bottom = 456.0
 size_flags_horizontal = 3
-color = Color(0.0117647, 0.00784314, 0.0352941, 1)
+color = Color(0.0533738, 0.209555, 0.113318, 1)
 
 [node name="EnemyHealthBG" type="ColorRect" parent="."]
 z_index = -2
@@ -105,7 +105,7 @@ offset_top = 80.0
 offset_right = 486.0
 offset_bottom = 120.0
 size_flags_horizontal = 3
-color = Color(0.0101796, 0.00784876, 0.0360428, 1)
+color = Color(0.274879, 0.0885133, 0.0892138, 1)
 
 [node name="Map" type="ColorRect" parent="."]
 visible = false
