@@ -8,30 +8,31 @@ script = ExtResource("1_6tiu3")
 metadata/_edit_group_ = true
 
 [node name="StartPosition1" type="Marker2D" parent="."]
-position = Vector2(-110, 0)
+position = Vector2(591, 14)
 
 [node name="StartPosition2" type="Marker2D" parent="."]
-position = Vector2(-55, 0)
+position = Vector2(529, 14)
 
 [node name="StartPosition3" type="Marker2D" parent="."]
+position = Vector2(467, 14)
 
 [node name="StartPosition4" type="Marker2D" parent="."]
-position = Vector2(55, 0)
+position = Vector2(405, 14)
 
 [node name="StartPosition5" type="Marker2D" parent="."]
-position = Vector2(110, 0)
+position = Vector2(343, 14)
 
 [node name="StartPosition6" type="Marker2D" parent="."]
-position = Vector2(-109, 35)
+position = Vector2(240, 14)
 
 [node name="StartPosition7" type="Marker2D" parent="."]
-position = Vector2(-54, 35)
+position = Vector2(178, 14)
 
 [node name="StartPosition8" type="Marker2D" parent="."]
-position = Vector2(1, 35)
+position = Vector2(116, 14)
 
 [node name="StartPosition9" type="Marker2D" parent="."]
-position = Vector2(56, 35)
+position = Vector2(54, 14)
 
 [node name="StartPosition10" type="Marker2D" parent="."]
-position = Vector2(111, 35)
+position = Vector2(-8, 14)
