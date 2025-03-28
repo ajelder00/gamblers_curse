@@ -1,7 +1,7 @@
 class_name Map
 extends Node2D
 
-const SCROLL_SPEED := 45
+const SCROLL_SPEED := 30
 const MAP_ROOM = preload("res://map_stuff/map_tutorial_stuff/map_node.tscn")
 const MAP_LINE = preload("res://map_stuff/map_tutorial_stuff/map_connector.tscn")
 const BATTLE = preload("res://battle_scene/battle.tscn")
@@ -33,13 +33,14 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y -= SCROLL_SPEED
-		background.position.y = -camera_2d.position.y - 1000
+		background.position.y += (SCROLL_SPEED - 10)
 		
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
-		background.position.y -= SCROLL_SPEED -10
+		background.position.y -= (SCROLL_SPEED -10)
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 900, len(map_data) * MapGenerator.Y_DIST - 150)
-	background.position.y = -camera_2d.position.y - 1000
+	background.position.y = clamp(background.position.y, -1200, -80)
+	print(background.position.y)
 
 func generate_new_map() -> void:
 	floors_climbed = 0
