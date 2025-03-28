@@ -248,7 +248,7 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(569, 115)
 sprite_frames = SubResource("SpriteFrames_14hsr")
 autoplay = "default"
-frame_progress = 0.150043
+frame_progress = 0.436961
 
 [connection signal="gui_input" from="Chest/ColorRect" to="." method="_on_color_rect_gui_input"]
 [connection signal="mouse_entered" from="Chest/ColorRect" to="." method="_on_color_rect_mouse_entered"]

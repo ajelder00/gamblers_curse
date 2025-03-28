@@ -112,6 +112,7 @@ func _on_healed(heal_amount):
 		tween.tween_property(sprite, "modulate", Color(1.0, 1.0, 1.0), 0.5)
 
 func apply_status_self(effect_names) -> void:
+	Global.can_heal = true
 	update_indicators()
 	for effect in effect_names:
 		match effect.status:

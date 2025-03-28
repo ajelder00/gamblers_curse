@@ -123,7 +123,7 @@ func get_hit(damage_packet_list: Array) -> void:
 			elif len(self_statuses) >= 3: # Handles cases where the statuses list is full alr
 				replace_status(packet)
 			update_indicators()
-		if type == Type.AXEMAN and packet.damage_number > 3:
+		if type == Type.AXEMAN and packet.damage_number < 3:
 			floating_text("Too Armored...", Color.WHITE_SMOKE)
 			await get_tree().create_timer(1).timeout
 		elif not packet.damage_number == 0: # Only runs if theres damage to implement

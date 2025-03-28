@@ -22,7 +22,7 @@ var unlock_message = "DUNGEON CHEST UNLOCKED!"
 var second_message = "RETURNING TO MAP..."
 
 func _ready():
-	if randf() > 0.4:
+	if randf() > 1:
 		loot = coin_pic
 	else:
 		die = dice_loot.pick_random()

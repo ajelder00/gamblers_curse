@@ -47,7 +47,7 @@ func _ready() -> void:
 	if not override_enemy:
 		enemy_template = pick_enemy(Global.difficulty)
 	else:
-		enemy_template = wolf
+		enemy_template = knight
 	_get_ui_elements()
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()

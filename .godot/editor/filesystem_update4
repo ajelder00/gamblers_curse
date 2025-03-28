@@ -23,3 +23,7 @@ res://dummy_enemy/enemies/wolf/wolf.tscn
 res://battle_scene/battle.gd
 res://treasure.gd
 res://global.gd
+res://casino/card_game.tscn
+res://dummy_enemy/dummy_enemy.gd
+res://dice/poison/poison_dice.gd
+res://dummy_player/dummy_player.gd
