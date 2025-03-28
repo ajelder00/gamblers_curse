@@ -1,5 +1,16 @@
 extends Node2D
 
+# Dice Templates 
+
+# Dice Templates (packed scenes)
+@export var dice_templates: Dictionary = {
+	"standard": preload("res://dice/blinding/blinding_dice.tscn"),
+	"risky": preload("res://dice/risky/risky_dice.tscn"),
+	"poison": preload("res://dice/poison/poison_dice.tscn"),
+	"healing": preload("res://dice/healing/healing_dice.tscn"),
+	"blinding": preload("res://dice/blinding/blinding_dice.tscn")
+}
+
 # Dice Templates
 @export var standard_dice_template: PackedScene
 @export var risky_dice_template: PackedScene
@@ -10,54 +21,75 @@ extends Node2D
 @onready var purchase_standard: Button = $StandardPurchaseButton
 @onready var purchase_poison: Button = $PoisonPurchaseButton2
 
-# Dice start positions
-@onready var positions = [$StartPosition1, $StartPosition2, $StartPosition3]  
+# Dice start positions (6 start positions)
+@onready var positions = [
+	$StartPosition1, $StartPosition2, $StartPosition3,
+	$StartPosition4, $StartPosition5, $StartPosition6
+]
 
-# Load dice scripts from Global
-var standard = Global.standard
-var risky = Global.risky
-var poison = Global.poison
+# Purchase Button Container
+@onready var button_container = $PurchaseButtonContainer
+
+# Dice pricing
+var dice_prices = {
+	"standard": 5,
+	"risky": 10,
+	"poison": 20,
+	"healing": 15,
+	"blinding": 12
+}
+
+# Tracks purchased dice types (used to prevent duplicates)
+var purchased_instances: Array = []
 
 func _ready():
-	purchase_risky.pressed.connect(_on_risky_purchase_pressed)
-	purchase_standard.pressed.connect(_on_standard_purchase_pressed)
-	purchase_poison.pressed.connect(_on_standard_purchase_pressed)
-	
-	var dice_templates = {standard: standard_dice_template, 
-						 risky: risky_dice_template, 
-						 poison: poison_dice_template}
+	populate_shop()
 
-	var index = 0  
-	
-	for dice_script in dice_templates.keys():
-		var die_instance = dice_templates[dice_script].instantiate()
-		die_instance.global_position = positions[index].global_position
-		add_child(die_instance)
-		index += 1  
-	
-func _on_standard_purchase_pressed():
-	handle_purchase(standard, 5)
+# Dynamically populate shop
+func populate_shop():
+	var dice_type_list = dice_templates.keys()
 
-func _on_risky_purchase_pressed():
-	handle_purchase(risky, 10)
-	
-func _on_poison_purchase_pressed(): 
-	handle_purchase(poison, 20)
-	
-func handle_purchase(dice_script, price: int):
-	
-	# Check if player already owns the dice
-	if dice_script in Global.dummy_dice:
-		print("You already own this dice! No need to purchase again.")
+	for i in range(positions.size()):
+		# Randomly select a dice type for this slot
+		var dice_type = dice_type_list[randi() % dice_type_list.size()]
+		var dice_scene = dice_templates[dice_type].instantiate()
+		dice_scene.global_position = positions[i].global_position
+		add_child(dice_scene)
+
+		# Store the actual scene for purchase comparison
+		purchased_instances.append({"type": dice_type, "scene": dice_scene})
+
+		# Dynamically create button for this specific dice instance
+		var button = Button.new()
+		button.text = "Buy %s (%d coins)" % [dice_type.capitalize(), dice_prices[dice_type]]
+		button_container.add_child(button)
+
+		# Bind button to purchase this exact dice instance
+		var idx := i  # capture current index for closure
+		button.pressed.connect(func():
+			handle_purchase(idx, button)
+		)
+
+# Handle purchase logic
+func handle_purchase(index: int, button: Button):
+	var entry = purchased_instances[index]
+	var dice_type = entry["type"]
+	var dice_scene = entry["scene"]
+	var price = dice_prices[dice_type]
+
+	if dice_scene in Global.dummy_dice:
+		print("You already purchased this dice!")
 		return
 
-	# Check if player has enough coins
+	if Global.dummy_dice.size() >= 10:
+		print("You can't hold more than 10 dice in your inventory!")
+		return
+
 	if Global.coins >= price:
-		Global.coins -= price  # Deduct coins
-		Global.dummy_dice.append(dice_script)  # Add dice to inventory
-		print("Purchased:", dice_script.resource_path)
+		Global.coins -= price
+		Global.dummy_dice.append(dice_scene)
+		print("Purchased dice: %s" % dice_type)
+		button.disabled = true
+		button.text = "Purchased"
 	else:
-		print("Not enough coins!")
-	
-func _process(delta: float) -> void:
-	pass
+		print("Not enough coins to buy: %s!" % dice_type)
