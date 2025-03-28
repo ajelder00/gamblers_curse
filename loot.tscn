@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b4o6yihd2kw7i"]
+[gd_scene load_steps=35 format=3 uid="uid://vwaotn7r0e0a"]
 
 [ext_resource type="Texture2D" uid="uid://cqamicq73kbcr" path="res://art/Layer-1.png" id="1_1nait"]
 [ext_resource type="Script" path="res://treasure.gd" id="2_61w7c"]
@@ -21,14 +21,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y5pup"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_oiqi1")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_1nait")
@@ -174,7 +166,7 @@ z_index = 2
 position = Vector2(564, 311)
 scale = Vector2(6.46386, 7.07143)
 sprite_frames = SubResource("SpriteFrames_y5pup")
-animation = &"idle"
+animation = &"open"
 
 [node name="ColorRect" type="ColorRect" parent="Chest"]
 offset_left = -20.0
@@ -186,10 +178,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="OpenText" type="Label" parent="."]
 z_index = 2
-offset_left = 474.0
-offset_top = 138.0
-offset_right = 660.0
-offset_bottom = 184.0
+offset_left = 426.0
+offset_top = 166.0
+offset_right = 612.0
+offset_bottom = 212.0
+scale = Vector2(1.535, 1.535)
 text = "CLICK TO OPEN"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -236,10 +229,11 @@ position = Vector2(569, 118)
 position = Vector2(576, 325)
 
 [node name="UText" type="Label" parent="."]
-offset_left = 340.0
-offset_top = 62.0
-offset_right = 799.0
-offset_bottom = 320.0
+offset_left = 272.0
+offset_top = 57.0
+offset_right = 731.0
+offset_bottom = 315.0
+scale = Vector2(1.3, 1.3)
 text = " "
 horizontal_alignment = 1
 vertical_alignment = 1
