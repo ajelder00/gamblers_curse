@@ -31,7 +31,7 @@ func _ready():
 	audio_player.stream = chest_open_sound
 	add_child(audio_player)
 	
-	if randf() > 1:
+	if randf() > 0.4:
 		loot = coin_pic
 	else:
 		die = dice_loot.pick_random()
