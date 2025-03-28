@@ -98,9 +98,9 @@ func _initialize_combatants() -> void:
 func _setup_enemy() -> void:
 	enemy_name.text = enemy.NAMES[enemy.type]
 	messages = [
-	"> A " + str(enemy_name.text) + " APPEARED!",
-	"> CHOOSE THREE DICE TO ROLL..."
-]  
+		"> A " + str(enemy_name.text) + " APPEARED!",
+		"> CHOOSE THREE DICE TO ROLL..."
+	]  
 	enemy_starting_health = enemy.health  # Store the starting health
 	enemy.connect("damage_to_player", _on_enemy_damage)
 	_setup_enemy_dice()
@@ -181,14 +181,14 @@ func _handle_enemy_defeat() -> void:
 	# Fade in the map after messages.
 	fade_in_map()
 
-# New function to type out defeat messages.
 func _start_defeat_typing(defeat_messages: Array) -> void:
 	for message in defeat_messages:
 		roll_message_label.text = ""
+		Global.typing = true
 		for i in range(message.length()):
 			roll_message_label.text += message[i]
 			await get_tree().create_timer(speed).timeout
-		# Pause briefly between messages.
+		Global.typing = false
 		await get_tree().create_timer(1.0).timeout
 
 func _handle_player_defeat() -> void:
@@ -197,30 +197,24 @@ func _handle_player_defeat() -> void:
 # ------------------- Message Typing -------------------
 
 func _start_typing() -> void:
-	Global.typing = true
-	if message_index >= messages.size():
-		return
-
-	var current_text = ""
-	var full_text = messages[message_index]
-	for i in range(full_text.length()):
-		current_text += full_text[i]  
-		roll_message_label.text = current_text
-		await get_tree().create_timer(speed).timeout  
-	await get_tree().create_timer(1.0).timeout  
-
-	# When the "CHOOSE DICE TO ROLL..." message (index 1) has been shown, slide out the text UI...
-	if message_index == 1:
-		await slide_out_text_ui()
+	while message_index < messages.size():
 		roll_message_label.text = ""
-		# ...and then slide DiceopediaUI in.
-		await slide_in_diceopedia_ui()
-
-	message_index += 1
-	if message_index < messages.size():
-		roll_message_label.text = ""
-		_start_typing()
+		var full_text = messages[message_index]
+		Global.typing = true
+		for i in range(full_text.length()):
+			roll_message_label.text += full_text[i]
+			await get_tree().create_timer(speed).timeout  
+		Global.typing = false
+		await get_tree().create_timer(1.0).timeout  
+		# When the "CHOOSE THREE DICE TO ROLL..." message (index 1) has been shown, slide out the text UI...
+		if message_index == 1:
+			await slide_out_text_ui()
+			roll_message_label.text = ""
+			# ...and then slide DiceopediaUI in.
+			await slide_in_diceopedia_ui()
+		message_index += 1
 	Global.typing = false
+
 # ------------------- Health Display -------------------
 
 func update_health_display() -> void:
