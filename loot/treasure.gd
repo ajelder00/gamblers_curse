@@ -96,7 +96,6 @@ func fade_in_unlock():
 	unlock.visible = true
 	await get_tree().create_timer(1.0).timeout
 	unlock_label.text = ""
-	await get_tree().create_timer(0.5).timeout
 	fade_in_map()
 
 func fade_in_map():
