@@ -68,8 +68,9 @@ func get_hit(packet: Damage):
 	damage_over.emit()
 
 func _on_dice_roller_turn_over() -> void:
-	attack_sound.play()
 	attack_signal.emit()
+
+
 
 # Plays the attack sound, as a function since battle is going to call it
 # Prevents the need to create another path to a child of player

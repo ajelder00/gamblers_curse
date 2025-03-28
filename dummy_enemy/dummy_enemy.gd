@@ -129,6 +129,7 @@ func get_hit(damage_packet_list: Array) -> void:
 		elif not packet.damage_number == 0: # Only runs if theres damage to implement
 			update_indicators()
 			sprite.play(ANIMS[type][1])
+			hit_sound.play()
 			health = max(0, health - packet.damage_number)
 			floating_text(("-" + str(packet.damage_number)), Color.DARK_RED)
 			parent.update_health_display() # applies damage and prevents negative health
