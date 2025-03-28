@@ -10,6 +10,10 @@ signal player_healed(heal_amount)
 
 var coins := 10
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
+
+# testing dice for dice roller
+var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
+
 var dice : Array 
 var can_heal : bool = true
 

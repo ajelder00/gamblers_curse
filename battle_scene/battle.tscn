@@ -124,11 +124,11 @@ color = Color(0, 0, 0, 0)
 
 [node name="Marker1" type="Marker2D" parent="DiceBG"]
 z_index = 2
-position = Vector2(83, 34)
+position = Vector2(333, 34)
 
 [node name="Marker2" type="Marker2D" parent="DiceBG"]
 z_index = 2
-position = Vector2(146, 33)
+position = Vector2(271, 33)
 
 [node name="Marker3" type="Marker2D" parent="DiceBG"]
 z_index = 2
@@ -136,11 +136,11 @@ position = Vector2(209, 34)
 
 [node name="Marker4" type="Marker2D" parent="DiceBG"]
 z_index = 2
-position = Vector2(271, 34)
+position = Vector2(146, 34)
 
 [node name="Marker5" type="Marker2D" parent="DiceBG"]
 z_index = 2
-position = Vector2(333, 35)
+position = Vector2(83, 35)
 
 [node name="Marker6" type="Marker2D" parent="DiceBG"]
 z_index = 2
