@@ -5,8 +5,7 @@ extends DummyEnemy
 func _ready() -> void:
 	base_accuracy = 1.0
 	type = DummyEnemy.Type.WOLF
-	dice = $Dice
-	dice_button = $Dice/Button
+	dice_bucket = [$Dice]
 	turns = 3
 	health = 60
 	tier = 2

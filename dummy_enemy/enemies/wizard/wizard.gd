@@ -5,10 +5,8 @@ extends DummyEnemy
 func _ready() -> void:
 	base_accuracy = 1.0
 	immunities = [Dice.Type.POISON]
-	dice_bag = [$Dice, $Dice2]
 	type = DummyEnemy.Type.WIZARD
-	dice = $Dice
-	dice_button = $Dice/Button
+	dice_bucket = [$Dice, $Dice2]
 	turns = 3
 	health = 60
 	tier = 3

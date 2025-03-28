@@ -6,6 +6,21 @@ var poison := load("res://dice/poison/poison_dice.tscn")
 var healing := load("res://dice/healing/healing_dice.tscn")
 var blinding := load("res://dice/blinding/blinding_dice.tscn")
 
+var goblin := load("res://dummy_enemy/enemies/goblin/goblin.tscn")
+var headsman := load("res://dummy_enemy/enemies/headsman/headsman.tscn")
+var skeleton := load("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
+var knight := load("res://dummy_enemy/enemies/knight/knight.tscn")
+var wolf := load("res://dummy_enemy/enemies/wolf/wolf.tscn")
+var wizard := load("res://dummy_enemy/enemies/wizard/wizard.tscn")
+
+var enemies_by_tier = {
+	1: [goblin, skeleton],
+	2: [knight, wolf],
+	3: [headsman, wizard]
+}
+
+
+
 signal player_healed(heal_amount)
 
 var coins := 10

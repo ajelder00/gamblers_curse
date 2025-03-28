@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhqam1wxi8xim" path="res://dice/bleeding/bleeding_dice.tscn" id="3_kur88"]
 [ext_resource type="Script" path="res://dice/bleeding/bleeding_dice.gd" id="4_m7qcc"]
 
-[node name="dummy_enemy" instance=ExtResource("1_cxt4o")]
+[node name="dummy_enemy2" instance=ExtResource("1_cxt4o")]
 script = ExtResource("2_x517p")
 
 [node name="Dice" parent="." index="4" instance=ExtResource("3_kur88")]

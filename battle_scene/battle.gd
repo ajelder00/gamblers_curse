@@ -9,19 +9,7 @@ extends Node
 
 var enemy_template
 
-var goblin := preload("res://dummy_enemy/enemies/goblin/goblin.tscn")
-var headsman := preload("res://dummy_enemy/enemies/headsman/headsman.tscn")
-var skeleton := preload("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
-var knight := preload("res://dummy_enemy/enemies/knight/knight.tscn")
-var wolf := preload("res://dummy_enemy/enemies/wolf/wolf.tscn")
-
-
-var enemies_by_tier = {
-	1: [goblin, skeleton],
-	2: [knight, wolf],
-	3: [headsman]
-}
-
+var enemy_dice
 var player
 var player_sprite
 var enemy
@@ -47,7 +35,7 @@ func _ready() -> void:
 	if not override_enemy:
 		enemy_template = pick_enemy(Global.difficulty)
 	else:
-		enemy_template = knight
+		enemy_template = Global.wizard
 	_get_ui_elements()
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()
@@ -80,7 +68,7 @@ func pick_tier(difficulty: int) -> int:
 
 func pick_enemy(difficulty: int):
 	var tier = pick_tier(difficulty)
-	return enemies_by_tier[tier].pick_random()
+	return Global.enemies_by_tier[tier].pick_random()
 
 func _get_ui_elements() -> void:
 	roll_message_label = $'Roll Message'  
@@ -113,12 +101,16 @@ func _setup_enemy() -> void:
 	"> A " + str(enemy_name.text) + " APPEARED!",
 	"> CHOOSE THREE DICE TO ROLL..."
 ]  
-	var enemy_dice = enemy.get_node("Dice") 
+	enemy_starting_health = enemy.health  # Store the starting health
+	enemy.connect("damage_to_player", _on_enemy_damage)
+	_setup_enemy_dice()
+
+func _setup_enemy_dice() -> void:
+	enemy_dice = enemy.dice
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
 	enemy_dice.global_position = enemy_dice_marker.global_position
 	enemy_dice.z_index = 1
-	enemy_starting_health = enemy.health  # Store the starting health
-	enemy.connect("damage_to_player", _on_enemy_damage)
+	enemy_dice.button.hide()
 
 # ------------------- Battle Flow -------------------
 
@@ -157,7 +149,9 @@ func _enemy_turn() -> void:
 	if Global.player_health <= 0 or not enemy or enemy.health <= 0:
 		return
 	for i in range(enemy.turns):
-		enemy.dice.roll_die(enemy.dice.faces)
+		enemy.set_dice()
+		_setup_enemy_dice()
+		enemy_dice.roll_die(enemy_dice.faces)
 		await player.damage_over
 	player.apply_status_self(player.current_effects)
 	await player.effects_over

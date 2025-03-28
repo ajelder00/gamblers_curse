@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://dummy_enemy/enemies/knight/knight.gd" id="2_6ksju"]
 [ext_resource type="PackedScene" uid="uid://65qg2jms12ux" path="res://dice/curse/curse_dice.tscn" id="3_c8ut7"]
 
-[node name="dummy_enemy" instance=ExtResource("1_j8vtu")]
+[node name="dummy_enemy2" instance=ExtResource("1_j8vtu")]
 script = ExtResource("2_6ksju")
 
 [node name="Dice" parent="." index="4" instance=ExtResource("3_c8ut7")]

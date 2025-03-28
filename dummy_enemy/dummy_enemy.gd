@@ -58,22 +58,15 @@ var health : int = 50
 var tier : int = 1
 var coins: int = int(randi_range(0,10)*randf_range(tier,tier + 1))
 var base_accuracy : float = 1.0
+var dice_bucket : Array = [null]
 
 # --- Initialization ---
 func _ready() -> void:
-	var indicator_list = [indicator1, indicator2, indicator3]
-	var label_list = [indicator_label1, indicator_label2, indicator_label3]
-	for indicator in indicator_list:
-		indicator.modulate.a = 0.0
-	for label in label_list:
-		label.text = ""
 	set_dice()
 	initialize_enemy()
 	setup_ui()
-	dice.rolled.connect(_on_die_rolled)
 	# fixes animation
 	sprite.play(ANIMS[type][3])
-	
 	# Adding music as children and setting path
 	add_child(attack_sound)
 	attack_sound.stream = attack_sound_path
@@ -81,15 +74,29 @@ func _ready() -> void:
 	hit_sound.stream = hit_sound_path
 
 func set_dice() -> void:
-	dice = $Dice
-	dice_button = $Dice/Button
+	if dice_bucket[0] == null:
+		return
+	for die in dice_bucket:
+		die.rolled.connect(_on_die_rolled)
+	dice = dice_bucket.pick_random()
+	dice.modulate.a = 1
+	for die in dice_bucket:
+		if die != dice:
+			die.modulate.a = 0
+	dice_button = dice.button
 
 # --- Setup UI Elements ---
 func setup_ui() -> void:
 	sprite.flip_h = true
-	dice_button.hide()
+	var indicator_list = [indicator1, indicator2, indicator3]
+	var label_list = [indicator_label1, indicator_label2, indicator_label3]
+	for indicator in indicator_list:
+		indicator.modulate.a = 0.0
+	for label in label_list:
+		label.text = ""
 
 func _on_die_rolled(damage_packet: Damage):
+	print("dogwoof")
 	if accuracy >= randf_range(0, 1):
 		damage = damage_packet
 	else: 

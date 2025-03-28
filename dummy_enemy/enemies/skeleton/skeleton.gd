@@ -5,6 +5,7 @@ extends DummyEnemy
 func _ready() -> void:
 	type = DummyEnemy.Type.SKELETON
 	immunities = [Dice.Type.POISON]
+	dice_bucket = [$Dice]
 	turns = 2
 	health = 40
 	tier = 1

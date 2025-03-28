@@ -5,6 +5,7 @@ extends DummyEnemy
 func _ready() -> void:
 	type = DummyEnemy.Type.AXEMAN
 	base_accuracy = 0.75
+	dice_bucket = [$Dice]
 	turns = 3
 	health = 80
 	tier = 3
