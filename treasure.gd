@@ -21,7 +21,16 @@ var loot
 var unlock_message = "DUNGEON CHEST UNLOCKED!"
 var second_message = "RETURNING TO MAP..."
 
+# Load the chest opening sound resource
+var chest_open_sound = preload("res://dice/dice_sounds/01_chest_open_2.wav")
+var audio_player: AudioStreamPlayer
+
 func _ready():
+	# Create an AudioStreamPlayer and assign the loaded sound
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = chest_open_sound
+	add_child(audio_player)
+	
 	if randf() > 1:
 		loot = coin_pic
 	else:
@@ -31,7 +40,7 @@ func _ready():
 		loot.modulate.a = 0.0
 		loot.button.hide()
 		loot.position = marker.position
-		loot.scale = loot.scale*1.5
+		loot.scale = loot.scale * 1.5
 	original_label_position = open_text.position
 	unlock.modulate.a = 0.0
 	unlock.visible = false
@@ -60,6 +69,8 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Play the chest opening sound when the chest is clicked
+		audio_player.play()
 		chest_sprite.play("open")
 		chest_clicked = true
 		open_text.text = ""

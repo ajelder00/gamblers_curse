@@ -174,7 +174,7 @@ z_index = 2
 position = Vector2(564, 311)
 scale = Vector2(6.46386, 7.07143)
 sprite_frames = SubResource("SpriteFrames_y5pup")
-animation = &"open"
+animation = &"idle"
 
 [node name="ColorRect" type="ColorRect" parent="Chest"]
 offset_left = -20.0

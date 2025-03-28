@@ -20,6 +20,7 @@ signal map_exited
 @onready var camera_2d: Camera2D = $Scroller
 @onready var parent = get_parent()
 @onready var background = $MapBackground/Background
+@onready var map_audio: AudioStreamPlayer2D = $MapAudio
 
 var map_data: Array[Array]
 var floors_climbed: int
@@ -30,6 +31,8 @@ func _ready() -> void:
 	generate_new_map()
 	camera_edge_y = MapGenerator.Y_DIST * (len(map_data) - 1)
 	unlock_floor(0)
+	# Start playing map audio when the scene is ready
+	map_audio.play()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
@@ -38,7 +41,7 @@ func _input(event: InputEvent) -> void:
 		
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
-		background.position.y -= (SCROLL_SPEED -10)
+		background.position.y -= (SCROLL_SPEED - 10)
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 900, len(map_data) * MapGenerator.Y_DIST - 150)
 	background.position.y = clamp(background.position.y, -1200, -80)
 	print(background.position.y)
@@ -53,7 +56,7 @@ func create_map() -> void:
 		for room: Room in current_floor:
 			if room.next_rooms.size() > 0:
 				_spawn_room(room)
-	#Spawn boss room
+	# Spawn boss room
 	var middle := floori(MapGenerator.MAP_WIDTH * 0.5)
 	_spawn_room(map_data[len(map_data) - 1][middle])
 	
@@ -75,10 +78,14 @@ func show_map() -> void:
 	show()
 	camera_2d.enabled = true
 	unlock_next_rooms()
+	# Play map audio when showing the map
+	map_audio.play()
 
 func hide_map() -> void:
 	hide()
 	camera_2d.enabled = false
+	# Stop map audio when hiding the map
+	map_audio.stop()
 	
 func _spawn_room(room: Room) -> void:
 	var new_map_room := MAP_ROOM.instantiate() as MapRoom
@@ -90,7 +97,7 @@ func _spawn_room(room: Room) -> void:
 	if room.selected and room.row < floors_climbed:
 		new_map_room.show_selected()
 
-func _connect_lines(room:Room) -> void:
+func _connect_lines(room: Room) -> void:
 	if room.next_rooms.is_empty():
 		return
 		
@@ -101,15 +108,17 @@ func _connect_lines(room:Room) -> void:
 		lines.add_child(new_map_line)
 
 func _on_map_selected(room: Room) -> void:
+	# Stop the map audio when a room is selected (clicked)
+	map_audio.stop()
 	for map_room: MapRoom in rooms.get_children():
 		if map_room.room.row == room.row:
 			map_room.available = false
 	last_room = room
 	floors_climbed += 1
 	Global.difficulty += 1
-	map_exited.emit(room) #I dont know what this signal does, but It scares me to delete it
+	map_exited.emit(room) # I dont know what this signal does, but it scares me to delete it
 	
-	var scene_to_load # Here down handles how the room is loaded
+	var scene_to_load # Determine which scene to load based on the room type
 	match room.type:
 		Room.Type.BATTLE:
 			scene_to_load = BATTLE
@@ -124,4 +133,3 @@ func _on_map_selected(room: Room) -> void:
 	
 	parent.add_child(scene_to_load.instantiate())
 	hide_map()
-	
