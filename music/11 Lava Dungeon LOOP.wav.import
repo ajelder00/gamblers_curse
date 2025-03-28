@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blpvuwbmvev5r"
+path="res://.godot/imported/11 Lava Dungeon LOOP.wav-fce5a508aea1cca9cb3b8188d381f383.sample"
+
+[deps]
+
+source_file="res://music/11 Lava Dungeon LOOP.wav"
+dest_files=["res://.godot/imported/11 Lava Dungeon LOOP.wav-fce5a508aea1cca9cb3b8188d381f383.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

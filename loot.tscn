@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://vwaotn7r0e0a"]
+[gd_scene load_steps=35 format=3 uid="uid://b4o6yihd2kw7i"]
 
 [ext_resource type="Texture2D" uid="uid://cqamicq73kbcr" path="res://art/Layer-1.png" id="1_1nait"]
 [ext_resource type="Script" path="res://treasure.gd" id="2_61w7c"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://hq1wgi616on2" path="res://art/treasure_room/treasure4.png" id="14_5wxpt"]
 [ext_resource type="Texture2D" uid="uid://djom6j4adhgrx" path="res://art/treasure_room/treasure5.png" id="15_jqr6l"]
 [ext_resource type="Texture2D" uid="uid://r8icakk3trhi" path="res://art/01coin.png" id="17_4tqvb"]
+[ext_resource type="AudioStream" uid="uid://ckkkngcoivdaj" path="res://music/06 Ice Dungeon LOOP.wav" id="18_gqknw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y5pup"]
 animations = [{
@@ -170,8 +171,8 @@ script = ExtResource("2_61w7c")
 
 [node name="Chest" type="AnimatedSprite2D" parent="."]
 z_index = 2
-position = Vector2(567, 289)
-scale = Vector2(7.22483, 7.90393)
+position = Vector2(564, 311)
+scale = Vector2(6.46386, 7.07143)
 sprite_frames = SubResource("SpriteFrames_y5pup")
 animation = &"open"
 
@@ -184,11 +185,11 @@ color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="OpenText" type="Label" parent="."]
-offset_left = 485.0
-offset_top = 273.0
-offset_right = 671.0
-offset_bottom = 319.0
-theme_override_font_sizes/font_size = 20
+z_index = 2
+offset_left = 474.0
+offset_top = 138.0
+offset_right = 660.0
+offset_bottom = 184.0
 text = "CLICK TO OPEN"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -206,6 +207,7 @@ scale = Vector2(0.916138, 0.916138)
 sprite_frames = SubResource("SpriteFrames_n7lrl")
 autoplay = "default"
 frame_progress = 0.343272
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -234,11 +236,10 @@ position = Vector2(569, 118)
 position = Vector2(576, 325)
 
 [node name="UText" type="Label" parent="."]
-offset_left = 319.0
-offset_top = 353.0
-offset_right = 830.0
-offset_bottom = 611.0
-theme_override_font_sizes/font_size = 25
+offset_left = 340.0
+offset_top = 62.0
+offset_right = 799.0
+offset_bottom = 320.0
 text = " "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -249,6 +250,10 @@ position = Vector2(569, 115)
 sprite_frames = SubResource("SpriteFrames_14hsr")
 autoplay = "default"
 frame_progress = 0.436961
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_gqknw")
+autoplay = true
 
 [connection signal="gui_input" from="Chest/ColorRect" to="." method="_on_color_rect_gui_input"]
 [connection signal="mouse_entered" from="Chest/ColorRect" to="." method="_on_color_rect_mouse_entered"]
