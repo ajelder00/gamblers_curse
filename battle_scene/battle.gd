@@ -158,7 +158,7 @@ func _enemy_turn() -> void:
 		await player.damage_over
 	player.apply_status_self(player.current_effects)
 	await player.effects_over
-	player.get_node("Dice Roller").new_hand()
+	player.get_node("Dice Roller").new_turn()
 
 func _on_enemy_damage(damage_packet: Damage) -> void:
 	await get_tree().create_timer(0.5).timeout

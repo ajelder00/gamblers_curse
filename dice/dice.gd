@@ -33,6 +33,8 @@ var original_scale = scale
 @onready var button := $Button
 @onready var faces := 6
 @onready var duration := 3
+# for dice roller
+@onready var is_rolled := false
 
 # Sound effects
 @onready var roll_sound = AudioStreamPlayer.new()
@@ -53,6 +55,7 @@ func _ready():
 	name_label.visible = false
 
 func _on_button_pressed() -> void:
+	is_rolled = true
 	roll_sound.play()
 	roll_die(faces)
 	button.hide()
