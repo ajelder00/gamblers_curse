@@ -18,7 +18,6 @@ z_index = 5
 z_as_relative = false
 script = ExtResource("1")
 player_template = ExtResource("2_bjksa")
-override_enemy = true
 
 [node name="MonsterName" type="Label" parent="."]
 offset_left = 97.0

@@ -8,7 +8,8 @@ const BATTLE = preload("res://battle_scene/battle.tscn")
 const LOOT = preload("res://loot.tscn")
 const SHOP = preload("res://shop/shop.tscn")
 const CASINO = preload("res://casino/Casino.tscn")
-const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
+#const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
+const TUTORIAL = preload("res://battle_scene/battle.tscn")
 
 signal map_exited
 

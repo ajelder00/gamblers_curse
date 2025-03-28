@@ -12,8 +12,7 @@ var coins := 10
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 
 # testing dice for dice roller
-#var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
-var testing_dice : Array = [poison, poison, poison, healing, healing, healing, healing, standard, standard, standard]
+var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
 var dice : Array = [standard, standard, standard, standard, standard]
 
 var can_heal : bool = true
