@@ -32,3 +32,4 @@ res://dummy_enemy/enemies/wolf/wolf.gd
 res://battle_scene/battle.gd
 res://global.gd
 res://dummy_enemy/enemies/wizard/wizard.gd
+res://rooms/elite/elite.gd
