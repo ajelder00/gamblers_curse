@@ -1,0 +1,247 @@
+[gd_scene load_steps=13 format=3 uid="uid://chjnuv68gfb6r"]
+
+[ext_resource type="Script" path="res://rooms/elite/elite.gd" id="1_qftna"]
+[ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_lrcx6"]
+[ext_resource type="Script" path="res://battle_scene/player_health.gd" id="2_mfqms"]
+[ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="3_j3qvm"]
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="4_flehx"]
+[ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="5_1jhrt"]
+[ext_resource type="Texture2D" uid="uid://bfecrldx7upoc" path="res://map_stuff/map_tutorial_stuff/art/dice.png" id="6_ygyfs"]
+[ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="7_mpyvg"]
+[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="8_10lw8"]
+[ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="9_ryanr"]
+[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="10_s0rel"]
+[ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="11_njqwe"]
+
+[node name="Battle" type="Node2D"]
+z_index = 5
+z_as_relative = false
+script = ExtResource("1_qftna")
+player_template = ExtResource("2_lrcx6")
+
+[node name="MonsterName" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 58.0
+offset_right = 273.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DUNGEON GOBLIN"
+
+[node name="MonsterHealthNum" type="Label" parent="."]
+z_index = 1
+offset_left = 377.0
+offset_top = 59.0
+offset_right = 483.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = 707.0
+offset_top = 390.0
+offset_right = 838.0
+offset_bottom = 406.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "THE FATED ONE"
+
+[node name="PlayerHealthNum" type="Label" parent="."]
+z_index = 1
+offset_left = 1013.0
+offset_top = 387.0
+offset_right = 1095.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="EnemyHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 219.0
+offset_top = 70.0
+offset_right = 485.0
+offset_bottom = 110.0
+color = Color(0.878431, 0.333333, 0.337255, 1)
+
+[node name="EnemyHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 219.0
+offset_top = 102.0
+offset_right = 485.0
+offset_bottom = 124.0
+color = Color(0.603922, 0.239216, 0.239216, 1)
+
+[node name="PlayerHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 829.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+size_flags_horizontal = 3
+color = Color(0.368627, 0.882353, 0.333333, 1)
+script = ExtResource("2_mfqms")
+
+[node name="PlayerHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 829.0
+offset_top = 436.0
+offset_right = 1105.0
+offset_bottom = 472.0
+size_flags_horizontal = 3
+color = Color(0.223529, 0.647059, 0.388235, 1)
+script = ExtResource("2_mfqms")
+
+[node name="PlayerHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 829.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+size_flags_horizontal = 3
+color = Color(0.0533738, 0.209555, 0.113318, 1)
+
+[node name="EnemyHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 219.0
+offset_top = 80.0
+offset_right = 486.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+color = Color(0.274879, 0.0885133, 0.0892138, 1)
+
+[node name="Map" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_right = 1162.0
+offset_bottom = 664.0
+color = Color(0, 0, 0, 1)
+
+[node name="DiceBG" type="ColorRect" parent="."]
+offset_left = 581.48
+offset_top = 528.48
+offset_right = 972.48
+offset_bottom = 597.48
+color = Color(0, 0, 0, 0)
+
+[node name="Marker1" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(333, 34)
+
+[node name="Marker2" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(271, 33)
+
+[node name="Marker3" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(209, 34)
+
+[node name="Marker4" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(146, 34)
+
+[node name="Marker5" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(83, 35)
+
+[node name="Marker6" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(19.52, 34)
+
+[node name="Marker7" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-42.48, 34)
+
+[node name="Marker8" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-104.48, 34)
+
+[node name="Marker9" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-167.48, 34)
+
+[node name="Marker10" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-230.48, 34)
+
+[node name="EnemyDiceBG" type="ColorRect" parent="."]
+offset_left = 1018.48
+offset_top = 528.48
+offset_right = 1091.48
+offset_bottom = 597.48
+color = Color(0.0313726, 0.0196078, 0.0509804, 0)
+
+[node name="EnemyMarker" type="Marker2D" parent="EnemyDiceBG"]
+position = Vector2(37, 35)
+
+[node name="DiceUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(664.48, 382.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("3_j3qvm")
+metadata/_edit_lock_ = true
+
+[node name="Roll Message" type="Label" parent="."]
+z_index = 1
+offset_left = 64.0
+offset_top = 535.0
+offset_right = 255.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 3
+
+[node name="TextUI" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_flehx")
+
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_flehx")
+
+[node name="Diceopedia" type="Sprite2D" parent="DiceopediaUI"]
+position = Vector2(-22.0473, 23.6049)
+scale = Vector2(0.269861, 0.269861)
+texture = ExtResource("5_1jhrt")
+
+[node name="Info" type="Sprite2D" parent="DiceopediaUI"]
+position = Vector2(-33.9399, 22.7097)
+scale = Vector2(0.472107, 0.472107)
+texture = ExtResource("6_ygyfs")
+
+[node name="EnemyHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(407, -94)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("7_mpyvg")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1017, 240)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("7_mpyvg")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(606, 320)
+scale = Vector2(0.85547, 0.702233)
+texture = ExtResource("8_10lw8")
+script = ExtResource("9_ryanr")
+
+[node name="PlayerPlatform" type="Sprite2D" parent="."]
+position = Vector2(254, 472)
+scale = Vector2(9, 9)
+texture = ExtResource("10_s0rel")
+metadata/_edit_lock_ = true
+
+[node name="EnemyPlatform" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(909, 304)
+scale = Vector2(9, 9)
+texture = ExtResource("10_s0rel")
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_njqwe")
+autoplay = true
