@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bynsu5gkn7lj5"]
+[gd_scene load_steps=9 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/card_game.gd" id="1_53nx0"]
 [ext_resource type="Texture2D" uid="uid://bbg6fjafm6w2s" path="res://art/green_mat_texture_-_base_texture.png" id="1_d7mbn"]
-[ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="3_m651v"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="4_fsf5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mvbkc"]
@@ -889,7 +888,6 @@ texture = ExtResource("1_d7mbn")
 39:21/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2vc2"]
-texture = ExtResource("3_m651v")
 separation = Vector2i(0, 1)
 0:0/0 = 0
 1:0/0 = 0

@@ -5,9 +5,9 @@ const SCROLL_SPEED := 30
 const MAP_ROOM = preload("res://map_stuff/map_tutorial_stuff/map_node.tscn")
 const MAP_LINE = preload("res://map_stuff/map_tutorial_stuff/map_connector.tscn")
 const BATTLE = preload("res://battle_scene/battle.tscn")
-const LOOT = preload("res://loot.tscn")
+const LOOT = preload("res://loot/loot.tscn")
 const SHOP = preload("res://shop/shop.tscn")
-const CASINO = preload("res://casino/Casino.tscn")
+const CASINO = preload("res://shop/shop.tscn")
 #const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 const TUTORIAL = preload("res://battle_scene/battle.tscn")
 
