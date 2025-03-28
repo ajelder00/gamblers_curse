@@ -47,7 +47,9 @@ var shop_dice = [
 	{"type": "risky", "price": 10, "description": "A risky dice, designed to amplify the stakes."}
 ]
 
-var player_health = 100
+var player_health = 1
+
+var attempts = 0
 
 func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	new_die.type = type

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2y6u6kixvwin"]
+[gd_scene load_steps=29 format=3 uid="uid://b2y6u6kixvwin"]
 
 [ext_resource type="Texture2D" uid="uid://bqtueem76kw1d" path="res://art/start_screen_anim/start_screen_animated1.png" id="1_1a3qo"]
 [ext_resource type="Texture2D" uid="uid://dollvadjbwo" path="res://art/start_screen_anim/start_screen_animated2.png" id="2_xmq6m"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bmp8x22e1y54d" path="res://art/gc_logo.png" id="10_dewif"]
 [ext_resource type="Script" path="res://start_menu/logo.gd" id="11_0jr5u"]
 [ext_resource type="AudioStream" uid="uid://biw6xeef31l58" path="res://music/08 Royal City LOOP.wav" id="12_la2ot"]
+[ext_resource type="Script" path="res://start_menu/attempts.gd" id="14_3agwi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1gsft"]
 animations = [{
@@ -386,6 +387,7 @@ libraries = {
 }
 
 [node name="Overlay" type="ColorRect" parent="CreditsController"]
+visible = false
 z_index = 1
 offset_left = -2.0
 offset_top = -4.0
@@ -463,6 +465,13 @@ script = ExtResource("11_0jr5u")
 [node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_la2ot")
 autoplay = true
+
+[node name="Attempts" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 624.0
+offset_right = 58.0
+offset_bottom = 640.0
+script = ExtResource("14_3agwi")
 
 [connection signal="mouse_entered" from="PlayController/PlayButton" to="PlayController/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayController/PlayButton" to="PlayController/PlayButton" method="_on_mouse_exited"]

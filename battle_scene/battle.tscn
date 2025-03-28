@@ -245,3 +245,31 @@ texture = ExtResource("10_hx8di")
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_00xd6")
 autoplay = true
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.929412)
+
+[node name="YouDied" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 417.0
+offset_top = 260.0
+offset_right = 496.0
+offset_bottom = 276.0
+scale = Vector2(4, 4)
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnText" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 458.0
+offset_top = 343.0
+offset_right = 704.0
+offset_bottom = 359.0
+text = "RETURNING TO START MENU..."
