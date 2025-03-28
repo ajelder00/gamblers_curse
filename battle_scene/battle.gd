@@ -15,6 +15,7 @@ var skeleton := preload("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
 var knight := preload("res://dummy_enemy/enemies/knight/knight.tscn")
 var wolf := preload("res://dummy_enemy/enemies/wolf/wolf.tscn")
 
+
 var enemies_by_tier = {
 	1: [goblin, skeleton],
 	2: [knight, wolf],
@@ -110,7 +111,7 @@ func _setup_enemy() -> void:
 	enemy_name.text = enemy.NAMES[enemy.type]
 	messages = [
 	"> A " + str(enemy_name.text) + " APPEARED!",
-	"> CHOOSE DICE TO ROLL..."
+	"> CHOOSE THREE DICE TO ROLL..."
 ]  
 	var enemy_dice = enemy.get_node("Dice") 
 	var enemy_dice_marker = $EnemyDiceBG/EnemyMarker
@@ -142,6 +143,8 @@ func _player_turn() -> void:
 		return
 	await get_tree().create_timer(1).timeout
 	player_sprite.play("attack") 
+	await get_tree().create_timer(0.5).timeout
+	player.play_attack_sound()
 	await player_sprite.animation_finished
 	player_sprite.play("idle")
 	enemy.get_hit(player.hit())
@@ -171,18 +174,16 @@ func _handle_enemy_defeat() -> void:
 	Global.coins += enemy.coins
 	await enemy_sprite.animation_finished
 	# Slide in the text UI for the defeat messages.
-	slide_in_text_ui()
+	await slide_in_text_ui()
 	# Define defeat messages.
 	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
 	var defeat_messages: Array = [
 		"> CONGRATS YOU DEFEATED THE ENEMY.",
-		"> YOU EARNED " + str(enemy.coins) + "GOLD",
+		"> YOU EARNED " + str(enemy.coins) + " GOLD!",
 		"> RETURNING TO MAP..."
 	]
 	# Type out the defeat messages.
 	await _start_defeat_typing(defeat_messages)
-	# Slide out the text UI.
-	slide_out_text_ui()
 	# Fade in the map after messages.
 	fade_in_map()
 
@@ -218,6 +219,7 @@ func _start_typing() -> void:
 	# When the "CHOOSE DICE TO ROLL..." message (index 1) has been shown, slide out the text UI...
 	if message_index == 1:
 		await slide_out_text_ui()
+		roll_message_label.text = ""
 		# ...and then slide DiceopediaUI in.
 		await slide_in_diceopedia_ui()
 
