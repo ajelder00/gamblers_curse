@@ -1,4 +1,3 @@
-res://loot.tscn
 res://dice_roller/dice_roller.tscn
 res://map_stuff/map_tutorial_stuff/map_node.tscn
 res://dice/standard/standard_dice.tscn
@@ -7,6 +6,7 @@ res://map_stuff/map_tutorial_stuff/map.tscn
 res://map_stuff/map_controller.tscn
 res://dice/dice.tscn
 res://battle_scene/tutorial/tutorial_battle.tscn
+res://loot.tscn
 res://dice/healing/healing_dice.tscn
 res://casino/Casino.tscn
 res://shop/shop.tscn
@@ -20,7 +20,6 @@ res://dummy_enemy/enemies/knight/knight.tscn
 res://dice/curse/curse_dice.tscn
 res://dummy_enemy/enemies/headsman/headsman.tscn
 res://dummy_enemy/enemies/wolf/wolf.tscn
-res://map_stuff/map_tutorial_stuff/map.gd
 res://battle_scene/battle.gd
-res://dummy_enemy/dummy_enemy.gd
+res://treasure.gd
 res://global.gd

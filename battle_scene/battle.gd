@@ -176,7 +176,7 @@ func _handle_enemy_defeat() -> void:
 	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
 	var defeat_messages: Array = [
 		"> CONGRATS YOU DEFEATED THE ENEMY.",
-		"> YOU EARNED " + str(enemy.coins) + "GOLD",
+		"> YOU EARNED " + str(enemy.coins) + " GOLD",
 		"> RETURNING TO MAP..."
 	]
 	# Type out the defeat messages.

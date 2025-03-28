@@ -14,7 +14,8 @@ var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
 
-var dice : Array 
+var dice : Array = [standard, standard, standard, standard, standard]
+
 var can_heal : bool = true
 
 var difficulty: int = 0

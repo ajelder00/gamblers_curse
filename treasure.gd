@@ -3,18 +3,35 @@ extends Node2D
 @onready var chest_sprite = $Chest
 @onready var open_text = $OpenText
 @onready var unlock = $Unlock
-@onready var unlock_label = $Unlock/UText
+@onready var unlock_label = $UText
 @onready var map_rect = $Map
+@onready var camera = $Camera2D
+@onready var coin_pic = $Coin
+@onready var marker = $Marker2D
+@onready var die = null
 
 var chest_clicked = false
 var bobbing_speed = 2.0
 var bobbing_height = 5.0
 var original_label_position
+var dice_loot = Global.dummy_dice.duplicate()
+var coins = randi_range(10, 40)
+var loot
 
-var unlock_message = "DUNGEON CHEST UNLOCKED!\n\nYOU FOUND:\n\nPOISON DICE\n\n100 GOLD!\n\n..."
+var unlock_message = "DUNGEON CHEST UNLOCKED!"
 var second_message = "RETURNING TO MAP..."
 
 func _ready():
+	if randf() > 0.4:
+		loot = coin_pic
+	else:
+		die = dice_loot.pick_random()
+		loot = die.instantiate()
+		self.add_child(loot)
+		loot.modulate.a = 0.0
+		loot.button.hide()
+		loot.position = marker.position
+		loot.scale = loot.scale*1.5
 	original_label_position = open_text.position
 	unlock.modulate.a = 0.0
 	unlock.visible = false
@@ -49,15 +66,25 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		fade_in_unlock()
 
 func fade_in_unlock():
+	var tween1 = get_tree().create_tween()  
+	tween1.tween_property(camera, "zoom", Vector2(1.1, 1.1), 0.5)  # Smooth zoom in over 0.5s
 	unlock.visible = true
 	await get_tree().create_timer(0.5).timeout
-	var tween = create_tween()
-	tween.tween_property(unlock, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_LINEAR)
-	await tween.finished
 	await typewriter_effect(unlock_message)
+	var tween2 = get_tree().create_tween()  
+	await tween2.tween_property(loot, "modulate:a", 1.0, 0.5)
+	await get_tree().create_timer(1.5).timeout
+	unlock_label.text = ""
+	if die:
+		loot.roll_die(loot.faces)
+		Global.dice.append(die)
+		await typewriter_effect("YOU FOUND A " + str(loot.TYPE_NAMES[loot.type][0]).to_upper() + " DICE")
+	else:
+		Global.coins += coins
+		await typewriter_effect("YOU FOUND " + str(coins) + " COINS")
+	unlock.visible = true
 	await get_tree().create_timer(1.0).timeout
 	unlock_label.text = ""
-	await typewriter_effect(second_message)
 	await get_tree().create_timer(0.5).timeout
 	fade_in_map()
 
@@ -71,4 +98,4 @@ func fade_in_map():
 func typewriter_effect(message: String):
 	for i in message.length():
 		unlock_label.text = message.substr(0, i + 1)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.08).timeout
