@@ -131,6 +131,10 @@ func reset_positions():
 	
 	
 	for j in range(last_index, len(current_dice)):
+		# makes dice that end up in the selectable 5 first dice selectable
+		if j < 5:
+			current_dice[j].get_node("Button").show()
+		
 		await get_tree().create_timer(0.1).timeout
 		# resets the die's animation to blank
 		current_dice[j].animation_player.animation = current_dice[j].ANIMS[current_dice[j].type][0]
