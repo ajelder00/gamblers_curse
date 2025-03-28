@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bfecrldx7upoc" path="res://map_stuff/map_tutorial_stuff/art/dice.png" id="8_vt0tu"]
 [ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="9_ft0dj"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="9_pf7aa"]
-[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="10_hx8di"]
+[ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="10_hx8di"]
 [ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="11_wutdn"]
 
 [node name="Battle" type="Node2D"]

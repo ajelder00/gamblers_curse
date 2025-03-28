@@ -1,9 +1,10 @@
-[gd_scene load_steps=209 format=3 uid="uid://bo56bcst8wlj"]
+[gd_scene load_steps=235 format=3 uid="uid://bo56bcst8wlj"]
 
 [ext_resource type="Script" path="res://dummy_enemy/dummy_enemy.gd" id="1_4fd5b"]
 [ext_resource type="Texture2D" uid="uid://bj8i71ksaxf83" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Attack01.png" id="2_4u18g"]
 [ext_resource type="Texture2D" uid="uid://5ijvhe4jtb1w" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc/Orc/Orc-Attack01.png" id="3_5nnqi"]
 [ext_resource type="Texture2D" uid="uid://dttqrmllcx4rs" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight Templar/Knight Templar/Knight Templar-Attack01.png" id="4_2c8wr"]
+[ext_resource type="Texture2D" uid="uid://beetbeguioyaf" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Swordsman/Swordsman/Swordsman-Attack01.png" id="4_rv8ko"]
 [ext_resource type="Texture2D" uid="uid://cqaepjt8uuxhu" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Lancer/Lancer/Lancer-Attack03.png" id="5_jcy8n"]
 [ext_resource type="Texture2D" uid="uid://douxhjn4ojo26" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider-Attack02.png" id="6_7rml6"]
 [ext_resource type="Texture2D" uid="uid://bq55ohnbinm5t" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton-Attack01.png" id="7_2a7la"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bmm15wooa2k8q" path="res://dummy_enemy/Orc.png" id="11_pbtxw"]
 [ext_resource type="Texture2D" uid="uid://cu25xxp3l7vio" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight Templar/Knight Templar/Knight Templar-Hurt.png" id="12_ixfbf"]
 [ext_resource type="Texture2D" uid="uid://bwhstotcgr3gi" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Lancer/Lancer/Lancer-Hurt.png" id="13_bvegh"]
+[ext_resource type="Texture2D" uid="uid://c5pt123xmcf51" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Swordsman/Swordsman/Swordsman-Hurt.png" id="13_t3rux"]
 [ext_resource type="Texture2D" uid="uid://rvetrb3gtux" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider-Hurt.png" id="14_7s8ot"]
 [ext_resource type="Texture2D" uid="uid://cmyslq61otnk5" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton-Hurt.png" id="15_ymbsk"]
 [ext_resource type="Texture2D" uid="uid://cuq5kb4r7v6uc" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard-Hurt.png" id="16_yjf7s"]
@@ -24,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cwibwhdmtvju3" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider-Death.png" id="20_aeubp"]
 [ext_resource type="Texture2D" uid="uid://dpbaknjwff1pb" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton-Death.png" id="21_f3xcw"]
 [ext_resource type="Texture2D" uid="uid://bjd1h855eg58h" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard-DEATH.png" id="22_cjrt4"]
+[ext_resource type="Texture2D" uid="uid://c4ksskmfmpw12" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Swordsman/Swordsman/Swordsman-Death.png" id="22_s51bs"]
 [ext_resource type="Texture2D" uid="uid://c1gyg1uwpckq" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf/Werewolf-Death.png" id="23_hpcxw"]
 [ext_resource type="Texture2D" uid="uid://c8p8m8ws30ilk" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="25_fmpr4"]
 [ext_resource type="Texture2D" uid="uid://cgc23dlrnk8u4" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc/Orc/Orc.png" id="26_ybuq2"]
@@ -31,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://jqlmsu8wokc0" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Lancer/Lancer/Lancer.png" id="28_cs473"]
 [ext_resource type="Texture2D" uid="uid://bsu2ei4eb0ljk" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider.png" id="29_svc6v"]
 [ext_resource type="Texture2D" uid="uid://b5nu62w55j1if" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="30_jrgyj"]
+[ext_resource type="Texture2D" uid="uid://dpc4ji85clmsx" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Swordsman/Swordsman/Swordsman-Idle.png" id="31_by8uk"]
 [ext_resource type="Texture2D" uid="uid://bw2k63vq10s3m" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard.png" id="31_ck36o"]
 [ext_resource type="Texture2D" uid="uid://p1kinvdhg0k5" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf/Werewolf.png" id="32_b702e"]
 [ext_resource type="Texture2D" uid="uid://csvdwmv1we" path="res://art/blindness_effect.png" id="34_fwcyx"]
@@ -94,6 +98,34 @@ region = Rect2(400, 0, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkvqs"]
 atlas = ExtResource("3_5nnqi")
 region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kcy6"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go1o2"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2t26"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okac4"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jblqh"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ups6b"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1rbn"]
+atlas = ExtResource("4_rv8ko")
+region = Rect2(600, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5myb"]
 atlas = ExtResource("4_2c8wr")
@@ -311,6 +343,26 @@ region = Rect2(300, 400, 100, 100)
 atlas = ExtResource("11_pbtxw")
 region = Rect2(0, 200, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6vca"]
+atlas = ExtResource("13_t3rux")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj4uy"]
+atlas = ExtResource("13_t3rux")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84bl0"]
+atlas = ExtResource("13_t3rux")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2p4l"]
+atlas = ExtResource("13_t3rux")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rvdu"]
+atlas = ExtResource("13_t3rux")
+region = Rect2(400, 0, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_njhk4"]
 atlas = ExtResource("12_ixfbf")
 region = Rect2(0, 0, 100, 100)
@@ -437,6 +489,22 @@ region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x74ty"]
 atlas = ExtResource("17_ss5cq")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f43d"]
+atlas = ExtResource("22_s51bs")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvkcx"]
+atlas = ExtResource("22_s51bs")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1f71"]
+atlas = ExtResource("22_s51bs")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jikju"]
+atlas = ExtResource("22_s51bs")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp8bf"]
@@ -581,6 +649,30 @@ region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk745"]
 atlas = ExtResource("26_ybuq2")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73nwf"]
+atlas = ExtResource("31_by8uk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8xq2"]
+atlas = ExtResource("31_by8uk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgp8o"]
+atlas = ExtResource("31_by8uk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajs26"]
+atlas = ExtResource("31_by8uk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv052"]
+atlas = ExtResource("31_by8uk")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_637ie"]
+atlas = ExtResource("31_by8uk")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gisp"]
@@ -782,6 +874,32 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_goblin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kcy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go1o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2t26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okac4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jblqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ups6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1rbn")
+}],
+"loop": false,
+"name": &"attack_king",
 "speed": 5.0
 }, {
 "frames": [{
@@ -988,6 +1106,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f6vca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj4uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84bl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2p4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rvdu")
+}],
+"loop": false,
+"name": &"damage_king",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_njhk4")
 }, {
 "duration": 1.0,
@@ -1120,6 +1258,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_goblin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f43d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvkcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1f71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jikju")
+}],
+"loop": false,
+"name": &"dead_king",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1272,6 +1427,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_73nwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8xq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgp8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajs26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv052")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_637ie")
+}],
+"loop": true,
+"name": &"idle_king",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6gisp")
 }, {
 "duration": 1.0,
@@ -1418,7 +1596,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"attack_wolf"
+animation = &"idle_king"
+frame = 3
+frame_progress = 0.725349
 
 [node name="StatusIndicator1" type="Sprite2D" parent="."]
 position = Vector2(10, -147)

@@ -96,7 +96,6 @@ func setup_ui() -> void:
 		label.text = ""
 
 func _on_die_rolled(damage_packet: Damage):
-	print("dogwoof")
 	if accuracy >= randf_range(0, 1):
 		damage = damage_packet
 	else: 
