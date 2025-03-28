@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1743113938
+::res://::1743116689
 damage.gd::GDScript::-1::1743100908::0::1::::Damage<>Resource<>::
 export_presets.cfg::TextFile::-1::1740693418::0::1::::<><>::
-global.gd::GDScript::-1::1743113409::0::1::::<>Node<>::
+global.gd::GDScript::-1::1743116010::0::1::::<>Node<>::
 image.png::CompressedTexture2D::6261715054479950730::1741548957::1742839752::1::::<><>::
 loot.tscn::PackedScene::4452723954755593920::1743113938::0::1::::<><>::uid://cqamicq73kbcr::::res://art/Layer-1.png<>res://treasure.gd<>uid://3l0riy6shdnd::::res://art/Layer-2.png<>uid://4t6lwk66jmlf::::res://art/Layer-3.png<>uid://t642tptwf2rd::::res://art/Layer-4.png<>uid://casl4kf830n0u::::res://art/Layer-5.png<>uid://ccwmscx7sfefg::::res://art/Layer-6.png<>uid://cbu5aom3nk4r3::::res://art/Layer-7.png<>uid://dqak0c4tiyxgs::::res://art/Layer-8.png<>uid://cp1telw0clpqd::::res://art/image (1).png<>uid://brj83pjjsimuu::::res://art/New Piskel.png<>uid://ckyrfb38ein7f::::res://art/button.png
 overworldmap.tscn::PackedScene::6013353511218529908::1740767534::0::1::::<><>::res://parentnode.gd<>uid://c3fh4t3ol3hlj::::res://art/idle.png<>uid://brywskotyfuu0::::res://art/walk.png<>res://character.gd<>res://mapnode.gd<>uid://ce7qn1wsp1pje::::res://art/map_temp.png<>uid://bqvduyi06xkgy::::res://art/Pixel 3.mp3
@@ -10,7 +10,7 @@ poison_dice.gd::GDScript::-1::1741218358::0::1::::<>Dice<>::
 README.md::TextFile::-1::1739986481::0::1::::<><>::
 start_menu.tscn::PackedScene::2605114540999328539::1740767534::0::1::::<><>::uid://bxevpmw2qanin::::res://art/GS_BG.png<>res://play.gd
 treasure.gd::GDScript::-1::1742840069::0::1::::<>Node2D<>::
-::res://art/::1743114062
+::res://art/::1743116689
 arrow.png::CompressedTexture2D::5960931493466070663::1741309015::1742839751::1::::<><>::
 bleeding_effect.png::CompressedTexture2D::339669921620020590::1743097807::1743097851::1::::<><>::
 blindness_effect.png::CompressedTexture2D::154686917058880::1743096961::1743096982::1::::<><>::
@@ -84,7 +84,7 @@ card_11_heart.png::CompressedTexture2D::8542798496290145812::1742841770::1743008
 card_12_heart.png::CompressedTexture2D::6850422274032516677::1742841770::1743008123::1::::<><>::
 card_13_heart.png::CompressedTexture2D::8422906033876429697::1742841770::1743008123::1::::<><>::
 ::res://art/shop/::1743114136
-::res://art/shop/shop_background/::1743114136
+::res://art/shop/shop_background/::1743114138
 shop_background1.png::CompressedTexture2D::4855819336668971737::1743114136::1743114138::1::::<><>::
 shop_background2.png::CompressedTexture2D::3068541198606980494::1743114136::1743114138::1::::<><>::
 shop_background3.png::CompressedTexture2D::1206461720451542085::1743114136::1743114138::1::::<><>::
@@ -667,6 +667,12 @@ Priest-Attack_effect.png::CompressedTexture2D::7053104122967824945::1741021195::
 Priest-Heal_Effect.png::CompressedTexture2D::149194205625805125::1741021195::1742839751::1::::<><>::
 Wizard-Attack01_Effect.png::CompressedTexture2D::7295791705432377492::1741021195::1742839751::1::::<><>::
 Wizard-Attack02_Effect.png::CompressedTexture2D::1933915352106332203::1741021195::1742839751::1::::<><>::
+::res://art/treasure_room/::1743116675
+treasure1.png::CompressedTexture2D::1218884769387140952::1743116671::1743116694::1::::<><>::
+treasure2.png::CompressedTexture2D::6880548797214605638::1743116671::1743116694::1::::<><>::
+treasure3.png::CompressedTexture2D::9060288326278198056::1743116671::1743116694::1::::<><>::
+treasure4.png::CompressedTexture2D::525970207752033029::1743116671::1743116694::1::::<><>::
+treasure5.png::CompressedTexture2D::7820647413416451865::1743116671::1743116694::1::::<><>::
 ::res://battle_scene/::1743113938
 battle.gd::GDScript::-1::1743113938::0::1::::<>Node<>::
 battle.tscn::PackedScene::2776436922424779195::1743113938::0::1::::<><>::res://battle_scene/battle.gd<>uid://c8epku478rptj::::res://dummy_player/dummy_player.tscn<>uid://id41fws8yho3::::res://battle_scene/art/dice_bg_ui.png<>uid://d4dwxcbetjc43::::res://music/12 Boss Theme LOOP.wav<>res://battle_scene/player_health.gd<>uid://cr7pvv0u76muw::::res://art/diceopedia/diceopedia13.png<>uid://nri5sk1coo08::::res://battle_scene/art/textbox_1.png<>uid://cvhhsddvn04ty::::res://image.png<>uid://bfecrldx7upoc::::res://map_stuff/map_tutorial_stuff/art/dice.png<>res://battle_scene/tutorial/background.gd<>uid://brj83pjjsimuu::::res://art/New Piskel.png<>uid://dge378wvw6mse::::res://battle_scene/art/healthui.png
@@ -699,7 +705,7 @@ casino_sprite.gd::GDScript::-1::1741021195::0::1::::<>AnimatedSprite2D<>::
 dice.gd::GDScript::-1::1743099920::0::1::::Dice<>Node2D<>::
 dice.tscn::PackedScene::4256023148940982215::1743113182::0::1::::<><>::res://dice/dice.gd<>uid://waxm1wajjcjc::::res://dice/six sided die.png
 six sided die.png::CompressedTexture2D::1545573880002384148::1743102119::1743102125::1::::<><>::
-::res://dice/bleeding/::1743107459
+::res://dice/bleeding/::1743116689
 bleeding_dice.gd::GDScript::-1::1743107459::0::1::::<>Dice<>::
 bleeding_dice.tscn::PackedScene::7683636830787175264::1743106482::0::1::::<><>::uid://b1vwcx3yj158n::::res://dice/dice.tscn<>res://dice/poison/poison_dice.gd
 ::res://dice/blinding/::1743096961
@@ -739,7 +745,7 @@ Orc.png::CompressedTexture2D::3255092733805416754::1740693418::1742839752::1::::
 ::res://dummy_enemy/dummy_enemy_sounds/::1742839760
 17_orc_atk_sword_1.wav::AudioStreamWAV::1023064857000784157::1741366922::1742839760::1::::<><>::
 21_orc_damage_1.wav::AudioStreamWAV::8859868153330005962::1741366922::1742839760::1::::<><>::
-::res://dummy_enemy/enemies/::1743106275
+::res://dummy_enemy/enemies/::1743115994
 ::res://dummy_enemy/enemies/goblin/::1743096961
 goblin.gd::GDScript::-1::1743096961::0::1::::<>DummyEnemy<>::
 goblin.tscn::PackedScene::8771033821467483066::1743096961::0::1::::<><>::uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn<>res://dummy_enemy/enemies/goblin/goblin.gd<>uid://bjovamca8hg6f::::res://dice/standard/standard_dice.tscn
@@ -752,6 +758,9 @@ knight.tscn::PackedScene::7699952988753614598::1743113187::0::1::::<><>::uid://b
 ::res://dummy_enemy/enemies/skeleton/::1743113186
 skeleton.gd::GDScript::-1::1743096961::0::1::::<>DummyEnemy<>::
 skeleton.tscn::PackedScene::3683222246386545863::1743113186::0::1::::<><>::uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn<>res://dummy_enemy/enemies/skeleton/skeleton.gd<>uid://bjovamca8hg6f::::res://dice/standard/standard_dice.tscn
+::res://dummy_enemy/enemies/wizard/::1743116019
+wizard.gd::GDScript::-1::1743116019::0::1::::<>Node2D<>::
+wizard.tscn::PackedScene::5599040412543926636::1743116010::0::1::::<><>::uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn
 ::res://dummy_enemy/enemies/wolf/::1743113187
 wolf.gd::GDScript::-1::1743106327::0::1::::<>DummyEnemy<>::
 wolf.tscn::PackedScene::3129867908021243254::1743113187::0::1::::<><>::uid://bo56bcst8wlj::::res://dummy_enemy/dummy_enemy.tscn<>res://dummy_enemy/enemies/wolf/wolf.gd<>uid://dhqam1wxi8xim::::res://dice/bleeding/bleeding_dice.tscn<>res://dice/bleeding/bleeding_dice.gd

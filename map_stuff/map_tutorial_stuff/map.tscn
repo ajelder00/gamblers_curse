@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map.gd" id="1_pskux"]
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map_randomizer.gd" id="2_j46t8"]
-[ext_resource type="Texture2D" uid="uid://1ntu8cb231tn" path="res://art/download (1).png" id="3_oa2lk"]
+[ext_resource type="Texture2D" uid="uid://j7jbl6dcx3t5" path="res://art/mpb.png" id="3_u561b"]
 
 [node name="Map" type="Node2D"]
 z_as_relative = false
@@ -37,10 +37,10 @@ z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -15.0
-offset_top = -178.0
-offset_right = 38.0
-offset_bottom = 768.0
+offset_left = -280.0
+offset_top = -360.0
+offset_right = 1030.0
+offset_bottom = 2251.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_oa2lk")
+texture = ExtResource("3_u561b")

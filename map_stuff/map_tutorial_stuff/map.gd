@@ -33,13 +33,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y -= SCROLL_SPEED
-		background.position.y += SCROLL_SPEED -10
-		
+		background.position.y = -camera_2d.position.y - 1000
 		
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
 		background.position.y -= SCROLL_SPEED -10
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 900, len(map_data) * MapGenerator.Y_DIST - 150)
+	background.position.y = -camera_2d.position.y - 1000
 
 func generate_new_map() -> void:
 	floors_climbed = 0
