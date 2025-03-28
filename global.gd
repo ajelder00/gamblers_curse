@@ -49,6 +49,8 @@ var shop_dice = [
 
 var player_health = 100
 
+var attempts = 1
+
 func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	new_die.type = type
 	
