@@ -47,7 +47,7 @@ var shop_dice = [
 	{"type": "risky", "price": 10, "description": "A risky dice, designed to amplify the stakes."}
 ]
 
-var player_health = 1
+var player_health = 100
 
 var attempts = 0
 
