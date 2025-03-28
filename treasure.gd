@@ -107,6 +107,8 @@ func fade_in_map():
 	queue_free() 
 
 func typewriter_effect(message: String):
+	Global.typing = true
 	for i in message.length():
 		unlock_label.text = message.substr(0, i + 1)
 		await get_tree().create_timer(0.08).timeout
+	Global.typing = false

@@ -16,10 +16,9 @@ var testing_dice : Array = [standard, standard, standard, standard, standard, he
 var dice : Array = [standard, standard, standard, standard, standard]
 
 var can_heal : bool = true
-
 var difficulty: int = 0
 
-enum Status{NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING}
+enum Status { NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING }
 
 const STATUS_PICS := {
 	Status.POISON: "res://art/poison_effect.png",
@@ -28,11 +27,10 @@ const STATUS_PICS := {
 	Status.BLEEDING: "res://art/bleeding_effect.png"
 }
 
-## shop inventory to initialize all the dice
 var shop_dice = [
 	{"type": "standard", "price": 5, "description": "A standard six-sided dice."},
 	{"type": "risky", "price": 10, "description": "A risky dice, designed to amplify the stakes."}
-				] 
+]
 
 var player_health = 100
 
@@ -49,3 +47,31 @@ func heal(health) -> void:
 	else:
 		Global.player_health = max(Global.player_health - health, 0)
 		player_healed.emit(health)
+
+# --- Audio Loading and Playback ---
+
+# Preload the audio file.
+var retro_audio = preload("res://music/Retro_Multiple_v5_wav.wav")
+var audio_player: AudioStreamPlayer
+
+# Boolean to control audio playback
+var typing: bool = false
+
+func _ready():
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = retro_audio
+	# Set the volume to -6 dB (approximately 50% quieter than 0 dB)
+	audio_player.volume_db = -12
+	add_child(audio_player)
+	
+	# For Godot 4, if the audio stream supports looping, set its loop_mode to loop forward.
+	if retro_audio.has_method("set_loop_mode"):
+		retro_audio.loop_mode = 1
+
+func _process(delta):
+	# If typing is true and the audio is not playing, start playback.
+	if typing and not audio_player.playing:
+		audio_player.play()
+	# If typing is false and the audio is playing, stop playback.
+	elif not typing and audio_player.playing:
+		audio_player.stop()
