@@ -9,6 +9,7 @@ extends Node
 
 var enemy_template
 
+var sway = true
 var enemy_dice
 var player
 var player_sprite

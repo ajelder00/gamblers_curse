@@ -6,13 +6,13 @@ signal selected(room:Room)
 const ICON_SIZE := 5.5
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.Type.BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/battle.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.CASINO: [preload("res://map_stuff/map_tutorial_stuff/art/dice.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.SHOP: [preload("res://map_stuff/map_tutorial_stuff/art/coins.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.ELITE_BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/skull.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.LOOT: [preload("res://map_stuff/map_tutorial_stuff/art/chest.png"), Vector2(ICON_SIZE,ICON_SIZE)],
-	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/skull_boss.png"), Vector2(ICON_SIZE, ICON_SIZE)],
-	Room.Type.TUTORIAL: [preload("res://map_stuff/map_tutorial_stuff/art/battle.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/battle.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.CASINO: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/dice.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.SHOP: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/coins.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.ELITE_BATTLE: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/skull.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.LOOT: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/chest.png"), Vector2(ICON_SIZE,ICON_SIZE)],
+	Room.Type.BOSS: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/skull_boss.png"), Vector2(ICON_SIZE, ICON_SIZE)],
+	Room.Type.TUTORIAL: [preload("res://map_stuff/map_tutorial_stuff/art/map_icons/battle.png"), Vector2(ICON_SIZE,ICON_SIZE)],
 }
 @onready var sprite_2d: Sprite2D = $Visuals/Icons
 @onready var x_out: Sprite2D = $Visuals/X
