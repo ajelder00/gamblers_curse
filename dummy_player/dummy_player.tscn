@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8epku478rptj"]
+[gd_scene load_steps=37 format=3 uid="uid://c8epku478rptj"]
 
 [ext_resource type="Script" path="res://dummy_player/dummy_player.gd" id="1_qj2j2"]
 [ext_resource type="Texture2D" uid="uid://bs5qo5cd7chbp" path="res://dummy_player/Soldier.png" id="2_2wf7a"]
+[ext_resource type="Texture2D" uid="uid://d0el6wbbm1j0r" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="3_6qlih"]
 [ext_resource type="Texture2D" uid="uid://csvdwmv1we" path="res://art/blindness_effect.png" id="4_2yikg"]
 [ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="4_fdqlr"]
 
@@ -93,6 +94,38 @@ region = Rect2(400, 0, 100, 100)
 atlas = ExtResource("2_2wf7a")
 region = Rect2(500, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhssm"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwek1"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt8an"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dmh8"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mq13"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60e7y"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i31p"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtvd5"]
+atlas = ExtResource("3_6qlih")
+region = Rect2(700, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_40ksk"]
 animations = [{
 "frames": [{
@@ -180,6 +213,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhssm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwek1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt8an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dmh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mq13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60e7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i31p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtvd5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
 }]
 
 [node name="dummy_player" type="Node2D"]
@@ -190,7 +252,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_40ksk")
-animation = &"attack"
+animation = &"walk"
 
 [node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
 position = Vector2(26, 147)

@@ -2,20 +2,23 @@ extends Node
 
 @onready var map_rect = $Map
 @onready var diceopedia_ui = $DiceopediaUI  # New DiceopediaUI reference
-
+@onready var music = $'BattleMusic'
 @export var speed: float = 0.05  # Time delay between letters
 @export var player_template: PackedScene
 @export var override_enemy: bool = true
 
+var enemy_og_pos
 var enemy_template
-
+var ui_elements
 var enemy_dice
 var player
 var player_sprite
 var enemy
 var enemy_sprite
 var enemy_starting_health  # Store the enemy's starting health
+var new_music = preload("res://music/6. Veil of Eternal Nightfall (Loop).mp3")
 
+var sway = false
 var messages
 var message_index: int = 0
 
@@ -45,7 +48,24 @@ func _ready() -> void:
 	diceopedia_target_position = diceopedia_ui.position
 	diceopedia_ui.position = diceopedia_target_position + Vector2(0, 300)
 	diceopedia_ui.visible = true
-	
+	var enemy_text_ui = $'EnemyTextUI'
+	await get_tree().create_timer(1.5).timeout
+	var intro_messages = [
+		"WHO GOES THERE?",
+		"OH . . . ITS YOU. . .",
+		"NO MATTER." ,
+		"EVEN IF MY DICE CAN'T CONTROL YOU",
+		"I WILL STILL END YOUR MISERABLE LIFE",
+		"PREPARE TO DIE"
+	]  
+	for message in intro_messages:
+		enemy_text_ui.visible = true
+		await typewriter_effect(message)
+		await get_tree().create_timer(1.5).timeout
+		if not music.playing:
+			music.playing = true
+	enemy_text_ui.visible = false
+	$EnemyText.hide()
 	_start_battle()
 	update_health_display()
 
@@ -84,7 +104,10 @@ func _get_ui_elements() -> void:
 	var player_health1 = $'PlayerHealth2'
 	var player_health_red = $'PlayerHealthBG'
 	var player_name = $'PlayerName'
-	var ui_elements = [roll_message_label, 
+	var player_platform = $'PlayerPlatform'
+	var enemy_platform = $'EnemyPlatform'
+	var dice_ui = $'DiceUI'
+	ui_elements = [roll_message_label, 
 	player_health_label, 
 	enemy_health_bar, 
 	enemy_health_bar2, 
@@ -95,7 +118,10 @@ func _get_ui_elements() -> void:
 	player_health1,
 	player_name,
 	player_health_red,
-	enemy_health_red
+	enemy_health_red,
+	player_platform,
+	enemy_platform,
+	dice_ui
 	]
 	for ui in ui_elements:
 		ui.hide()
@@ -105,12 +131,21 @@ func _initialize_combatants() -> void:
 	enemy = enemy_template.instantiate()
 	add_child(player)
 	add_child(enemy)
-	
+	player.roller.hide()
+	enemy.dice.hide()
 	player_sprite = player.get_node("AnimatedSprite2D")
 	enemy_sprite = enemy.get_node("AnimatedSprite2D")
 	enemy.position.y -= 130
 	player.position.y -= 30
-	
+	var player_position_og = player.position.x
+	player.position.x -= 320
+	player_sprite.play("walk")
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "position:x", player.position.x + 320, 3)
+	await get_tree().create_timer(3).timeout
+	player_sprite.play("idle")
+	await get_tree().create_timer(0.5).timeout
+	enemy.sprite.flip_h = true
 	# Connect player's attack signal
 	if player.has_signal("attack_signal"):
 		player.attack_signal.connect(_on_player_attack)
@@ -118,7 +153,12 @@ func _initialize_combatants() -> void:
 # ------------------- Enemy Setup -------------------
 
 func _setup_enemy() -> void:
+	enemy_og_pos = enemy.position.y
+	
+	enemy.position.y += 125
+	enemy.sprite.flip_h = false
 	enemy_name.text = enemy.NAMES[enemy.type]
+	enemy.dice.position.y -= 150
 	messages = [
 		"> A " + str(enemy_name.text) + " APPEARED!",
 		"> CHOOSE THREE DICE TO ROLL..."
@@ -137,6 +177,14 @@ func _setup_enemy_dice() -> void:
 # ------------------- Battle Flow -------------------
 
 func _start_battle() -> void:
+	for ui in ui_elements:
+		ui.show()
+	player.roller.show()
+	enemy.dice.show()
+	enemy.position.y = enemy_og_pos
+	_setup_enemy_dice()
+	music.stream = new_music
+	music.play()
 	if roll_message_label:
 		roll_message_label.visible = true
 		roll_message_label.text = ""
@@ -355,3 +403,10 @@ func fade_in_map():
 	map_tween.tween_property(map_rect, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	await get_tree().create_timer(1.8).timeout 
 	queue_free()
+
+func typewriter_effect(message: String):
+	Global.typing = true
+	for i in message.length():
+		$'EnemyText'.text = message.substr(0, i + 1)
+		await get_tree().create_timer(0.08).timeout
+	Global.typing = false

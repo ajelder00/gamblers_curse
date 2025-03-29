@@ -12,6 +12,7 @@ var skeleton := load("res://dummy_enemy/enemies/skeleton/skeleton.tscn")
 var knight := load("res://dummy_enemy/enemies/knight/knight.tscn")
 var wolf := load("res://dummy_enemy/enemies/wolf/wolf.tscn")
 var wizard := load("res://dummy_enemy/enemies/wizard/wizard.tscn")
+var king := load("res://dummy_enemy/enemies/king/king.tscn")
 
 var enemies_by_tier = {
 	1: [goblin, skeleton],
