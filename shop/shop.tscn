@@ -1,117 +1,170 @@
-[gd_scene load_steps=14 format=3 uid="uid://txc58o0ebkqu"]
+[gd_scene load_steps=27 format=3 uid="uid://txc58o0ebkqu"]
 
 [ext_resource type="Script" path="res://shop/shop.gd" id="1_2hejj"]
-[ext_resource type="PackedScene" uid="uid://bjovamca8hg6f" path="res://dice/standard/standard_dice.tscn" id="2_6rcyl"]
-[ext_resource type="PackedScene" uid="uid://dbj4j5h8b8fvl" path="res://dice/risky/risky_dice.tscn" id="3_21ukk"]
-[ext_resource type="PackedScene" uid="uid://oil37hyjbm5r" path="res://dice/poison/poison_dice.tscn" id="4_8jlpe"]
+[ext_resource type="Texture2D" uid="uid://d2q5jn525elyx" path="res://art/ShopDisplay.png" id="4_rprpb"]
 [ext_resource type="Texture2D" uid="uid://bbwlsmgmy512l" path="res://art/shop/shop_background/shop_background5.png" id="5_a0ds2"]
-[ext_resource type="Script" path="res://start_menu/exit.gd" id="7_dp6nl"]
+[ext_resource type="Texture2D" uid="uid://ud5tw13xkev7" path="res://map_stuff/map_tutorial_stuff/art/coins.png" id="7_i7nuq"]
 [ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="8_4nuq1"]
+[ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="8_ctl3y"]
+[ext_resource type="Texture2D" uid="uid://bxwamohwash73" path="res://art/diceopedia/diceopedia12.png" id="9_ci27e"]
 [ext_resource type="AudioStream" uid="uid://b81skn0wrv7ms" path="res://music/05 Bustling Town LOOP.wav" id="9_kabqh"]
+[ext_resource type="Texture2D" uid="uid://csvpmd22afin7" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="9_le2uj"]
+[ext_resource type="Texture2D" uid="uid://by0svtwuo5c61" path="res://art/diceopedia/diceopedia11.png" id="10_pd3py"]
+[ext_resource type="Texture2D" uid="uid://0dqki6l0bxlp" path="res://art/diceopedia/diceopedia10.png" id="11_jqjjn"]
+[ext_resource type="Texture2D" uid="uid://cvnpk4fldc1ej" path="res://art/diceopedia/diceopedia9.png" id="12_devog"]
+[ext_resource type="Texture2D" uid="uid://cjaiio15sa28j" path="res://art/diceopedia/diceopedia8.png" id="13_ruhvw"]
+[ext_resource type="Texture2D" uid="uid://d2r8fj8s6k0b5" path="res://art/diceopedia/diceopedia7.png" id="14_fs84t"]
+[ext_resource type="Texture2D" uid="uid://eftytw2v4aoc" path="res://art/diceopedia/diceopedia6.png" id="15_ewmvn"]
+[ext_resource type="Texture2D" uid="uid://d23sf4lwebi4o" path="res://art/diceopedia/diceopedia5.png" id="16_yx5ce"]
+[ext_resource type="Texture2D" uid="uid://dikqi2774ar8i" path="res://art/diceopedia/diceopedia4.png" id="17_krgiw"]
+[ext_resource type="Texture2D" uid="uid://cv5g7shdyn03g" path="res://art/diceopedia/diceopedia3.png" id="18_uthf7"]
+[ext_resource type="Texture2D" uid="uid://dh0e3jblgpguu" path="res://art/diceopedia/diceopedia2.png" id="19_lvf1h"]
+[ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="20_vcdi5"]
+[ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="21_g248p"]
+[ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="22_wm3i2"]
 
 [sub_resource type="SystemFont" id="SystemFont_pyajt"]
 subpixel_positioning = 0
 
-[sub_resource type="Animation" id="Animation_suhwe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ExitTexture:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.5, 2.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Exit:theme_override_font_sizes/font_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [25]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6d2x"]
+atlas = ExtResource("9_le2uj")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="Animation" id="Animation_hb7e2"]
-resource_name = "big_exit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ExitTexture:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2.5, 2.5), Vector2(2.75, 2.75)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Exit:theme_override_font_sizes/font_size")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [25, 28]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1dbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6d2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_j7ow5"]
-resource_name = "small_exit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ExitTexture:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2.75, 2.75), Vector2(2.5, 2.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Exit:theme_override_font_sizes/font_size")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [28, 25]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7gr3x"]
-_data = {
-"RESET": SubResource("Animation_suhwe"),
-"big_exit": SubResource("Animation_hb7e2"),
-"small_exit": SubResource("Animation_j7ow5")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_kexig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ctl3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ci27e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pd3py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jqjjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_devog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ruhvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fs84t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ewmvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yx5ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_krgiw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uthf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lvf1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_vcdi5")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_vcdi5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_vcdi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lvf1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uthf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_krgiw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yx5ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ewmvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fs84t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ruhvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_devog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jqjjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pd3py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ci27e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ctl3y")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ctl3y")
+}],
+"loop": true,
+"name": &"open_idle",
+"speed": 5.0
+}]
 
 [node name="shop" type="Node2D"]
 script = ExtResource("1_2hejj")
-standard_dice_template = ExtResource("2_6rcyl")
-risky_dice_template = ExtResource("3_21ukk")
-poison_dice_template = ExtResource("4_8jlpe")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(579.223, 322.68)
+[node name="ShopBackground" type="Sprite2D" parent="."]
+position = Vector2(579, 323)
 scale = Vector2(4.029, 4.029)
 texture = ExtResource("5_a0ds2")
+
+[node name="ShopDisplayUI" type="Sprite2D" parent="."]
+position = Vector2(334, 321)
+scale = Vector2(3.80469, 3.80469)
+texture = ExtResource("4_rprpb")
+
+[node name="CoinImage" type="Sprite2D" parent="."]
+position = Vector2(260, 516)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_i7nuq")
 
 [node name="StartPosition1" type="Marker2D" parent="."]
 position = Vector2(521, 358)
@@ -131,74 +184,142 @@ position = Vector2(972, 360)
 [node name="StartPosition6" type="Marker2D" parent="."]
 position = Vector2(1057, 360)
 
-[node name="RiskyPurchaseButton" type="Button" parent="."]
-offset_left = 1577.0
-offset_top = 282.0
-offset_right = 1620.0
-offset_bottom = 326.0
-
-[node name="StandardPurchaseButton" type="Button" parent="."]
-offset_left = 1514.0
-offset_top = 284.0
-offset_right = 1557.0
-offset_bottom = 328.0
-
-[node name="PoisonPurchaseButton2" type="Button" parent="."]
-offset_left = 1654.0
-offset_top = 284.0
-offset_right = 1697.0
-offset_bottom = 328.0
-
-[node name="Shop Display" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 61.0
-offset_right = 334.0
-offset_bottom = 85.0
+[node name="ShopDisplay" type="Label" parent="."]
+offset_left = 252.0
+offset_top = 115.0
+offset_right = 423.0
+offset_bottom = 176.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 16
+text = "> Welcome to the shop! You can buy and sell dice here! "
+autowrap_mode = 3
 
-[node name="ExitController" type="Node2D" parent="."]
-position = Vector2(1135, -219)
-
-[node name="ExitButton" type="Button" parent="ExitController"]
-modulate = Color(1, 1, 1, 0)
-offset_left = 397.0
-offset_top = 593.0
-offset_right = 516.0
-offset_bottom = 652.0
-theme_override_fonts/font = SubResource("SystemFont_pyajt")
-text = "Return to Map"
-script = ExtResource("7_dp6nl")
-
-[node name="ExitTexture" type="Sprite2D" parent="ExitController"]
-position = Vector2(488, 623.5)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("8_4nuq1")
-
-[node name="Exit" type="Label" parent="ExitController"]
-offset_left = 403.0
-offset_top = 602.0
-offset_right = 576.0
-offset_bottom = 646.0
-theme_override_font_sizes/font_size = 25
-text = "Return to Map"
+[node name="CoinDisplay" type="Label" parent="."]
+offset_left = 278.0
+offset_top = 501.0
+offset_right = 321.0
+offset_bottom = 535.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ExitController"]
-libraries = {
-"": SubResource("AnimationLibrary_7gr3x")
-}
+[node name="UILabel1" type="Label" parent="."]
+offset_left = 257.0
+offset_top = 199.0
+offset_right = 415.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Player Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnController" type="Node2D" parent="."]
+position = Vector2(548, -525)
+
+[node name="ReturnToMapButton" type="Button" parent="ReturnController"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 432.0
+offset_top = 594.0
+offset_right = 551.0
+offset_bottom = 653.0
+theme_override_fonts/font = SubResource("SystemFont_pyajt")
+text = "Return to Map"
+
+[node name="Texture" type="Sprite2D" parent="ReturnController"]
+position = Vector2(488, 626.5)
+scale = Vector2(3.24444, 2.5)
+texture = ExtResource("8_4nuq1")
+
+[node name="Return" type="Label" parent="ReturnController"]
+offset_left = 403.0
+offset_top = 607.0
+offset_right = 576.0
+offset_bottom = 651.0
+theme_override_font_sizes/font_size = 25
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_kabqh")
 autoplay = true
 
 [node name="PurchaseButtonContainer" type="VBoxContainer" parent="."]
-offset_left = 505.0
+offset_left = 474.0
 offset_top = 417.0
-offset_right = 1082.0
+offset_right = 764.0
 offset_bottom = 565.0
 
-[connection signal="mouse_entered" from="ExitController/ExitButton" to="ExitController/ExitButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ExitController/ExitButton" to="ExitController/ExitButton" method="_on_mouse_exited"]
+[node name="SellButtonContainer" type="VBoxContainer" parent="."]
+offset_left = 779.0
+offset_top = 418.0
+offset_right = 1064.0
+offset_bottom = 572.0
+
+[node name="StartPosition7" type="Marker2D" parent="."]
+position = Vector2(279, 265)
+
+[node name="StartPosition8" type="Marker2D" parent="."]
+position = Vector2(279, 314)
+
+[node name="StartPosition9" type="Marker2D" parent="."]
+position = Vector2(279, 363)
+
+[node name="StartPosition10" type="Marker2D" parent="."]
+position = Vector2(279, 411)
+
+[node name="StartPosition11" type="Marker2D" parent="."]
+position = Vector2(279, 459)
+
+[node name="StartPosition12" type="Marker2D" parent="."]
+position = Vector2(383, 265)
+
+[node name="StartPosition13" type="Marker2D" parent="."]
+position = Vector2(383, 314)
+
+[node name="StartPosition14" type="Marker2D" parent="."]
+position = Vector2(382, 363)
+
+[node name="StartPosition15" type="Marker2D" parent="."]
+position = Vector2(383, 411)
+
+[node name="StartPosition16" type="Marker2D" parent="."]
+position = Vector2(383, 459)
+
+[node name="UpdateDelayTimer" type="Timer" parent="."]
+
+[node name="PlayerPosition" type="AnimatedSprite2D" parent="."]
+position = Vector2(125, 444)
+scale = Vector2(12.9237, 12.9237)
+sprite_frames = SubResource("SpriteFrames_k1dbt")
+
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+position = Vector2(572, 337)
+scale = Vector2(7.82, 7.82)
+
+[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
+z_index = 2
+position = Vector2(-28.3888, 23.4015)
+scale = Vector2(0.127, 0.13)
+sprite_frames = SubResource("SpriteFrames_kexig")
+animation = &"idle"
+script = ExtResource("21_g248p")
+
+[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("22_wm3i2")]
+visible = false
+position = Vector2(-65.6294, -255.028)
+scale = Vector2(0.3, 0.3)
+
+[connection signal="mouse_entered" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ReturnController/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]
