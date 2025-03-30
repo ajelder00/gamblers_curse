@@ -1,8 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://txc58o0ebkqu"]
+[gd_scene load_steps=32 format=3 uid="uid://txc58o0ebkqu"]
 
 [ext_resource type="Script" path="res://shop/shop.gd" id="1_2hejj"]
+[ext_resource type="Texture2D" uid="uid://cbggvudiud3nx" path="res://art/shop/shop_background/shop_background1.png" id="2_nudsl"]
+[ext_resource type="Texture2D" uid="uid://bjyoops55weqo" path="res://art/shop/shop_background/shop_background2.png" id="3_ss5wq"]
 [ext_resource type="Texture2D" uid="uid://b5pkfdk0lhjjl" path="res://art/ShopDisplay.png" id="4_rprpb"]
+[ext_resource type="Texture2D" uid="uid://rgoio88tluth" path="res://art/shop/shop_background/shop_background3.png" id="4_w28of"]
 [ext_resource type="Texture2D" uid="uid://bbwlsmgmy512l" path="res://art/shop/shop_background/shop_background5.png" id="5_a0ds2"]
+[ext_resource type="Texture2D" uid="uid://b3aa6d4u1y64u" path="res://art/shop/shop_background/shop_background4.png" id="5_kfgwy"]
 [ext_resource type="Texture2D" uid="uid://ud5tw13xkev7" path="res://map_stuff/map_tutorial_stuff/art/coins.png" id="7_i7nuq"]
 [ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="8_4nuq1"]
 [ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="8_ctl3y"]
@@ -22,6 +26,29 @@
 [ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="20_vcdi5"]
 [ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="21_g248p"]
 [ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="22_wm3i2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbh4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nudsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ss5wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w28of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kfgwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a0ds2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="SystemFont" id="SystemFont_pyajt"]
 subpixel_positioning = 0
@@ -151,10 +178,11 @@ animations = [{
 [node name="shop" type="Node2D"]
 script = ExtResource("1_2hejj")
 
-[node name="ShopBackground" type="Sprite2D" parent="."]
+[node name="ShopBackground" type="AnimatedSprite2D" parent="."]
 position = Vector2(579, 323)
 scale = Vector2(4.029, 4.029)
-texture = ExtResource("5_a0ds2")
+sprite_frames = SubResource("SpriteFrames_mbh4y")
+autoplay = "default"
 
 [node name="ShopDisplayUI" type="Sprite2D" parent="."]
 position = Vector2(334, 321)

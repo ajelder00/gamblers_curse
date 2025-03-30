@@ -7,7 +7,7 @@ const MAP_LINE = preload("res://map_stuff/map_tutorial_stuff/map_connector.tscn"
 const BATTLE = preload("res://battle_scene/battle.tscn")
 const LOOT = preload("res://loot/loot.tscn")
 const SHOP = preload("res://shop/shop.tscn")
-const CASINO = preload("res://shop/shop.tscn")
+const CASINO = preload("res://casino/dice_blackjack.tscn")
 const ELITE = preload("res://rooms/elite/elite.tscn")
 const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 

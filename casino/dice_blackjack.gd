@@ -2,6 +2,8 @@ extends Node2D
 
 const MAX_TURNS := 5
 const FIXED_TARGET_SCORE := 20
+var sway = true
+
 
 @onready var label_coins: Label = $CoinDisplay
 @onready var label_messages: Label = $CasinoMessageDisplay

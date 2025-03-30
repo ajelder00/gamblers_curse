@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bynsu5gkn7lj5"]
+[gd_scene load_steps=15 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
 [ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="3_805qw"]
-[ext_resource type="Texture2D" uid="uid://d2q5jn525elyx" path="res://art/ShopDisplay.png" id="4_ofx46"]
+[ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="4_575ky"]
+[ext_resource type="Texture2D" uid="uid://b5pkfdk0lhjjl" path="res://art/ShopDisplay.png" id="4_ofx46"]
 [ext_resource type="Texture2D" uid="uid://ckiodcdlonfyy" path="res://dice_roller/dice_roller_art/ChoiceBox.png" id="5_kb3w3"]
 [ext_resource type="Texture2D" uid="uid://ud5tw13xkev7" path="res://map_stuff/map_tutorial_stuff/art/coins.png" id="6_ug7yo"]
 [ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="7_t8nl7"]
@@ -52,6 +53,7 @@ autoplay = true
 position = Vector2(573, 323)
 scale = Vector2(0.778038, 0.778038)
 texture = ExtResource("3_805qw")
+script = ExtResource("4_575ky")
 
 [node name="CasinoDisplayUI" type="Sprite2D" parent="."]
 position = Vector2(179.5, 326.5)

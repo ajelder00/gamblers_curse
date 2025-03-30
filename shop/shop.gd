@@ -27,6 +27,9 @@ extends Node2D
 
 @export var button_icon: Texture2D = preload("res://art/button.png")
 
+var player_inventory = Global.dice
+
+
 var dice_prices = {
 	"standard": 5,
 	"risky": 10,
@@ -115,14 +118,14 @@ func handle_purchase(index: int, button: Button) -> void:
 	var shop_scene = entry["scene"]
 	var price = dice_prices[dice_type]
 
-	if Global.testing_dice.size() >= 10:
+	if player_inventory.size() >= 10:
 		message_label.text = "Inventory full! (10 dice max)"
 		return
 
 	if Global.coins >= price:
 		Global.coins -= price
 
-		Global.testing_dice.append(dice_templates[dice_type])
+		player_inventory.append(dice_templates[dice_type])
 
 		message_label.text = "Purchased dice: %s" % dice_type
 		button.disabled = true
@@ -137,13 +140,13 @@ func handle_purchase(index: int, button: Button) -> void:
 		message_label.text = "Not enough coins to buy: %s!" % dice_type
 
 func handle_sell(index: int) -> void:
-	if index < Global.testing_dice.size():
-		var dice_scene = Global.testing_dice[index]
+	if index < player_inventory.size():
+		var dice_scene = player_inventory[index]
 		var dice_type = get_dice_type(dice_scene)
 
 		if dice_prices.has(dice_type):
 			var refund = dice_prices[dice_type] / 2
-			Global.testing_dice.remove_at(index)
+			player_inventory.remove_at(index)
 			Global.coins += refund
 			message_label.text = "Sold %s for %d coins." % [dice_type, refund]
 			populate_sell_buttons()
@@ -161,8 +164,8 @@ func update_inventory_display() -> void:
 		for child in pos.get_children():
 			child.queue_free()
 
-	for i in range(min(Global.testing_dice.size(), inventory_positiions.size())):
-		var dice_scene = Global.testing_dice[i]
+	for i in range(min(player_inventory.size(), inventory_positiions.size())):
+		var dice_scene = player_inventory[i]
 		var dice_instance = dice_scene.instantiate()
 
 		if "set_as_display_only" in dice_instance:
@@ -188,8 +191,8 @@ func update_inventory_display() -> void:
 func populate_sell_buttons():
 	clear_sell_buttons()
 
-	for i in range(Global.testing_dice.size()):
-		var dice_scene = Global.testing_dice[i]
+	for i in range(player_inventory.size()):
+		var dice_scene = player_inventory[i]
 		var dice_type = get_dice_type(dice_scene)
 
 		if dice_prices.has(dice_type):
@@ -211,10 +214,10 @@ func clear_sell_buttons():
 # ---------------------- Animate Dice ----------------------
 
 func animate_dice_into_inventory(dice_type: String, start_position: Vector2) -> void:
-	if Global.testing_dice.size() > inventory_positiions.size():
+	if player_inventory.size() > inventory_positiions.size():
 		return
 
-	var target_index = Global.testing_dice.size() - 1
+	var target_index = player_inventory.size() - 1
 	var target_position = inventory_positiions[target_index].global_position
 
 	var dice_instance = dice_templates[dice_type].instantiate()
