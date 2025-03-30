@@ -324,7 +324,7 @@ z_index = 2
 position = Vector2(-28.9616, 23.8517)
 scale = Vector2(0.282529, 0.289322)
 sprite_frames = SubResource("SpriteFrames_tqnnj")
-animation = &"idle"
+animation = &"open"
 script = ExtResource("20_0wnl4")
 
 [node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]

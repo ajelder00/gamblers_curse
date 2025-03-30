@@ -19,7 +19,7 @@ func _on_DiceopediaRect_mouse_entered() -> void:
 	tween.tween_property(self, "scale", Vector2(0.31, 0.31), 0.3)
 
 func _on_DiceopediaRect_mouse_exited() -> void:
-	play("close")
+	play_backwards("open")
 	# Tween the scale back to 0.283 when the mouse exits.
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(0.283, 0.283), 0.3)

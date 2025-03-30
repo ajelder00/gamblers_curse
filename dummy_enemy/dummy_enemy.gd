@@ -58,7 +58,7 @@ var immunities : Array = []
 var turns : int = 1
 var health : int = 50
 var tier : int = 1
-var coins: int = int(randi_range(0,10)*randf_range(tier,tier + 1))
+var coins: int = int(randi_range(5,10)*randf_range(tier,tier + 1))
 var base_accuracy : float = 1.0
 var dice_bucket : Array = [null]
 

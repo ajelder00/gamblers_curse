@@ -160,7 +160,7 @@ func _setup_enemy() -> void:
 	messages = [
 		"> WELCOME TO YOUR FIRST BATTLE.",
 		"> YOU ARE THE FATED ONE.",
-		"> THESE ARE YOUR CURSED DICE.",
+		"> THESE ARE YOUR DICE.",
 		"> YOU WILL ROLL UP TO THREE DICE ON EACH TURN.",
 		"> THIS IS YOUR ENEMY.",
 		"> YOU WILL ROLL YOUR CURSED DIE TO VANQUISH THIS " + enemy_name.text.to_upper() + "!",

@@ -2,5 +2,5 @@ extends Dice
 
 func _ready():
 	type = Dice.Type.HEALING
-	 # pink
+	faces = 12
 	super._ready()

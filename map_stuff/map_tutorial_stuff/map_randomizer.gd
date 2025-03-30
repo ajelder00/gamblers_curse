@@ -7,10 +7,10 @@ const PLACEMENT_RANDOMNESS := 7
 const MAP_WIDTH := 7
 const PATHS := 4
 
-var FLOORS := 11
-var FIGHT_WEIGHT := 8
+var FLOORS := 14
+var FIGHT_WEIGHT := 12
 var GAMBLE_WEIGHT := 4
-var ELITE_WEIGHT := 4
+var ELITE_WEIGHT := 6
 var SHOP_WEIGHT := 4
 var LOOT_WEIGHT := 4
 var random_room_weights = {
@@ -131,7 +131,7 @@ func _setup_room_types() -> void:
 # Makes the first room always a battle - repeat this with different map index to set floor room types
 	for room: Room in map_data[0]:
 		if room.next_rooms.size() > 0:
-			room.type = Room.Type.BATTLE
+			room.type = Room.Type.LOOT
 
 # Sets the rest of the rooms
 	for current_floor in map_data:
@@ -145,7 +145,12 @@ func _set_room_randomly(room: Room) -> void:
 	var consecutive_shop := true
 	var consecutive_loot := true
 	var consecutive_gambling := true
-	
+	if room.row == 1:
+		room.type = Room.Type.BATTLE
+		return
+	if room.row == 2:
+		room.type = Room.Type.SHOP
+		return
 	var type_candidate: Room.Type
 	while consecutive_loot or consecutive_shop or consecutive_gambling:
 		consecutive_shop = true

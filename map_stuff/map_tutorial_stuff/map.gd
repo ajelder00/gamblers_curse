@@ -1,7 +1,7 @@
 class_name Map
 extends Node2D
 
-const SCROLL_SPEED := 30
+const SCROLL_SPEED := 40
 const MAP_ROOM = preload("res://map_stuff/map_tutorial_stuff/map_node.tscn")
 const MAP_LINE = preload("res://map_stuff/map_tutorial_stuff/map_connector.tscn")
 const BATTLE = preload("res://battle_scene/battle.tscn")
@@ -9,7 +9,6 @@ const LOOT = preload("res://loot/loot.tscn")
 const SHOP = preload("res://shop/shop.tscn")
 const CASINO = preload("res://shop/shop.tscn")
 const ELITE = preload("res://rooms/elite/elite.tscn")
-#const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 
 signal map_exited
@@ -31,11 +30,13 @@ var camera_edge_y: float
 func _ready() -> void:
 	generate_new_map()
 	camera_edge_y = MapGenerator.Y_DIST * (len(map_data) - 1)
-	unlock_floor(0)
+	unlock_floor(-1)
 	# Start playing map audio when the scene is ready
 	map_audio.play()
 
 func _input(event: InputEvent) -> void:
+	var previous_cam_pos = camera_2d.position.y
+	var previous_background_pos = background.position.y
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y -= SCROLL_SPEED
 		background.position.y += (SCROLL_SPEED - 10)
@@ -43,9 +44,9 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
 		background.position.y -= (SCROLL_SPEED - 10)
-	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 900, len(map_data) * MapGenerator.Y_DIST - 150)
-	background.position.y = clamp(background.position.y, -1200, -80)
-	print(background.position.y)
+	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 2500, len(map_data) * MapGenerator.Y_DIST - 150)
+	if camera_2d.position.y - previous_cam_pos == 0:
+		background.position.y = previous_background_pos
 
 func generate_new_map() -> void:
 	floors_climbed = 0

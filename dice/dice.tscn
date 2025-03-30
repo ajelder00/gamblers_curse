@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b1vwcx3yj158n"]
+[gd_scene load_steps=78 format=3 uid="uid://b1vwcx3yj158n"]
 
 [ext_resource type="Script" path="res://dice/dice.gd" id="1_mre03"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="1_od3an"]
@@ -58,6 +58,30 @@ region = Rect2(64, 304, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcwf0"]
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2k3"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykp18"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3wdm"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulbqe"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ay1"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gdvi"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 400, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq8ip"]
 atlas = ExtResource("1_od3an")
@@ -349,6 +373,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcwf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykp18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3wdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulbqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0ay1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gdvi")
 }],
 "loop": false,
 "name": &"faces_healing",
@@ -589,7 +631,7 @@ color = Color(0, 0, 0, 0.384314)
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"blank_healing"
+animation = &"faces_healing"
 
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0
