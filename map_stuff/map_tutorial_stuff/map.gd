@@ -130,7 +130,10 @@ func _on_map_selected(room: Room) -> void:
 		Room.Type.CASINO:
 			scene_to_load = CASINO
 		Room.Type.TUTORIAL:
-			scene_to_load = TUTORIAL
+			if (Global.attempts > 1):
+				scene_to_load = BATTLE
+			else:
+				scene_to_load = TUTORIAL
 		Room.Type.ELITE_BATTLE:
 			scene_to_load = ELITE
 	
