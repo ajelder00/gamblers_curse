@@ -4,6 +4,8 @@ const MAX_TURNS := 5
 const FIXED_TARGET_SCORE := 20
 var sway = true
 
+var player_inventory = Global.dice
+
 
 @onready var label_coins: Label = $CoinDisplay
 @onready var label_messages: Label = $CasinoMessageDisplay
@@ -95,8 +97,8 @@ func _start_turn():
 # ---------------------- Populate Inventory ----------------------
 
 func populate_inventory():
-	for i in range(min(Global.testing_dice.size(), inventory_positions.size())):
-		var dice_scene = Global.testing_dice[i]
+	for i in range(min(player_inventory.size(), inventory_positions.size())):
+		var dice_scene = player_inventory[i]
 		var dice_instance = dice_scene.instantiate()
 		var pos_node = inventory_positions[i]
 
@@ -151,7 +153,7 @@ func select_dice_from_inventory(index: int, pos_node: Node2D):
 		var dice = pos_node.get_child(0)
 		dice.modulate = Color(1, 1, 1, 0.35)
 
-	var dice_scene = Global.testing_dice[index]
+	var dice_scene = player_inventory[index]
 	var new_instance = dice_scene.instantiate()
 	var target_pos = selected_positions[num_selected]
 
@@ -250,7 +252,7 @@ func end_game():
 	label_messages.text = "Game Over. Total coins earned: %d" % total_coins_earned
 	payout_button.disabled = true
 	await get_tree().create_timer(3.0).timeout
-	get_tree().quit()  # You can replace this with a return-to-menu logic if desired
+	queue_free()
 
 
 # ---------------------- Clearers ----------------------

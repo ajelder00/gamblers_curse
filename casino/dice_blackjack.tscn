@@ -61,7 +61,7 @@ scale = Vector2(5.35156, 5.35156)
 texture = ExtResource("4_ofx46")
 
 [node name="PlayerHandUI" type="Sprite2D" parent="."]
-position = Vector2(776.938, 548)
+position = Vector2(776.938, 561)
 scale = Vector2(10.8145, 7.72578)
 texture = ExtResource("5_kb3w3")
 
@@ -178,17 +178,17 @@ position = Vector2(789, 547)
 
 [node name="PayoutButton" type="Button" parent="."]
 offset_left = 855.0
-offset_top = 515.0
+offset_top = 530.0
 offset_right = 973.0
-offset_bottom = 581.0
+offset_bottom = 596.0
 text = "Collect 
 Payout"
 
 [node name="ResetButton" type="Button" parent="."]
 offset_left = 980.0
-offset_top = 515.0
+offset_top = 530.0
 offset_right = 1065.0
-offset_bottom = 581.0
+offset_bottom = 596.0
 text = "Reset
 Dice 
 Hand"
