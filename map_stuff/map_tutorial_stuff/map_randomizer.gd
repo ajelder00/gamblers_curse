@@ -7,12 +7,12 @@ const PLACEMENT_RANDOMNESS := 7
 const MAP_WIDTH := 7
 const PATHS := 4
 
-var FLOORS := 6
+var FLOORS := 11
 var FIGHT_WEIGHT := 8
-var GAMBLE_WEIGHT := 2.5
-var ELITE_WEIGHT := 4.5
-var SHOP_WEIGHT := 2.5
-var LOOT_WEIGHT := 2.5
+var GAMBLE_WEIGHT := 4
+var ELITE_WEIGHT := 4
+var SHOP_WEIGHT := 4
+var LOOT_WEIGHT := 4
 var random_room_weights = {
 	Room.Type.BATTLE: 0.0,
 	Room.Type.ELITE_BATTLE: 0.0,
@@ -51,7 +51,7 @@ func _generate_initial_grid() -> Array[Array]:
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
 			
 			current_room.position = Vector2(X_DIST * j, Y_DIST * i) + offset
-			current_room.row = i + 1
+			current_room.row = i 
 			current_room.column = j
 			current_room.next_rooms = []
 			
@@ -148,34 +148,23 @@ func _set_room_randomly(room: Room) -> void:
 	
 	var type_candidate: Room.Type
 	while consecutive_loot or consecutive_shop or consecutive_gambling:
+		consecutive_shop = true
+		consecutive_loot = true
+		consecutive_gambling = true
 		type_candidate = _get_candidate_by_weight()
-		
 		var is_shop := type_candidate == Room.Type.SHOP
 		var is_loot := type_candidate == Room.Type.LOOT
 		var is_gambling := type_candidate == Room.Type.CASINO
-		
 		consecutive_gambling =  _room_has_parent_of_type(room, Room.Type.CASINO) and is_gambling
 		consecutive_shop =  _room_has_parent_of_type(room, Room.Type.SHOP) and is_shop
 		consecutive_loot = _room_has_parent_of_type(room, Room.Type.LOOT) and is_loot
 	room.type = type_candidate
 
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
-	var parents: Array[Room] = []
-	
-	if room.column > 0 and room.row > 0:
-		var parent_candidate := map_data[room.row - 1][room.column - 1] as Room
-		if parent_candidate.next_rooms.has(room):
-			parents.append(parent_candidate)
-	if room.row > 0:
-		var parent_candidate := map_data[room.row - 1][room.column] as Room
-		if parent_candidate.next_rooms.has(room):
-			parents.append(parent_candidate)
-	if room.column < MAP_WIDTH - 1 and room.row > 0:
-		var parent_candidate := map_data[room.row - 1][room.column + 1] as Room
-		if parent_candidate.next_rooms.has(room):
-			parents.append(parent_candidate)
-	for parent: Room in parents:
-		if parent.type == type:
+	if room.row == 0:
+		return false
+	for parent: Room in map_data[room.row - 1]:
+		if parent.next_rooms.has(room) and parent.type == type:
 			return true
 	return false
 
@@ -183,7 +172,7 @@ func _setup_start() -> void:
 	var start_room = Room.new()
 	var middle := floori(MAP_WIDTH*0.5)
 	start_room.column = middle
-	start_room.row = 0
+	start_room.row = -1
 	start_room.position = Vector2(X_DIST * middle, -250)
 	start_room.type = Room.Type.TUTORIAL
 	for room in map_data[0]:
@@ -191,6 +180,7 @@ func _setup_start() -> void:
 			start_room.next_rooms.append(room)
 	map_data.insert(0,[start_room])
 	FLOORS += 1
+
 	
 
 func _get_candidate_by_weight() -> Room.Type:
