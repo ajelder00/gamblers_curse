@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ba31p2dpjbrco"]
+[gd_scene load_steps=34 format=3 uid="uid://ba31p2dpjbrco"]
 
 [ext_resource type="Texture2D" uid="uid://dpoj7qu6ku00k" path="res://shop/shop2/shop1.png" id="1_qt6t8"]
 [ext_resource type="Script" path="res://shop/shop_2.gd" id="1_wqdt1"]
@@ -131,6 +131,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SystemFont" id="SystemFont_4o23x"]
+subpixel_positioning = 0
+
 [node name="Shop2" type="Node2D"]
 script = ExtResource("1_wqdt1")
 
@@ -254,3 +257,37 @@ position = Vector2(103, -34)
 
 [node name="ShopDice8" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
 position = Vector2(244, -31)
+
+[node name="ReturnController" type="Node2D" parent="."]
+position = Vector2(51, -29)
+
+[node name="ReturnToMapButton" type="Button" parent="ReturnController"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 432.0
+offset_top = 594.0
+offset_right = 551.0
+offset_bottom = 653.0
+theme_override_fonts/font = SubResource("SystemFont_4o23x")
+text = "Return to Map"
+metadata/_edit_use_anchors_ = true
+
+[node name="Texture" type="Sprite2D" parent="ReturnController"]
+position = Vector2(574, 567)
+scale = Vector2(3.24444, 2.5)
+texture = ExtResource("11_kxy0u")
+
+[node name="Return" type="Label" parent="ReturnController"]
+offset_left = 380.0
+offset_top = 600.0
+offset_right = 553.0
+offset_bottom = 644.0
+scale = Vector2(1.275, 1.275)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ReturnController/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]

@@ -77,3 +77,7 @@ func _process(delta: float) -> void:
 
 func update_coins() -> void:
 	coins.text = (str(Global.coins) + " Coins")
+
+func _on_return_to_map_button_pressed() -> void:
+	print("pressed")
+	queue_free()

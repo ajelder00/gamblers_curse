@@ -254,6 +254,7 @@ offset_right = 551.0
 offset_bottom = 653.0
 theme_override_fonts/font = SubResource("SystemFont_pyajt")
 text = "Return to Map"
+metadata/_edit_use_anchors_ = true
 
 [node name="Texture" type="Sprite2D" parent="ReturnController"]
 position = Vector2(488, 626.5)
@@ -269,6 +270,7 @@ theme_override_font_sizes/font_size = 25
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_kabqh")
