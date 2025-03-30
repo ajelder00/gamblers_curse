@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chjnuv68gfb6r"]
+[gd_scene load_steps=27 format=3 uid="uid://chjnuv68gfb6r"]
 
 [ext_resource type="Script" path="res://rooms/elite/elite.gd" id="1_qftna"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_lrcx6"]
@@ -6,12 +6,132 @@
 [ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="3_j3qvm"]
 [ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="4_flehx"]
 [ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="5_1jhrt"]
-[ext_resource type="Texture2D" uid="uid://bfecrldx7upoc" path="res://map_stuff/map_tutorial_stuff/art/dice.png" id="6_ygyfs"]
 [ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="7_mpyvg"]
 [ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="8_10lw8"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="9_ryanr"]
-[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="10_s0rel"]
+[ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="10_s0rel"]
 [ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="11_njqwe"]
+[ext_resource type="Texture2D" uid="uid://bxwamohwash73" path="res://art/diceopedia/diceopedia12.png" id="12_ixbm0"]
+[ext_resource type="Texture2D" uid="uid://by0svtwuo5c61" path="res://art/diceopedia/diceopedia11.png" id="13_n0jkh"]
+[ext_resource type="Texture2D" uid="uid://0dqki6l0bxlp" path="res://art/diceopedia/diceopedia10.png" id="14_qcha4"]
+[ext_resource type="Texture2D" uid="uid://cvnpk4fldc1ej" path="res://art/diceopedia/diceopedia9.png" id="15_j3q66"]
+[ext_resource type="Texture2D" uid="uid://cjaiio15sa28j" path="res://art/diceopedia/diceopedia8.png" id="16_a87nw"]
+[ext_resource type="Texture2D" uid="uid://d2r8fj8s6k0b5" path="res://art/diceopedia/diceopedia7.png" id="17_sqygt"]
+[ext_resource type="Texture2D" uid="uid://eftytw2v4aoc" path="res://art/diceopedia/diceopedia6.png" id="18_yecy2"]
+[ext_resource type="Texture2D" uid="uid://d23sf4lwebi4o" path="res://art/diceopedia/diceopedia5.png" id="19_wrvwn"]
+[ext_resource type="Texture2D" uid="uid://dikqi2774ar8i" path="res://art/diceopedia/diceopedia4.png" id="20_w7bdf"]
+[ext_resource type="Texture2D" uid="uid://cv5g7shdyn03g" path="res://art/diceopedia/diceopedia3.png" id="21_0nhff"]
+[ext_resource type="Texture2D" uid="uid://dh0e3jblgpguu" path="res://art/diceopedia/diceopedia2.png" id="22_u4g2i"]
+[ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="23_qpjra"]
+[ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="24_br8oh"]
+[ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="25_ulxid"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrb5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1jhrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ixbm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n0jkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qcha4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j3q66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a87nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sqygt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yecy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wrvwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_w7bdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0nhff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_u4g2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qpjra")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_qpjra")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_qpjra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_u4g2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0nhff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_w7bdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wrvwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yecy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sqygt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a87nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j3q66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qcha4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n0jkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ixbm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1jhrt")
+}],
+"loop": false,
+"name": &"open",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1jhrt")
+}],
+"loop": true,
+"name": &"open_idle",
+"speed": 5.0
+}]
 
 [node name="Battle" type="Node2D"]
 z_index = 5
@@ -194,21 +314,6 @@ position = Vector2(371.48, 390.48)
 scale = Vector2(7.82, 7.82)
 texture = ExtResource("4_flehx")
 
-[node name="DiceopediaUI" type="Sprite2D" parent="."]
-position = Vector2(371.48, 390.48)
-scale = Vector2(7.82, 7.82)
-texture = ExtResource("4_flehx")
-
-[node name="Diceopedia" type="Sprite2D" parent="DiceopediaUI"]
-position = Vector2(-22.0473, 23.6049)
-scale = Vector2(0.269861, 0.269861)
-texture = ExtResource("5_1jhrt")
-
-[node name="Info" type="Sprite2D" parent="DiceopediaUI"]
-position = Vector2(-33.9399, 22.7097)
-scale = Vector2(0.472107, 0.472107)
-texture = ExtResource("6_ygyfs")
-
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(407, -94)
@@ -245,3 +350,28 @@ texture = ExtResource("10_s0rel")
 [node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_njqwe")
 autoplay = true
+
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_flehx")
+
+[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
+z_index = 2
+position = Vector2(-26.0205, 24.2353)
+scale = Vector2(0.352738, 0.348067)
+sprite_frames = SubResource("SpriteFrames_rrb5l")
+animation = &"open"
+script = ExtResource("24_br8oh")
+
+[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("25_ulxid")]
+position = Vector2(-36.9777, -91.8482)
+scale = Vector2(0.17, 0.17)
