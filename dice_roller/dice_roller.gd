@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name DiceRoller
 signal turn_over
 signal pop_over
 

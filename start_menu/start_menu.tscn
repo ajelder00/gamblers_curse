@@ -332,6 +332,7 @@ offset_bottom = 360.0
 theme_override_fonts/font = SubResource("SystemFont_k5w3j")
 text = "PLAY"
 script = ExtResource("6_usigc")
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonTexture" type="Sprite2D" parent="PlayController"]
 position = Vector2(566, 328)
@@ -347,6 +348,7 @@ theme_override_font_sizes/font_size = 25
 text = "PLAY"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayController"]
 libraries = {
