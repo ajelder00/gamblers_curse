@@ -178,7 +178,6 @@ func _setup_enemy_dice() -> void:
 	enemy_dice.global_position = enemy_dice_marker.global_position
 	enemy_dice.z_index = 1
 	enemy_dice.button.hide()
-
 func _start_typing() -> void:
 	while message_index < messages.size():
 		roll_message_label.text = ""
@@ -188,6 +187,22 @@ func _start_typing() -> void:
 			roll_message_label.text += full_text[i]
 			await get_tree().create_timer(speed).timeout  
 		Global.typing = false
+		
+		# Conditionally show or hide dice buttons based on the current message.
+		# When the message is "CHOOSE 3 DICE TO ROLL..." (message_index 7), show the dice buttons.
+		if message_index == 7:
+			player.get_node("Dice Roller").current_dice[0].button.show()
+			player.get_node("Dice Roller").current_dice[1].button.show()
+			player.get_node("Dice Roller").current_dice[2].button.show()
+			player.get_node("Dice Roller").current_dice[3].button.show()
+			player.get_node("Dice Roller").current_dice[4].button.show()
+		else:
+			player.get_node("Dice Roller").current_dice[0].button.hide()
+			player.get_node("Dice Roller").current_dice[1].button.hide()
+			player.get_node("Dice Roller").current_dice[2].button.hide()
+			player.get_node("Dice Roller").current_dice[3].button.hide()
+			player.get_node("Dice Roller").current_dice[4].button.hide()
+		
 		await get_tree().create_timer(2.0).timeout  
 		
 		# After showing the second message, change DiceUI's z_index to 8
@@ -196,15 +211,13 @@ func _start_typing() -> void:
 			player.roller.visible = true
 			player.roller.z_index += 10
 			
-		
 		# After showing the fifth message, change enemy's z_index to 8
 		if message_index == 4:
 			enemy.z_index = 8
 			enemy_platform.z_index = 7
 		
 		message_index += 1
-	Global.typing = false
-	blocker.visible = false
+		Global.typing = false
 
 # ------------------- Battle Flow -------------------
 
