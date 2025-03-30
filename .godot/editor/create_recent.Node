@@ -1,7 +1,8 @@
+ColorRect
+Label
 AnimatedSprite2D
 Camera2D
 Marker2D
-Label
 Sprite2D
 AnimationPlayer
 Node2D
@@ -11,4 +12,3 @@ CanvasLayer
 Button
 AudioListener2D
 AudioStreamPlayer2D
-Node

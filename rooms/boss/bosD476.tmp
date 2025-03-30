@@ -17,7 +17,9 @@
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_y56jp")
+speed = null
 player_template = ExtResource("2_r25eg")
+override_enemy = null
 
 [node name="MonsterName" type="Label" parent="."]
 offset_left = 97.0
@@ -275,7 +277,7 @@ text = "RETURNING TO START MENU..."
 
 [node name="EnemyTextUI" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(1128, 427)
+position = Vector2(1136, 427)
 scale = Vector2(7.82, 3.84563)
 texture = ExtResource("5_s3tcg")
 

@@ -6,7 +6,13 @@ extends Node
 @export var speed: float = 0.05  # Time delay between letters
 @export var player_template: PackedScene
 @export var override_enemy: bool = true
+@onready var enemy_text_ui = $'EnemyTextUI'
+@onready var enemy_text = $'EnemyText'
+@onready var skip = $'Skip'
 
+@onready var cut_scene = $'CutScene'
+var tween
+var enemy_speaking = true
 var enemy_og_pos
 var enemy_template
 var ui_elements
@@ -17,11 +23,11 @@ var enemy
 var enemy_sprite
 var enemy_starting_health  # Store the enemy's starting health
 var new_music = preload("res://music/6. Veil of Eternal Nightfall (Loop).mp3")
-
+var player_position_og
 var sway = false
 var messages
 var message_index: int = 0
-
+var original_label_position
 var roll_message_label: Label
 var player_health_label: Label
 var enemy_health_label: Label  
@@ -40,6 +46,7 @@ func _ready() -> void:
 	else:
 		enemy_template = Global.king
 	_get_ui_elements()
+	original_label_position = skip.position
 	enemy_health_bar.size.x = MAX_HEALTH_BAR_WIDTH  # Force initial size
 	_initialize_combatants()
 	_setup_enemy()
@@ -48,7 +55,6 @@ func _ready() -> void:
 	diceopedia_target_position = diceopedia_ui.position
 	diceopedia_ui.position = diceopedia_target_position + Vector2(0, 300)
 	diceopedia_ui.visible = true
-	var enemy_text_ui = $'EnemyTextUI'
 	await get_tree().create_timer(1.5).timeout
 	var intro_messages = [
 		"WHO GOES THERE?",
@@ -59,18 +65,21 @@ func _ready() -> void:
 		"PREPARE TO DIE"
 	]  
 	for message in intro_messages:
-		enemy_text_ui.visible = true
-		await typewriter_effect(message)
-		await get_tree().create_timer(1.5).timeout
-		if not music.playing:
-			music.playing = true
-	enemy_text_ui.visible = false
-	$EnemyText.hide()
-	_start_battle()
+		if enemy_speaking:
+			enemy_text_ui.visible = true
+			await typewriter_effect(message)
+			await get_tree().create_timer(1.5).timeout
+			if not music.playing:
+				music.playing = true
+		if not enemy_speaking:
+			enemy_text_ui.visible = false
+			$EnemyText.hide()
+			enemy_text_ui.visible = false
+	if enemy_speaking:
+		_start_battle()
 	update_health_display()
 
-func _process(_delta: float) -> void:
-	pass
+
 
 func pick_tier(difficulty: int) -> int:
 	var tier1_weight = max(0.0, 1.2 - (difficulty * 0.2))  
@@ -121,7 +130,8 @@ func _get_ui_elements() -> void:
 	enemy_health_red,
 	player_platform,
 	enemy_platform,
-	dice_ui
+	dice_ui,
+	enemy_health_label
 	]
 	for ui in ui_elements:
 		ui.hide()
@@ -137,18 +147,29 @@ func _initialize_combatants() -> void:
 	enemy_sprite = enemy.get_node("AnimatedSprite2D")
 	enemy.position.y -= 130
 	player.position.y -= 30
-	var player_position_og = player.position.x
+	player_position_og = player.position.x
 	player.position.x -= 320
 	player_sprite.play("walk")
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(player, "position:x", player.position.x + 320, 3)
 	await get_tree().create_timer(3).timeout
 	player_sprite.play("idle")
 	await get_tree().create_timer(0.5).timeout
 	enemy.sprite.flip_h = true
 	# Connect player's attack signal
-	if player.has_signal("attack_signal"):
-		player.attack_signal.connect(_on_player_attack)
+
+func _input(event):
+	if event.is_action_pressed("skip") and enemy_speaking: 
+		enemy.sprite.flip_h = true # Replace with your action
+		enemy_text_ui.visible = false
+		tween.stop()
+		player_sprite.play("idle")
+		player.position.x = player_position_og
+		enemy_text.visible = false
+		enemy_speaking = false
+		Global.typing
+		_start_battle()
+
 
 # ------------------- Enemy Setup -------------------
 
@@ -175,8 +196,24 @@ func _setup_enemy_dice() -> void:
 	enemy_dice.button.hide()
 
 # ------------------- Battle Flow -------------------
+func _process(delta: float) -> void:
+	skip.position.y = original_label_position.y + sin(Time.get_ticks_msec() / 1000.0 * 4) * 4
 
 func _start_battle() -> void:
+	enemy_text_ui.visible = false
+	enemy_text.visible = false
+	skip.visible = false
+	sway = true
+	player.roller.reset_positions()
+	if player.has_signal("attack_signal"):
+		player.attack_signal.connect(_on_player_attack)
+	var cut_scene = $'CutScene'
+	cut_scene.visible = true
+	player.visible = false
+	music.stream = load("res://music/8-bit-gunshot.wav")
+	music.play()
+	await music.finished
+	await get_tree().create_timer(0.75).timeout
 	for ui in ui_elements:
 		ui.show()
 	player.roller.show()
@@ -184,7 +221,11 @@ func _start_battle() -> void:
 	enemy.position.y = enemy_og_pos
 	_setup_enemy_dice()
 	music.stream = new_music
+	music.stream.loop = true
 	music.play()
+	await get_tree().create_timer(0.1).timeout
+	cut_scene.visible = false
+	player.visible = true
 	if roll_message_label:
 		roll_message_label.visible = true
 		roll_message_label.text = ""
@@ -238,22 +279,64 @@ func _on_enemy_damage(damage_packet: Damage) -> void:
 # ------------------- Defeat Handling -------------------
 
 func _handle_enemy_defeat() -> void:
+	music.stop()
 	enemy_sprite.play(enemy.ANIMS[enemy.type][2])
 	Global.coins += enemy.coins
+	music.stream = load("res://music/8-bit-gunshot.wav")
+	music.play()
 	await enemy_sprite.animation_finished
+	music.stream = load("res://music/frozen_winter.mp3")
+	music.play()
+	await get_tree().create_timer(1.0).timeout
+	var dice = Global.standard.instantiate()
+	self.add_child(dice)
+	dice.button.hide()
+	dice.z_index = 10
+	dice.position = enemy.position
+	dice.scale = dice.scale*1.5
+	dice.animation_player.modulate = Color.GOLDENROD
+	dice.animation_player.animation = "roll_cursed"
+	dice.animation_player.play()
+	tween = get_tree().create_tween()
+	
+	
+	cut_scene = $EndingScene
+	cut_scene.color = Color(1.0, 1.0, 0.8)
+	var screen_size = get_viewport().get_visible_rect().size
+	var position = screen_size / 2  # Center it
+	cut_scene.modulate.a = 0
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(cut_scene, "modulate:a", 0.95, 5)
+	await tween.tween_property(dice, "position", position, 4)
 	# Slide in the text UI for the defeat messages.
-	await slide_in_text_ui()
-	# Define defeat messages.
-	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
-	var defeat_messages: Array = [
-		"> CONGRATS YOU DEFEATED THE ENEMY.",
-		"> YOU EARNED " + str(enemy.coins) + " COINS!",
-		"> RETURNING TO MAP..."
-	]
-	# Type out the defeat messages.
-	await _start_defeat_typing(defeat_messages)
-	# Fade in the map after messages.
-	fade_in_map()
+	await get_tree().create_timer(5.0).timeout
+	enemy_speaking = true
+	$'EnemyText'.position = position
+	enemy_text.position.y += 100
+	enemy_text.position.x -= 190
+	enemy_text.z_index = 4
+	enemy_text.scale *= 2
+	enemy_text.text = ""
+	enemy_text.visible = true
+	Global.audio_player.pitch_scale = 1.2
+	var win_messages = ["CONGRATULATIONS! YOU SAVED THE KINGDOM!", "THE PEOPLE ARE FREE FROM THE KINGS CONTROL", "AND THE CURSED DICE IS SAFELY IN YOUR HANDS"]
+	for message in win_messages:
+		typewriter_effect(message)
+		await get_tree().create_timer(4.5).timeout
+	var death_screen = $DeathScreen
+	death_screen.visible = true
+	death_screen.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(death_screen, "modulate:a", 1.0, 3.2)
+	tween2 = create_tween()
+	tween2.tween_property(dice, "modulate:a", 0, 3.2)
+	var tween3 = create_tween()
+	tween3.tween_property(enemy_text, "modulate:a", 0, 3.2)
+	await tween.finished
+	Global.player_health = 100
+	Global.audio_player.pitch_scale = 1.2
+	get_tree().change_scene_to_file("res://start_menu/start_menu.tscn")
+
 
 func _start_defeat_typing(defeat_messages: Array) -> void:
 	for message in defeat_messages:
@@ -405,8 +488,14 @@ func fade_in_map():
 	queue_free()
 
 func typewriter_effect(message: String):
+	if not enemy_speaking:
+		Global.typing = false
+		return
 	Global.typing = true
 	for i in message.length():
+		if not enemy_speaking:
+			Global.typing = false
+			return
 		$'EnemyText'.text = message.substr(0, i + 1)
 		await get_tree().create_timer(0.08).timeout
 	Global.typing = false
