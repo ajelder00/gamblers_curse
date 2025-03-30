@@ -7,6 +7,8 @@ extends Node
 @export var player_template: PackedScene
 @export var override_enemy: bool = false
 
+var sway = true 
+
 var enemy_template
 
 var enemy_dice
