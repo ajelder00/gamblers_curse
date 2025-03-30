@@ -1,253 +1,422 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjjijc6hrlkks"]
+[gd_scene load_steps=27 format=3 uid="uid://cjjijc6hrlkks"]
 
 [ext_resource type="Script" path="res://battle_scene/tutorial/tutorial_battle.gd" id="1_hkrh2"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_h46ts"]
-[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="3_is5eh"]
-[ext_resource type="Texture2D" uid="uid://bcifvpk37q5vo" path="res://art/spr_battle_free.png" id="4_kr7i3"]
+[ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="4_ohuin"]
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="5_7din5"]
 [ext_resource type="Script" path="res://battle_scene/player_health.gd" id="5_8mrdj"]
-[ext_resource type="AudioStream" uid="uid://dn3flk8cwqmqd" path="res://music/04 Battle Theme LOOP.wav" id="5_llhlx"]
-[ext_resource type="Texture2D" uid="uid://c8p8itidoumac" path="res://art/tutorial_grey.png" id="6_xm2jd"]
-[ext_resource type="Texture2D" uid="uid://cq6rw2o5x1uqx" path="res://art/arrow.png" id="7_ycqga"]
-[ext_resource type="Texture2D" uid="uid://cvhhsddvn04ty" path="res://image.png" id="9_0s0wc"]
+[ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="6_sklsp"]
+[ext_resource type="Texture2D" uid="uid://bxwamohwash73" path="res://art/diceopedia/diceopedia12.png" id="7_i5cdk"]
+[ext_resource type="Texture2D" uid="uid://by0svtwuo5c61" path="res://art/diceopedia/diceopedia11.png" id="8_1lbtx"]
+[ext_resource type="Texture2D" uid="uid://0dqki6l0bxlp" path="res://art/diceopedia/diceopedia10.png" id="9_md3qo"]
+[ext_resource type="Texture2D" uid="uid://cvnpk4fldc1ej" path="res://art/diceopedia/diceopedia9.png" id="10_03by6"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="10_t78bx"]
-[ext_resource type="Texture2D" uid="uid://brj83pjjsimuu" path="res://art/New Piskel.png" id="11_ax6dj"]
+[ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="11_ax6dj"]
+[ext_resource type="Texture2D" uid="uid://cjaiio15sa28j" path="res://art/diceopedia/diceopedia8.png" id="11_r0iir"]
+[ext_resource type="Texture2D" uid="uid://d2r8fj8s6k0b5" path="res://art/diceopedia/diceopedia7.png" id="12_yqx86"]
+[ext_resource type="Texture2D" uid="uid://eftytw2v4aoc" path="res://art/diceopedia/diceopedia6.png" id="13_tqmge"]
+[ext_resource type="Texture2D" uid="uid://d23sf4lwebi4o" path="res://art/diceopedia/diceopedia5.png" id="14_th02l"]
+[ext_resource type="Texture2D" uid="uid://dikqi2774ar8i" path="res://art/diceopedia/diceopedia4.png" id="15_4q1eo"]
+[ext_resource type="Texture2D" uid="uid://cv5g7shdyn03g" path="res://art/diceopedia/diceopedia3.png" id="16_bu68e"]
+[ext_resource type="Texture2D" uid="uid://dh0e3jblgpguu" path="res://art/diceopedia/diceopedia2.png" id="17_5h5wc"]
+[ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="18_rvip6"]
+[ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="19_omxr0"]
+[ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="20_a535g"]
+[ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="21_gjn5v"]
+[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="22_wqbj8"]
+[ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="25_4m4tx"]
 
-[sub_resource type="Animation" id="Animation_6a2q2"]
-resource_name = "Arrow_movement"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TutorialGraphics/Arrow:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.533333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(6.18, 6.18), Vector2(6.77, 6.77), Vector2(6.18, 6.18)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TutorialGraphics/Arrow:skew")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.56905, 1.56905]
-}
-
-[sub_resource type="Animation" id="Animation_ikptf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TutorialGraphics/Arrow:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6.18, 6.18)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TutorialGraphics/Arrow:skew")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.56905]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qhl3"]
-_data = {
-"Arrow_movement": SubResource("Animation_6a2q2"),
-"RESET": SubResource("Animation_ikptf")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_njebu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sklsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i5cdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1lbtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_md3qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_03by6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r0iir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yqx86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tqmge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_th02l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4q1eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bu68e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5h5wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_rvip6")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_rvip6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_rvip6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5h5wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bu68e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4q1eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_th02l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tqmge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yqx86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r0iir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_03by6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_md3qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1lbtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i5cdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sklsp")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sklsp")
+}],
+"loop": true,
+"name": &"open_idle",
+"speed": 5.0
+}]
 
 [node name="TutorialBattle" type="Node2D"]
 script = ExtResource("1_hkrh2")
 player_template = ExtResource("2_h46ts")
-enemy_template = ExtResource("3_is5eh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(585, 330)
-scale = Vector2(4.32639, 4.32639)
-texture = ExtResource("4_kr7i3")
+[node name="Blocker" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -30.0
+offset_top = -38.0
+offset_right = 1232.0
+offset_bottom = 665.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="TutorialCover" type="ColorRect" parent="."]
+z_index = 6
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.796078)
 
 [node name="MonsterName" type="Label" parent="."]
-offset_left = 102.0
-offset_top = 54.0
-offset_right = 278.0
-offset_bottom = 74.0
+offset_left = 62.48
+offset_top = 56.48
+offset_right = 238.48
+offset_bottom = 76.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
-offset_left = 280.0
-offset_top = 54.0
-offset_right = 456.0
-offset_bottom = 74.0
+z_index = 1
+offset_left = 342.48
+offset_top = 57.48
+offset_right = 448.48
+offset_bottom = 73.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
-text = "1"
+text = " "
 horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 729.0
-offset_top = 394.0
-offset_right = 905.0
-offset_bottom = 414.0
+offset_left = 690.48
+offset_top = 400.48
+offset_right = 821.48
+offset_bottom = 416.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 text = "THE FATED ONE"
 
 [node name="PlayerHealthNum" type="Label" parent="."]
-offset_left = 927.0
-offset_top = 394.0
-offset_right = 1103.0
-offset_bottom = 414.0
+z_index = 1
+offset_left = 996.48
+offset_top = 397.48
+offset_right = 1078.48
+offset_bottom = 413.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
 horizontal_alignment = 2
 
+[node name="EnemyHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 184.48
+offset_top = 68.48
+offset_right = 450.48
+offset_bottom = 108.48
+color = Color(0.878431, 0.333333, 0.337255, 1)
+
+[node name="EnemyHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 184.48
+offset_top = 100.48
+offset_right = 450.48
+offset_bottom = 122.48
+color = Color(0.603922, 0.239216, 0.239216, 1)
+
+[node name="PlayerHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 812.48
+offset_top = 426.48
+offset_right = 1079.48
+offset_bottom = 466.48
+size_flags_horizontal = 3
+color = Color(0.368627, 0.882353, 0.333333, 1)
+script = ExtResource("5_8mrdj")
+
+[node name="PlayerHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 812.48
+offset_top = 446.48
+offset_right = 1088.48
+offset_bottom = 482.48
+size_flags_horizontal = 3
+color = Color(0.223529, 0.647059, 0.388235, 1)
+script = ExtResource("5_8mrdj")
+
+[node name="PlayerHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 812.48
+offset_top = 426.48
+offset_right = 1079.48
+offset_bottom = 466.48
+size_flags_horizontal = 3
+color = Color(0.0533738, 0.209555, 0.113318, 1)
+
+[node name="EnemyHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 184.48
+offset_top = 78.48
+offset_right = 451.48
+offset_bottom = 118.48
+size_flags_horizontal = 3
+color = Color(0.274879, 0.0885133, 0.0892138, 1)
+
+[node name="Map" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+offset_right = 1162.0
+offset_bottom = 664.0
+color = Color(0, 0, 0, 1)
+
 [node name="DiceBG" type="ColorRect" parent="."]
-offset_left = 529.0
-offset_top = 524.0
-offset_right = 920.0
-offset_bottom = 593.0
-color = Color(0.03, 0.02, 0.05, 0.13)
-
-[node name="Marker5" type="Marker2D" parent="DiceBG"]
-position = Vector2(333, 35)
-
-[node name="Marker4" type="Marker2D" parent="DiceBG"]
-position = Vector2(263, 35)
-
-[node name="Marker3" type="Marker2D" parent="DiceBG"]
-position = Vector2(193, 35)
-
-[node name="Marker2" type="Marker2D" parent="DiceBG"]
-position = Vector2(123, 35)
+offset_left = 581.48
+offset_top = 528.48
+offset_right = 972.48
+offset_bottom = 597.48
+color = Color(0, 0, 0, 0)
 
 [node name="Marker1" type="Marker2D" parent="DiceBG"]
-position = Vector2(53, 35)
+z_index = 2
+position = Vector2(333, 34)
+
+[node name="Marker2" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(271, 33)
+
+[node name="Marker3" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(209, 34)
+
+[node name="Marker4" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(146, 34)
+
+[node name="Marker5" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(83, 35)
+
+[node name="Marker6" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(19.52, 34)
+
+[node name="Marker7" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-42.48, 34)
+
+[node name="Marker8" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-104.48, 34)
+
+[node name="Marker9" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-167.48, 34)
+
+[node name="Marker10" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-230.48, 34)
 
 [node name="EnemyDiceBG" type="ColorRect" parent="."]
-offset_left = 992.0
-offset_top = 523.0
-offset_right = 1065.0
-offset_bottom = 592.0
-color = Color(0.03, 0.02, 0.05, 0.13)
+offset_left = 1018.48
+offset_top = 528.48
+offset_right = 1091.48
+offset_bottom = 597.48
+color = Color(0.0313726, 0.0196078, 0.0509804, 0)
 
 [node name="EnemyMarker" type="Marker2D" parent="EnemyDiceBG"]
 position = Vector2(37, 35)
 
-[node name="Enemy Dice" type="Label" parent="."]
-offset_left = 985.0
-offset_top = 600.0
-offset_right = 1073.0
-offset_bottom = 615.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "ENEMY DICE"
-
-[node name="Player Dice" type="Label" parent="."]
-offset_left = 673.0
-offset_top = 599.0
-offset_right = 771.0
-offset_bottom = 614.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "PLAYER DICE"
+[node name="DiceUI" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(664.48, 382.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_ohuin")
+metadata/_edit_lock_ = true
 
 [node name="Roll Message" type="Label" parent="."]
-offset_left = 72.0
+z_index = 7
+offset_left = 64.0
 offset_top = 535.0
-offset_right = 374.0
-offset_bottom = 559.0
+offset_right = 255.0
+offset_bottom = 611.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 19
+autowrap_mode = 3
 
-[node name="EnemyHealth" type="ColorRect" parent="."]
-z_index = -1
-offset_left = 161.0
-offset_top = 65.0
-offset_right = 469.0
-offset_bottom = 105.0
-color = Color(1, 0.28, 0.38, 1)
-
-[node name="PlayerHealth" type="ColorRect" parent="."]
-z_index = -1
-offset_left = 788.0
-offset_top = 416.0
-offset_right = 1096.0
-offset_bottom = 456.0
-color = Color(0.47, 0.99, 0.36, 1)
-script = ExtResource("5_8mrdj")
-
-[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_llhlx")
-autoplay = true
-
-[node name="ClickBlocker" type="ColorRect" parent="."]
+[node name="TextUI" type="Sprite2D" parent="."]
 visible = false
-z_index = 1
-offset_left = -34.0
-offset_top = -24.0
-offset_right = 1241.0
-offset_bottom = 711.0
-color = Color(0.321569, 0.694118, 0.705882, 0)
+z_index = 6
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("5_7din5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0qhl3")
-}
-autoplay = "Arrow_movement"
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+z_index = 13
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("5_7din5")
 
-[node name="TutorialGraphics" type="Node2D" parent="."]
-z_index = 5
+[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
+z_index = 2
+position = Vector2(-28.9616, 23.8517)
+scale = Vector2(0.282529, 0.289322)
+sprite_frames = SubResource("SpriteFrames_njebu")
+animation = &"idle"
+script = ExtResource("19_omxr0")
 
-[node name="TutorialGray" type="Sprite2D" parent="TutorialGraphics"]
-z_index = -7
-position = Vector2(796, 363)
-scale = Vector2(2.815, 2.815)
-texture = ExtResource("6_xm2jd")
+[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
 
-[node name="Arrow" type="Sprite2D" parent="TutorialGraphics"]
-position = Vector2(450, 380)
-rotation = 0.790634
-scale = Vector2(6.18, 6.18)
-skew = -1.56905
-texture = ExtResource("7_ycqga")
+[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_a535g")]
+position = Vector2(-26.7045, -94.5858)
+scale = Vector2(0.17, 0.17)
 
-[node name="Tutorial Text" type="Label" parent="TutorialGraphics"]
-offset_right = 40.0
-offset_bottom = 16.0
+[node name="EnemyHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(371.5, -95.52)
+scale = Vector2(7.80469, 7.82)
+texture = ExtResource("21_gjn5v")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(999.98, 250.48)
+scale = Vector2(7.82781, 7.82)
+texture = ExtResource("21_gjn5v")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
-position = Vector2(485, 207.563)
-scale = Vector2(1.06941, 1.10682)
-texture = ExtResource("9_0s0wc")
+position = Vector2(606, 320)
+scale = Vector2(0.85547, 0.702233)
+texture = ExtResource("22_wqbj8")
 script = ExtResource("10_t78bx")
+metadata/_edit_lock_ = true
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]
-position = Vector2(207, 471)
+z_index = 6
+position = Vector2(254, 472)
 scale = Vector2(9, 9)
 texture = ExtResource("11_ax6dj")
 
 [node name="EnemyPlatform" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(909, 309)
+position = Vector2(909, 304)
 scale = Vector2(9, 9)
 texture = ExtResource("11_ax6dj")
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_4m4tx")
+autoplay = true
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.929412)
+
+[node name="YouDied" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 417.0
+offset_top = 260.0
+offset_right = 496.0
+offset_bottom = 276.0
+scale = Vector2(4, 4)
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnText" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 458.0
+offset_top = 343.0
+offset_right = 704.0
+offset_bottom = 359.0
+text = "RETURNING TO START MENU..."

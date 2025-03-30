@@ -3,7 +3,7 @@ extends Sprite2D
 # Variables for sway
 @export var sway_speed : float = 0.5  # Speed of swaying (higher values = faster sway)
 @export var sway_distance : float = 30.0  # Distance the sprite moves (pixels)
-
+@onready var parent = get_parent()
 # Initial position offset
 var initial_position : Vector2
 
@@ -13,8 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if parent.sway:
 	# Calculate the sway using a sine wave for smooth oscillation
-	var sway = sin(Time.get_ticks_msec() / 1000.0 * sway_speed) * sway_distance
+		var sway = sin(Time.get_ticks_msec() / 1000.0 * sway_speed) * sway_distance
 	
 	# Update the sprite's x position to create the sway effect
-	position.x = initial_position.x + sway
+		position.x = initial_position.x + sway

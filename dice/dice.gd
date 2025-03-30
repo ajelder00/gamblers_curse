@@ -14,7 +14,7 @@ const ANIMS := {
 	Type.RISKY: ["blank_risky", "roll_risky", "faces_risky"],
 	Type.POISON: ["blank_poison", "roll_poison", "faces_poison"],
 	Type.HEALING: ["blank_healing", "roll_healing", "faces_healing"],
-	Type.BLIND: ["blank_blind", "roll_blind", "faces_blind"]
+	Type.BLIND: ["blank_blind", "roll_blind", "faces_blind"],
 }
 const TYPE_NAMES := {
 	Type.STANDARD: ["Standard"],

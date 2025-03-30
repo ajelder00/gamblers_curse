@@ -5,3 +5,7 @@
 
 [node name="Dice" instance=ExtResource("1_kuchx")]
 script = ExtResource("1_ayey2")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 0
+animation = &"faces_standard"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfum82qo5dmq5"
-path="res://.godot/imported/Battle image.jpg-5b67b00606f26054b4ff04356e20b0a5.ctex"
+uid="uid://dtxatwfdosuha"
+path="res://.godot/imported/line.png-bd7eafebd0c4b5bc809a431d981cfd04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://battle_scene/art copy/Battle image.jpg"
-dest_files=["res://.godot/imported/Battle image.jpg-5b67b00606f26054b4ff04356e20b0a5.ctex"]
+source_file="res://map_stuff/map_tutorial_stuff/art/map_icons/line.png"
+dest_files=["res://.godot/imported/line.png-bd7eafebd0c4b5bc809a431d981cfd04.ctex"]
 
 [params]
 

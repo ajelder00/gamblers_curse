@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtbkcy00hl3us"]
+
+[ext_resource type="PackedScene" uid="uid://bo56bcst8wlj" path="res://dummy_enemy/dummy_enemy.tscn" id="1_8jyth"]
+[ext_resource type="Script" path="res://dummy_enemy/enemies/king/king.gd" id="2_pwekv"]
+[ext_resource type="PackedScene" uid="uid://65qg2jms12ux" path="res://dice/curse/curse_dice.tscn" id="3_bivwy"]
+[ext_resource type="PackedScene" uid="uid://dhqam1wxi8xim" path="res://dice/bleeding/bleeding_dice.tscn" id="4_vg0hb"]
+[ext_resource type="PackedScene" uid="uid://bjovamca8hg6f" path="res://dice/standard/standard_dice.tscn" id="5_naltn"]
+
+[node name="dummy_enemy" instance=ExtResource("1_8jyth")]
+script = ExtResource("2_pwekv")
+
+[node name="Dice" parent="." index="4" instance=ExtResource("3_bivwy")]
+
+[node name="Dice2" parent="." index="5" instance=ExtResource("4_vg0hb")]
+visible = false
+
+[node name="Dice3" parent="." index="6" instance=ExtResource("5_naltn")]
+visible = false

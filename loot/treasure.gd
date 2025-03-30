@@ -30,8 +30,15 @@ func _ready():
 	audio_player = AudioStreamPlayer.new()
 	audio_player.stream = chest_open_sound
 	add_child(audio_player)
-	
-	if randf() > 0.4:
+	if not Global.healing in Global.dice:
+		die = Global.healing
+		loot = die.instantiate()
+		self.add_child(loot)
+		loot.modulate.a = 0.0
+		loot.button.hide()
+		loot.position = marker.position
+		loot.scale = loot.scale * 1.5
+	elif randf() > 0.4 or len(Global.dice) == 10:
 		loot = coin_pic
 	else:
 		die = dice_loot.pick_random()
@@ -96,7 +103,6 @@ func fade_in_unlock():
 	unlock.visible = true
 	await get_tree().create_timer(1.0).timeout
 	unlock_label.text = ""
-	await get_tree().create_timer(0.5).timeout
 	fade_in_map()
 
 func fade_in_map():

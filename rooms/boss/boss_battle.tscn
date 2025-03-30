@@ -1,0 +1,442 @@
+[gd_scene load_steps=27 format=3 uid="uid://brcjwcsn7po5q"]
+
+[ext_resource type="Script" path="res://rooms/boss/boss_battle.gd" id="1_y56jp"]
+[ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_r25eg"]
+[ext_resource type="Script" path="res://battle_scene/player_health.gd" id="3_xaugw"]
+[ext_resource type="Texture2D" uid="uid://id41fws8yho3" path="res://battle_scene/art/dice_bg_ui.png" id="4_peaf1"]
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="5_s3tcg"]
+[ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="6_2u786"]
+[ext_resource type="Texture2D" uid="uid://bxwamohwash73" path="res://art/diceopedia/diceopedia12.png" id="7_xjfd5"]
+[ext_resource type="Texture2D" uid="uid://by0svtwuo5c61" path="res://art/diceopedia/diceopedia11.png" id="8_6jfmj"]
+[ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="8_er7ac"]
+[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="9_lp2pr"]
+[ext_resource type="Texture2D" uid="uid://0dqki6l0bxlp" path="res://art/diceopedia/diceopedia10.png" id="9_vstq5"]
+[ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="10_4kk3m"]
+[ext_resource type="Texture2D" uid="uid://cvnpk4fldc1ej" path="res://art/diceopedia/diceopedia9.png" id="10_6qber"]
+[ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="11_4ar5p"]
+[ext_resource type="Texture2D" uid="uid://cjaiio15sa28j" path="res://art/diceopedia/diceopedia8.png" id="11_hq3co"]
+[ext_resource type="Texture2D" uid="uid://d2r8fj8s6k0b5" path="res://art/diceopedia/diceopedia7.png" id="12_4oetw"]
+[ext_resource type="AudioStream" uid="uid://blpvuwbmvev5r" path="res://music/11 Lava Dungeon LOOP.wav" id="12_yvgcp"]
+[ext_resource type="Texture2D" uid="uid://eftytw2v4aoc" path="res://art/diceopedia/diceopedia6.png" id="13_8sy0m"]
+[ext_resource type="Texture2D" uid="uid://d23sf4lwebi4o" path="res://art/diceopedia/diceopedia5.png" id="14_fjg37"]
+[ext_resource type="Texture2D" uid="uid://dikqi2774ar8i" path="res://art/diceopedia/diceopedia4.png" id="15_p5fo7"]
+[ext_resource type="Texture2D" uid="uid://cv5g7shdyn03g" path="res://art/diceopedia/diceopedia3.png" id="16_hebpx"]
+[ext_resource type="Texture2D" uid="uid://dh0e3jblgpguu" path="res://art/diceopedia/diceopedia2.png" id="17_3hxkl"]
+[ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="18_j0rsu"]
+[ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="19_rqsut"]
+[ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="20_s7reg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jvex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2u786")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xjfd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6jfmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vstq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6qber")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hq3co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4oetw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8sy0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fjg37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_p5fo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hebpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3hxkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j0rsu")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_j0rsu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_j0rsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3hxkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hebpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_p5fo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fjg37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8sy0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4oetw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hq3co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6qber")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vstq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6jfmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xjfd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2u786")
+}],
+"loop": false,
+"name": &"open",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2u786")
+}],
+"loop": true,
+"name": &"open_idle",
+"speed": 5.0
+}]
+
+[node name="Boss_Battle" type="Node2D"]
+z_index = 5
+z_as_relative = false
+script = ExtResource("1_y56jp")
+player_template = ExtResource("2_r25eg")
+
+[node name="MonsterName" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 58.0
+offset_right = 273.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DUNGEON GOBLIN"
+
+[node name="MonsterHealthNum" type="Label" parent="."]
+z_index = 1
+offset_left = 377.0
+offset_top = 59.0
+offset_right = 483.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = 707.0
+offset_top = 390.0
+offset_right = 838.0
+offset_bottom = 406.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "THE FATED ONE"
+
+[node name="PlayerHealthNum" type="Label" parent="."]
+z_index = 1
+offset_left = 1013.0
+offset_top = 387.0
+offset_right = 1095.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="EnemyHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 219.0
+offset_top = 70.0
+offset_right = 485.0
+offset_bottom = 110.0
+color = Color(0.878431, 0.333333, 0.337255, 1)
+
+[node name="EnemyHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 219.0
+offset_top = 102.0
+offset_right = 485.0
+offset_bottom = 124.0
+color = Color(0.603922, 0.239216, 0.239216, 1)
+
+[node name="PlayerHealth" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 829.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+size_flags_horizontal = 3
+color = Color(0.368627, 0.882353, 0.333333, 1)
+script = ExtResource("3_xaugw")
+
+[node name="PlayerHealth2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 829.0
+offset_top = 436.0
+offset_right = 1105.0
+offset_bottom = 472.0
+size_flags_horizontal = 3
+color = Color(0.223529, 0.647059, 0.388235, 1)
+script = ExtResource("3_xaugw")
+
+[node name="PlayerHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 829.0
+offset_top = 416.0
+offset_right = 1096.0
+offset_bottom = 456.0
+size_flags_horizontal = 3
+color = Color(0.0533738, 0.209555, 0.113318, 1)
+
+[node name="EnemyHealthBG" type="ColorRect" parent="."]
+z_index = -2
+offset_left = 219.0
+offset_top = 80.0
+offset_right = 486.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+color = Color(0.274879, 0.0885133, 0.0892138, 1)
+
+[node name="Map" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_right = 1162.0
+offset_bottom = 664.0
+color = Color(0, 0, 0, 1)
+
+[node name="DiceBG" type="ColorRect" parent="."]
+offset_left = 581.48
+offset_top = 528.48
+offset_right = 972.48
+offset_bottom = 597.48
+color = Color(0, 0, 0, 0)
+
+[node name="Marker1" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(333, 34)
+
+[node name="Marker2" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(271, 33)
+
+[node name="Marker3" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(209, 34)
+
+[node name="Marker4" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(146, 34)
+
+[node name="Marker5" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(83, 35)
+
+[node name="Marker6" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(19.52, 34)
+
+[node name="Marker7" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-42.48, 34)
+
+[node name="Marker8" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-104.48, 34)
+
+[node name="Marker9" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-167.48, 34)
+
+[node name="Marker10" type="Marker2D" parent="DiceBG"]
+z_index = 2
+position = Vector2(-230.48, 34)
+
+[node name="EnemyDiceBG" type="ColorRect" parent="."]
+offset_left = 1018.48
+offset_top = 528.48
+offset_right = 1091.48
+offset_bottom = 597.48
+color = Color(0.0313726, 0.0196078, 0.0509804, 0)
+
+[node name="EnemyMarker" type="Marker2D" parent="EnemyDiceBG"]
+position = Vector2(37, 35)
+
+[node name="CutScene" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+offset_right = 1159.0
+offset_bottom = 655.0
+color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[node name="Skip" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.635294)
+offset_left = 468.0
+offset_top = 544.0
+offset_right = 624.0
+offset_bottom = 563.0
+scale = Vector2(1.27, 1.27)
+text = "Press 'Enter' to Skip"
+
+[node name="EndingScene" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 1157.0
+offset_bottom = 655.0
+color = Color(0.9, 0.8712, 0.468, 0)
+
+[node name="DiceUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(664.48, 382.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("4_peaf1")
+metadata/_edit_lock_ = true
+
+[node name="Roll Message" type="Label" parent="."]
+z_index = 1
+offset_left = 64.0
+offset_top = 535.0
+offset_right = 255.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 3
+
+[node name="TextUI" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("5_s3tcg")
+
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("5_s3tcg")
+
+[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
+z_index = 2
+position = Vector2(-26.0205, 24.2353)
+scale = Vector2(0.352738, 0.348067)
+sprite_frames = SubResource("SpriteFrames_1jvex")
+animation = &"open"
+script = ExtResource("19_rqsut")
+
+[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_s7reg")]
+position = Vector2(-32.265, -92.9504)
+scale = Vector2(0.17, 0.17)
+
+[node name="EnemyHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(407, -94)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("8_er7ac")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthUI" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1017, 240)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("8_er7ac")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(606, 320)
+scale = Vector2(0.85547, 0.702233)
+texture = ExtResource("9_lp2pr")
+script = ExtResource("10_4kk3m")
+
+[node name="PlayerPlatform" type="Sprite2D" parent="."]
+position = Vector2(254, 472)
+scale = Vector2(9, 9)
+texture = ExtResource("11_4ar5p")
+metadata/_edit_lock_ = true
+
+[node name="EnemyPlatform" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(909, 304)
+scale = Vector2(9, 9)
+texture = ExtResource("11_4ar5p")
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_yvgcp")
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.929412)
+
+[node name="YouDied" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 417.0
+offset_top = 260.0
+offset_right = 496.0
+offset_bottom = 276.0
+scale = Vector2(4, 4)
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnText" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 0
+offset_left = 458.0
+offset_top = 343.0
+offset_right = 704.0
+offset_bottom = 359.0
+text = "RETURNING TO START MENU..."
+
+[node name="EnemyTextUI" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1128, 427)
+scale = Vector2(7.82, 3.84563)
+texture = ExtResource("5_s3tcg")
+
+[node name="EnemyText" type="Label" parent="."]
+z_index = 1
+offset_left = 824.0
+offset_top = 501.0
+offset_right = 1015.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 3

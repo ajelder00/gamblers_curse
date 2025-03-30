@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://b1vwcx3yj158n"]
+[gd_scene load_steps=78 format=3 uid="uid://b1vwcx3yj158n"]
 
 [ext_resource type="Script" path="res://dice/dice.gd" id="1_mre03"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="1_od3an"]
@@ -58,6 +58,30 @@ region = Rect2(64, 304, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcwf0"]
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2k3"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykp18"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3wdm"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulbqe"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ay1"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gdvi"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 400, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq8ip"]
 atlas = ExtResource("1_od3an")
@@ -154,6 +178,30 @@ region = Rect2(64, 368, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxxog"]
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po7gd"]
+atlas = ExtResource("1_od3an")
+region = Rect2(0, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7x74"]
+atlas = ExtResource("1_od3an")
+region = Rect2(16, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vwv4"]
+atlas = ExtResource("1_od3an")
+region = Rect2(32, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfr5a"]
+atlas = ExtResource("1_od3an")
+region = Rect2(48, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3guaw"]
+atlas = ExtResource("1_od3an")
+region = Rect2(64, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0m6k"]
+atlas = ExtResource("1_od3an")
+region = Rect2(80, 224, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a80qh"]
 atlas = ExtResource("1_od3an")
@@ -325,6 +373,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcwf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykp18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3wdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulbqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0ay1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gdvi")
 }],
 "loop": false,
 "name": &"faces_healing",
@@ -420,6 +486,29 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_blind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po7gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7x74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vwv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfr5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3guaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0m6k")
+}],
+"loop": true,
+"name": &"roll_cursed",
 "speed": 5.0
 }, {
 "frames": [{
@@ -520,21 +609,29 @@ script = ExtResource("1_mre03")
 
 [node name="NameLabel" type="Label" parent="."]
 z_index = 3
-offset_right = 40.0
-offset_bottom = 16.0
+offset_left = -25.0
+offset_top = 31.0
+offset_right = 47.0
+offset_bottom = 47.0
+scale = Vector2(0.7, 0.7)
+text = "Standard"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="NameLabel"]
 z_index = -1
 layout_mode = 0
-offset_left = -8.0
-offset_right = 65.0
-offset_bottom = 16.0
+offset_left = -4.28571
+offset_top = -4.28572
+offset_right = 75.7143
+offset_bottom = 16.7143
 color = Color(0, 0, 0, 0.384314)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"faces_standard"
+animation = &"faces_healing"
 
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0

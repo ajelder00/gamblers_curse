@@ -314,12 +314,11 @@ _data = {
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 z_index = -2
-position = Vector2(566.5, 328)
-scale = Vector2(0.757161, 0.681885)
+position = Vector2(569.606, 324.563)
+scale = Vector2(0.760278, 0.684693)
 sprite_frames = SubResource("SpriteFrames_1gsft")
 autoplay = "default"
 frame_progress = 0.961157
-metadata/_edit_lock_ = true
 
 [node name="PlayController" type="Node2D" parent="."]
 

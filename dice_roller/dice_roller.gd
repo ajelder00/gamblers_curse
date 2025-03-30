@@ -5,7 +5,7 @@ signal pop_over
 
 @onready var ORIGINAL_ROLLS = 3
 @onready var current_rolls = ORIGINAL_ROLLS
-@onready var dice_bucket = Global.testing_dice
+@onready var dice_bucket = Global.dice
 @onready var positions := get_children()
 @onready var parent = get_parent()
 var current_dice = []
