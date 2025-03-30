@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://txc58o0ebkqu"]
+[gd_scene load_steps=27 format=3 uid="uid://txc58o0ebkqu"]
 
 [ext_resource type="Script" path="res://shop/shop.gd" id="1_2hejj"]
+[ext_resource type="Texture2D" uid="uid://b5pkfdk0lhjjl" path="res://art/ShopDisplay.png" id="4_rprpb"]
 [ext_resource type="Texture2D" uid="uid://bbwlsmgmy512l" path="res://art/shop/shop_background/shop_background5.png" id="5_a0ds2"]
 [ext_resource type="Texture2D" uid="uid://ud5tw13xkev7" path="res://map_stuff/map_tutorial_stuff/art/coins.png" id="7_i7nuq"]
 [ext_resource type="Texture2D" uid="uid://ckyrfb38ein7f" path="res://art/button.png" id="8_4nuq1"]
@@ -158,6 +159,7 @@ texture = ExtResource("5_a0ds2")
 [node name="ShopDisplayUI" type="Sprite2D" parent="."]
 position = Vector2(334, 321)
 scale = Vector2(3.80469, 3.80469)
+texture = ExtResource("4_rprpb")
 
 [node name="CoinImage" type="Sprite2D" parent="."]
 position = Vector2(260, 516)
