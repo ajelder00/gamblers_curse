@@ -58,7 +58,7 @@ func _on_button_pressed() -> void:
 	is_rolled = true
 	roll_sound.play()
 	roll_die(faces)
-	button.hide()
+	self.deactivate()
 
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)
@@ -90,3 +90,13 @@ func _on_button_mouse_exited() -> void:
 
 func get_parent_node():
 	return get_parent()
+
+func activate():
+	animation_player.modulate = Color(1, 1, 1, 1)
+	button.disabled = false
+	button.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+func deactivate():
+	animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
+	button.disabled = true
+	button.mouse_filter = Control.MOUSE_FILTER_PASS

@@ -17,7 +17,6 @@ func _ready():
 	if self.get_parent().get_parent():
 		var battle = self.get_parent().get_parent()
 		positions = battle.get_node("DiceBG").get_children()
-		print("got it!")
 	
 	# this await function fixes the 1st die appearing above the UI for some reason
 	await get_tree().create_timer(0.1).timeout
@@ -40,7 +39,7 @@ func first_turn():
 		current_dice.append(die)
 		# hide function to prevent player from clicking on last 5 dice
 		if i >= 5:
-			die.get_node("Button").hide()
+			die.deactivate()
 		await get_tree().create_timer(0.1).timeout
 		die.rolled.connect(_on_die_rolled)
 		
@@ -49,7 +48,7 @@ func first_turn():
 		current_dice[i].animation_player.animation = current_dice[i].ANIMS[current_dice[i].type][0]
 		current_dice[i].global_position = positions[i].global_position + Vector2(0, -20)
 		if i < 5:
-			current_dice[i].get_node("Button").show()
+			current_dice[i].activate()
 		
 		var new_position = positions[i].global_position
 		var tween_position = get_tree().create_tween()
@@ -66,7 +65,7 @@ func _on_die_rolled(damage_packet: Damage):
 	print("Roll stats: damage:" + str(damage_packet.damage_number) + " type: " + str(damage_packet.type) + " duration: " + str(damage_packet.duration))
 	if current_rolls == 0:
 		for die in current_dice:
-			die.get_node("Button").hide()
+			die.deactivate()
 		turn_over.emit() 
 		
 		# for debugging purposes
@@ -88,9 +87,6 @@ func pop_dice():
 	
 	while amount_popped < 3:
 		if current_dice[i].is_rolled:
-			# debug print statement
-			print(i)
-			
 			#animation block
 			var new_position = current_dice[i].global_position + Vector2(0, -20)
 			var tween_position = get_tree().create_tween()
@@ -125,7 +121,7 @@ func reset_positions():
 
 		# Makes first 5 selectable
 		if j < 5:
-			current_dice[j].get_node("Button").show()
+			current_dice[j].activate()
 		
 		last_index = j
 	
@@ -133,7 +129,7 @@ func reset_positions():
 	for j in range(last_index, len(current_dice)):
 		# makes dice that end up in the selectable 5 first dice selectable
 		if j < 5:
-			current_dice[j].get_node("Button").show()
+			current_dice[j].activate()
 		
 		await get_tree().create_timer(0.1).timeout
 		# resets the die's animation to blank
