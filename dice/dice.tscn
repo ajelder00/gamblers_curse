@@ -567,15 +567,22 @@ script = ExtResource("1_mre03")
 
 [node name="NameLabel" type="Label" parent="."]
 z_index = 3
-offset_right = 40.0
-offset_bottom = 16.0
+offset_left = -25.0
+offset_top = 31.0
+offset_right = 47.0
+offset_bottom = 47.0
+scale = Vector2(0.7, 0.7)
+text = "Standard"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="NameLabel"]
 z_index = -1
 layout_mode = 0
-offset_left = -8.0
-offset_right = 65.0
-offset_bottom = 16.0
+offset_left = -4.28571
+offset_top = -4.28572
+offset_right = 75.7143
+offset_bottom = 16.7143
 color = Color(0, 0, 0, 0.384314)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

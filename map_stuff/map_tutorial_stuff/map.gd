@@ -10,7 +10,7 @@ const SHOP = preload("res://shop/shop.tscn")
 const CASINO = preload("res://shop/shop.tscn")
 const ELITE = preload("res://rooms/elite/elite.tscn")
 #const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
-const TUTORIAL = preload("res://battle_scene/battle.tscn")
+const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 
 signal map_exited
 
@@ -130,7 +130,10 @@ func _on_map_selected(room: Room) -> void:
 		Room.Type.CASINO:
 			scene_to_load = CASINO
 		Room.Type.TUTORIAL:
-			scene_to_load = TUTORIAL
+			if (Global.attempts > 1):
+				scene_to_load = BATTLE
+			else:
+				scene_to_load = TUTORIAL
 		Room.Type.ELITE_BATTLE:
 			scene_to_load = ELITE
 	
