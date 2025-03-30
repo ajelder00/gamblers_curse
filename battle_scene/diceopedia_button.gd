@@ -8,21 +8,21 @@ func _ready() -> void:
 	diceopedia_rect.connect("gui_input", Callable(self, "_on_DiceopediaRect_gui_input"))
 	play("idle")
 	# Set the default scale to 0.283.
-	scale = Vector2(0.283, 0.283)
+	scale = Vector2(.8, .8)
 	# Ensure DiceopediaBook is hidden initially.
 	$DiceopediaBook.visible = false
-
+	$DiceopediaBook.scale = Vector2(.25, .25)
 func _on_DiceopediaRect_mouse_entered() -> void:
 	play("open")
 	# Tween the scale to 0.31 when the mouse enters.
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0.31, 0.31), 0.3)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.3)
 
 func _on_DiceopediaRect_mouse_exited() -> void:
 	play_backwards("open")
 	# Tween the scale back to 0.283 when the mouse exits.
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0.283, 0.283), 0.3)
+	tween.tween_property(self, "scale", Vector2(.8, .8), 0.3)
 	await animation_finished
 	play("idle")
 

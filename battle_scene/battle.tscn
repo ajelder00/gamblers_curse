@@ -122,7 +122,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 15.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -321,8 +321,8 @@ texture = ExtResource("7_36q6x")
 
 [node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
 z_index = 2
-position = Vector2(-28.9616, 23.8517)
-scale = Vector2(0.282529, 0.289322)
+position = Vector2(-26.0205, 24.2353)
+scale = Vector2(0.352738, 0.348067)
 sprite_frames = SubResource("SpriteFrames_tqnnj")
 animation = &"open"
 script = ExtResource("20_0wnl4")
@@ -336,9 +336,8 @@ color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_4nvdt")]
-visible = false
-position = Vector2(-65.6294, -255.028)
-scale = Vector2(0.453, 0.453)
+position = Vector2(-32.265, -92.9504)
+scale = Vector2(0.17, 0.17)
 
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]
 z_index = -1
