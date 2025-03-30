@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvp7taojqckg3"]
+
+[ext_resource type="Script" path="res://shop/shop2/shop_dice.gd" id="1_s623m"]
+
+[node name="ShopDice" type="Node2D"]
+script = ExtResource("1_s623m")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(549, 341)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 16.0
+horizontal_alignment = 1

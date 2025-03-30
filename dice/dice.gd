@@ -33,6 +33,7 @@ var original_scale = scale
 @onready var button := $Button
 @onready var faces := 6
 @onready var duration := 3
+@onready var cost := 10
 # for dice roller
 @onready var is_rolled := false
 

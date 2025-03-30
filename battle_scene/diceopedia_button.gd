@@ -11,7 +11,8 @@ func _ready() -> void:
 	scale = Vector2(.8, .8)
 	# Ensure DiceopediaBook is hidden initially.
 	$DiceopediaBook.visible = false
-	$DiceopediaBook.scale = Vector2(.25, .25)
+	$DiceopediaBook.scale = Vector2(.17, .17)
+	$DiceopediaBook.position = Vector2(-33.978, -91.848)
 func _on_DiceopediaRect_mouse_entered() -> void:
 	play("open")
 	# Tween the scale to 0.31 when the mouse enters.

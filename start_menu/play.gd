@@ -10,6 +10,7 @@ func _ready() -> void:
 
 # Function to load the map.tscn scene when the button is pressed
 func _on_play_pressed() -> void:
+	Global.reset()
 	get_tree().change_scene_to_packed(MAP_SCENE)
 
 

@@ -1,0 +1,256 @@
+[gd_scene load_steps=33 format=3 uid="uid://ba31p2dpjbrco"]
+
+[ext_resource type="Texture2D" uid="uid://dpoj7qu6ku00k" path="res://shop/shop2/shop1.png" id="1_qt6t8"]
+[ext_resource type="Script" path="res://shop/shop_2.gd" id="1_wqdt1"]
+[ext_resource type="Texture2D" uid="uid://b1o052lvpmyn6" path="res://shop/shop2/shop2.png" id="2_qamwi"]
+[ext_resource type="Texture2D" uid="uid://uptqll75jqyh" path="res://shop/shop2/shop3.png" id="3_gb07r"]
+[ext_resource type="Texture2D" uid="uid://bxhhn6mppx8yi" path="res://shop/shop2/shop4.png" id="4_x2nww"]
+[ext_resource type="Texture2D" uid="uid://ndq1xvtbjqix" path="res://shop/shop2/shop5.png" id="5_7rws0"]
+[ext_resource type="Texture2D" uid="uid://clc3s06nu4an6" path="res://shop/shop2/shop6.png" id="6_yxook"]
+[ext_resource type="Texture2D" uid="uid://bfb8rly7mq5mf" path="res://shop/shop2/shop7.png" id="7_e5etg"]
+[ext_resource type="Texture2D" uid="uid://eebo1hswqcoo" path="res://shop/shop2/shop8.png" id="8_qbx0n"]
+[ext_resource type="Texture2D" uid="uid://csvpmd22afin7" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="9_f5vx2"]
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="11_kxy0u"]
+[ext_resource type="Texture2D" uid="uid://bspkj7kqc20f5" path="res://map_stuff/map_tutorial_stuff/art/map_icons/coins.png" id="12_j8am3"]
+[ext_resource type="Texture2D" uid="uid://b5n8og57u1wm1" path="res://shop/shop2/diceinven.png" id="13_01uwu"]
+[ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="14_f73h6"]
+[ext_resource type="Script" path="res://shop/shop2/dice_roller_shop.gd" id="15_s5nhf"]
+[ext_resource type="PackedScene" uid="uid://dvp7taojqckg3" path="res://shop/shop2/shop_dice.tscn" id="16_yhb85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u45qf"]
+atlas = ExtResource("1_qt6t8")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxgew"]
+atlas = ExtResource("2_qamwi")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltpp2"]
+atlas = ExtResource("3_gb07r")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m0jy"]
+atlas = ExtResource("4_x2nww")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkmi6"]
+atlas = ExtResource("5_7rws0")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bxig"]
+atlas = ExtResource("6_yxook")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdxjv"]
+atlas = ExtResource("7_e5etg")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qglba"]
+atlas = ExtResource("8_qbx0n")
+region = Rect2(0, 0, 188, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o5jp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u45qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxgew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltpp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m0jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkmi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bxig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdxjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qglba")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_343bq"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccsc5"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jteab"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_discg"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8bw3"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ru68"]
+atlas = ExtResource("9_f5vx2")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5ixm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_343bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccsc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jteab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_discg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8bw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ru68")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Shop2" type="Node2D"]
+script = ExtResource("1_wqdt1")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(573, 285)
+scale = Vector2(6.182, 6.182)
+sprite_frames = SubResource("SpriteFrames_4o5jp")
+autoplay = "default"
+frame_progress = 0.532864
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.8, 0.75, 1)
+position = Vector2(140, 567)
+scale = Vector2(8.975, 8.975)
+sprite_frames = SubResource("SpriteFrames_s5ixm")
+autoplay = "default"
+
+[node name="PlayerCoins" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="PlayerCoins"]
+position = Vector2(362, 535)
+scale = Vector2(3.89844, 2.76563)
+texture = ExtResource("11_kxy0u")
+
+[node name="Label" type="Label" parent="PlayerCoins"]
+offset_left = 232.0
+offset_top = 593.0
+offset_right = 274.0
+offset_bottom = 609.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins"
+
+[node name="Coin" type="Sprite2D" parent="PlayerCoins"]
+position = Vector2(217, 600)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("12_j8am3")
+
+[node name="Background2" type="Sprite2D" parent="PlayerCoins"]
+position = Vector2(1074.13, 329.5)
+scale = Vector2(4.89258, 3.39844)
+texture = ExtResource("11_kxy0u")
+
+[node name="Label2" type="Label" parent="PlayerCoins"]
+offset_left = 876.125
+offset_top = 393.5
+offset_right = 1009.13
+offset_bottom = 428.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Inventory
+Click To Sell"
+horizontal_alignment = 1
+
+[node name="PlayerInventory" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerInventory"]
+position = Vector2(1093, 345)
+scale = Vector2(6.64063, 6.64063)
+texture = ExtResource("13_01uwu")
+
+[node name="Dice Roller" parent="PlayerInventory" instance=ExtResource("14_f73h6")]
+position = Vector2(88.9999, 1109)
+scale = Vector2(0.755, 0.755)
+script = ExtResource("15_s5nhf")
+
+[node name="DiceBG" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="Marker2D" type="Marker2D" parent="DiceBG"]
+position = Vector2(844, 568)
+
+[node name="Marker2D2" type="Marker2D" parent="DiceBG"]
+position = Vector2(890, 568)
+
+[node name="Marker2D3" type="Marker2D" parent="DiceBG"]
+position = Vector2(937, 568)
+
+[node name="Marker2D4" type="Marker2D" parent="DiceBG"]
+position = Vector2(984, 568)
+
+[node name="Marker2D5" type="Marker2D" parent="DiceBG"]
+position = Vector2(1030, 568)
+
+[node name="Marker2D6" type="Marker2D" parent="DiceBG"]
+position = Vector2(1030, 494)
+
+[node name="Marker2D7" type="Marker2D" parent="DiceBG"]
+position = Vector2(984, 494)
+
+[node name="Marker2D8" type="Marker2D" parent="DiceBG"]
+position = Vector2(937, 495)
+
+[node name="Marker2D9" type="Marker2D" parent="DiceBG"]
+position = Vector2(890, 495)
+
+[node name="Marker2D10" type="Marker2D" parent="DiceBG"]
+position = Vector2(843, 494)
+
+[node name="DiceToBuy" type="Node2D" parent="."]
+
+[node name="ShopDice" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(-343, -200)
+
+[node name="ShopDice2" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(-199, -199)
+
+[node name="ShopDice3" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(101, -199)
+
+[node name="ShopDice4" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(237, -199)
+
+[node name="ShopDice5" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(-340, -34)
+
+[node name="ShopDice6" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(-199, -35)
+
+[node name="ShopDice7" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(103, -34)
+
+[node name="ShopDice8" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(244, -31)

@@ -1,11 +1,11 @@
+Label
+Marker2D
 Node2D
+Sprite2D
+AnimatedSprite2D
 Node
 ColorRect
-Label
-AnimatedSprite2D
 Camera2D
-Marker2D
-Sprite2D
 AnimationPlayer
 Dice
 TextureRect

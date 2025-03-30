@@ -336,7 +336,7 @@ color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_4nvdt")]
-position = Vector2(-32.265, -92.9504)
+position = Vector2(-36.9777, -91.8482)
 scale = Vector2(0.17, 0.17)
 
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]

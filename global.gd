@@ -43,6 +43,15 @@ const STATUS_PICS := {
 	Status.BLEEDING: "res://art/bleeding_effect.png"
 }
 
+var shop_dict = {
+	Dice.Type.STANDARD: standard,
+	Dice.Type.RISKY: risky,
+	Dice.Type.POISON: poison,
+	Dice.Type.HEALING: healing,
+	Dice.Type.BLIND: blinding
+}
+
+
 var shop_dice = [
 	{"type": "standard", "price": 5, "description": "A standard six-sided dice."},
 	{"type": "risky", "price": 10, "description": "A risky dice, designed to amplify the stakes."}
@@ -93,3 +102,6 @@ func _process(delta):
 	# If typing is false and the audio is playing, stop playback.
 	elif not typing and audio_player.playing:
 		audio_player.stop()
+
+func reset() -> void:
+	dice = [standard, standard, standard, standard, standard]
