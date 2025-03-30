@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 @onready var map_rect = $Map
 @onready var diceopedia_ui = $DiceopediaUI  # Existing DiceopediaUI reference
@@ -9,6 +9,7 @@ extends Control
 @export var override_enemy: bool = false
 
 var enemy_template
+var sway = true
 
 var enemy_dice
 var player

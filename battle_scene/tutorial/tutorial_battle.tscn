@@ -133,15 +133,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TutorialBattle" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="TutorialBattle" type="Node2D"]
 script = ExtResource("1_hkrh2")
 player_template = ExtResource("2_h46ts")
 
 [node name="Blocker" type="ColorRect" parent="."]
 z_index = 4096
-layout_mode = 0
 offset_left = -30.0
 offset_top = -38.0
 offset_right = 1232.0
@@ -150,13 +147,11 @@ color = Color(0, 0, 0, 0.541176)
 
 [node name="TutorialCover" type="ColorRect" parent="."]
 z_index = 6
-layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.796078)
 
 [node name="MonsterName" type="Label" parent="."]
-layout_mode = 0
 offset_left = 62.48
 offset_top = 56.48
 offset_right = 238.48
@@ -166,7 +161,6 @@ text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
 z_index = 1
-layout_mode = 0
 offset_left = 342.48
 offset_top = 57.48
 offset_right = 448.48
@@ -176,7 +170,6 @@ text = " "
 horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
-layout_mode = 0
 offset_left = 690.48
 offset_top = 400.48
 offset_right = 821.48
@@ -186,7 +179,6 @@ text = "THE FATED ONE"
 
 [node name="PlayerHealthNum" type="Label" parent="."]
 z_index = 1
-layout_mode = 0
 offset_left = 996.48
 offset_top = 397.48
 offset_right = 1078.48
@@ -196,7 +188,6 @@ horizontal_alignment = 2
 
 [node name="EnemyHealth" type="ColorRect" parent="."]
 z_index = -1
-layout_mode = 0
 offset_left = 184.48
 offset_top = 68.48
 offset_right = 450.48
@@ -205,7 +196,6 @@ color = Color(0.878431, 0.333333, 0.337255, 1)
 
 [node name="EnemyHealth2" type="ColorRect" parent="."]
 z_index = -1
-layout_mode = 0
 offset_left = 184.48
 offset_top = 100.48
 offset_right = 450.48
@@ -214,7 +204,6 @@ color = Color(0.603922, 0.239216, 0.239216, 1)
 
 [node name="PlayerHealth" type="ColorRect" parent="."]
 z_index = -1
-layout_mode = 0
 offset_left = 812.48
 offset_top = 426.48
 offset_right = 1079.48
@@ -225,7 +214,6 @@ script = ExtResource("5_8mrdj")
 
 [node name="PlayerHealth2" type="ColorRect" parent="."]
 z_index = -1
-layout_mode = 0
 offset_left = 812.48
 offset_top = 446.48
 offset_right = 1088.48
@@ -236,7 +224,6 @@ script = ExtResource("5_8mrdj")
 
 [node name="PlayerHealthBG" type="ColorRect" parent="."]
 z_index = -2
-layout_mode = 0
 offset_left = 812.48
 offset_top = 426.48
 offset_right = 1079.48
@@ -246,7 +233,6 @@ color = Color(0.0533738, 0.209555, 0.113318, 1)
 
 [node name="EnemyHealthBG" type="ColorRect" parent="."]
 z_index = -2
-layout_mode = 0
 offset_left = 184.48
 offset_top = 78.48
 offset_right = 451.48
@@ -258,13 +244,11 @@ color = Color(0.274879, 0.0885133, 0.0892138, 1)
 visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 20
-layout_mode = 0
 offset_right = 1162.0
 offset_bottom = 664.0
 color = Color(0, 0, 0, 1)
 
 [node name="DiceBG" type="ColorRect" parent="."]
-layout_mode = 0
 offset_left = 581.48
 offset_top = 528.48
 offset_right = 972.48
@@ -312,7 +296,6 @@ z_index = 2
 position = Vector2(-230.48, 34)
 
 [node name="EnemyDiceBG" type="ColorRect" parent="."]
-layout_mode = 0
 offset_left = 1018.48
 offset_top = 528.48
 offset_right = 1091.48
@@ -331,7 +314,6 @@ metadata/_edit_lock_ = true
 
 [node name="Roll Message" type="Label" parent="."]
 z_index = 7
-layout_mode = 0
 offset_left = 64.0
 offset_top = 535.0
 offset_right = 255.0
@@ -414,7 +396,6 @@ autoplay = true
 [node name="DeathScreen" type="ColorRect" parent="."]
 visible = false
 z_index = 3
-layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.929412)

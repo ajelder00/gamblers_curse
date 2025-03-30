@@ -10,7 +10,7 @@ const SHOP = preload("res://shop/shop.tscn")
 const CASINO = preload("res://shop/shop.tscn")
 const ELITE = preload("res://rooms/elite/elite.tscn")
 #const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
-const TUTORIAL = preload("res://battle_scene/battle.tscn")
+const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
 
 signal map_exited
 
