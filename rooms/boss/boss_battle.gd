@@ -318,7 +318,7 @@ func _handle_enemy_defeat() -> void:
 	enemy_text.text = ""
 	enemy_text.visible = true
 	Global.audio_player.pitch_scale = 1.2
-	var win_messages = ["CONGRATULATIONS! YOU SAVED THE KINGDOM!", "THE PEOPLE ARE FREE FROM THE KINGS CONTROL", "AND THE CURSED DICE IS SAFELY IN YOUR HANDS"]
+	var win_messages = ["CONGRATULATIONS! YOU SAVED THE KINGDOM!", "THE PEOPLE ARE FREE FROM THE KING'S CONTROL", "AND THE CURSED DICE IS SAFELY IN YOUR HANDS!"]
 	for message in win_messages:
 		typewriter_effect(message)
 		await get_tree().create_timer(4.5).timeout
