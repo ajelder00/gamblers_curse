@@ -16,6 +16,10 @@ var player_inventory = Global.dice
 
 var sway = true
 
+var messages
+var message_index: int = 0
+@export var speed: float = 0.03  # Time delay between letters
+
 @onready var inventory_positions = [
 	$StartPosition1, $StartPosition2, $StartPosition3,
 	$StartPosition4, $StartPosition5, $StartPosition6,
@@ -44,8 +48,8 @@ var is_rolling: bool = false
 func _ready() -> void:
 	payout_button.disabled = true
 	reset_button.disabled = true
-	label_messages.text = "Welcome to Dice Blackjack! Your goal is to get as close to 21 as possible without busting for a payout. May fate be on your side!"
-	await get_tree().create_timer(2.5).timeout
+	await start_typing("Welcome to Dice Blackjack! Your goal is to get as close to 21 as possible without busting for a payout. May fate be on your side!")
+	await get_tree().create_timer(1.0).timeout
 	reset_button.pressed.connect(reset_hand)
 	payout_button.pressed.connect(_on_payout_button_pressed)
 	reset_game()
@@ -66,12 +70,12 @@ func _start_turn():
 	label_score.text = "Score: 0"
 	label_target.text = "Target: %d" % target_score
 	label_turns.text = "Turn: %d / %d" % [current_turn, MAX_TURNS]
-	label_messages.text = "Start Turn %d. Select 5 dice." % current_turn
 	label_coins.text = str(Global.coins)
 
 	clear_selected_positions()
 	clear_inventory_positions()
 	clear_overlay_buttons()
+	await start_typing("Start Turn %d. Select 5 dice." % current_turn)
 	populate_inventory()
 
 	payout_button.disabled = true
@@ -79,7 +83,7 @@ func _start_turn():
 
 func reset_hand():
 	if is_rolling:
-		label_messages.text = "You can't reset during rolling!"
+		await start_typing("You can't reset during rolling!")
 		return
 
 	player_score = 0
@@ -89,13 +93,13 @@ func reset_hand():
 	rolls_expected = 0
 
 	label_score.text = "Score: 0"
-	label_messages.text = "Dice selection reset. Select 5 new dice."
 	label_coins.text = str(Global.coins)
 
 	clear_selected_positions()
 	clear_overlay_buttons()
 	populate_inventory()
 
+	await start_typing("Dice selection reset. Select 5 new dice.")
 	payout_button.disabled = true
 
 func populate_inventory():
@@ -147,7 +151,7 @@ func populate_inventory():
 
 func select_dice_from_inventory(index: int, pos_node: Node2D):
 	if num_selected >= 5:
-		label_messages.text = "You can only select 5 dice per turn."
+		await start_typing("You can only select 5 dice per turn.")
 		return
 
 	for child in pos_node.get_children():
@@ -166,7 +170,7 @@ func select_dice_from_inventory(index: int, pos_node: Node2D):
 	selected_dice.append(new_instance)
 	num_selected += 1
 
-	label_messages.text = "Selected %d of 5 dice." % num_selected
+	await start_typing("Selected %d of 5 dice." % num_selected)
 
 	if num_selected == 5:
 		payout_button.disabled = false
@@ -174,8 +178,8 @@ func select_dice_from_inventory(index: int, pos_node: Node2D):
 func roll_dice_one_by_one() -> void:
 	reset_button.disabled = true
 	exit_button.disabled = true
+	await start_typing("Rolling dice...")
 
-	label_messages.text = "Rolling dice..."
 	rolls_this_turn = 0
 	rolls_expected = selected_dice.size()
 	is_rolling = true
@@ -191,11 +195,11 @@ func _on_die_rolled(damage: Damage) -> void:
 	if damage.status == Global.Status.POISON:
 		target_score = max(10, target_score - 2)
 		label_target.text = "Target: %d" % target_score
-		label_messages.text = "Poison! Target reduced."
+		await start_typing("Poison! Target reduced.")
 	elif damage.status != Global.Status.NOTHING:
-		label_messages.text = "Rolled with status: %s." % str(damage.status)
+		await start_typing("Rolled with status: %s." % str(damage.status))
 	else:
-		label_messages.text = "You rolled a %d." % damage.damage_number
+		await start_typing("You rolled a %d." % damage.damage_number)
 
 	rolls_this_turn += 1
 
@@ -213,17 +217,17 @@ func calculate_payout():
 	var payout := 0
 
 	if player_score > target_score:
-		label_messages.text = "You busted with %d. No payout." % player_score
+		await start_typing("You busted with %d. No payout." % player_score)
 	else:
 		var diff = target_score - player_score
 		if diff == 0:
 			payout = 20
-			label_messages.text = "Jackpot! You earned %d coins." % [payout]
+			await start_typing("Jackpot! You earned %d coins." % payout)
 		elif diff <= 8:
-			payout = 10 
-			label_messages.text = "Close enough! %d away. You earned %d coins." % [diff, payout]
+			payout = 10
+			await start_typing("Close enough! %d away. You earned %d coins." % [diff, payout])
 		else:
-			label_messages.text = "Too far from target. No payout."
+			await start_typing("Too far from target. No payout.")
 
 	Global.coins += payout
 	total_coins_earned += payout
@@ -241,7 +245,7 @@ func advance_to_next_turn():
 		_start_turn()
 
 func end_game():
-	label_messages.text = "Game Over. Total coins earned: %d" % total_coins_earned
+	await start_typing("Game Over. Total coins earned: %d" % total_coins_earned)
 	payout_button.disabled = true
 	reset_button.disabled = true
 	await get_tree().create_timer(3.0).timeout
@@ -266,3 +270,12 @@ func clear_overlay_buttons():
 func _on_exit_button_pressed() -> void:
 	print("pressed")
 	queue_free()
+
+# message typing
+func start_typing(message: String) -> void:
+	label_messages.text = ""
+	Global.typing = true
+	for i in range(message.length()):
+		label_messages.text += message[i]
+		await get_tree().create_timer(speed).timeout
+	Global.typing = false

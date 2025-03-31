@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
-[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="3_805qw"]
+[ext_resource type="Texture2D" uid="uid://1gtrpnssd3s0" path="res://art/DungeonCasino.png" id="3_y055o"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="4_575ky"]
 [ext_resource type="Texture2D" uid="uid://br7bx0ua0b8sl" path="res://art/ShopDisplay.png" id="4_ofx46"]
 [ext_resource type="Texture2D" uid="uid://ckiodcdlonfyy" path="res://dice_roller/dice_roller_art/ChoiceBox.png" id="5_kb3w3"]
@@ -50,9 +50,9 @@ stream = ExtResource("2_4fy5o")
 autoplay = true
 
 [node name="MatBackground" type="Sprite2D" parent="."]
-position = Vector2(573, 323)
-scale = Vector2(0.778038, 0.778038)
-texture = ExtResource("3_805qw")
+position = Vector2(604, 370)
+scale = Vector2(0.887066, 0.887066)
+texture = ExtResource("3_y055o")
 script = ExtResource("4_575ky")
 
 [node name="CasinoDisplayUI" type="Sprite2D" parent="."]
@@ -61,7 +61,7 @@ scale = Vector2(5.35156, 5.35156)
 texture = ExtResource("4_ofx46")
 
 [node name="PlayerHandUI" type="Sprite2D" parent="."]
-position = Vector2(776.938, 561)
+position = Vector2(776.938, 564)
 scale = Vector2(10.8145, 7.72578)
 texture = ExtResource("5_kb3w3")
 
@@ -160,47 +160,47 @@ position = Vector2(250, 457)
 position = Vector2(250, 522)
 
 [node name="StartPosition11" type="Marker2D" parent="."]
-position = Vector2(533, 563)
+position = Vector2(533, 566)
 
 [node name="StartPosition12" type="Marker2D" parent="."]
-position = Vector2(601, 562)
+position = Vector2(601, 565)
 
 [node name="StartPosition13" type="Marker2D" parent="."]
-position = Vector2(667, 562)
+position = Vector2(667, 565)
 
 [node name="StartPosition14" type="Marker2D" parent="."]
-position = Vector2(731, 561)
+position = Vector2(731, 564)
 
 [node name="StartPosition15" type="Marker2D" parent="."]
-position = Vector2(794, 561)
+position = Vector2(794, 564)
 
 [node name="PayoutButton" type="Button" parent="."]
 offset_left = 874.0
-offset_top = 530.0
+offset_top = 533.0
 offset_right = 965.0
-offset_bottom = 562.0
+offset_bottom = 565.0
 text = "Play ( -5 )"
 
 [node name="ResetButton" type="Button" parent="."]
 offset_left = 971.0
-offset_top = 529.0
+offset_top = 532.0
 offset_right = 1061.0
-offset_bottom = 561.0
+offset_bottom = 564.0
 text = "Reset
 "
 
 [node name="ExitButton" type="Button" parent="."]
 offset_left = 874.0
-offset_top = 565.0
+offset_top = 568.0
 offset_right = 965.0
-offset_bottom = 595.0
+offset_bottom = 598.0
 text = "Exit"
 
 [node name="RulesButton" type="Button" parent="."]
 offset_left = 971.0
-offset_top = 564.0
+offset_top = 567.0
 offset_right = 1062.0
-offset_bottom = 596.0
+offset_bottom = 599.0
 text = "Rules"
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]
@@ -226,9 +226,9 @@ sprite_frames = SubResource("SpriteFrames_eliic")
 [node name="InputBlocker" type="ColorRect" parent="."]
 z_index = 1
 offset_left = 491.0
-offset_top = 521.0
+offset_top = 524.0
 offset_right = 861.0
-offset_bottom = 600.0
+offset_bottom = 603.0
 color = Color(1, 0, 0, 0)
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
