@@ -86,7 +86,7 @@ func floating_text(text: String, color: Color) -> void:
 	add_child(label)
 	
 	label.position = Vector2(
-		randf_range(label.position.x +50, label.position.x - 50),
+		randf_range(label.position.x +100, label.position.x),
 		randf_range(label.position.y +30, label.position.y)
 	)
 	
@@ -95,7 +95,7 @@ func floating_text(text: String, color: Color) -> void:
 	tween.tween_property(label, "position", target_position, 0.75).set_trans(Tween.TRANS_SINE)
 	
 	# Fade out
-	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 0.75)
+	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 1)
 	await tween.finished
 	label.queue_free()
 

@@ -11,7 +11,7 @@ signal pop_over
 var dont_gray = false
 var current_dice = []
 var current_results := []
-
+var gone_twice = false
 
 func _ready():
 	# Grabs the positions from the battle scene
@@ -70,18 +70,38 @@ func _on_die_rolled(damage_packet: Damage):
 		await get_tree().create_timer(1.4).timeout
 		for die in current_dice:
 			die.animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
-		if len(current_results) == 3:
-			var packet_1_damage = current_results[0].damage_number
-			var packet_2_damage = current_results[1].damage_number
-			var packet_3_damage = current_results[2].damage_number
-			if packet_1_damage == packet_2_damage and packet_1_damage == packet_3_damage:
-				parent.floating_text("3 OF A KIND!", Color.AZURE)
-				await get_tree().create_timer(.7).timeout
+		if len(current_results) >= ORIGINAL_ROLLS:
+			var packet_1_damage = current_results[len(current_results)-3].damage_number
+			var packet_2_damage = current_results[len(current_results)-2].damage_number
+			var packet_3_damage = current_results[len(current_results)-1].damage_number
+			if packet_1_damage == packet_2_damage and packet_1_damage == packet_3_damage and not gone_twice and len(current_results) >= 3:
+				parent.floating_text("CRIT!", Color.DARK_RED)
+				await get_tree().create_timer(1.4).timeout
+				parent.floating_text("GO AGAIN", Color.AZURE)
+				current_rolls = ORIGINAL_ROLLS
+				for die in current_dice:
+					die.animation_player.animation = Dice.ANIMS[die.type][0]
+					die.activate()
+				gone_twice = true
+				return
+			elif packet_1_damage == packet_2_damage and not gone_twice and (len(current_results) == 6 or len(current_results) == ORIGINAL_ROLLS):
+				parent.floating_text("2 OF A KIND!", Color.AZURE)
+				await get_tree().create_timer(1.4).timeout
 				parent.floating_text("2X DAMAGE", Color.AZURE)
-				current_results[0].damage_number *= 2
-				current_results[1].damage_number *= 2
-				current_results[2].damage_number *= 2
-				
+				current_results[len(current_results)-3].damage_number *= 2
+				current_results[len(current_results)-2].damage_number *= 2
+			elif packet_2_damage == packet_3_damage and (len(current_results) >= 5 or len(current_results) == ORIGINAL_ROLLS):
+				parent.floating_text("2 OF A KIND!", Color.AZURE)
+				await get_tree().create_timer(1.4).timeout
+				parent.floating_text("2X DAMAGE", Color.AZURE)
+				current_results[len(current_results)-2].damage_number *= 2
+				current_results[len(current_results)-1].damage_number *= 2
+			elif packet_1_damage == packet_3_damage and (len(current_results) == 6 or len(current_results) == ORIGINAL_ROLLS):
+				parent.floating_text("2 OF A KIND!", Color.AZURE)
+				await get_tree().create_timer(1.4).timeout
+				parent.floating_text("2X DAMAGE", Color.AZURE)
+				current_results[len(current_results)-3].damage_number *= 2
+				current_results[len(current_results)-1].damage_number *= 2
 		turn_over.emit() 
 		
 		# for debugging purposes
@@ -90,6 +110,7 @@ func _on_die_rolled(damage_packet: Damage):
 
 
 func new_turn():
+	gone_twice = false
 	pop_dice()
 	await pop_over
 	reset_positions()
@@ -101,7 +122,7 @@ func pop_dice():
 	var i = 0
 	var amount_popped = 0
 	
-	while amount_popped < 3:
+	while amount_popped < ORIGINAL_ROLLS:
 		if current_dice[i].is_rolled:
 			#animation block
 			var new_position = current_dice[i].global_position + Vector2(0, -20)
