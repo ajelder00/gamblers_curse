@@ -98,10 +98,13 @@ func get_parent_node():
 
 func activate():
 	animation_player.modulate = Color(1, 1, 1, 1)
-	button.disabled = false
+	button.show()
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 func deactivate():
+	button.hide()
+	if animation_player.is_playing():
+		await animation_player.animation_finished
+		await get_tree().create_timer(.4).timeout
 	animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
-	button.disabled = true
 	button.mouse_filter = Control.MOUSE_FILTER_PASS

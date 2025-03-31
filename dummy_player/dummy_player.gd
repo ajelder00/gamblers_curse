@@ -42,6 +42,7 @@ func hit() -> Array :
 	return roller.current_results
 
 func get_hit(packet: Damage):
+	Global.can_heal = true
 	update_indicators()
 	for effect in current_effects: #Deletes any effects that ran out
 		if effect.duration == 0:

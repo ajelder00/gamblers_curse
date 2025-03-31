@@ -65,7 +65,9 @@ func _on_die_rolled(damage_packet: Damage):
 	
 	print("Roll stats: damage:" + str(damage_packet.damage_number) + " type: " + str(damage_packet.type) + " duration: " + str(damage_packet.duration))
 	if current_rolls == 0:
-		await get_tree().create_timer(2).timeout
+		for die in current_dice:
+			die.button.hide()
+		await get_tree().create_timer(1.4).timeout
 		for die in current_dice:
 			die.deactivate()
 		if len(current_results) == 3:
