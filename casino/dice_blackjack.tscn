@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdg74g7r0wv0u"]
+[gd_scene load_steps=17 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="7_t8nl7"]
 [ext_resource type="Texture2D" uid="uid://bbd372vk6i1ki" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard-Idle.png" id="8_so4wt"]
 [ext_resource type="Texture2D" uid="uid://csvpmd22afin7" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="9_3eem1"]
+[ext_resource type="FontFile" uid="uid://ddlob0n3ylvkt" path="res://art/Minecraft.ttf" id="11_e1s8s"]
+[ext_resource type="Texture2D" uid="uid://twp1y6wpaox6" path="res://art/diceopedia/diceopbg.png" id="11_usug5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cppdd"]
 atlas = ExtResource("8_so4wt")
@@ -66,7 +68,7 @@ scale = Vector2(10.8145, 7.72578)
 texture = ExtResource("5_kb3w3")
 
 [node name="CoinImage" type="Sprite2D" parent="."]
-position = Vector2(78.9999, 600)
+position = Vector2(79, 600)
 scale = Vector2(3.09473, 3.23789)
 texture = ExtResource("6_ug7yo")
 
@@ -114,7 +116,6 @@ offset_right = 844.0
 offset_bottom = 279.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
-text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -125,7 +126,6 @@ offset_right = 843.0
 offset_bottom = 348.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
-text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -217,6 +217,7 @@ texture = ExtResource("7_t8nl7")
 position = Vector2(1011, 160)
 scale = Vector2(6.9, 6.9)
 sprite_frames = SubResource("SpriteFrames_qqrgk")
+flip_h = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(554, 356)
@@ -230,5 +231,60 @@ offset_top = 524.0
 offset_right = 861.0
 offset_bottom = 603.0
 color = Color(1, 0, 0, 0)
+
+[node name="RulesNode" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="RulesNode"]
+z_index = 1
+offset_left = 355.0
+offset_top = 101.0
+offset_right = 578.0
+offset_bottom = 117.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Rules of the Dungeon Casino"
+metadata/_edit_use_anchors_ = true
+
+[node name="Rules" type="Label" parent="RulesNode"]
+z_index = 1
+offset_left = 159.0
+offset_top = 175.0
+offset_right = 572.0
+offset_bottom = 322.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_e1s8s")
+theme_override_font_sizes/font_size = 12
+text = "The dealer's target score is 19. 
+
+You pick 5 dice from your inventory and hope to roll as close to 17 as possible. 17 is jackpot and pays quadruple the bet! If you are within 3 of the target score you will receive double payout. If you roll above 17 you will bust, losing the hand and your bet.
+
+Poison dice reduces the target score by the poison damage. 
+
+It is 5 coins to play this game, and you will get 5 turns! "
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="RulesNode"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.807843)
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="RulesNode"]
+position = Vector2(582, 303)
+scale = Vector2(10.7969, 10.7969)
+texture = ExtResource("11_usug5")
+metadata/_edit_lock_ = true
+
+[node name="Back" type="Button" parent="RulesNode"]
+z_index = 2
+offset_left = 561.0
+offset_top = 571.0
+offset_right = 612.0
+offset_bottom = 595.0
+text = "BACK"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
