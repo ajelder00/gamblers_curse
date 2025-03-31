@@ -138,6 +138,18 @@ func apply_status_self(effect_names) -> void:
 					await sprite.animation_finished
 					sprite.play("idle")
 					sprite.modulate = Color(1, 1, 1)
+			Global.Status.POISON:
+				if effect.duration > 0:
+					Global.player_health = max(0, Global.player_health - effect.damage_number)
+					floating_text(("-" + str(effect.damage_number)), Color.GREEN)
+					parent.update_health_display()
+					effect.duration -= 1
+					update_indicators()
+					sprite.modulate = Color(0, 1, 0)
+					sprite.play("get_hit")
+					await sprite.animation_finished
+					sprite.play("idle")
+					sprite.modulate = Color(1, 1, 1)
 	for effect in effect_names: #Deletes any effects that ran out
 		if effect.duration == 0:
 			effect_names.erase(effect)
