@@ -69,7 +69,7 @@ func _on_die_rolled(damage_packet: Damage):
 			die.button.hide()
 		await get_tree().create_timer(1.4).timeout
 		for die in current_dice:
-			die.deactivate()
+			die.animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
 		if len(current_results) == 3:
 			var packet_1_damage = current_results[0].damage_number
 			var packet_2_damage = current_results[1].damage_number

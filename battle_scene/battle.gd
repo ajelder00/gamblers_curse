@@ -134,7 +134,6 @@ func _on_player_attack() -> void:
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
 		return
-	await get_tree().create_timer(1).timeout
 	player_sprite.play("attack") 
 	await get_tree().create_timer(0.5).timeout
 	player.play_attack_sound()

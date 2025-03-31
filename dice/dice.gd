@@ -106,5 +106,6 @@ func deactivate():
 	if animation_player.is_playing():
 		await animation_player.animation_finished
 		await get_tree().create_timer(.4).timeout
+	await get_tree().create_timer(.4).timeout
 	animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
 	button.mouse_filter = Control.MOUSE_FILTER_PASS
