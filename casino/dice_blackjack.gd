@@ -16,9 +16,9 @@ var player_inventory = Global.dice
 @onready var rules_button: Button = $RulesButton
 @onready var rules_node: CanvasItem = $RulesNode
 @onready var back_button: Button = $RulesNode/Back
+@onready var coin_sound: AudioStream = preload("res://music/8bit-coin-sound-effect.mp3")
+@onready var coin_sound_player: AudioStreamPlayer = $CoinSound
 @onready var player: AnimatedSprite2D = $Player
-@onready var coin_sound = $SoundEffect
-
 
 var sway = true
 
@@ -52,6 +52,7 @@ var total_coins_earned: int = 0
 var is_rolling: bool = false
 
 func _ready() -> void:
+	coin_sound_player.stream = coin_sound
 	payout_button.disabled = true
 	reset_button.disabled = true
 	rules_button.pressed.connect(show_rules)
@@ -245,12 +246,12 @@ func calculate_payout():
 		var diff = target_score - player_score
 		if diff == 0:
 			payout = 20
-			coin_sound.play()
+			coin_sound_player.play()
 			await start_typing("Jackpot! You earned %d coins." % payout, true)
 			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)
 		elif diff <= 2:
 			payout = 10
-			coin_sound.play()
+			coin_sound_player.play()
 			await start_typing("Close enough! %d away. You earned %d coins." % [diff, payout], true)
 			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)		
 		else:
