@@ -59,7 +59,8 @@ func _on_button_pressed() -> void:
 	is_rolled = true
 	roll_sound.play()
 	roll_die(faces)
-	self.deactivate()
+	if not get_parent().dont_gray:
+		self.deactivate()
 
 func roll_die(faces) -> void:
 	result = randi_range(1, faces)

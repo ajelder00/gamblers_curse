@@ -4,9 +4,10 @@ extends Node2D
 @onready var marker = $Marker2D
 var dice
 var dice_to_add
+var dont_gray = true
 
 func _ready() -> void:
-	if randf() > .65:
+	if randf() < max(((float(Global.difficulty)/10) - 0.4), 0.2):
 		queue_free()
 		pass
 	dice_to_add = Global.dummy_dice.pick_random()
@@ -15,7 +16,7 @@ func _ready() -> void:
 	dice.position = marker.position
 	dice.rolled.connect(_on_die_rolled.bind(dice))
 	label.position = marker.position
-	label.position.y += 50
+	label.position.y += 45
 	label.position.x -= 36
 	label.text = str(dice.cost) + " COINS"
 

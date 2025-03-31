@@ -8,6 +8,7 @@ signal pop_over
 @onready var dice_bucket = Global.dice
 @onready var positions := get_children()
 @onready var parent = get_parent()
+var dont_gray = false
 var current_dice = []
 var current_results := []
 

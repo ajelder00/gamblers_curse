@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ba31p2dpjbrco"]
+[gd_scene load_steps=37 format=3 uid="uid://ba31p2dpjbrco"]
 
 [ext_resource type="Texture2D" uid="uid://dpoj7qu6ku00k" path="res://shop/shop2/shop1.png" id="1_qt6t8"]
 [ext_resource type="Script" path="res://shop/shop_2.gd" id="1_wqdt1"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="14_f73h6"]
 [ext_resource type="Script" path="res://shop/shop2/dice_roller_shop.gd" id="15_s5nhf"]
 [ext_resource type="PackedScene" uid="uid://dvp7taojqckg3" path="res://shop/shop2/shop_dice.tscn" id="16_yhb85"]
+[ext_resource type="Script" path="res://shop/return_controller.gd" id="17_1qtjl"]
+[ext_resource type="AudioStream" uid="uid://c28646a3rbkck" path="res://music/Sketchbook 2024-03-20_01.ogg" id="18_ofmmw"]
+[ext_resource type="AudioStream" uid="uid://bdx5k4niwfsim" path="res://music/8bit-coin-sound-effect.mp3" id="19_cknvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u45qf"]
 atlas = ExtResource("1_qt6t8")
@@ -235,31 +238,38 @@ position = Vector2(843, 494)
 [node name="DiceToBuy" type="Node2D" parent="."]
 
 [node name="ShopDice" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(-343, -200)
+position = Vector2(-327, -197)
 
 [node name="ShopDice2" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(-199, -199)
+position = Vector2(-177, -197)
 
 [node name="ShopDice3" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(101, -199)
+position = Vector2(-27, -197)
 
 [node name="ShopDice4" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(237, -199)
+position = Vector2(123, -197)
 
 [node name="ShopDice5" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(-340, -34)
+position = Vector2(273, -197)
 
 [node name="ShopDice6" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(-199, -35)
+position = Vector2(-327, -30)
 
 [node name="ShopDice7" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(103, -34)
+position = Vector2(-177, -30)
 
 [node name="ShopDice8" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
-position = Vector2(244, -31)
+position = Vector2(-27, -30)
+
+[node name="ShopDice9" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(123, -30)
+
+[node name="ShopDice10" parent="DiceToBuy" instance=ExtResource("16_yhb85")]
+position = Vector2(273, -30)
 
 [node name="ReturnController" type="Node2D" parent="."]
 position = Vector2(51, -29)
+script = ExtResource("17_1qtjl")
 
 [node name="ReturnToMapButton" type="Button" parent="ReturnController"]
 modulate = Color(1, 1, 1, 0)
@@ -272,22 +282,36 @@ text = "Return to Map"
 metadata/_edit_use_anchors_ = true
 
 [node name="Texture" type="Sprite2D" parent="ReturnController"]
-position = Vector2(574, 567)
-scale = Vector2(3.24444, 2.5)
+position = Vector2(487, 627)
+scale = Vector2(2.989, 2.303)
 texture = ExtResource("11_kxy0u")
+offset = Vector2(27.3, -23.87)
 
 [node name="Return" type="Label" parent="ReturnController"]
-offset_left = 380.0
-offset_top = 600.0
-offset_right = 553.0
-offset_bottom = 644.0
+offset_left = 401.0
+offset_top = 605.0
+offset_right = 574.0
+offset_bottom = 649.0
 scale = Vector2(1.275, 1.275)
+pivot_offset = Vector2(85.38, 20.035)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_ofmmw")
+pitch_scale = 2.02
+autoplay = true
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_cknvl")
+pitch_scale = 2.18
+
+[connection signal="mouse_entered" from="ReturnController/ReturnToMapButton" to="." method="_on_return_to_map_button_mouse_entered"]
+[connection signal="mouse_entered" from="ReturnController/ReturnToMapButton" to="ReturnController" method="_on_return_to_map_button_mouse_entered"]
 [connection signal="mouse_entered" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ReturnController/ReturnToMapButton" to="." method="_on_return_to_map_button_mouse_exited"]
 [connection signal="mouse_exited" from="ReturnController/ReturnToMapButton" to="ReturnController/ReturnToMapButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="ReturnController/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]

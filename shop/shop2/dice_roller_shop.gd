@@ -2,6 +2,7 @@ extends DiceRoller
 
 func _ready() -> void:
 	super._ready()
+	dont_gray = true
 
 func first_turn():
 	current_dice = []
@@ -46,25 +47,6 @@ func reset_positions():
 		var tween_position = get_tree().create_tween()
 		tween_position.tween_property(current_dice[j], "global_position", new_position, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
-		# Makes first 5 selectable
-
-	
-	
-	for j in range(last_index, len(current_dice)):
-		# makes dice that end up in the selectable 5 first dice selectable
-
-		
-		await get_tree().create_timer(0.1).timeout
-		# resets the die's animation to blank
-		current_dice[j].animation_player.animation = current_dice[j].ANIMS[current_dice[j].type][0]
-		current_dice[j].global_position = positions[j].global_position + Vector2(0, 0)
-		
-		var new_position = positions[j].global_position
-		var tween_position = get_tree().create_tween()
-		tween_position.tween_property(current_dice[j], "global_position", new_position, 0.2).set_trans(Tween.TRANS_SINE)
-		
-		var tween_transparency = get_tree().create_tween()
-		tween_transparency.tween_property(current_dice[j], "modulate:a", 1, 0.2).set_trans(Tween.TRANS_SINE)
 	
 	if len(current_dice) <= 3:
 		for die in current_dice:

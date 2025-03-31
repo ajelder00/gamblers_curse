@@ -5,9 +5,13 @@ extends Node2D
 @onready var player = $Player
 @onready var sell_label = $PlayerCoins/Background2
 @onready var text_bubbles = [$PlayerCoins/Label, $PlayerCoins/Label2, $PlayerCoins/Coin, $PlayerCoins/Background, $PlayerCoins/Background2]
-@onready var to_buy = [$DiceToBuy/ShopDice, $DiceToBuy/ShopDice2, $DiceToBuy/ShopDice3, $DiceToBuy/ShopDice4, $DiceToBuy/ShopDice5, $DiceToBuy/ShopDice6, $DiceToBuy/ShopDice7, $DiceToBuy/ShopDice8]
+@onready var to_buy = [$DiceToBuy/ShopDice, $DiceToBuy/ShopDice2, $DiceToBuy/ShopDice3, $DiceToBuy/ShopDice4, $DiceToBuy/ShopDice5, $DiceToBuy/ShopDice6, $DiceToBuy/ShopDice7, $DiceToBuy/ShopDice8, $DiceToBuy/ShopDice9, $DiceToBuy/ShopDice10]
+@onready var return_controller_texture = $ReturnController/Texture
+@onready var return_controller_text = $ReturnController/Return
+@onready var coin_sound = $SoundEffect
 var text_bubbles_pos
 var inventory = []
+var first_time = true
 
 func _ready() -> void:
 	text_bubbles_pos = [$PlayerCoins/Label.position.y, $PlayerCoins/Label2.position.y, $PlayerCoins/Coin.position.y, $PlayerCoins/Background.position.y, $PlayerCoins/Background2.position.y]
@@ -64,20 +68,34 @@ func _on_die_rolled(damage_packet: Damage, dice: Dice):
 			Global.dice.erase(item)
 			break
 	Global.coins += damage_packet.damage_number
+	if len(Global.dice) < 10:
+		for item in to_buy:
+			if is_instance_valid(item):
+				item.dice.button.show()
 	update_coins()
 	dice.queue_free()
 	roller.reset_positions()
-	if len(roller.current_dice) > 3:
-		for die in roller.current_dice:
-			die.button.show()
 
-func _process(delta: float) -> void:
-	for i in range(len(text_bubbles)):
-		text_bubbles[i].position.y = text_bubbles_pos[i] + sin(Time.get_ticks_msec() / 1000.0 * 3) * 3
+#func _process(delta: float) -> void:
+	#for i in range(len(text_bubbles)):
+		#text_bubbles[i].position.y = text_bubbles_pos[i] + sin(Time.get_ticks_msec() / 1000.0 * 3) * 3
 
 func update_coins() -> void:
 	coins.text = (str(Global.coins) + " Coins")
+	if not first_time:
+		coin_sound.play()
+	first_time = false
 
 func _on_return_to_map_button_pressed() -> void:
 	print("pressed")
 	queue_free()
+
+
+func _on_return_to_map_button_mouse_entered():
+	return_controller_texture.scale *= 1.1
+	return_controller_text.scale *= 1.1
+
+
+func _on_return_to_map_button_mouse_exited():
+	return_controller_texture.scale /= 1.1
+	return_controller_text.scale /= 1.1
