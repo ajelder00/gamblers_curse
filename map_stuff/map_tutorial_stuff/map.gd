@@ -34,17 +34,31 @@ func _ready() -> void:
 	# Start playing map audio when the scene is ready
 	map_audio.play()
 
+func get_lower_clamp(num_floors: int) -> float:
+	# When num_floors is 7, we want an offset of 1000.
+	# When num_floors is 14, we want an offset of 2500.
+	# So we use a linear relationship:
+	var base_offset := 1000.0
+	var additional_offset_per_floor := 1500.0 / 7.0  # increase per floor above 7
+	var lower_offset := base_offset + additional_offset_per_floor * (num_floors - 7)
+	return -camera_edge_y + lower_offset
+
 func _input(event: InputEvent) -> void:
 	var previous_cam_pos = camera_2d.position.y
 	var previous_background_pos = background.position.y
+	
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y -= SCROLL_SPEED
 		background.position.y += (SCROLL_SPEED - 10)
-		
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
 		background.position.y -= (SCROLL_SPEED - 10)
-	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y + 2500, len(map_data) * MapGenerator.Y_DIST - 150)
+	
+	var num_floors := len(map_data)
+	var lower_clamp := get_lower_clamp(num_floors)
+	var upper_clamp := num_floors * MapGenerator.Y_DIST - 150
+	camera_2d.position.y = clamp(camera_2d.position.y, lower_clamp, upper_clamp)
+	
 	if camera_2d.position.y - previous_cam_pos == 0:
 		background.position.y = previous_background_pos
 
