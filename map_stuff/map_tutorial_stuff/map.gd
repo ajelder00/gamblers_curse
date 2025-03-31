@@ -10,6 +10,7 @@ const SHOP = preload("res://shop/shop2.tscn")
 const CASINO = preload("res://casino/dice_blackjack.tscn")
 const ELITE = preload("res://rooms/elite/elite.tscn")
 const TUTORIAL = preload("res://battle_scene/tutorial/tutorial_battle.tscn")
+const BOSS = preload("res://rooms/boss/boss_battle.tscn")
 
 signal map_exited
 
@@ -148,6 +149,8 @@ func _on_map_selected(room: Room) -> void:
 				scene_to_load = TUTORIAL
 		Room.Type.ELITE_BATTLE:
 			scene_to_load = ELITE
+		Room.Type.BOSS:
+			scene_to_load = BOSS
 	
 	parent.add_child(scene_to_load.instantiate())
 	hide_map()
