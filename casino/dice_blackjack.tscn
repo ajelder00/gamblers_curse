@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
-[ext_resource type="AudioStream" uid="uid://cphuwi0ewpp5g" path="res://music/second_dealing_loop.mp3" id="2_kma7q"]
+[ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
 [ext_resource type="Texture2D" uid="uid://dk1k7iwuhc7vo" path="res://art/DungeonCasino.png" id="3_y055o"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="4_575ky"]
 [ext_resource type="Texture2D" uid="uid://br7bx0ua0b8sl" path="res://art/ShopDisplay.png" id="4_ofx46"]
@@ -132,7 +132,7 @@ z_index = 2
 script = ExtResource("1_pp4pc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_kma7q")
+stream = ExtResource("2_4fy5o")
 autoplay = true
 
 [node name="MatBackground" type="Sprite2D" parent="."]
@@ -372,7 +372,5 @@ offset_right = 612.0
 offset_bottom = 595.0
 text = "BACK"
 metadata/_edit_use_anchors_ = true
-
-[node name="CoinSound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
