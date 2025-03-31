@@ -79,9 +79,9 @@ func _on_die_rolled(damage_packet: Damage):
 				await get_tree().create_timer(1.4).timeout
 				parent.floating_text("GO AGAIN", Color.AZURE)
 				current_rolls = ORIGINAL_ROLLS
-				for die in current_dice:
-					die.animation_player.animation = Dice.ANIMS[die.type][0]
-					die.activate()
+				pop_dice()
+				await pop_over
+				reset_positions()
 				gone_twice = true
 				return
 			elif packet_1_damage == packet_2_damage and not gone_twice and (len(current_results) == 6 or len(current_results) == ORIGINAL_ROLLS):
