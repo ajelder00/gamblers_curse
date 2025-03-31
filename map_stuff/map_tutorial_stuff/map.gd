@@ -35,9 +35,6 @@ func _ready() -> void:
 	map_audio.play()
 
 func get_lower_clamp(num_floors: int) -> float:
-	# When num_floors is 7, we want an offset of 1000.
-	# When num_floors is 14, we want an offset of 2500.
-	# So we use a linear relationship:
 	var base_offset := 1000.0
 	var additional_offset_per_floor := 1500.0 / 7.0  # increase per floor above 7
 	var lower_offset := base_offset + additional_offset_per_floor * (num_floors - 7)

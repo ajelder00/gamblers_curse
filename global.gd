@@ -24,7 +24,7 @@ var enemies_by_tier = {
 
 signal player_healed(heal_amount)
 
-var coins := 1000
+var coins := 0
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 
 # testing dice for dice roller
@@ -59,7 +59,7 @@ var shop_dice = [
 
 var player_health = 200
 
-var attempts = 1
+var attempts = 2
 
 func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	new_die.type = type
@@ -69,7 +69,7 @@ func spend(spent) -> void:
 
 func heal(health) -> void:
 	if can_heal:
-		Global.player_health = min(Global.player_health + health, 100)
+		Global.player_health = min(Global.player_health + health, 200)
 		player_healed.emit(health)
 	else:
 		Global.player_health = max(Global.player_health - health, 0)
