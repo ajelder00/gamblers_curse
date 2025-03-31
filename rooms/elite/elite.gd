@@ -195,7 +195,48 @@ func _start_defeat_typing(defeat_messages: Array) -> void:
 
 func _handle_player_defeat() -> void:
 	player_sprite.play("dead")
-
+	await player_sprite.animation_finished
+	
+	# Fade in the DeathScreen node.
+	var death_screen = $DeathScreen
+	death_screen.visible = true
+	death_screen.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(death_screen, "modulate:a", 1.0, 1.0)
+	await tween.finished
+	await get_tree().create_timer(0.5).timeout  # Brief pause after fade in.
+	
+	# Get the labels, store their full text, then clear them for typewriting.
+	var you_died_label = death_screen.get_node("YouDied") as Label
+	var return_text_label = death_screen.get_node("ReturnText") as Label
+	var full_you_died_text = you_died_label.text
+	var full_return_text = return_text_label.text
+	you_died_label.text = ""
+	return_text_label.text = ""
+	you_died_label.visible = true
+	return_text_label.visible = true
+	
+	# Type out the "YouDied" text.
+	Global.typing = true
+	for i in range(full_you_died_text.length()):
+		you_died_label.text += full_you_died_text[i]
+		await get_tree().create_timer(0.1).timeout
+	Global.typing = false
+	
+	Global.attempts += 1
+	await get_tree().create_timer(1.0).timeout  # Pause between texts.
+	
+	# Type out the "ReturnText" text.\
+	Global.typing = true
+	for i in range(full_return_text.length()):
+		return_text_label.text += full_return_text[i]
+		await get_tree().create_timer(0.05).timeout
+	Global.typing = false
+	
+	# Wait a moment before returning to the start menu.
+	await get_tree().create_timer(2.0).timeout
+	Global.reset()
+	get_tree().change_scene_to_file("res://start_menu/start_menu.tscn")
 # ------------------- Message Typing -------------------
 
 func _start_typing() -> void:

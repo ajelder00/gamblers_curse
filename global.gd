@@ -105,3 +105,7 @@ func _process(delta):
 
 func reset() -> void:
 	dice = [standard, standard, standard, standard, standard]
+	player_health = 200
+	coins = 200
+	attempts += 1
+	difficulty = 0

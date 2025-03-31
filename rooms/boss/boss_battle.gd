@@ -389,10 +389,8 @@ func _handle_player_defeat() -> void:
 	
 	# Wait a moment before returning to the start menu.
 	await get_tree().create_timer(2.0).timeout
-	Global.player_health = 100
+	Global.reset()
 	get_tree().change_scene_to_file("res://start_menu/start_menu.tscn")
-
-
 # ------------------- Message Typing -------------------
 
 func _start_typing() -> void:
