@@ -5,6 +5,7 @@ func _ready() -> void:
 	type = Dice.Type.POISON
 	status_effect = Global.Status.POISON
 	faces = 3
+	cost = 8
 	super._ready()
 
 func roll_die(faces) -> void:

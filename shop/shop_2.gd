@@ -14,6 +14,7 @@ var inventory = []
 var first_time = true
 
 func _ready() -> void:
+	$Music.stream.loop = true
 	text_bubbles_pos = [$PlayerCoins/Label.position.y, $PlayerCoins/Label2.position.y, $PlayerCoins/Coin.position.y, $PlayerCoins/Background.position.y, $PlayerCoins/Background2.position.y]
 	update_coins()
 	await _wait_for_dice_to_load()
