@@ -24,7 +24,7 @@ var enemies_by_tier = {
 
 signal player_healed(heal_amount)
 
-var coins := 0
+var coins := 200
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 
 # testing dice for dice roller
@@ -105,3 +105,7 @@ func _process(delta):
 
 func reset() -> void:
 	dice = [standard, standard, standard, standard, standard]
+	player_health = 200
+	coins = 200
+	attempts += 1
+	difficulty = 0

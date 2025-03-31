@@ -244,7 +244,6 @@ func _on_player_attack() -> void:
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:
 		return
-	await get_tree().create_timer(1).timeout
 	player_sprite.play("attack") 
 	await get_tree().create_timer(0.5).timeout
 	player.play_attack_sound()
@@ -390,10 +389,8 @@ func _handle_player_defeat() -> void:
 	
 	# Wait a moment before returning to the start menu.
 	await get_tree().create_timer(2.0).timeout
-	Global.player_health = 100
+	Global.reset()
 	get_tree().change_scene_to_file("res://start_menu/start_menu.tscn")
-
-
 # ------------------- Message Typing -------------------
 
 func _start_typing() -> void:

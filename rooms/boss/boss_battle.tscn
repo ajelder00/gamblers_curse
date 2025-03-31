@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bxwamohwash73" path="res://art/diceopedia/diceopedia12.png" id="7_xjfd5"]
 [ext_resource type="Texture2D" uid="uid://by0svtwuo5c61" path="res://art/diceopedia/diceopedia11.png" id="8_6jfmj"]
 [ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="8_er7ac"]
-[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="9_lp2pr"]
 [ext_resource type="Texture2D" uid="uid://0dqki6l0bxlp" path="res://art/diceopedia/diceopedia10.png" id="9_vstq5"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="10_4kk3m"]
 [ext_resource type="Texture2D" uid="uid://cvnpk4fldc1ej" path="res://art/diceopedia/diceopedia9.png" id="10_6qber"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="18_j0rsu"]
 [ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="19_rqsut"]
 [ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="20_s7reg"]
+[ext_resource type="Texture2D" uid="uid://ckpvxr0cnes2a" path="res://battle_scene/art/royal.png" id="22_oqpuk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1jvex"]
 animations = [{
@@ -377,9 +377,9 @@ metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
-position = Vector2(606, 320)
-scale = Vector2(0.85547, 0.702233)
-texture = ExtResource("9_lp2pr")
+position = Vector2(581, 370)
+scale = Vector2(1.22241, 1.00345)
+texture = ExtResource("22_oqpuk")
 script = ExtResource("10_4kk3m")
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]

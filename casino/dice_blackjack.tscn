@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdg74g7r0wv0u"]
+[gd_scene load_steps=17 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
