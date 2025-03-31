@@ -373,4 +373,6 @@ offset_bottom = 595.0
 text = "BACK"
 metadata/_edit_use_anchors_ = true
 
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
