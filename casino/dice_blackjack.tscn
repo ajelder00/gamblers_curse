@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdg74g7r0wv0u"]
+[gd_scene load_steps=15 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
@@ -95,7 +95,6 @@ offset_top = 563.0
 offset_right = 191.0
 offset_bottom = 647.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -105,7 +104,6 @@ offset_top = 561.0
 offset_right = 309.0
 offset_bottom = 645.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -162,36 +160,48 @@ position = Vector2(250, 457)
 position = Vector2(250, 522)
 
 [node name="StartPosition11" type="Marker2D" parent="."]
-position = Vector2(529, 548)
+position = Vector2(533, 563)
 
 [node name="StartPosition12" type="Marker2D" parent="."]
-position = Vector2(597, 547)
+position = Vector2(601, 562)
 
 [node name="StartPosition13" type="Marker2D" parent="."]
-position = Vector2(663, 547)
+position = Vector2(667, 562)
 
 [node name="StartPosition14" type="Marker2D" parent="."]
-position = Vector2(727, 546)
+position = Vector2(731, 561)
 
 [node name="StartPosition15" type="Marker2D" parent="."]
-position = Vector2(789, 547)
+position = Vector2(794, 561)
 
 [node name="PayoutButton" type="Button" parent="."]
-offset_left = 855.0
+offset_left = 874.0
 offset_top = 530.0
-offset_right = 973.0
-offset_bottom = 596.0
-text = "Collect 
-Payout"
+offset_right = 965.0
+offset_bottom = 562.0
+text = "Play ( -5 )"
 
 [node name="ResetButton" type="Button" parent="."]
-offset_left = 980.0
-offset_top = 530.0
-offset_right = 1065.0
-offset_bottom = 596.0
+offset_left = 971.0
+offset_top = 529.0
+offset_right = 1061.0
+offset_bottom = 561.0
 text = "Reset
-Dice 
-Hand"
+"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 874.0
+offset_top = 565.0
+offset_right = 965.0
+offset_bottom = 595.0
+text = "Exit"
+
+[node name="RulesButton" type="Button" parent="."]
+offset_left = 971.0
+offset_top = 564.0
+offset_right = 1062.0
+offset_bottom = 596.0
+text = "Rules"
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]
 position = Vector2(557, 413)
@@ -212,3 +222,13 @@ sprite_frames = SubResource("SpriteFrames_qqrgk")
 position = Vector2(554, 356)
 scale = Vector2(7.36, 7.36)
 sprite_frames = SubResource("SpriteFrames_eliic")
+
+[node name="InputBlocker" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 491.0
+offset_top = 521.0
+offset_right = 861.0
+offset_bottom = 600.0
+color = Color(1, 0, 0, 0)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
