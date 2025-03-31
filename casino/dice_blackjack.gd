@@ -16,6 +16,9 @@ var player_inventory = Global.dice
 @onready var rules_button: Button = $RulesButton
 @onready var rules_node: CanvasItem = $RulesNode
 @onready var back_button: Button = $RulesNode/Back
+@onready var player: AnimatedSprite2D = $Player
+@onready var coin_sound = $SoundEffect
+
 
 var sway = true
 
@@ -228,6 +231,7 @@ func _on_payout_button_pressed():
 	payout_button.disabled = true
 	Global.coins -= 5
 	label_coins.text = str(Global.coins)
+	floating_text("-" + str(5) + " GOLD", Color.RED, player.global_position)
 	await roll_dice_one_by_one()
 
 func calculate_payout():
@@ -241,10 +245,14 @@ func calculate_payout():
 		var diff = target_score - player_score
 		if diff == 0:
 			payout = 20
+			coin_sound.play()
 			await start_typing("Jackpot! You earned %d coins." % payout, true)
+			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)
 		elif diff <= 2:
 			payout = 10
+			coin_sound.play()
 			await start_typing("Close enough! %d away. You earned %d coins." % [diff, payout], true)
+			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)		
 		else:
 			await start_typing("Too far from target. No payout.", true)
 
@@ -301,3 +309,24 @@ func start_typing(message: String, should_type: bool) -> void:
 		Global.typing = false
 	else:
 		label_messages.text = message
+		
+func floating_text(text: String, color: Color, pos: Vector2) -> void:
+	var label = Label.new()
+	label.text = text
+	label.add_theme_color_override("font_color", color)
+	label.add_theme_font_size_override("font_size", 20)
+	add_child(label)
+	
+	label.position = pos + Vector2(
+		randf_range(label.position.x +20, label.position.x - 20),
+		randf_range(label.position.y -30, label.position.y)
+	)
+	
+	var tween = get_tree().create_tween()
+	var target_position = label.position + Vector2(randi_range(-10, 10), -50)
+	tween.tween_property(label, "position", target_position, 0.75).set_trans(Tween.TRANS_SINE)
+	
+	# Fade out
+	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 0.75)
+	await tween.finished
+	label.queue_free()

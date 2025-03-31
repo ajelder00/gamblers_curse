@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bynsu5gkn7lj5"]
+[gd_scene load_steps=29 format=3 uid="uid://bynsu5gkn7lj5"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
@@ -17,11 +17,53 @@
 atlas = ExtResource("8_so4wt")
 region = Rect2(0, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t37w3"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmlmd"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndlcg"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0l4e"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2f6g"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfnte"]
+atlas = ExtResource("8_so4wt")
+region = Rect2(500, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qqrgk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cppdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t37w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmlmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndlcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0l4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2f6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfnte")
 }],
 "loop": true,
 "name": &"default",
@@ -32,11 +74,53 @@ animations = [{
 atlas = ExtResource("9_3eem1")
 region = Rect2(0, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ff50"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtdti"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umouw"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plfjl"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fist"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv8rq"]
+atlas = ExtResource("9_3eem1")
+region = Rect2(500, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eliic"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1pb7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ff50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtdti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umouw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plfjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fist")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv8rq")
 }],
 "loop": true,
 "name": &"default",
@@ -217,12 +301,14 @@ texture = ExtResource("7_t8nl7")
 position = Vector2(1011, 160)
 scale = Vector2(6.9, 6.9)
 sprite_frames = SubResource("SpriteFrames_qqrgk")
+autoplay = "default"
 flip_h = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(554, 356)
 scale = Vector2(7.36, 7.36)
 sprite_frames = SubResource("SpriteFrames_eliic")
+autoplay = "default"
 
 [node name="InputBlocker" type="ColorRect" parent="."]
 z_index = 1
@@ -257,9 +343,9 @@ theme_override_fonts/font = ExtResource("11_e1s8s")
 theme_override_font_sizes/font_size = 12
 text = "The dealer's target score is 19. 
 
-You pick 5 dice from your inventory and hope to roll as close to 17 as possible. 17 is jackpot and pays quadruple the bet! If you are within 3 of the target score you will receive double payout. If you roll above 17 you will bust, losing the hand and your bet.
+You pick 5 dice from your inventory and hope to roll as close to 19 as possible. 19 is jackpot and pays quadruple the bet! If you are within 2 of the target score you will receive double payout. If you roll above 17 you will bust, losing the hand and your bet.
 
-Poison dice reduces the target score by the poison damage. 
+Poison dice reduces the target score by the 2. 
 
 It is 5 coins to play this game, and you will get 5 turns! "
 horizontal_alignment = 1
