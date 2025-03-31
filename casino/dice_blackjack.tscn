@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bynsu5gkn7lj5"]
+[gd_scene load_steps=15 format=3 uid="uid://cdg74g7r0wv0u"]
 
 [ext_resource type="Script" path="res://casino/dice_blackjack.gd" id="1_pp4pc"]
 [ext_resource type="AudioStream" uid="uid://dfoqxshe7cg7m" path="res://music/second_dealing_intro.mp3" id="2_4fy5o"]
-[ext_resource type="Texture2D" uid="uid://1gtrpnssd3s0" path="res://art/DungeonCasino.png" id="3_y055o"]
+[ext_resource type="Texture2D" uid="uid://dk1k7iwuhc7vo" path="res://art/DungeonCasino.png" id="3_y055o"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="4_575ky"]
 [ext_resource type="Texture2D" uid="uid://br7bx0ua0b8sl" path="res://art/ShopDisplay.png" id="4_ofx46"]
 [ext_resource type="Texture2D" uid="uid://ckiodcdlonfyy" path="res://dice_roller/dice_roller_art/ChoiceBox.png" id="5_kb3w3"]

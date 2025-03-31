@@ -81,7 +81,7 @@ func floating_text(text: String, color: Color) -> void:
 	var label = Label.new()
 	label.text = text
 	label.add_theme_color_override("font_color", color)
-	label.add_theme_font_size_override("font_size", 30)
+	label.add_theme_font_size_override("font_size", 25)
 	add_child(label)
 	
 	label.position = Vector2(

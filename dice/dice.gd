@@ -59,7 +59,10 @@ func _on_button_pressed() -> void:
 	is_rolled = true
 	roll_sound.play()
 	roll_die(faces)
+	button.hide()
 	if not get_parent().dont_gray:
+		await animation_player.animation_finished
+		await get_tree().create_timer(.2).timeout
 		self.deactivate()
 
 func roll_die(faces) -> void:

@@ -65,8 +65,21 @@ func _on_die_rolled(damage_packet: Damage):
 	
 	print("Roll stats: damage:" + str(damage_packet.damage_number) + " type: " + str(damage_packet.type) + " duration: " + str(damage_packet.duration))
 	if current_rolls == 0:
+		await get_tree().create_timer(2).timeout
 		for die in current_dice:
 			die.deactivate()
+		if len(current_results) == 3:
+			var packet_1_damage = current_results[0].damage_number
+			var packet_2_damage = current_results[1].damage_number
+			var packet_3_damage = current_results[2].damage_number
+			if packet_1_damage == packet_2_damage and packet_1_damage == packet_3_damage:
+				parent.floating_text("3 OF A KIND!", Color.AZURE)
+				await get_tree().create_timer(.7).timeout
+				parent.floating_text("2X DAMAGE", Color.AZURE)
+				current_results[0].damage_number *= 2
+				current_results[1].damage_number *= 2
+				current_results[2].damage_number *= 2
+				
 		turn_over.emit() 
 		
 		# for debugging purposes
