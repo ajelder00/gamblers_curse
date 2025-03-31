@@ -212,7 +212,7 @@ func _start_typing() -> void:
 			player.roller.z_index += 10
 			
 		# After showing the fifth message, change enemy's z_index to 8
-		if message_index == 4:
+		if message_index == 3:
 			enemy.z_index = 8
 			enemy_platform.z_index = 7
 		

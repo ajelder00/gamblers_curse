@@ -141,90 +141,90 @@ script = ExtResource("1")
 player_template = ExtResource("2_bjksa")
 
 [node name="MonsterName" type="Label" parent="."]
-offset_left = 62.48
-offset_top = 56.48
-offset_right = 238.48
-offset_bottom = 76.48
+offset_left = 692.48
+offset_top = 402.48
+offset_right = 868.48
+offset_bottom = 422.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
 z_index = 1
-offset_left = 342.48
-offset_top = 57.48
-offset_right = 448.48
-offset_bottom = 73.48
+offset_left = 972.48
+offset_top = 403.48
+offset_right = 1078.48
+offset_bottom = 419.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 690.48
-offset_top = 400.48
-offset_right = 821.48
-offset_bottom = 416.48
+offset_left = 75.4799
+offset_top = 57.48
+offset_right = 206.48
+offset_bottom = 73.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "THE FATED ONE"
 
 [node name="PlayerHealthNum" type="Label" parent="."]
 z_index = 1
-offset_left = 996.48
-offset_top = 397.48
-offset_right = 1078.48
-offset_bottom = 413.48
+offset_left = 381.48
+offset_top = 54.48
+offset_right = 463.48
+offset_bottom = 70.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="EnemyHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 184.48
-offset_top = 68.48
-offset_right = 450.48
-offset_bottom = 108.48
+offset_left = 814.48
+offset_top = 414.48
+offset_right = 1080.48
+offset_bottom = 454.48
 color = Color(0.878431, 0.333333, 0.337255, 1)
 
 [node name="EnemyHealth2" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 184.48
-offset_top = 100.48
-offset_right = 450.48
-offset_bottom = 122.48
+offset_left = 814.48
+offset_top = 446.48
+offset_right = 1080.48
+offset_bottom = 468.48
 color = Color(0.603922, 0.239216, 0.239216, 1)
 
 [node name="PlayerHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 812.48
-offset_top = 426.48
-offset_right = 1079.48
-offset_bottom = 466.48
+offset_left = 197.48
+offset_top = 83.48
+offset_right = 464.48
+offset_bottom = 123.48
 size_flags_horizontal = 3
 color = Color(0.368627, 0.882353, 0.333333, 1)
 script = ExtResource("5_c574w")
 
 [node name="PlayerHealth2" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 812.48
-offset_top = 446.48
-offset_right = 1088.48
-offset_bottom = 482.48
+offset_left = 197.48
+offset_top = 103.48
+offset_right = 473.48
+offset_bottom = 139.48
 size_flags_horizontal = 3
 color = Color(0.223529, 0.647059, 0.388235, 1)
 script = ExtResource("5_c574w")
 
 [node name="PlayerHealthBG" type="ColorRect" parent="."]
 z_index = -2
-offset_left = 812.48
-offset_top = 426.48
-offset_right = 1079.48
-offset_bottom = 466.48
+offset_left = 197.48
+offset_top = 83.48
+offset_right = 464.48
+offset_bottom = 123.48
 size_flags_horizontal = 3
 color = Color(0.0533738, 0.209555, 0.113318, 1)
 
 [node name="EnemyHealthBG" type="ColorRect" parent="."]
 z_index = -2
-offset_left = 184.48
-offset_top = 78.48
-offset_right = 451.48
-offset_bottom = 118.48
+offset_left = 814.48
+offset_top = 424.48
+offset_right = 1081.48
+offset_bottom = 464.48
 size_flags_horizontal = 3
 color = Color(0.274879, 0.0885133, 0.0892138, 1)
 
@@ -316,6 +316,7 @@ scale = Vector2(7.82, 7.82)
 texture = ExtResource("7_36q6x")
 
 [node name="DiceopediaUI" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(371.48, 390.48)
 scale = Vector2(7.82, 7.82)
 texture = ExtResource("7_36q6x")
@@ -342,17 +343,15 @@ scale = Vector2(0.17, 0.17)
 
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(371.5, -95.52)
+position = Vector2(1001.5, 250.48)
 scale = Vector2(7.80469, 7.82)
 texture = ExtResource("11_wutdn")
-metadata/_edit_lock_ = true
 
 [node name="PlayerHealthUI" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(999.98, 250.48)
+position = Vector2(384.98, -92.52)
 scale = Vector2(7.82781, 7.82)
 texture = ExtResource("11_wutdn")
-metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
