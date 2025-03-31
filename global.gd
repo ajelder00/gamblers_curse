@@ -24,7 +24,7 @@ var enemies_by_tier = {
 
 signal player_healed(heal_amount)
 
-var coins := 200
+var coins := 20
 var dummy_dice: Array = [standard, risky, poison, healing, blinding]
 
 # testing dice for dice roller

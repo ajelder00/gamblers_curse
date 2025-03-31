@@ -21,23 +21,27 @@ func _ready() -> void:
 	label.text = str(dice.cost) + " COINS"
 
 func _on_die_rolled(damage_packet: Damage, dice: Dice):
-	Global.dice.append(dice_to_add)
-	if len(Global.dice) >= 10:
-		for node in get_parent().get_parent().to_buy:
-			if is_instance_valid(node):
-				node.dice.button.hide()
-	dice.animation_player.stop()
-	var tween_transparency = get_tree().create_tween()
-	tween_transparency.tween_property(dice, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE)
-	await tween_transparency.finished
-	await get_tree().create_timer(.1).timeout
-	get_parent().get_parent().floating_text("-" + str(dice.cost) + " GOLD", Color.GOLDENROD, dice.global_position)
-	Global.coins -= dice.cost
+	if Global.coins > dice.cost:
+		Global.dice.append(dice_to_add)
+		if len(Global.dice) >= 10:
+			for node in get_parent().get_parent().to_buy:
+				if is_instance_valid(node):
+					node.dice.button.hide()
+		dice.animation_player.stop()
+		var tween_transparency = get_tree().create_tween()
+		tween_transparency.tween_property(dice, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE)
+		await tween_transparency.finished
+		await get_tree().create_timer(.1).timeout
+		get_parent().get_parent().floating_text("-" + str(dice.cost) + " GOLD", Color.GOLDENROD, dice.global_position)
+		Global.coins -= dice.cost
 
-	get_parent().get_parent().roller.add_new_dice(dice_to_add)
-	get_parent().get_parent().update_coins()
-	queue_free()
-
+		get_parent().get_parent().roller.add_new_dice(dice_to_add)
+		get_parent().get_parent().update_coins()
+		queue_free()
+	else: 
+		get_parent().get_parent().floating_text("NOT ENOUGH GOLD", Color.GOLDENROD, dice.global_position)
+		await dice.animation_player.animation_finished
+		dice.button.show()
 func _process(delta):
 	if dice != null:
 		dice.position.y = marker.position.y + sin(Time.get_ticks_msec() / 1000.0 * 2.5) * 3
