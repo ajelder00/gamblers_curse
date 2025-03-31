@@ -9,5 +9,4 @@ func _ready() -> void:
 	turns = 3
 	health = 40
 	tier = 2
-	coins = int(randi_range(0,10)*randf_range(tier,tier + 1))
 	super._ready()

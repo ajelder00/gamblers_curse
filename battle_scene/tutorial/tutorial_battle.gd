@@ -4,7 +4,7 @@ extends Node2D
 @onready var diceopedia_ui = $DiceopediaUI  # Existing DiceopediaUI reference
 @onready var dice_ui = $DiceUI               # New DiceUI reference
 
-@export var speed: float = 0.05  # Time delay between letters
+@export var speed: float = 0.025  # Time delay between letters
 @export var player_template: PackedScene
 @export var override_enemy: bool = false
 
@@ -163,7 +163,7 @@ func _setup_enemy() -> void:
 		"> THESE ARE YOUR DICE.",
 		"> YOU WILL ROLL UP TO THREE DICE ON EACH TURN.",
 		"> THIS IS YOUR ENEMY.",
-		"> YOU WILL ROLL YOUR CURSED DIE TO VANQUISH THIS " + enemy_name.text.to_upper() + "!",
+		"> YOU WILL ROLL YOUR DIE TO VANQUISH THIS " + enemy_name.text.to_upper() + "!",
 		"> YOU CAN ONLY ROLL THE FIVE DICE HIGHLIGHTED ON EACH TURN.",
 		"> CHOOSE THREE DICE TO ROLL..."
 	]
@@ -245,7 +245,7 @@ func show_messages(msgs: Array) -> void:
 			roll_message_label.text += msg[i]
 			await get_tree().create_timer(speed).timeout
 		Global.typing = false
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 
 func _player_turn() -> void:
 	if not enemy or enemy.health <= 0:

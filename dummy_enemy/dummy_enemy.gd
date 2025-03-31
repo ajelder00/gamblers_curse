@@ -58,12 +58,13 @@ var immunities : Array = []
 var turns : int = 1
 var health : int = 50
 var tier : int = 1
-var coins: int = int(randi_range(5,10)*randf_range(tier,tier + 1))
+var coins: int = 0
 var base_accuracy : float = 1.0
 var dice_bucket : Array = [null]
 
 # --- Initialization ---
 func _ready() -> void:
+	coins = int(randi_range(5,10)*randf_range(tier,tier + 1))
 	set_dice()
 	initialize_enemy()
 	setup_ui()
@@ -187,7 +188,7 @@ func apply_status_self(effect_names) -> void:
 		update_indicators()
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
-	accuracy = affected_accuracy
+	accuracy = max(affected_accuracy, 0.3)
 	print("accuracy: " + str(accuracy))
 	update_indicators()
 	damage_over.emit()

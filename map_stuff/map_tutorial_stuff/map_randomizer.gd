@@ -7,7 +7,7 @@ const PLACEMENT_RANDOMNESS := 7
 const MAP_WIDTH := 7
 const PATHS := 4
 
-var FLOORS := 5
+var FLOORS := 6
 var FIGHT_WEIGHT := 12
 var GAMBLE_WEIGHT := 4
 var ELITE_WEIGHT := 6
