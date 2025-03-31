@@ -174,9 +174,8 @@ func _input(event):
 # ------------------- Enemy Setup -------------------
 
 func _setup_enemy() -> void:
-	enemy_og_pos = enemy.position.y
-	
-	enemy.position.y += 125
+	enemy_og_pos = enemy.position
+	enemy.position = $KingPos.position
 	enemy.sprite.flip_h = false
 	enemy_name.text = enemy.NAMES[enemy.type]
 	enemy.dice.position.y -= 150
@@ -218,7 +217,7 @@ func _start_battle() -> void:
 		ui.show()
 	player.roller.show()
 	enemy.dice.show()
-	enemy.position.y = enemy_og_pos
+	enemy.position = enemy_og_pos
 	_setup_enemy_dice()
 	music.stream = new_music
 	music.stream.loop = true
@@ -311,9 +310,9 @@ func _handle_enemy_defeat() -> void:
 	await get_tree().create_timer(5.0).timeout
 	enemy_speaking = true
 	$'EnemyText'.position = position
-	enemy_text.position.y += 100
+	enemy_text.position.y += 125
 	enemy_text.position.x -= 190
-	enemy_text.z_index = 4
+	enemy_text.z_index = 7
 	enemy_text.scale *= 2
 	enemy_text.text = ""
 	enemy_text.visible = true

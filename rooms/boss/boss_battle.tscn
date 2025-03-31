@@ -427,16 +427,19 @@ text = "RETURNING TO START MENU..."
 
 [node name="EnemyTextUI" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(1128, 427)
+position = Vector2(935, 301)
 scale = Vector2(7.82, 3.84563)
 texture = ExtResource("5_s3tcg")
 
 [node name="EnemyText" type="Label" parent="."]
-z_index = 1
-offset_left = 824.0
-offset_top = 501.0
-offset_right = 1015.0
-offset_bottom = 577.0
+z_index = 15
+offset_left = 632.0
+offset_top = 373.0
+offset_right = 823.0
+offset_bottom = 449.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="KingPos" type="Marker2D" parent="."]
+position = Vector2(676, 222)
