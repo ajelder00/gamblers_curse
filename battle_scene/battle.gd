@@ -175,6 +175,7 @@ func _handle_enemy_defeat() -> void:
 	# Slide in the text UI for the defeat messages.
 	await slide_in_text_ui()
 	# Define defeat messages.
+	$SoundEffect.play()
 	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
 	var defeat_messages: Array = [
 		"> CONGRATS YOU DEFEATED THE ENEMY.",

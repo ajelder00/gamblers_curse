@@ -167,15 +167,16 @@ func _on_enemy_damage(damage_packet: Damage) -> void:
 
 func _handle_enemy_defeat() -> void:
 	enemy_sprite.play(enemy.ANIMS[enemy.type][2])
-	Global.coins += enemy.coins
+	Global.coins += enemy.coins*1.5
 	await enemy_sprite.animation_finished
 	# Slide in the text UI for the defeat messages.
 	await slide_in_text_ui()
 	# Define defeat messages.
-	player.floating_text("+" + str(enemy.coins) + " coins", Color.GOLD)
+	player.floating_text("+" + str(enemy.coins*1.5) + " coins", Color.GOLD)
+	$SoundEffect.play()
 	var defeat_messages: Array = [
 		"> CONGRATS YOU DEFEATED THE ENEMY.",
-		"> YOU EARNED " + str(enemy.coins) + " COINS!",
+		"> YOU EARNED " + str(enemy.coins*1.5) + " COINS!",
 		"> RETURNING TO MAP..."
 	]
 	# Type out the defeat messages.

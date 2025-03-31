@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjjijc6hrlkks"]
+[gd_scene load_steps=28 format=3 uid="uid://cjjijc6hrlkks"]
 
 [ext_resource type="Script" path="res://battle_scene/tutorial/tutorial_battle.gd" id="1_hkrh2"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_h46ts"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="21_gjn5v"]
 [ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="22_wqbj8"]
 [ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="25_4m4tx"]
+[ext_resource type="AudioStream" uid="uid://bdx5k4niwfsim" path="res://music/8bit-coin-sound-effect.mp3" id="26_aped4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njebu"]
 animations = [{
@@ -420,3 +421,7 @@ offset_top = 343.0
 offset_right = 704.0
 offset_bottom = 359.0
 text = "RETURNING TO START MENU..."
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_aped4")
+pitch_scale = 2.18

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bfs6rmdrg7dhb"]
+[gd_scene load_steps=28 format=3 uid="uid://bfs6rmdrg7dhb"]
 
 [ext_resource type="Script" path="res://battle_scene/battle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_bjksa"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="19_4d56i"]
 [ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="20_0wnl4"]
 [ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="20_4nvdt"]
+[ext_resource type="AudioStream" uid="uid://bdx5k4niwfsim" path="res://music/8bit-coin-sound-effect.mp3" id="26_8g1n1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqnnj"]
 animations = [{
@@ -404,3 +405,7 @@ offset_top = 343.0
 offset_right = 704.0
 offset_bottom = 359.0
 text = "RETURNING TO START MENU..."
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_8g1n1")
+pitch_scale = 2.18

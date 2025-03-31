@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://chjnuv68gfb6r"]
+[gd_scene load_steps=28 format=3 uid="uid://chjnuv68gfb6r"]
 
 [ext_resource type="Script" path="res://rooms/elite/elite.gd" id="1_qftna"]
 [ext_resource type="PackedScene" uid="uid://c8epku478rptj" path="res://dummy_player/dummy_player.tscn" id="2_lrcx6"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://jqf10fev7jtp" path="res://art/diceopedia/diceopedia1.png" id="23_qpjra"]
 [ext_resource type="Script" path="res://battle_scene/diceopedia_button.gd" id="24_br8oh"]
 [ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="25_ulxid"]
+[ext_resource type="AudioStream" uid="uid://bdx5k4niwfsim" path="res://music/8bit-coin-sound-effect.mp3" id="26_o76ub"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rrb5l"]
 animations = [{
@@ -375,3 +376,7 @@ metadata/_edit_use_anchors_ = true
 [node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("25_ulxid")]
 position = Vector2(-36.9777, -91.8482)
 scale = Vector2(0.17, 0.17)
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_o76ub")
+pitch_scale = 2.18
