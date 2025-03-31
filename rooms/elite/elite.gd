@@ -240,18 +240,20 @@ func _handle_player_defeat() -> void:
 # ------------------- Message Typing -------------------
 
 func _start_typing() -> void:
-	Global.typing = true
 	if message_index >= messages.size():
 		return
 
 	var current_text = ""
 	var full_text = messages[message_index]
+	Global.typing = true
 	for i in range(full_text.length()):
 		current_text += full_text[i]  
 		roll_message_label.text = current_text
 		await get_tree().create_timer(speed).timeout  
+	Global.typing = false
+	
 	await get_tree().create_timer(1.0).timeout  
-
+	
 	# When the "CHOOSE DICE TO ROLL..." message (index 1) has been shown, slide out the text UI...
 	if message_index == 1:
 		await slide_out_text_ui()
