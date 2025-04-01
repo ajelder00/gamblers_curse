@@ -5,7 +5,7 @@ signal pop_over
 
 @onready var ORIGINAL_ROLLS = 3
 @onready var current_rolls = ORIGINAL_ROLLS
-@onready var dice_bucket = Global.dice
+@onready var dice_bucket = Global.dice.duplicate()
 @onready var positions := get_children()
 @onready var parent = get_parent()
 var dont_gray = false
@@ -14,6 +14,7 @@ var current_results := []
 var gone_twice = false
 
 func _ready():
+	dice_bucket.shuffle()
 	# Grabs the positions from the battle scene
 	if self.get_parent().get_parent():
 		var battle = self.get_parent().get_parent()

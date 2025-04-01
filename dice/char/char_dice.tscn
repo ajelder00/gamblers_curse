@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1d11ejhojchx"]
+
+[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="1_a8m35"]
+[ext_resource type="Script" path="res://dice/char/char_dice.gd" id="2_fkvrc"]
+
+[node name="Dice" instance=ExtResource("1_a8m35")]
+script = ExtResource("2_fkvrc")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"roll_cursed"

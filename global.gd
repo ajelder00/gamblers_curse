@@ -6,6 +6,8 @@ var poison := load("res://dice/poison/poison_dice.tscn")
 var healing := load("res://dice/healing/healing_dice.tscn")
 var blinding := load("res://dice/blinding/blinding_dice.tscn")
 var drowning := load("res://dice/drowning/drowning_dice.tscn")
+var fire := load("res://dice/fire/fire_dice.tscn")
+var char := load("res://dice/char/char_dice.tscn")
 
 var goblin := load("res://dummy_enemy/enemies/goblin/goblin.tscn")
 var headsman := load("res://dummy_enemy/enemies/headsman/headsman.tscn")
@@ -30,19 +32,20 @@ var dummy_dice: Array = [standard, risky, poison, healing, blinding, drowning]
 
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
-var dice : Array = [standard, standard, standard, standard, standard]
+var dice : Array = [standard, standard, fire, fire, fire]
 
 var can_heal : bool = true
 var difficulty: int = 0
 
-enum Status { NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING, DROWNING}
+enum Status { NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING, DROWNING, FIRE}
 
 const STATUS_PICS := {
 	Status.POISON: "res://art/poison_effect.png",
 	Status.BLINDNESS: "res://art/blindness_effect.png",
 	Status.CURSE: "res://art/curse_effect.png",
 	Status.BLEEDING: "res://art/bleeding_effect.png",
-	Status.DROWNING: "res://art/water_effect.png"
+	Status.DROWNING: "res://art/water_effect.png",
+	Status.FIRE: "res://art/fire_effect.png"
 }
 
 var shop_dict = {
@@ -51,14 +54,11 @@ var shop_dict = {
 	Dice.Type.POISON: poison,
 	Dice.Type.HEALING: healing,
 	Dice.Type.BLIND: blinding,
-	Dice.Type.DROWNING: drowning
+	Dice.Type.DROWNING: drowning,
+	Dice.Type.FIRE: fire
 }
 
 
-var shop_dice = [
-	{"type": "standard", "price": 5, "description": "A standard six-sided dice."},
-	{"type": "risky", "price": 10, "description": "A risky dice, designed to amplify the stakes."}
-]
 
 var player_health = 200
 

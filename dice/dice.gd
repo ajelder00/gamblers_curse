@@ -6,7 +6,7 @@ var status_effect := Global.Status.NOTHING
 
 enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
 	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
-	DTWO, RUSSIAN, DONEHUNDRED
+	DTWO, RUSSIAN, DONEHUNDRED, DROWNING, FIRE, CHAR
 	}
 
 const ANIMS := {
@@ -15,13 +15,19 @@ const ANIMS := {
 	Type.POISON: ["blank_poison", "roll_poison", "faces_poison"],
 	Type.HEALING: ["blank_healing", "roll_healing", "faces_healing"],
 	Type.BLIND: ["blank_blind", "roll_blind", "faces_blind"],
+	Type.DROWNING: ["blank_drowning", "roll_drowning", "faces_drowning"],
+	Type.FIRE: ["blank_fire", "roll_fire", "faces_fire"],
+	Type.CHAR: ["blank_char", "roll_char", "faces_char"]
 }
 const TYPE_NAMES := {
 	Type.STANDARD: ["Standard"],
 	Type.RISKY: ["Risky"],
 	Type.POISON: ["Poison"],
 	Type.HEALING: ["Healing"],
-	Type.BLIND: ["Blinding"]
+	Type.BLIND: ["Blinding"],
+	Type.DROWNING: ["Water"],
+	Type.FIRE: ["Fire"],
+	Type.CHAR: ["Charred"]
 }
 
 signal rolled(damage_packet: Damage)

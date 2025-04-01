@@ -6,6 +6,7 @@ enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF, KING
 var damage
 var self_statuses := []
 var accuracy = base_accuracy
+var fire_pop := {}
 
 signal damage_over
 signal damage_to_player(damage_packet: Damage)
@@ -154,8 +155,11 @@ func get_hit(damage_packet_list: Array) -> void:
 
 func apply_status_self(effect_names) -> void:
 	update_indicators()
+	var fire_erase := []
 	var affected_accuracy = base_accuracy
 	for effect in effect_names:
+		print("duration: " + str(effect.duration))
+		print(effect_names)
 		match effect.status:
 			Global.Status.POISON:
 				if effect.duration > 0: # The dice returns effect[type, duration], so effect[1] is duration
@@ -173,11 +177,14 @@ func apply_status_self(effect_names) -> void:
 				if effect.duration > 0:
 					effect.duration -= 1
 					update_indicators()
-					affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
-					floating_text(("-" + str(effect.damage_number*10)) + "%", Color.DARK_ORCHID)
-					var tween = get_tree().create_tween()
-					tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
-					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
+					if affected_accuracy < 0.3:
+						floating_text("ACCURACY CAN'T GO LOWER", Color.DARK_ORCHID)
+					else:
+						affected_accuracy -= (base_accuracy * (float(effect.damage_number)/10))
+						floating_text(("-" + str(effect.damage_number*10)) + "% ACCURACY", Color.DARK_ORCHID)
+						var tween = get_tree().create_tween()
+						tween.tween_property(sprite, "modulate", Color(0.4, 0.1, 0.5, 1.0), 0.5)
+						await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
 			Global.Status.DROWNING:
 				if effect.duration > 0:
 					if effect.duration <= 3:
@@ -195,18 +202,69 @@ func apply_status_self(effect_names) -> void:
 						effect.duration -= 1
 						update_indicators()
 					print(affected_accuracy)
-
-	for effect in self_statuses: #Deletes any effects that ran out
-		if effect.duration == 0:
+			Global.Status.FIRE:
+				if effect.duration > 0:
+					if effect not in fire_pop:
+						effect.duration -= 1
+						update_indicators()
+						if dice.type != Dice.Type.CHAR:
+							dice_bucket.erase(dice)
+							var char = Global.char.instantiate() #new charred dice instantiation
+							add_child(char)
+							char.button.hide()
+							dice_bucket.append(char)
+							fire_pop[effect] = [dice, char]
+							char.position = dice.position
+							dice.modulate.a = 0
+							dice = char
+						elif dice.type == Dice.Type.CHAR:
+							for die in dice_bucket:
+								if die.type != Dice.Type.CHAR:
+									dice_bucket.erase(die)
+									var char = Global.char.instantiate() #new charred dice instantiation
+									add_child(char)
+									char.button.hide()
+									dice_bucket.append(char)
+									fire_pop[effect] = [die, char]
+									char.position = die.position
+									char.modulate.a = 0
+									break
+					else:
+						effect.duration -= 1
+						update_indicators()
+					floating_text("DICE BURNED", Color.SANDY_BROWN)
+					var tween = get_tree().create_tween()
+					tween.tween_property(sprite, "modulate", Color(1.0, 0.5, 0.0, 1.0), 0.5)
+					await tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.5).finished
+				elif effect.duration == 0:
+					fire_erase.append(effect)
+	for effect in effect_names:
+		if effect.duration == 0 and effect.status != Global.Status.FIRE:
 			self_statuses.erase(effect)
-			update_indicators()
-		update_indicators()
+	if fire_erase != []:
+		floating_text("DICE RESTORED", Color.ORANGE)
+		for effect in fire_erase:
+			revert_fire(effect)
+	update_indicators()
 	if effect_names != []:
 		await get_tree().create_timer(1).timeout
 	accuracy = max(affected_accuracy, 0.3)
 	print("accuracy: " + str(accuracy))
 	update_indicators()
+	print(dice_bucket)
 	damage_over.emit()
+
+func revert_fire(effect):
+	self_statuses.erase(effect)
+	update_indicators()
+	if effect in fire_pop:
+		dice_bucket.erase(fire_pop[effect][1])
+		print("Clearing Fire from" + str(effect)) 
+		dice_bucket.append(fire_pop[effect][0])
+		fire_pop[effect][1].queue_free()
+		fire_pop.erase(effect)
+		set_dice()
+
 
 func replace_status(new_packet: Damage) -> void:
 	var current_lowest_value = 100
@@ -216,16 +274,21 @@ func replace_status(new_packet: Damage) -> void:
 	for packet in self_statuses:
 		if (packet.status == new_packet.status) and (packet.duration == current_lowest_value):
 			packet.duration = new_packet.duration
-			print("Replaced a same version")
 			return
 		elif packet.duration == current_lowest_value:
+			if packet.status == Global.Status.FIRE:
+				revert_fire(packet)
+				self_statuses.append(new_packet)
+				return
 			self_statuses.erase(packet)
 			self_statuses.append(new_packet)
-			print("Replaced a diff version")
 			return
+	if self_statuses[0] == Global.Status.FIRE:
+		revert_fire(self_statuses[0])
+		self_statuses.append(new_packet)
+		return
 	self_statuses.erase(self_statuses[0])
 	self_statuses.append(new_packet)
-	print("Replaced first elkement")
 
 func floating_text(text: String, color: Color) -> void:
 	var label = Label.new()
@@ -249,28 +312,28 @@ func floating_text(text: String, color: Color) -> void:
 	label.queue_free()
 
 func update_indicators() -> void:
-	if indicator_label1.text == "0":
-		indicator1.modulate.a = 0
-	if indicator_label2.text == "0":
-		indicator1.modulate.a = 0
-	if indicator_label3.text == "0":
-		indicator1.modulate.a = 0
 
 	if len(self_statuses) >= 1:
 		indicator1.texture = load(Global.STATUS_PICS[self_statuses[0].status])
 		indicator_label1.text = str(self_statuses[0].duration)
 		indicator1.modulate.a = 1.0
+		if indicator_label1.text == "0":
+			indicator1.modulate.a = 0
 	else:
 		indicator1.modulate.a = 0
 	if len(self_statuses) >= 2:
 		indicator2.texture = load(Global.STATUS_PICS[self_statuses[1].status])
 		indicator_label2.text = str(self_statuses[1].duration)
 		indicator2.modulate.a = 1.0
+		if indicator_label2.text == "0":
+			indicator2.modulate.a = 0
 	else:
 		indicator2.modulate.a = 0
 	if len(self_statuses) == 3:
 		indicator3.texture = load(Global.STATUS_PICS[self_statuses[2].status])
 		indicator_label3.text = str(self_statuses[2].duration)
 		indicator3.modulate.a = 1.0
+		if indicator_label3.text == "0":
+			indicator3.modulate.a = 0
 	else:
 		indicator3.modulate.a = 0
