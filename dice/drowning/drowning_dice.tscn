@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgi1sgsphs3x6"]
+
+[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="1_mekik"]
+[ext_resource type="Script" path="res://dice/drowning/drowning_dice.gd" id="2_fk13p"]
+
+[node name="Dice" instance=ExtResource("1_mekik")]
+script = ExtResource("2_fk13p")
