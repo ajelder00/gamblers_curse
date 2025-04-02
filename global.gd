@@ -91,7 +91,7 @@ func _ready():
 	audio_player = AudioStreamPlayer.new()
 	audio_player.stream = retro_audio
 	# Set the volume to -6 dB (approximately 50% quieter than 0 dB)
-	audio_player.volume_db = -12
+	audio_player.volume_db = -18
 	add_child(audio_player)
 	
 	# For Godot 4, if the audio stream supports looping, set its loop_mode to loop forward.

@@ -9,4 +9,5 @@ func _process(delta: float) -> void:
 
 	# Calculate the new width based on health ratio
 	var health_ratio = clamp(player_health / MAX_HEALTH, 0.0, 1.0)
-	size.x = MAX_WIDTH * health_ratio  # Scale width dynamically
+	var temp = MAX_WIDTH * health_ratio
+	size.x = temp

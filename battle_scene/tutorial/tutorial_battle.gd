@@ -258,13 +258,14 @@ func _player_turn() -> void:
 	
 	# Only show enemy UI messages once.
 	if not enemy_ui_message_shown:
-		await show_messages(["> GREAT! THIS IS THE ENEMY HEALTH BAR."])
+		
 		enemy_name.z_index += 10
 		enemy_health_label.z_index += 11
 		enemy_health_bar.z_index += 10
 		enemy_health_bar2.z_index += 10
 		enemy_health_bg.z_index += 10
 		enemy_health_ui.z_index += 10
+		await show_messages(["> GREAT! THIS IS THE ENEMY HEALTH BAR."])
 		await show_messages([
 			"> YOUR DAMAGE WILL BE REFLECTED HERE.",
 			"> WATCH CLOSELY."
@@ -287,13 +288,14 @@ func _enemy_turn() -> void:
 		first_enemy_turn = false
 		# Show introductory messages and update player UI.
 		await show_messages(["> AFTER YOUR TURN, THE ENEMY WILL ROLL THEIR DICE.", "> EVERY ENEMY HAS A DIFFERENT ATTACK."])
-		await show_messages(["> THIS IS YOUR HEALTH BAR."])
+		
 		player_name.z_index += 10
 		player_health_label.z_index += 10
 		player_health.z_index += 10
 		player_health2.z_index += 10
 		player_health_bg.z_index += 10
 		player_health_ui.z_index += 10
+		await show_messages(["> THIS IS YOUR HEALTH BAR."])
 		await show_messages([
 			"> WHATEVER THE ENEMY ROLLS, THE DAMAGE WILL BE REFLECTED HERE.",
 			"> WATCH CLOSELY."
