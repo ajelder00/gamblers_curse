@@ -292,7 +292,7 @@ position = Vector2(597, 319)
 scale = Vector2(10.375, 10.375)
 sprite_frames = SubResource("SpriteFrames_vswgq")
 animation = &"standard"
-frame_progress = 0.881873
+frame_progress = 0.401667
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -317,3 +317,7 @@ offset_bottom = 581.0
 scale = Vector2(1.26, 1.26)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 autowrap_mode = 3
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]

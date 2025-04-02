@@ -1,9 +1,7 @@
 extends Node2D
 
-# Time delay between each letter for the typewriter effect.
 var letter_delay := 0.05
 
-# The messages corresponding to each scene.
 var messages = [
 	"> VARINSHADE WAS ONCE A BEAUTIFUL KINGDOM, WHERE ALL DECISIONS WERE MADE BY THE FATED DICE.",
 	"> NOW, DARKNESS FALLS UPON THE LAND.",
@@ -27,8 +25,8 @@ func _ready() -> void:
 	$PlayerDice.visible = false
 	$FatedDice.visible = true
 	$FatedDice.play()
-	
-	
+	$Music.stream = load("res://intro_cutscene/music/05 Bustling Town LOOP.wav")
+	$Music.play()
 	switch_images()
 
 func typewriter_effect(message: String) -> void:
@@ -38,7 +36,9 @@ func typewriter_effect(message: String) -> void:
 		await get_tree().create_timer(letter_delay).timeout
 
 func show_message(message: String, wait_time: float = 2.0) -> void:
+	Global.typing = true
 	await typewriter_effect(message)
+	Global.typing = false
 	await get_tree().create_timer(wait_time).timeout
 
 func switch_images() -> void:
@@ -52,9 +52,13 @@ func switch_images() -> void:
 	$Varinshade.visible = false
 	$FatedDice.animation = "default"
 	$DarkKingdom.visible = true
-
+	$SFX.stream = load("res://intro_cutscene/music/8-bit-gunshot.wav")
+	$SFX.play()
+	$Music.stop()
+	
 	await(1)
 	await show_message(messages[1])
+	
 	
 	await get_tree().create_timer(1.0).timeout
 
@@ -70,22 +74,20 @@ func switch_images() -> void:
 	$Dice.play()
 	$Dice.visible = true
 	$Message.text = ""
+	$Music.stream = load("res://intro_cutscene/music/11 Lava Dungeon LOOP.wav")
+	$Music.play()
 
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 0.0, 1.0)
 
-	# KingThrone text
 	show_message(messages[2])
 	
-	# Pan down KingThrone
 	var tween_throne = create_tween()
 	tween_throne.tween_property($KingThrone, "position:y", $KingThrone.position.y + 300, 8.0)
-
-	# Pan down King
+	
 	var tween_king = create_tween()
 	tween_king.tween_property($King, "position:y", $King.position.y + 300, 8.0)
-
-	# Pan down Dice
+	
 	var tween_dice = create_tween()
 	tween_dice.tween_property($Dice, "position:y", $Dice.position.y + 300, 8.0)
 
@@ -98,21 +100,17 @@ func switch_images() -> void:
 	tween.tween_property($Fade, "modulate:a", 1.0, 1.0)
 	await tween.finished
 
-	# Hide KingThrone, King, and Dice.
 	$KingThrone.visible = false
 	$King.visible = false
 	$Dice.visible = false
 	$Message.text = ""
-	# Switch to Suffer
 	$Suffer.visible = true
 
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 0.0, 1.0)
 
-	# suffer message
 	show_message(messages[3])
 	
-	# suffer pan
 	var tween_suffer = $Suffer.create_tween()
 	tween_suffer.tween_property($Suffer, "position:y", $Suffer.position.y - 300, 8.0)
 	await tween_suffer.finished
@@ -121,7 +119,6 @@ func switch_images() -> void:
 	tween.tween_property($Fade, "modulate:a", 1.0, 1.0)
 	await tween.finished
 
-	# Hide Suffer
 	$Suffer.visible = false
 	$Message.text = ""
 	$Village.visible = true
@@ -130,15 +127,12 @@ func switch_images() -> void:
 	$PlayerDice.visible = true
 	$PlayerDice.play()
 
-	# village transition
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 0.0, 1.0)
 	tween.finished
 
-	# Village text
 	show_message(messages[4])
 	
-	# Scale BG
 	var tween_scale = $Village.create_tween()
 	tween_scale.tween_property($Village, "scale", $Village.scale * 1.2, 5.0)
 	await tween_scale.finished
@@ -147,7 +141,9 @@ func switch_images() -> void:
 	
 	await(3)
 
-	# Fade to black.
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 1.0, 1.0)
 	await tween.finished
+	var music_tween = $Music.create_tween()
+	music_tween.tween_property($Music, "volume_db", -80, 1.0)
+	await music_tween.finished
