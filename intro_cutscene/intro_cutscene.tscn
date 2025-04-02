@@ -1,17 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://1uufmwaj6ldr"]
+[gd_scene load_steps=16 format=3 uid="uid://1uufmwaj6ldr"]
 
-[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="1_jpxu1"]
+[ext_resource type="Script" path="res://intro_cutscene/intro_cutscene.gd" id="1_1c34a"]
+[ext_resource type="Texture2D" uid="uid://bq16rri32pbyl" path="res://intro_cutscene/intro_text.png" id="1_y6ckt"]
 [ext_resource type="Texture2D" uid="uid://bgkupwyk1j1xk" path="res://intro_cutscene/image (2).png" id="2_b17d1"]
 [ext_resource type="Script" path="res://intro_cutscene/intro_pan.gd" id="3_1qcu5"]
 [ext_resource type="Texture2D" uid="uid://b4n8li0w82m7" path="res://intro_cutscene/image (1).png" id="4_i2vbi"]
+[ext_resource type="Texture2D" uid="uid://dx82yu4ca2xxt" path="res://intro_cutscene/image (4).png" id="6_dsn28"]
+[ext_resource type="Texture2D" uid="uid://dv5loup3umbif" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Swordsman/Swordsman/king_idle.png" id="7_ca0i6"]
+[ext_resource type="Texture2D" uid="uid://ccs3dviovxv8e" path="res://intro_cutscene/image (5).png" id="8_3ckru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_362cq"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xcy8"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2d88"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4gkt"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbm5r"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_820vd"]
+atlas = ExtResource("7_ca0i6")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylmt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_362cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xcy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2d88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4gkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbm5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_820vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="IntroCutscene" type="Node2D"]
+script = ExtResource("1_1c34a")
 
 [node name="Text" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(1752, 359)
-scale = Vector2(43.4687, 10)
-texture = ExtResource("1_jpxu1")
+z_index = 10
+position = Vector2(387, 313)
+scale = Vector2(7.375, 7.375)
+texture = ExtResource("1_y6ckt")
+metadata/_edit_lock_ = true
 
 [node name="Varinshade" type="Sprite2D" parent="."]
 z_index = 1
@@ -22,8 +78,36 @@ script = ExtResource("3_1qcu5")
 metadata/_edit_lock_ = true
 
 [node name="DarkKingdom" type="Sprite2D" parent="."]
-position = Vector2(446.062, 344.375)
+visible = false
+position = Vector2(508, 378)
 scale = Vector2(1.02222, 1.02222)
 texture = ExtResource("4_i2vbi")
 script = ExtResource("3_1qcu5")
 metadata/_edit_lock_ = true
+
+[node name="KingThrone" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(562, 165.5)
+scale = Vector2(1.32031, 1.32031)
+texture = ExtResource("6_dsn28")
+metadata/_edit_lock_ = true
+
+[node name="King" type="AnimatedSprite2D" parent="."]
+z_index = 3
+position = Vector2(569, 43)
+scale = Vector2(15.3657, 14.5457)
+sprite_frames = SubResource("SpriteFrames_ylmt2")
+frame_progress = 0.879852
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+z_index = 100
+offset_right = 1161.0
+offset_bottom = 662.0
+color = Color(0, 0, 0, 1)
+
+[node name="Village" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(665, 142)
+scale = Vector2(1.35254, 1.35254)
+texture = ExtResource("8_3ckru")

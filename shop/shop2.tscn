@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csvpmd22afin7" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="9_f5vx2"]
 [ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="11_kxy0u"]
 [ext_resource type="Texture2D" uid="uid://bspkj7kqc20f5" path="res://map_stuff/map_tutorial_stuff/art/map_icons/coins.png" id="12_j8am3"]
-[ext_resource type="Texture2D" uid="uid://b5n8og57u1wm1" path="res://shop/shop2/diceinven.png" id="13_01uwu"]
+[ext_resource type="Texture2D" uid="uid://d2mptr5ptjjks" path="res://art/shop/New Piskel.png" id="13_1kq0f"]
 [ext_resource type="PackedScene" uid="uid://fe8ac0h8ymr3" path="res://dice_roller/dice_roller.tscn" id="14_f73h6"]
 [ext_resource type="Script" path="res://shop/shop2/dice_roller_shop.gd" id="15_s5nhf"]
 [ext_resource type="PackedScene" uid="uid://dvp7taojqckg3" path="res://shop/shop2/shop_dice.tscn" id="16_yhb85"]
@@ -195,7 +195,7 @@ position = Vector2(0, -7)
 [node name="Sprite2D" type="Sprite2D" parent="PlayerInventory"]
 position = Vector2(1093, 345)
 scale = Vector2(6.64063, 6.64063)
-texture = ExtResource("13_01uwu")
+texture = ExtResource("13_1kq0f")
 
 [node name="Dice Roller" parent="PlayerInventory" instance=ExtResource("14_f73h6")]
 position = Vector2(88.9999, 1109)
