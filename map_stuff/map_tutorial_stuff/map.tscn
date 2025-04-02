@@ -51,7 +51,6 @@ stream = ExtResource("4_6377y")
 autoplay = true
 
 [node name="Fade" type="ColorRect" parent="."]
-visible = false
 offset_left = -1311.0
 offset_top = -1454.0
 offset_right = 2487.0
