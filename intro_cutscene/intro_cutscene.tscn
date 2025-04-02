@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1uufmwaj6ldr"]
+
+[ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="1_jpxu1"]
+[ext_resource type="Texture2D" uid="uid://bgkupwyk1j1xk" path="res://intro_cutscene/image (2).png" id="2_b17d1"]
+[ext_resource type="Script" path="res://intro_cutscene/intro_pan.gd" id="3_1qcu5"]
+[ext_resource type="Texture2D" uid="uid://b4n8li0w82m7" path="res://intro_cutscene/image (1).png" id="4_i2vbi"]
+
+[node name="IntroCutscene" type="Node2D"]
+
+[node name="Text" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1752, 359)
+scale = Vector2(43.4687, 10)
+texture = ExtResource("1_jpxu1")
+
+[node name="Varinshade" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(508.062, 381.375)
+scale = Vector2(1.02222, 1.02222)
+texture = ExtResource("2_b17d1")
+script = ExtResource("3_1qcu5")
+metadata/_edit_lock_ = true
+
+[node name="DarkKingdom" type="Sprite2D" parent="."]
+position = Vector2(446.062, 344.375)
+scale = Vector2(1.02222, 1.02222)
+texture = ExtResource("4_i2vbi")
+script = ExtResource("3_1qcu5")
+metadata/_edit_lock_ = true
