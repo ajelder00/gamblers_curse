@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://1uufmwaj6ldr"]
+[gd_scene load_steps=39 format=3 uid="uid://1uufmwaj6ldr"]
 
 [ext_resource type="Script" path="res://intro_cutscene/intro_cutscene.gd" id="1_1c34a"]
 [ext_resource type="Texture2D" uid="uid://bq16rri32pbyl" path="res://intro_cutscene/intro_text.png" id="1_y6ckt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ccs3dviovxv8e" path="res://intro_cutscene/image (5).png" id="8_3ckru"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="9_e613m"]
 [ext_resource type="Texture2D" uid="uid://bqconoima02o2" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Idle.png" id="10_ioi43"]
+[ext_resource type="Texture2D" uid="uid://yya8g2ip5283" path="res://intro_cutscene/image (6).png" id="11_2urs8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_362cq"]
 atlas = ExtResource("7_ca0i6")
@@ -249,7 +250,8 @@ z_index = 3
 position = Vector2(572, 48)
 scale = Vector2(15.3657, 14.5457)
 sprite_frames = SubResource("SpriteFrames_ylmt2")
-frame_progress = 0.258068
+frame_progress = 0.845761
+metadata/_edit_lock_ = true
 
 [node name="Fade" type="ColorRect" parent="."]
 visible = false
@@ -257,12 +259,15 @@ z_index = 100
 offset_right = 1161.0
 offset_bottom = 662.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Village" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(665, 142)
 scale = Vector2(1.35254, 1.35254)
 texture = ExtResource("8_3ckru")
+metadata/_edit_lock_ = true
 
 [node name="Dice" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -270,7 +275,8 @@ z_index = 2
 position = Vector2(816.875, -36.125)
 scale = Vector2(4.73437, 4.73437)
 sprite_frames = SubResource("SpriteFrames_vswgq")
-frame_progress = 0.192006
+frame_progress = 0.181726
+metadata/_edit_lock_ = true
 
 [node name="PlayerDice" type="AnimatedSprite2D" parent="."]
 z_index = 5
@@ -278,11 +284,36 @@ position = Vector2(484, 269)
 scale = Vector2(4.67187, 4.67187)
 sprite_frames = SubResource("SpriteFrames_vswgq")
 animation = &"standard"
+metadata/_edit_lock_ = true
+
+[node name="FatedDice" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(597, 319)
+scale = Vector2(10.375, 10.375)
+sprite_frames = SubResource("SpriteFrames_vswgq")
+animation = &"standard"
+frame_progress = 0.881873
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 z_index = 2
 position = Vector2(699, 361)
 scale = Vector2(12.4, 12.4)
 sprite_frames = SubResource("SpriteFrames_c1rh8")
-frame_progress = 0.179279
+frame_progress = 0.168998
 metadata/_edit_lock_ = true
+
+[node name="Suffer" type="Sprite2D" parent="."]
+position = Vector2(594, 562)
+scale = Vector2(1.17188, 1.17188)
+texture = ExtResource("11_2urs8")
+metadata/_edit_lock_ = true
+
+[node name="Message" type="Label" parent="."]
+z_index = 11
+offset_left = 61.0
+offset_top = 512.0
+offset_right = 378.0
+offset_bottom = 581.0
+scale = Vector2(1.26, 1.26)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 3

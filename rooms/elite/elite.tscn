@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nri5sk1coo08" path="res://battle_scene/art/textbox_1.png" id="4_flehx"]
 [ext_resource type="Texture2D" uid="uid://cr7pvv0u76muw" path="res://art/diceopedia/diceopedia13.png" id="5_1jhrt"]
 [ext_resource type="Texture2D" uid="uid://dge378wvw6mse" path="res://battle_scene/art/healthui.png" id="7_mpyvg"]
-[ext_resource type="Texture2D" uid="uid://7aq1qkddr2gg" path="res://battle_scene/art/battlebg22.png" id="8_10lw8"]
+[ext_resource type="Texture2D" uid="uid://ccs3dviovxv8e" path="res://intro_cutscene/image (5).png" id="7_sebtg"]
 [ext_resource type="Script" path="res://battle_scene/tutorial/background.gd" id="9_ryanr"]
 [ext_resource type="Texture2D" uid="uid://ijh76cfqykaq" path="res://art/New Piskel.png" id="10_s0rel"]
 [ext_resource type="AudioStream" uid="uid://d4dwxcbetjc43" path="res://music/12 Boss Theme LOOP.wav" id="11_njqwe"]
@@ -331,9 +331,9 @@ metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
-position = Vector2(606, 320)
-scale = Vector2(0.85547, 0.702233)
-texture = ExtResource("8_10lw8")
+position = Vector2(709, 39.0918)
+scale = Vector2(1.46875, 1.20566)
+texture = ExtResource("7_sebtg")
 script = ExtResource("9_ryanr")
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]
