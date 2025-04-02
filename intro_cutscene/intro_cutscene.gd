@@ -1,6 +1,6 @@
 extends Node2D
 
-var letter_delay := 0.05
+var letter_delay := 0.03
 
 var messages = [
 	"> VARINSHADE WAS ONCE A BEAUTIFUL KINGDOM, WHERE ALL DECISIONS WERE MADE BY THE FATED DICE.",

@@ -141,90 +141,90 @@ script = ExtResource("1_qftna")
 player_template = ExtResource("2_lrcx6")
 
 [node name="MonsterName" type="Label" parent="."]
-offset_left = 97.0
-offset_top = 58.0
-offset_right = 273.0
-offset_bottom = 78.0
+offset_left = 690.48
+offset_top = 403.48
+offset_right = 866.48
+offset_bottom = 423.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "DUNGEON GOBLIN"
 
 [node name="MonsterHealthNum" type="Label" parent="."]
 z_index = 1
-offset_left = 377.0
-offset_top = 59.0
-offset_right = 483.0
-offset_bottom = 75.0
+offset_left = 970.48
+offset_top = 404.48
+offset_right = 1076.48
+offset_bottom = 420.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 707.0
-offset_top = 390.0
-offset_right = 838.0
-offset_bottom = 406.0
+offset_left = 63.4801
+offset_top = 55.48
+offset_right = 194.48
+offset_bottom = 71.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "THE FATED ONE"
 
 [node name="PlayerHealthNum" type="Label" parent="."]
 z_index = 1
-offset_left = 1013.0
-offset_top = 387.0
-offset_right = 1095.0
-offset_bottom = 403.0
+offset_left = 369.48
+offset_top = 52.48
+offset_right = 451.48
+offset_bottom = 68.48
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="EnemyHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 219.0
-offset_top = 70.0
-offset_right = 485.0
-offset_bottom = 110.0
+offset_left = 812.48
+offset_top = 415.48
+offset_right = 1078.48
+offset_bottom = 455.48
 color = Color(0.878431, 0.333333, 0.337255, 1)
 
 [node name="EnemyHealth2" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 219.0
-offset_top = 102.0
-offset_right = 485.0
-offset_bottom = 124.0
+offset_left = 812.48
+offset_top = 447.48
+offset_right = 1078.48
+offset_bottom = 469.48
 color = Color(0.603922, 0.239216, 0.239216, 1)
 
 [node name="PlayerHealth" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 829.0
-offset_top = 416.0
-offset_right = 1096.0
-offset_bottom = 456.0
+offset_left = 185.48
+offset_top = 81.48
+offset_right = 452.48
+offset_bottom = 121.48
 size_flags_horizontal = 3
 color = Color(0.368627, 0.882353, 0.333333, 1)
 script = ExtResource("2_mfqms")
 
 [node name="PlayerHealth2" type="ColorRect" parent="."]
 z_index = -1
-offset_left = 829.0
-offset_top = 436.0
-offset_right = 1105.0
-offset_bottom = 472.0
+offset_left = 185.48
+offset_top = 101.48
+offset_right = 461.48
+offset_bottom = 137.48
 size_flags_horizontal = 3
 color = Color(0.223529, 0.647059, 0.388235, 1)
 script = ExtResource("2_mfqms")
 
 [node name="PlayerHealthBG" type="ColorRect" parent="."]
 z_index = -2
-offset_left = 829.0
-offset_top = 416.0
-offset_right = 1096.0
-offset_bottom = 456.0
+offset_left = 185.48
+offset_top = 81.48
+offset_right = 452.48
+offset_bottom = 121.48
 size_flags_horizontal = 3
 color = Color(0.0533738, 0.209555, 0.113318, 1)
 
 [node name="EnemyHealthBG" type="ColorRect" parent="."]
 z_index = -2
-offset_left = 219.0
-offset_top = 80.0
-offset_right = 486.0
-offset_bottom = 120.0
+offset_left = 812.48
+offset_top = 425.48
+offset_right = 1079.48
+offset_bottom = 465.48
 size_flags_horizontal = 3
 color = Color(0.274879, 0.0885133, 0.0892138, 1)
 
@@ -317,17 +317,15 @@ texture = ExtResource("4_flehx")
 
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(407, -94)
-scale = Vector2(7.82, 7.82)
+position = Vector2(999, 251.48)
+scale = Vector2(7.79688, 7.82)
 texture = ExtResource("7_mpyvg")
-metadata/_edit_lock_ = true
 
 [node name="PlayerHealthUI" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1017, 240)
-scale = Vector2(7.82, 7.82)
+position = Vector2(372.5, -94.52)
+scale = Vector2(7.80469, 7.82)
 texture = ExtResource("7_mpyvg")
-metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -9
@@ -335,6 +333,7 @@ position = Vector2(709, 39.0918)
 scale = Vector2(1.46875, 1.20566)
 texture = ExtResource("7_sebtg")
 script = ExtResource("9_ryanr")
+metadata/_edit_lock_ = true
 
 [node name="PlayerPlatform" type="Sprite2D" parent="."]
 position = Vector2(254, 472)

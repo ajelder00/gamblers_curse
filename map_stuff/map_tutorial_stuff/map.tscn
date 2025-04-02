@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map.gd" id="1_pskux"]
 [ext_resource type="Script" path="res://map_stuff/map_tutorial_stuff/map_randomizer.gd" id="2_j46t8"]
-[ext_resource type="Texture2D" uid="uid://j7jbl6dcx3t5" path="res://art/mpb.png" id="3_u561b"]
+[ext_resource type="Texture2D" uid="uid://c4qrf7j8jqdyq" path="res://art/varinmap2.png" id="3_scbsi"]
 [ext_resource type="AudioStream" uid="uid://50jifi32jmgu" path="res://music/09 Jungle Dungeon LOOP.wav" id="4_6377y"]
 
 [node name="Map" type="Node2D"]
@@ -31,21 +31,30 @@ offset_left = -457.0
 offset_top = -846.0
 offset_right = 3334.0
 offset_bottom = 3155.0
-color = Color(0, 0, 0, 0.529412)
+color = Color(0.137974, 0.0864479, 0.193928, 0.380392)
 
 [node name="Background" type="TextureRect" parent="MapBackground"]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -360.0
-offset_right = 1030.0
-offset_bottom = 2251.0
+offset_left = -243.0
+offset_top = -387.0
+offset_right = 247.0
+offset_bottom = 1139.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_u561b")
+texture = ExtResource("3_scbsi")
 
 [node name="MapAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_6377y")
 autoplay = true
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+offset_left = -1311.0
+offset_top = -1454.0
+offset_right = 2487.0
+offset_bottom = 3139.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

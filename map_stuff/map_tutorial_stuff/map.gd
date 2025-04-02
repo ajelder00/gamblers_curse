@@ -1,4 +1,3 @@
-class_name Map
 extends Node2D
 
 const SCROLL_SPEED := 40
@@ -22,6 +21,7 @@ signal map_exited
 @onready var parent = get_parent()
 @onready var background = $MapBackground/Background
 @onready var map_audio: AudioStreamPlayer2D = $MapAudio
+@onready var fade = $Fade  # Reference to the fade node
 
 var map_data: Array[Array]
 var floors_climbed: int
@@ -34,6 +34,9 @@ func _ready() -> void:
 	unlock_floor(-1)
 	# Start playing map audio when the scene is ready
 	map_audio.play()
+	# Fade out the $Fade node on scene ready
+	fade.modulate.a = 1.0  # Ensure it starts fully opaque
+	create_tween().tween_property(fade, "modulate:a", 0.0, 1.0)
 
 func get_lower_clamp(num_floors: int) -> float:
 	var base_offset := 1000.0
@@ -89,6 +92,8 @@ func unlock_next_rooms() -> void:
 			map_room.available = true
 
 func show_map() -> void:
+	fade.modulate.a = 1.0  # Ensure it starts fully opaque
+	create_tween().tween_property(fade, "modulate:a", 0.0, 1.0)
 	show()
 	camera_2d.enabled = true
 	unlock_next_rooms()
@@ -96,6 +101,8 @@ func show_map() -> void:
 	map_audio.play()
 
 func hide_map() -> void:
+	fade.modulate.a = 0.0  # Ensure it starts fully opaque
+	create_tween().tween_property(fade, "modulate:a", 1.0, 0.0)
 	hide()
 	camera_2d.enabled = false
 	# Stop map audio when hiding the map
@@ -130,7 +137,7 @@ func _on_map_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	Global.difficulty += 1
-	map_exited.emit(room) # I dont know what this signal does, but it scares me to delete it
+	map_exited.emit(room)  # I dont know what this signal does, but it scares me to delete it
 	
 	var scene_to_load # Determine which scene to load based on the room type
 	match room.type:
