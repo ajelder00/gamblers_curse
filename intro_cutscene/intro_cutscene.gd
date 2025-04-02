@@ -46,7 +46,9 @@ func switch_images() -> void:
 	tween.tween_property($Fade, "modulate:a", 0.0, 1.0)
 	await tween.finished
 
+
 	await show_message(messages[0])
+
 	
 	await get_tree().create_timer(1.0).timeout
 	$Varinshade.visible = false
@@ -56,15 +58,17 @@ func switch_images() -> void:
 	$SFX.play()
 	$Music.stop()
 	
-	await(1)
+	await get_tree().create_timer(1.5).timeout
+
 	await show_message(messages[1])
-	
+
 	
 	await get_tree().create_timer(1.0).timeout
 
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 1.0, 1.0)
 	await tween.finished
+	await get_tree().create_timer(1.0).timeout
 
 	$DarkKingdom.visible = false
 	$KingThrone.visible = true
@@ -83,13 +87,13 @@ func switch_images() -> void:
 	show_message(messages[2])
 	
 	var tween_throne = create_tween()
-	tween_throne.tween_property($KingThrone, "position:y", $KingThrone.position.y + 300, 8.0)
+	tween_throne.tween_property($KingThrone, "position:y", $KingThrone.position.y + 300, 6.0)
 	
 	var tween_king = create_tween()
-	tween_king.tween_property($King, "position:y", $King.position.y + 300, 8.0)
+	tween_king.tween_property($King, "position:y", $King.position.y + 300, 6.0)
 	
 	var tween_dice = create_tween()
-	tween_dice.tween_property($Dice, "position:y", $Dice.position.y + 300, 8.0)
+	tween_dice.tween_property($Dice, "position:y", $Dice.position.y + 300, 6.0)
 
 	await tween_throne.finished
 	await tween_king.finished
@@ -112,7 +116,7 @@ func switch_images() -> void:
 	show_message(messages[3])
 	
 	var tween_suffer = $Suffer.create_tween()
-	tween_suffer.tween_property($Suffer, "position:y", $Suffer.position.y - 300, 8.0)
+	tween_suffer.tween_property($Suffer, "position:y", $Suffer.position.y - 100, 8.0)
 	await tween_suffer.finished
 
 	tween = $Fade.create_tween()
@@ -137,9 +141,11 @@ func switch_images() -> void:
 	tween_scale.tween_property($Village, "scale", $Village.scale * 1.2, 5.0)
 	await tween_scale.finished
 	
-	await show_message(messages[5])
+	await get_tree().create_timer(1.0).timeout
 	
-	await(3)
+	show_message(messages[5])
+	
+	await get_tree().create_timer(3.0).timeout
 
 	tween = $Fade.create_tween()
 	tween.tween_property($Fade, "modulate:a", 1.0, 1.0)
@@ -147,3 +153,6 @@ func switch_images() -> void:
 	var music_tween = $Music.create_tween()
 	music_tween.tween_property($Music, "volume_db", -80, 1.0)
 	await music_tween.finished
+	
+	const MAP_SCENE = preload("res://map_stuff/map_controller.tscn")
+	get_tree().change_scene_to_packed(MAP_SCENE)
