@@ -28,7 +28,7 @@ var enemies_by_tier = {
 signal player_healed(heal_amount)
 
 var coins := 20
-var dummy_dice: Array = [standard, risky, poison, healing, blinding, drowning]
+var dummy_dice: Array = [standard, risky, poison, healing, blinding, drowning, fire]
 
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
@@ -62,7 +62,7 @@ var shop_dict = {
 
 var player_health = 200
 
-var attempts = 0
+var attempts = 1
 
 func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	new_die.type = type

@@ -191,9 +191,11 @@ func _handle_enemy_defeat() -> void:
 func _start_defeat_typing(defeat_messages: Array) -> void:
 	for message in defeat_messages:
 		roll_message_label.text = ""
+		Global.typing = true
 		for i in range(message.length()):
 			roll_message_label.text += message[i]
 			await get_tree().create_timer(speed).timeout
+		Global.typing = false
 		# Pause briefly between messages.
 		await get_tree().create_timer(1.0).timeout
 
