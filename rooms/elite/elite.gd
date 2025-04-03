@@ -155,11 +155,12 @@ func _enemy_turn() -> void:
 		enemy_dice.roll_die(enemy_dice.faces)
 		await player.damage_over
 	player.apply_status_self(player.current_effects)
+	await player.effects_over
 	if (Global.player_health <= 0):
 		_handle_player_defeat()
 		return
 		print("YOU DIED")
-	await player.effects_over
+	
 	player.get_node("Dice Roller").new_turn()
 
 func _on_enemy_damage(damage_packet: Damage) -> void:
@@ -185,6 +186,7 @@ func _handle_enemy_defeat() -> void:
 	# Type out the defeat messages.
 	await _start_defeat_typing(defeat_messages)
 	# Fade in the map after messages.
+	Global.can_heal = true
 	fade_in_map()
 
 # New function to type out defeat messages.

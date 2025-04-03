@@ -190,8 +190,8 @@ func apply_status_self(effect_names) -> void:
 					if effect.duration <= 3:
 						effect.duration -= 1
 						update_indicators()
-						health = max(0, health - effect.damage_number)
-						floating_text(("-" + str(effect.damage_number)), Color.BLUE)
+						health = max(0, health - (effect.damage_number + 4))
+						floating_text(("-" + str(effect.damage_number)), Color.DODGER_BLUE)
 						parent.update_health_display()
 						sprite.modulate = Color(0, 0, 1)
 						sprite.play(ANIMS[type][1])
@@ -199,6 +199,7 @@ func apply_status_self(effect_names) -> void:
 						sprite.play(ANIMS[type][3])
 						sprite.modulate = Color(1, 1, 1)
 					elif effect.duration > 3:
+						floating_text("LOSING AIR", Color.AQUAMARINE)
 						effect.duration -= 1
 						update_indicators()
 					print(affected_accuracy)
