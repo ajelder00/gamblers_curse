@@ -5,7 +5,7 @@ signal pop_over
 
 @onready var ORIGINAL_ROLLS = 3
 @onready var current_rolls = ORIGINAL_ROLLS
-@onready var dice_bucket = Global.large_dummy_dice.duplicate()
+@onready var dice_bucket = Global.dice.duplicate()
 @onready var positions := get_children()
 @onready var parent = get_parent()
 var dont_gray = false
@@ -15,7 +15,7 @@ var gone_twice = false
 
 func _ready():
 	
-	# dice_bucket.shuffle()
+	dice_bucket.shuffle()
 	# Grabs the positions from the battle scene
 	if self.get_parent().get_parent():
 		var battle = self.get_parent().get_parent()
@@ -159,7 +159,6 @@ func reset_positions():
 	var last_index = 0
 	var positions_filled = 0
 	for j in range(len(current_dice) - 3):
-		print(j)
 		if positions_filled > 10:
 			break
 			
@@ -181,11 +180,9 @@ func reset_positions():
 		last_index = j
 	
 	if positions_filled >= 10:
-		print("filled")
 		return
 	
 	for j in range(last_index, len(current_dice)):
-		print("entered the second loop")
 		# makes dice that end up in the selectable 5 first dice selectable
 		if j < 5:
 			current_dice[j].activate()
@@ -202,3 +199,7 @@ func reset_positions():
 		
 		var tween_transparency = get_tree().create_tween()
 		tween_transparency.tween_property(current_dice[j], "modulate:a", 1, 0.2).set_trans(Tween.TRANS_SINE)
+
+func deactivate_dice():
+	for die in current_dice:
+		die.deactivate()
