@@ -52,6 +52,8 @@ func first_turn():
 		current_dice[i].animation_player.animation = current_dice[i].ANIMS[current_dice[i].type][0]
 		if i < 10:
 			current_dice[i].global_position = positions[i].global_position + Vector2(0, -20)
+		else: 
+			current_dice[i].global_position = positions[-1].global_position + Vector2(-20, 0)
 			
 		if i < 5:
 			current_dice[i].activate()
@@ -180,6 +182,8 @@ func reset_positions():
 		last_index = j
 	
 	if positions_filled >= 10:
+		for i in range(10, len(current_dice)):
+			current_dice[i].global_position = positions[-1].global_position + Vector2(-20, 0)
 		return
 	
 	for j in range(last_index, len(current_dice)):
