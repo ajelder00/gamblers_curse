@@ -3,6 +3,9 @@ extends Node2D
 const MAX_TURNS := 5
 const FIXED_TARGET_SCORE := 19
 
+var healing_bonus: int = 0
+var healing_penalty: int = 0
+
 var player_inventory = Global.dice
 
 @onready var label_coins: Label = $CoinDisplay
@@ -24,7 +27,7 @@ var sway = true
 
 var messages
 var message_index: int = 0
-@export var speed: float = 0.03  # Time delay between letters
+@export var speed: float = 0.025  # Time delay between letters
 
 @onready var inventory_positions = [
 	$StartPosition1, $StartPosition2, $StartPosition3,
@@ -191,7 +194,7 @@ func select_dice_from_inventory(index: int, pos_node: Node2D):
 	selected_dice.append(new_instance)
 	num_selected += 1
 
-	await start_typing("Selected %d of 5 dice." % num_selected, true)
+	start_typing("Selected %d of 5 dice." % num_selected, false)
 
 	if num_selected == 5:
 		payout_button.disabled = false
@@ -213,18 +216,53 @@ func _on_die_rolled(damage: Damage) -> void:
 	player_score += damage.damage_number
 	label_score.text = "Score: %d" % player_score
 
-	if damage.status == Global.Status.POISON:
-		var old_target = target_score
-		target_score = max(10, target_score - 2)
+	match damage.status:
+		Global.Status.POISON:
+			target_score = max(10, target_score - 2)
+			label_target.text = "Target: %d" % target_score
+			await start_typing("Poison! Target reduced.", true)
+		Global.Status.DROWNING:
+			player_score = max(0, player_score - 1)
+			label_score.text = "Score: %d" % player_score
+			await start_typing("Drowning! Score dropped by 1.", true)
+		Global.Status.FROZEN:
+			if randf() < 0.5:
+				await start_typing("Frozen! Dice had no effect.", true)
+				return
+			else:
+				damage.damage_number = int(max(1, damage.damage_number / 2))
+				player_score = max(0, player_score - int(damage.damage_number / 2))
+				label_score.text = "Score: %d" % player_score
+				await start_typing("Frozen! Weakened roll.", true)
+		Global.Status.HYPNOSIS:
+			await start_typing("Hypnosis! Visual confusion. No gameplay impact.", true)
+		Global.Status.BLINDNESS:
+			await start_typing("Blinded! Next roll unclear.", true)
+
+	# Handle Chance dice manually
+	if damage.type == Dice.Type.CHANCE:
+		if damage.damage_number == 0:
+			player_score = 0
+			label_score.text = "Score: 0"
+			await start_typing("Chance Backfire! Instant Bust.", true)
+			rolls_this_turn = rolls_expected
+			call_deferred("calculate_payout")
+			return
+		else:
+			await start_typing("Chance Success! Mega Roll.", true)
+
+	# Handle Healing dice manually
+	if damage.type == Dice.Type.HEALING:
+		healing_bonus += 5
+		healing_penalty += 2
+		target_score += 2
 		label_target.text = "Target: %d" % target_score
-		await start_typing("You rolled a %d. Poison! Target reduced from %d to %d." % [damage.damage_number, old_target, target_score], true)
-	elif damage.status != Global.Status.NOTHING:
-		await start_typing("Rolled with status: %s." % str(damage.status), false)
-	else:
-		await start_typing("You rolled a %d." % damage.damage_number, false)
+		await start_typing("Healing! Bonus +5 payout, target harder.", true)
+
+	if damage.status == Global.Status.NOTHING:
+		await start_typing("Rolled %d." % damage.damage_number, false)
 
 	rolls_this_turn += 1
-
 	if rolls_this_turn == rolls_expected:
 		call_deferred("calculate_payout")
 
@@ -246,20 +284,22 @@ func calculate_payout():
 		var diff = target_score - player_score
 		if diff == 0:
 			payout = 20
-			coin_sound_player.play()
-			await start_typing("Jackpot! You earned %d coins." % payout, true)
-			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)
 		elif diff <= 2:
 			payout = 10
+
+		payout += healing_bonus
+		if payout > 0:
 			coin_sound_player.play()
-			await start_typing("Close enough! %d away. You earned %d coins." % [diff, payout], true)
-			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)		
+			await start_typing("You earned %d coins." % payout, true)
+			floating_text("+" + str(payout) + " GOLD", Color.GOLDENROD, player.global_position)
 		else:
 			await start_typing("Too far from target. No payout.", true)
 
 	Global.coins += payout
 	total_coins_earned += payout
 	label_coins.text = str(Global.coins)
+	healing_bonus = 0
+	healing_penalty = 0
 
 	await get_tree().create_timer(2.1).timeout
 	exit_button.disabled = false
@@ -297,6 +337,7 @@ func clear_overlay_buttons():
 
 func _on_exit_button_pressed() -> void:
 	print("pressed")
+	Global.typing = false
 	queue_free()
 
 # message typing

@@ -128,6 +128,10 @@ func _on_player_attack() -> void:
 	if Global.player_health > 0 and enemy and enemy.health > 0:
 		_player_turn()
 		await enemy.damage_over
+		if (Global.player_health <= 0):
+			_handle_player_defeat()
+			return
+			print("YOU DIED")
 		print("Enemy Turn Starting")
 		_enemy_turn()
 
@@ -140,6 +144,7 @@ func _player_turn() -> void:
 	await player_sprite.animation_finished
 	player_sprite.play("idle")
 	enemy.get_hit(player.hit())
+	
 
 func _enemy_turn() -> void:
 	if enemy.health <= 0:

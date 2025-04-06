@@ -333,14 +333,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Rules" type="Label" parent="RulesNode"]
 z_index = 1
-offset_left = 159.0
-offset_top = 175.0
-offset_right = 572.0
-offset_bottom = 322.0
-scale = Vector2(2, 2)
+offset_left = 273.0
+offset_top = 159.0
+offset_right = 686.0
+offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_e1s8s")
-theme_override_font_sizes/font_size = 12
 text = "The dealer's target score is 19. 
 
 You pick 5 dice from your inventory and hope to roll as close to 19 as possible. 19 is jackpot and pays quadruple the bet! If you are within 2 of the target score you will receive double payout. If you roll above 17 you will bust, losing the hand and your bet.

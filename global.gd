@@ -8,6 +8,9 @@ var blinding := load("res://dice/blinding/blinding_dice.tscn")
 var drowning := load("res://dice/drowning/drowning_dice.tscn")
 var fire := load("res://dice/fire/fire_dice.tscn")
 var char := load("res://dice/char/char_dice.tscn")
+var chance := load("res://dice/chance/chance_dice.tscn")
+var hypnosis := load("res://dice/hypnosis/hypnosis_dice.tscn")
+var frozen := load("res://dice/frozen/frozen_dice.tscn")
 
 var goblin := load("res://dummy_enemy/enemies/goblin/goblin.tscn")
 var headsman := load("res://dummy_enemy/enemies/headsman/headsman.tscn")
@@ -28,17 +31,19 @@ var enemies_by_tier = {
 signal player_healed(heal_amount)
 
 var coins := 20
-var dummy_dice: Array = [standard, risky, poison, healing, blinding, drowning, fire]
-var large_dummy_dice: Array = [standard, standard, standard, standard, standard, healing, healing, healing, healing, healing, blinding, blinding, blinding, blinding, blinding, ]
+var dummy_dice: Array = [standard, risky, poison, 
+						  healing, blinding, drowning, 
+						  fire, chance, hypnosis, 
+						  frozen, ]
 
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
-var dice : Array = [standard, standard, fire, fire, fire]
+var dice : Array = [frozen, frozen, standard, standard, standard, hypnosis]
 
 var can_heal : bool = true
 var difficulty: int = 0
 
-enum Status { NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING, DROWNING, FIRE}
+enum Status { NOTHING, POISON, BLINDNESS, SHIELD, CURSE, BLEEDING, DROWNING, FIRE, HYPNOSIS, FROZEN}
 
 const STATUS_PICS := {
 	Status.POISON: "res://art/poison_effect.png",
@@ -46,7 +51,9 @@ const STATUS_PICS := {
 	Status.CURSE: "res://art/curse_effect.png",
 	Status.BLEEDING: "res://art/bleeding_effect.png",
 	Status.DROWNING: "res://art/water_effect.png",
-	Status.FIRE: "res://art/fire_effect.png"
+	Status.FIRE: "res://art/fire_effect.png", 
+	Status.HYPNOSIS: "res://art/hypnosis_effect.png",
+	Status.FROZEN: "res://art/frozen_effect.png"
 }
 
 var shop_dict = {
@@ -56,7 +63,10 @@ var shop_dict = {
 	Dice.Type.HEALING: healing,
 	Dice.Type.BLIND: blinding,
 	Dice.Type.DROWNING: drowning,
-	Dice.Type.FIRE: fire
+	Dice.Type.FIRE: fire,
+	Dice.Type.CHANCE: chance, 
+	Dice.Type.HYPNOSIS: hypnosis, 
+	Dice.Type.FROZEN: frozen
 }
 
 
@@ -78,6 +88,10 @@ func heal(health) -> void:
 	else:
 		Global.player_health = max(Global.player_health - health, 0)
 		player_healed.emit(health)
+		
+func self_destruct() -> void:
+	player_health = 0
+	player_healed.emit(-999) 
 
 # --- Audio Loading and Playback ---
 

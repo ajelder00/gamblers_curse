@@ -6,7 +6,7 @@ var status_effect := Global.Status.NOTHING
 
 enum Type{STANDARD, RISKY, DEIGHT, POISON, SPLIT, HYPNOSIS, 
 	HEALING, BERSERK, VAMPIRE, SHIELD, ROCK, BLIND,
-	DTWO, RUSSIAN, DONEHUNDRED, DROWNING, FIRE, CHAR
+	DTWO, RUSSIAN, DONEHUNDRED, DROWNING, FIRE, CHAR, CHANCE, FROZEN
 	}
 
 const ANIMS := {
@@ -17,8 +17,12 @@ const ANIMS := {
 	Type.BLIND: ["blank_blind", "roll_blind", "faces_blind"],
 	Type.DROWNING: ["blank_drowning", "roll_drowning", "faces_drowning"],
 	Type.FIRE: ["blank_fire", "roll_fire", "faces_fire"],
-	Type.CHAR: ["blank_char", "roll_char", "faces_char"]
+	Type.CHAR: ["blank_char", "roll_char", "faces_char"], 
+	Type.CHANCE: ["blank_chance", "roll_chance", "faces_chance"], 
+	Type.HYPNOSIS: ["blank_hypnosis", "roll_hypnosis", "faces_hypnosis"],
+	Type.FROZEN: ["blank_frozen", "roll_frozen", "faces_frozen"]
 }
+
 const TYPE_NAMES := {
 	Type.STANDARD: ["Standard"],
 	Type.RISKY: ["Risky"],
@@ -27,7 +31,10 @@ const TYPE_NAMES := {
 	Type.BLIND: ["Blinding"],
 	Type.DROWNING: ["Water"],
 	Type.FIRE: ["Fire"],
-	Type.CHAR: ["Charred"]
+	Type.CHAR: ["Charred"], 
+	Type.CHANCE: ["Chance"], 
+	Type.HYPNOSIS: ["Hypnosis"], 
+	Type.FROZEN: ["Frozen"]
 }
 
 signal rolled(damage_packet: Damage)

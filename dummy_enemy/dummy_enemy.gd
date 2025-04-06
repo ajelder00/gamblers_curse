@@ -100,16 +100,33 @@ func setup_ui() -> void:
 		label.text = ""
 
 func _on_die_rolled(damage_packet: Damage):
+	var is_frozen = false 
+	
 	if accuracy >= randf_range(0, 1):
-		damage = damage_packet
+		for effect in self_statuses:
+			if effect.status == Global.Status.FROZEN and effect.duration > 0:
+				is_frozen = true
+				if randf() < 0.01:
+					floating_text("Frozen — Can't Attack!", Color.SKY_BLUE)
+					damage =  Damage.create(0, Global.Status.NOTHING, 0, dice.type)
+				else: 
+					damage = Damage.create(int(floor(damage_packet.damage_number / 2)), damage_packet.status, damage_packet.duration, damage_packet.type, damage_packet.accuracy)
+					floating_text("Frozen — Weakened!", Color.LIGHT_BLUE)
+					print(damage.damage_number)
+				break
+		if is_frozen == false: 
+			print('not frozen')
+			damage = damage_packet
 	else: 
 		damage =  Damage.create(0, Global.Status.NOTHING, 0, dice.type)
+		
 	await dice.animation_player.animation_finished
 	damage_to_player.emit(damage)
 	attack_sound.play()
 	sprite.play(ANIMS[type][0])
 	await sprite.animation_finished
 	sprite.play(ANIMS[type][3])
+
 
 # --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
 func initialize_enemy() -> void:
@@ -119,6 +136,24 @@ func initialize_enemy() -> void:
 # --- Enemy Takes Damage ---
 func get_hit(damage_packet_list: Array) -> void:
 	for packet in damage_packet_list: # Checks through each sent packet from the player
+		if packet.type == Dice.Type.CHANCE:
+			if packet.damage_number == 999:
+				update_indicators()
+				sprite.play(ANIMS[type][1])
+				hit_sound.play()
+				floating_text("LUCKY STRIKE!", Color.YELLOW)
+				health = max(0, health - packet.damage_number)
+				floating_text(("-" + str(packet.damage_number)), Color.DARK_RED)
+				parent.update_health_display() # applies damage and prevents negative health
+				await sprite.animation_finished
+				sprite.play(ANIMS[type][3])
+				continue
+			elif packet.damage_number == -999:
+				Global.can_heal = false
+				#player dies
+				Global.self_destruct()
+				print("Chance backfire (meant for player) ignored by enemy.")
+				continue
 		if packet.type == Dice.Type.HEALING:
 			Global.heal(packet.damage_number)
 			await get_tree().create_timer(1).timeout
@@ -161,6 +196,27 @@ func apply_status_self(effect_names) -> void:
 		print("duration: " + str(effect.duration))
 		print(effect_names)
 		match effect.status:
+			Global.Status.FROZEN: 
+				if effect.duration > 0: 
+					effect.duration -= 1
+					update_indicators()
+					floating_text("FROZEN!", Color.SKY_BLUE)
+					# Add frosty visual cue
+					var tween = get_tree().create_tween()
+					tween.tween_property(sprite, "modulate", Color(0.6, 0.8, 1.0), 0.5)
+					await tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.5).finished
+			Global.Status.HYPNOSIS:
+				if effect.duration > 0:
+					effect.duration -= 1
+					update_indicators()
+					# Skip enemy turn logic — we’ll prevent damage emission
+					floating_text("!! HYPNOTIZED !!", Color.MEDIUM_PURPLE)
+					sprite.modulate = Color(0.6, 0.3, 0.9)
+					await get_tree().create_timer(1).timeout
+					sprite.modulate = Color(1, 1, 1)
+					# Early return before damage_over
+					damage_over.emit()
+					return
 			Global.Status.POISON:
 				if effect.duration > 0: # The dice returns effect[type, duration], so effect[1] is duration
 					health = max(0, health - effect.damage_number)

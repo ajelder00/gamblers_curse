@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d8pbao4ve3mq"]
+
+[ext_resource type="PackedScene" uid="uid://b1vwcx3yj158n" path="res://dice/dice.tscn" id="1_d78pe"]
+[ext_resource type="Script" path="res://dice/hypnosis/hypnosis_dice.gd" id="2_y8qcj"]
+
+[node name="Dice" instance=ExtResource("1_d78pe")]
+script = ExtResource("2_y8qcj")
