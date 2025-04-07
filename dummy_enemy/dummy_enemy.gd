@@ -2,7 +2,7 @@ extends Node2D
 class_name DummyEnemy  
 
 # --- Enemy Properties ---
-enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF, KING}
+enum Type{AXEMAN, GOBLIN, KNIGHT, LANCER, ORCRIDER, SKELETON, WIZARD, WOLF, KING, SLIME}
 var damage
 var self_statuses := []
 var accuracy = base_accuracy
@@ -20,7 +20,8 @@ const ANIMS := {
 	Type.SKELETON: ["attack_skeleton", "damage_skeleton", "dead_skeleton", "idle_skeleton"],
 	Type.WIZARD: ["attack_wizard", "damage_wizard", "dead_wizard", "idle_wizard"],
 	Type.WOLF: ["attack_wolf", "damage_wolf", "dead_wolf", "idle_wolf"],
-	Type.KING: ["attack_king", "damage_king", "dead_king", "idle_king"]
+	Type.KING: ["attack_king", "damage_king", "dead_king", "idle_king"],
+	Type.SLIME: ["attack_slime", "damage_slime", "dead_slime", "idle_slime"]
 }
 
 const NAMES := {

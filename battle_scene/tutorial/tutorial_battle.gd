@@ -428,11 +428,6 @@ func update_health_display() -> void:
 	# Update player health label text and bar sizes.
 	if player_health_label:
 		player_health_label.text = str(Global.player_health) + " HP"
-	if player_health:
-		var health_ratio_player = float(Global.player_health) / 100.0
-		var new_size_player = health_ratio_player * MAX_HEALTH_BAR_WIDTH
-		player_health.size.x = new_size_player
-		player_health2.size.x = new_size_player
 
 func slide_in_text_ui() -> void:
 	# Ensure DiceopediaUI is off screen before sliding text in.
