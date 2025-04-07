@@ -38,7 +38,7 @@ var dummy_dice: Array = [standard, risky, poison,
 
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
-var dice : Array = [frozen, frozen, standard, standard, standard, hypnosis]
+var dice : Array = [standard, standard, standard, drowning, drowning, drowning]
 
 var can_heal : bool = true
 var difficulty: int = 0
@@ -73,7 +73,7 @@ var shop_dict = {
 
 var player_health = 200
 
-var attempts = 1
+var attempts = 0
 
 func add_dice(new_die: Dice, type: Dice.Type) -> void:
 	new_die.type = type

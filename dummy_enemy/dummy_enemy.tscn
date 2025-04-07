@@ -931,7 +931,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_axeman",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -954,7 +954,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_goblin",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -980,7 +980,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_king",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1006,7 +1006,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_knight",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1035,7 +1035,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_lancer",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1067,7 +1067,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_orcrider",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1090,7 +1090,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_skeleton",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1111,9 +1111,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wwk53")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_slime",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1136,7 +1136,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_wizard",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1185,7 +1185,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_axeman",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1205,7 +1205,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_goblin",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1225,7 +1225,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_king",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1242,7 +1242,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_knight",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1259,7 +1259,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_lancer",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1276,7 +1276,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_orcrider",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1293,7 +1293,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_skeleton",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1308,9 +1308,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gu5xv")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage_slime",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1327,7 +1327,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_wizard",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1344,7 +1344,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage_wolf",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1361,7 +1361,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_axeman",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1378,7 +1378,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_goblin",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1412,7 +1412,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_knight",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1429,7 +1429,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_lancer",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1446,7 +1446,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_orcrider",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1463,7 +1463,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_skeleton",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1478,9 +1478,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kl6ly")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_slime",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1497,7 +1497,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_wizard",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1514,7 +1514,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead_wolf",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1537,7 +1537,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_axeman",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1560,7 +1560,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_goblin",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1583,7 +1583,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_king",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1606,7 +1606,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_knight",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1629,7 +1629,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_lancer",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1652,7 +1652,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_orcrider",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1675,7 +1675,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_skeleton",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1695,7 +1695,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_slime",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1718,7 +1718,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_wizard",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1741,7 +1741,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_wolf",
-"speed": 6.0
+"speed": 7.0
 }]
 
 [node name="dummy_enemy" type="Node2D"]
@@ -1753,7 +1753,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_aua4h")
-animation = &"idle_slime"
+animation = &"idle_wolf"
 
 [node name="StatusIndicator1" type="Sprite2D" parent="."]
 position = Vector2(10, -147)

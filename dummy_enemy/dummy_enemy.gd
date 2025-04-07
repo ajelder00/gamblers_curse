@@ -248,9 +248,9 @@ func apply_status_self(effect_names) -> void:
 						effect.duration -= 1
 						update_indicators()
 						health = max(0, health - (effect.damage_number + 4))
-						floating_text(("-" + str(effect.damage_number)), Color.DODGER_BLUE)
+						floating_text(("-" + str(effect.damage_number + 4)), Color.DODGER_BLUE)
 						parent.update_health_display()
-						sprite.modulate = Color(0, 0, 1)
+						sprite.modulate = Color(0.2, 0.2, 1)
 						sprite.play(ANIMS[type][1])
 						await sprite.animation_finished
 						sprite.play(ANIMS[type][3])
@@ -259,6 +259,7 @@ func apply_status_self(effect_names) -> void:
 						floating_text("LOSING AIR", Color.AQUAMARINE)
 						effect.duration -= 1
 						update_indicators()
+						await get_tree().create_timer(.5).timeout
 					print(affected_accuracy)
 			Global.Status.FIRE:
 				if effect.duration > 0:
@@ -305,7 +306,7 @@ func apply_status_self(effect_names) -> void:
 			revert_fire(effect)
 	update_indicators()
 	if effect_names != []:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 	accuracy = max(affected_accuracy, 0.3)
 	print("accuracy: " + str(accuracy))
 	update_indicators()

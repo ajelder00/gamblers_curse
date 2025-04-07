@@ -77,9 +77,12 @@ func _on_die_rolled(damage_packet: Damage):
 			var packet_3_damage = current_results[len(current_results)-1].damage_number
 			if packet_1_damage == packet_2_damage and packet_1_damage == packet_3_damage and not gone_twice and len(current_results) >= 3:
 				parent.floating_text("CRIT!", Color.DARK_RED)
-				await get_tree().create_timer(1.4).timeout
+				await get_tree().create_timer(0.7).timeout
 				parent.floating_text("GO AGAIN", Color.AZURE)
 				current_rolls = ORIGINAL_ROLLS
+				current_results[len(current_results)-3].damage_number *= 2
+				current_results[len(current_results)-2].damage_number *= 2
+				current_results[len(current_results)-1].damage_number *= 2
 				pop_dice()
 				await pop_over
 				reset_positions()
@@ -87,19 +90,19 @@ func _on_die_rolled(damage_packet: Damage):
 				return
 			elif packet_1_damage == packet_2_damage and not gone_twice and (len(current_results) == 6 or len(current_results) == ORIGINAL_ROLLS):
 				parent.floating_text("2 OF A KIND!", Color.AZURE)
-				await get_tree().create_timer(1.4).timeout
+				await get_tree().create_timer(0.7).timeout
 				parent.floating_text("2X DAMAGE", Color.AZURE)
 				current_results[len(current_results)-3].damage_number *= 2
 				current_results[len(current_results)-2].damage_number *= 2
 			elif packet_2_damage == packet_3_damage and (len(current_results) >= 5 or len(current_results) == ORIGINAL_ROLLS):
 				parent.floating_text("2 OF A KIND!", Color.AZURE)
-				await get_tree().create_timer(1.4).timeout
+				await get_tree().create_timer(0.7).timeout
 				parent.floating_text("2X DAMAGE", Color.AZURE)
 				current_results[len(current_results)-2].damage_number *= 2
 				current_results[len(current_results)-1].damage_number *= 2
 			elif packet_1_damage == packet_3_damage and (len(current_results) == 6 or len(current_results) == ORIGINAL_ROLLS):
 				parent.floating_text("2 OF A KIND!", Color.AZURE)
-				await get_tree().create_timer(1.4).timeout
+				await get_tree().create_timer(0.7).timeout
 				parent.floating_text("2X DAMAGE", Color.AZURE)
 				current_results[len(current_results)-3].damage_number *= 2
 				current_results[len(current_results)-1].damage_number *= 2

@@ -152,7 +152,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -169,7 +169,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,7 +189,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"get_hit",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -212,7 +212,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -252,7 +252,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_40ksk")
-animation = &"walk"
+animation = &"attack"
 
 [node name="Dice Roller" parent="." instance=ExtResource("4_fdqlr")]
 position = Vector2(26, 147)

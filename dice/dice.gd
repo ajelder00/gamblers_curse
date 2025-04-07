@@ -75,7 +75,6 @@ func _on_button_pressed() -> void:
 	button.hide()
 	if not get_parent().dont_gray:
 		await animation_player.animation_finished
-		await get_tree().create_timer(.2).timeout
 		self.deactivate()
 
 func roll_die(faces) -> void:
@@ -119,6 +118,6 @@ func deactivate():
 	if animation_player.is_playing():
 		await animation_player.animation_finished
 		await get_tree().create_timer(.2).timeout
-	await get_tree().create_timer(.6).timeout
+	await get_tree().create_timer(.1).timeout
 	animation_player.modulate = Color(0.5, 0.5, 0.5, 1)
 	button.mouse_filter = Control.MOUSE_FILTER_PASS

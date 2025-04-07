@@ -179,29 +179,29 @@ region = Rect2(64, 400, 16, 16)
 atlas = ExtResource("1_od3an")
 region = Rect2(80, 400, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_06gch"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xur2x"]
 atlas = ExtResource("1_od3an")
-region = Rect2(0, 560, 16, 16)
+region = Rect2(0, 544, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nh6fo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8sw7"]
 atlas = ExtResource("1_od3an")
-region = Rect2(16, 560, 16, 16)
+region = Rect2(16, 544, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xk5ua"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jalhn"]
 atlas = ExtResource("1_od3an")
-region = Rect2(32, 560, 16, 16)
+region = Rect2(32, 544, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eeqh2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sjmu"]
 atlas = ExtResource("1_od3an")
-region = Rect2(48, 560, 16, 16)
+region = Rect2(48, 544, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2qg2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwhir"]
 atlas = ExtResource("1_od3an")
-region = Rect2(64, 560, 16, 16)
+region = Rect2(64, 544, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8n7bg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7adk"]
 atlas = ExtResource("1_od3an")
-region = Rect2(80, 560, 16, 16)
+region = Rect2(80, 544, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq8ip"]
 atlas = ExtResource("1_od3an")
@@ -789,22 +789,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06gch")
+"texture": SubResource("AtlasTexture_xur2x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nh6fo")
+"texture": SubResource("AtlasTexture_q8sw7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xk5ua")
+"texture": SubResource("AtlasTexture_jalhn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eeqh2")
+"texture": SubResource("AtlasTexture_3sjmu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o2qg2")
+"texture": SubResource("AtlasTexture_wwhir")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8n7bg")
+"texture": SubResource("AtlasTexture_y7adk")
 }],
 "loop": false,
 "name": &"faces_hypnosis",
@@ -900,7 +900,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_blind",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -923,7 +923,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_chance",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -946,7 +946,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_char",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -969,7 +969,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_cursed",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -992,7 +992,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_drowning",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1015,7 +1015,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_fire",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1038,7 +1038,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_frozen",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1061,7 +1061,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_healing",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1084,7 +1084,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_hypnosis",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1107,7 +1107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_poison",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1130,7 +1130,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_risky",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1153,7 +1153,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll_standard",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Dice" type="Node2D"]
@@ -1183,7 +1183,7 @@ color = Color(0, 0, 0, 0.384314)
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bcjl4")
-animation = &"faces_frozen"
+animation = &"roll_standard"
 
 [node name="Button" type="Button" parent="."]
 offset_left = -24.0
