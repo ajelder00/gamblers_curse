@@ -38,7 +38,7 @@ var dummy_dice: Array = [standard, risky, poison,
 
 # testing dice for dice roller
 var testing_dice : Array = [standard, standard, standard, standard, standard, healing]
-var dice : Array = [standard, standard, standard, drowning, drowning, drowning]
+var dice : Array = [hypnosis, frozen, standard, standard, standard, standard]
 
 var can_heal : bool = true
 var difficulty: int = 0

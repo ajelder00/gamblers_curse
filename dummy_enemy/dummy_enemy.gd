@@ -8,6 +8,9 @@ var self_statuses := []
 var accuracy = base_accuracy
 var fire_pop := {}
 
+var was_frozen_this_turn := false
+var was_hypnotized_this_turn := false
+
 signal damage_over
 signal damage_to_player(damage_packet: Damage)
 
@@ -101,32 +104,46 @@ func setup_ui() -> void:
 		label.text = ""
 
 func _on_die_rolled(damage_packet: Damage):
-	var is_frozen = false 
-	
+	var is_frozen = false
+
+	for effect in self_statuses:
+		if effect.status == Global.Status.HYPNOSIS and effect.duration > 0:
+			was_hypnotized_this_turn = true
+			floating_text("Enemy is asleep — Can't Attack!", Color.MEDIUM_PURPLE)
+			damage = Damage.create(0, Global.Status.NOTHING, 0, dice.type)
+			damage_to_player.emit(damage)
+			return
+
 	if accuracy >= randf_range(0, 1):
 		for effect in self_statuses:
 			if effect.status == Global.Status.FROZEN and effect.duration > 0:
 				is_frozen = true
+				was_frozen_this_turn = true
 				if randf() < 0.01:
 					floating_text("Frozen — Can't Attack!", Color.SKY_BLUE)
-					damage =  Damage.create(0, Global.Status.NOTHING, 0, dice.type)
-				else: 
-					damage = Damage.create(int(floor(damage_packet.damage_number / 2)), damage_packet.status, damage_packet.duration, damage_packet.type, damage_packet.accuracy)
+					damage = Damage.create(0, Global.Status.NOTHING, 0, dice.type)
+				else:
+					damage = Damage.create(
+						int(floor(damage_packet.damage_number / 2)),
+						damage_packet.status,
+						damage_packet.duration,
+						damage_packet.type,
+						damage_packet.accuracy
+					)
 					floating_text("Frozen — Weakened!", Color.LIGHT_BLUE)
-					print(damage.damage_number)
 				break
-		if is_frozen == false: 
-			print('not frozen')
+		if not is_frozen:
 			damage = damage_packet
-	else: 
-		damage =  Damage.create(0, Global.Status.NOTHING, 0, dice.type)
-		
+	else:
+		damage = Damage.create(0, Global.Status.NOTHING, 0, dice.type)
+
 	await dice.animation_player.animation_finished
 	damage_to_player.emit(damage)
 	attack_sound.play()
 	sprite.play(ANIMS[type][0])
 	await sprite.animation_finished
 	sprite.play(ANIMS[type][3])
+
 
 
 # --- Function to Initialize Enemy Values (To Be Overridden by Subclasses) ---
@@ -197,27 +214,16 @@ func apply_status_self(effect_names) -> void:
 		print("duration: " + str(effect.duration))
 		print(effect_names)
 		match effect.status:
-			Global.Status.FROZEN: 
-				if effect.duration > 0: 
+			Global.Status.FROZEN:
+				update_indicators()
+				if was_frozen_this_turn:
 					effect.duration -= 1
 					update_indicators()
-					floating_text("FROZEN!", Color.SKY_BLUE)
-					# Add frosty visual cue
-					var tween = get_tree().create_tween()
-					tween.tween_property(sprite, "modulate", Color(0.6, 0.8, 1.0), 0.5)
-					await tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.5).finished
 			Global.Status.HYPNOSIS:
-				if effect.duration > 0:
+				update_indicators()
+				if was_hypnotized_this_turn:
 					effect.duration -= 1
 					update_indicators()
-					# Skip enemy turn logic — we’ll prevent damage emission
-					floating_text("!! HYPNOTIZED !!", Color.MEDIUM_PURPLE)
-					sprite.modulate = Color(0.6, 0.3, 0.9)
-					await get_tree().create_timer(1).timeout
-					sprite.modulate = Color(1, 1, 1)
-					# Early return before damage_over
-					damage_over.emit()
-					return
 			Global.Status.POISON:
 				if effect.duration > 0: # The dice returns effect[type, duration], so effect[1] is duration
 					health = max(0, health - effect.damage_number)
@@ -309,6 +315,10 @@ func apply_status_self(effect_names) -> void:
 		await get_tree().create_timer(0.5).timeout
 	accuracy = max(affected_accuracy, 0.3)
 	print("accuracy: " + str(accuracy))
+	
+	was_frozen_this_turn = false
+	was_hypnotized_this_turn = false
+	
 	update_indicators()
 	print(dice_bucket)
 	damage_over.emit()
