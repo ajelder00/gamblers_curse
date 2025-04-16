@@ -11,6 +11,7 @@ var messages = [
 	"> IMMUNE TO THE CURSE, YOU SEEK FREEDOM FOR ALL..."
 ]
 
+
 func _ready() -> void:
 	$Varinshade.visible = true
 	$DarkKingdom.visible = false
