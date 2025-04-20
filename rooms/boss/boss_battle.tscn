@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://kjdose52w5iw" path="res://diceopedia/diceopedia.tscn" id="20_s7reg"]
 [ext_resource type="Texture2D" uid="uid://ckpvxr0cnes2a" path="res://battle_scene/art/royal.png" id="22_oqpuk"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1jvex"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_axg1r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -337,31 +337,6 @@ position = Vector2(371.48, 390.48)
 scale = Vector2(7.82, 7.82)
 texture = ExtResource("5_s3tcg")
 
-[node name="DiceopediaUI" type="Sprite2D" parent="."]
-position = Vector2(371.48, 390.48)
-scale = Vector2(7.82, 7.82)
-texture = ExtResource("5_s3tcg")
-
-[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
-z_index = 2
-position = Vector2(-26.0205, 24.2353)
-scale = Vector2(0.352738, 0.348067)
-sprite_frames = SubResource("SpriteFrames_1jvex")
-animation = &"open"
-script = ExtResource("19_rqsut")
-
-[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
-offset_left = -14.0
-offset_top = -13.0
-offset_right = 26.0
-offset_bottom = 9.0
-color = Color(1, 1, 1, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_s7reg")]
-position = Vector2(-32.265, -92.9504)
-scale = Vector2(0.17, 0.17)
-
 [node name="EnemyHealthUI" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(1000.48, 254.48)
@@ -443,3 +418,33 @@ autowrap_mode = 3
 
 [node name="KingPos" type="Marker2D" parent="."]
 position = Vector2(676, 222)
+
+[node name="DiceopediaUI" type="Sprite2D" parent="."]
+position = Vector2(371.48, 390.48)
+scale = Vector2(7.82, 7.82)
+texture = ExtResource("5_s3tcg")
+
+[node name="Diceopedia" type="AnimatedSprite2D" parent="DiceopediaUI"]
+z_index = 2
+position = Vector2(-27.9386, 24.1074)
+scale = Vector2(0.646, 0.646)
+sprite_frames = SubResource("SpriteFrames_axg1r")
+animation = &"open"
+script = ExtResource("19_rqsut")
+
+[node name="DiceopediaBook" parent="DiceopediaUI/Diceopedia" instance=ExtResource("20_s7reg")]
+position = Vector2(-30.2799, -116.126)
+scale = Vector2(0.198098, 0.200756)
+
+[node name="DiceopediaRect" type="ColorRect" parent="DiceopediaUI/Diceopedia"]
+anchors_preset = -1
+anchor_left = -0.375
+anchor_top = -0.25
+anchor_right = -0.375
+anchor_bottom = -0.25
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true

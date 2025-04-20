@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://kjdose52w5iw"]
+[gd_scene load_steps=24 format=3 uid="uid://kjdose52w5iw"]
 
 [ext_resource type="Script" path="res://diceopedia/diceopedia.gd" id="1_th667"]
 [ext_resource type="Texture2D" uid="uid://twp1y6wpaox6" path="res://art/diceopedia/diceopbg.png" id="2_c5nh5"]
@@ -64,6 +64,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_grodg"]
+atlas = ExtResource("3_f1t2t")
+region = Rect2(0, 512, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exmmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grodg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qd8c7"]
 atlas = ExtResource("3_f1t2t")
 region = Rect2(0, 336, 16, 16)
@@ -79,45 +94,60 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut0ox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb5m5"]
 atlas = ExtResource("3_f1t2t")
-region = Rect2(80, 176, 16, 16)
+region = Rect2(48, 416, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7olu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ut0ox")
+"texture": SubResource("AtlasTexture_mb5m5")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_abha5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k3mv"]
 atlas = ExtResource("3_f1t2t")
-region = Rect2(80, 64, 16, 16)
+region = Rect2(0, 448, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y3e7r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_abha5")
+"texture": SubResource("AtlasTexture_5k3mv")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ot12"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5std6"]
 atlas = ExtResource("3_f1t2t")
-region = Rect2(80, 160, 16, 16)
+region = Rect2(0, 544, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbgma"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ot12")
+"texture": SubResource("AtlasTexture_5std6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohwyl"]
+atlas = ExtResource("3_f1t2t")
+region = Rect2(0, 576, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhvr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohwyl")
 }],
 "loop": true,
 "name": &"default",
@@ -135,10 +165,10 @@ metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="."]
 z_index = 1
-offset_left = 487.0
-offset_top = 101.0
-offset_right = 589.0
-offset_bottom = 117.0
+offset_left = 469.0
+offset_top = 87.0
+offset_right = 583.0
+offset_bottom = 103.0
 scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "DICE-O-PEDIA"
@@ -157,88 +187,143 @@ offset_bottom = 595.0
 text = "BACK"
 
 [node name="Standard" type="AnimatedSprite2D" parent="."]
-position = Vector2(204.25, 205.25)
+position = Vector2(205.25, 174.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_p5nqp")
 
 [node name="Healing" type="AnimatedSprite2D" parent="."]
-position = Vector2(204.25, 275.25)
+position = Vector2(205.25, 244.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_qywvi")
 
 [node name="Risky" type="AnimatedSprite2D" parent="."]
-position = Vector2(204.25, 345.25)
+position = Vector2(205.25, 314.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_ts1ex")
 
 [node name="Poison" type="AnimatedSprite2D" parent="."]
-position = Vector2(204.25, 415.25)
+position = Vector2(205.25, 384.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_n2x6i")
 
+[node name="Frozen" type="AnimatedSprite2D" parent="."]
+position = Vector2(205.25, 454.25)
+scale = Vector2(2.90625, 2.90625)
+sprite_frames = SubResource("SpriteFrames_exmmj")
+
 [node name="Blinding" type="AnimatedSprite2D" parent="."]
-position = Vector2(650, 205.25)
+position = Vector2(651, 174.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_8n5j0")
 
-[node name="Next" type="AnimatedSprite2D" parent="."]
-position = Vector2(650, 275.25)
+[node name="Water" type="AnimatedSprite2D" parent="."]
+position = Vector2(651, 244.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_w7olu")
 
-[node name="Next2" type="AnimatedSprite2D" parent="."]
-position = Vector2(650, 345.25)
+[node name="Fire" type="AnimatedSprite2D" parent="."]
+position = Vector2(651, 314.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_y3e7r")
 
-[node name="Next3" type="AnimatedSprite2D" parent="."]
-position = Vector2(650, 415.25)
+[node name="Hypnosis" type="AnimatedSprite2D" parent="."]
+position = Vector2(651, 384.25)
 scale = Vector2(2.90625, 2.90625)
 sprite_frames = SubResource("SpriteFrames_wbgma")
 
+[node name="Chance" type="AnimatedSprite2D" parent="."]
+position = Vector2(651, 454.25)
+scale = Vector2(2.90625, 2.90625)
+sprite_frames = SubResource("SpriteFrames_hhvr0")
+
 [node name="StandardLabel" type="Label" parent="."]
-offset_left = 241.0
-offset_top = 186.0
-offset_right = 590.0
-offset_bottom = 221.0
+offset_left = 242.0
+offset_top = 155.0
+offset_right = 591.0
+offset_bottom = 190.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Standard Dice
 D6. Damages based on roll number"
 
 [node name="HealingLabel" type="Label" parent="."]
-offset_left = 241.0
-offset_top = 256.0
-offset_right = 613.0
-offset_bottom = 291.0
+offset_left = 242.0
+offset_top = 225.0
+offset_right = 614.0
+offset_bottom = 260.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Healing Dice
 D6. Heals player based on roll number"
 
 [node name="RiskyLabel" type="Label" parent="."]
-offset_left = 241.0
-offset_top = 326.0
-offset_right = 613.0
-offset_bottom = 361.0
+offset_left = 242.0
+offset_top = 295.0
+offset_right = 614.0
+offset_bottom = 330.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Risky Dice
 D6. One side does 21 damage. Others, 0"
 
 [node name="PoisonLabel" type="Label" parent="."]
-offset_left = 241.0
-offset_top = 396.0
-offset_right = 619.0
-offset_bottom = 431.0
+offset_left = 242.0
+offset_top = 365.0
+offset_right = 620.0
+offset_bottom = 419.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Poison Dice
 D3. Applies poison damage to enemy based on
 roll number. Some enemies are immune."
 
+[node name="FrozenLabel" type="Label" parent="."]
+offset_left = 242.0
+offset_top = 435.0
+offset_right = 620.0
+offset_bottom = 489.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Frozen Dice"
+
 [node name="BlindingLabel" type="Label" parent="."]
-offset_left = 686.75
-offset_top = 186.0
-offset_right = 958.75
-offset_bottom = 221.0
+offset_left = 687.75
+offset_top = 155.0
+offset_right = 966.75
+offset_bottom = 209.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Blinding Dice
 D6. Applies blinding status which
 increases chance of enemy missing"
+
+[node name="WaterLabel" type="Label" parent="."]
+offset_left = 687.75
+offset_top = 225.0
+offset_right = 966.75
+offset_bottom = 279.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Water Dice
+"
+
+[node name="FireLabel" type="Label" parent="."]
+offset_left = 687.75
+offset_top = 295.0
+offset_right = 966.75
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fire Dice
+"
+
+[node name="HypnoLabel" type="Label" parent="."]
+offset_left = 687.75
+offset_top = 365.0
+offset_right = 966.75
+offset_bottom = 419.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hypnosis Dice
+"
+
+[node name="HypnoLabel2" type="Label" parent="."]
+offset_left = 687.75
+offset_top = 435.0
+offset_right = 966.75
+offset_bottom = 489.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Chance Dice
+D2. One side does 999 damage, the 
+other side will kill you. Gamble!"
