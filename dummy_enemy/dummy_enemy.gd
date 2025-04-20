@@ -119,7 +119,7 @@ func _on_die_rolled(damage_packet: Damage):
 			if effect.status == Global.Status.FROZEN and effect.duration > 0:
 				is_frozen = true
 				was_frozen_this_turn = true
-				if randf() < 0.01:
+				if randf_range(0, 1) < 0.5:
 					floating_text("Frozen — Can't Attack!", Color.SKY_BLUE)
 					damage = Damage.create(0, Global.Status.NOTHING, 0, dice.type)
 				else:
