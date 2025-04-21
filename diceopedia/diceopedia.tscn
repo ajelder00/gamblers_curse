@@ -179,12 +179,31 @@ scale = Vector2(10.7969, 10.7969)
 texture = ExtResource("2_c5nh5")
 metadata/_edit_lock_ = true
 
+[node name="StatusBG" type="Sprite2D" parent="."]
+position = Vector2(582, 303)
+scale = Vector2(10.7969, 10.7969)
+texture = ExtResource("2_c5nh5")
+metadata/_edit_lock_ = true
+
+[node name="EnemyBG" type="Sprite2D" parent="."]
+position = Vector2(582, 303)
+scale = Vector2(10.7969, 10.7969)
+texture = ExtResource("2_c5nh5")
+metadata/_edit_lock_ = true
+
 [node name="Back" type="Button" parent="."]
-offset_left = 561.0
+offset_left = 526.0
 offset_top = 571.0
-offset_right = 612.0
+offset_right = 577.0
 offset_bottom = 595.0
 text = "BACK"
+
+[node name="Back2" type="Button" parent="."]
+offset_left = 583.0
+offset_top = 571.0
+offset_right = 635.0
+offset_bottom = 595.0
+text = "NEXT"
 
 [node name="Standard" type="AnimatedSprite2D" parent="."]
 position = Vector2(205.25, 174.25)
@@ -279,7 +298,9 @@ offset_top = 435.0
 offset_right = 620.0
 offset_bottom = 489.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Frozen Dice"
+text = "Frozen Dice
+D6. Might freeze enemy. Enemy either misses
+turn or does half-damage when frozen."
 
 [node name="BlindingLabel" type="Label" parent="."]
 offset_left = 687.75
@@ -298,16 +319,18 @@ offset_right = 966.75
 offset_bottom = 279.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Water Dice
-"
+D3. Chance to submerge enemy, so 
+they lose air. Deal massive damage."
 
 [node name="FireLabel" type="Label" parent="."]
 offset_left = 687.75
 offset_top = 295.0
-offset_right = 966.75
+offset_right = 974.75
 offset_bottom = 349.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fire Dice
-"
+D6. Set enemy dice on fire, so enemy 
+can only do 1 damage."
 
 [node name="HypnoLabel" type="Label" parent="."]
 offset_left = 687.75
@@ -316,7 +339,8 @@ offset_right = 966.75
 offset_bottom = 419.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Hypnosis Dice
-"
+D6. Might apply hypnosis effects 
+where enemy sleeps through turn. "
 
 [node name="HypnoLabel2" type="Label" parent="."]
 offset_left = 687.75

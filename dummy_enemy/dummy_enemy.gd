@@ -109,7 +109,7 @@ func _on_die_rolled(damage_packet: Damage):
 	for effect in self_statuses:
 		if effect.status == Global.Status.HYPNOSIS and effect.duration > 0:
 			was_hypnotized_this_turn = true
-			floating_text("Enemy is asleep — Can't Attack!", Color.MEDIUM_PURPLE)
+			floating_text("Enemy is asleep!", Color.MEDIUM_PURPLE)
 			damage = Damage.create(0, Global.Status.NOTHING, 0, dice.type)
 			damage_to_player.emit(damage)
 			return

@@ -62,7 +62,7 @@ func _ready() -> void:
 	back_button.pressed.connect(hide_rules)
 	rules_node.visible = false
 	rules_node.modulate.a = 0.0
-	await start_typing("Welcome to Dice Blackjack! Your goal is to get as close to 17 as possible without busting for a payout. May fate be on your side!", true)
+	await start_typing("Welcome to Dice Blackjack! Your goal is to get as close to 19 as possible without busting for a payout. May fate be on your side!", true)
 	await get_tree().create_timer(1.0).timeout
 	reset_button.pressed.connect(reset_hand)
 	payout_button.pressed.connect(_on_payout_button_pressed)
@@ -213,6 +213,7 @@ func roll_dice_one_by_one() -> void:
 		await get_tree().create_timer(2.4).timeout
 
 func _on_die_rolled(damage: Damage) -> void:
+	
 	player_score += damage.damage_number
 	label_score.text = "Score: %d" % player_score
 
@@ -226,14 +227,10 @@ func _on_die_rolled(damage: Damage) -> void:
 			label_score.text = "Score: %d" % player_score
 			await start_typing("Drowning! Score dropped by 1.", true)
 		Global.Status.FROZEN:
-			if randf() < 0.5:
-				await start_typing("Frozen! Dice had no effect.", true)
-				return
-			else:
-				damage.damage_number = int(max(1, damage.damage_number / 2))
-				player_score = max(0, player_score - int(damage.damage_number / 2))
-				label_score.text = "Score: %d" % player_score
-				await start_typing("Frozen! Weakened roll.", true)
+			damage.damage_number = int(max(1, damage.damage_number / 2))
+			player_score = max(0, player_score - int(damage.damage_number / 2))
+			label_score.text = "Score: %d" % player_score
+			await start_typing("Frozen! Weakened roll.", true)
 		Global.Status.HYPNOSIS:
 			await start_typing("Hypnosis! Visual confusion. No gameplay impact.", true)
 		Global.Status.BLINDNESS:
@@ -254,10 +251,9 @@ func _on_die_rolled(damage: Damage) -> void:
 	# Handle Healing dice manually
 	if damage.type == Dice.Type.HEALING:
 		healing_bonus += 5
-		healing_penalty += 2
 		target_score += 2
 		label_target.text = "Target: %d" % target_score
-		await start_typing("Healing! Bonus +5 payout, target harder.", true)
+		await start_typing("Healing! Bonus +5 payout, target harder.", false)
 
 	if damage.status == Global.Status.NOTHING:
 		await start_typing("Rolled %d." % damage.damage_number, false)
@@ -284,10 +280,11 @@ func calculate_payout():
 		var diff = target_score - player_score
 		if diff == 0:
 			payout = 20
+			payout += healing_bonus
 		elif diff <= 2:
 			payout = 10
-
-		payout += healing_bonus
+			payout += healing_bonus
+			
 		if payout > 0:
 			coin_sound_player.play()
 			await start_typing("You earned %d coins." % payout, true)

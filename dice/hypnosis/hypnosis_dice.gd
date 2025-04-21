@@ -12,7 +12,7 @@ func roll_die(faces) -> void:
 	result = randi_range(1, faces)
 
 	var damage = int(ceil(result /2)) # damage 1 - 3  
-	var duration = int(ceil(result /3)) # duration 1 - 2  
+	var duration = int(ceil(result /2)) # duration 1 - 3
 	var accuracy = 1.0 #float(result) / float(faces)  # 0.17–1.0
 
 	var dmg = Damage.create(damage, status_effect, duration, type)
