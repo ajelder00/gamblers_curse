@@ -26,7 +26,7 @@ func _ready() -> void:
 	$PlayerDice.visible = false
 	$FatedDice.visible = true
 	$FatedDice.play()
-	$Music.stream = load("res://intro_cutscene/music/05 Bustling Town LOOP.wav")
+	$Music.stream = load("res://music/05 Bustling Town LOOP.wav")
 	$Music.play()
 	switch_images()
 
@@ -55,7 +55,7 @@ func switch_images() -> void:
 	$Varinshade.visible = false
 	$FatedDice.animation = "default"
 	$DarkKingdom.visible = true
-	$SFX.stream = load("res://intro_cutscene/music/8-bit-gunshot.wav")
+	$SFX.stream = load("res://music/8-bit-gunshot.wav")
 	$SFX.play()
 	$Music.stop()
 	
@@ -79,7 +79,7 @@ func switch_images() -> void:
 	$Dice.play()
 	$Dice.visible = true
 	$Message.text = ""
-	$Music.stream = load("res://intro_cutscene/music/11 Lava Dungeon LOOP.wav")
+	$Music.stream = load("res://music/11 Lava Dungeon LOOP.wav")
 	$Music.play()
 
 	tween = $Fade.create_tween()
