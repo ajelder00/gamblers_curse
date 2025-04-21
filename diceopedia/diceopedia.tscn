@@ -1,8 +1,25 @@
-[gd_scene load_steps=24 format=3 uid="uid://kjdose52w5iw"]
+[gd_scene load_steps=57 format=3 uid="uid://kjdose52w5iw"]
 
 [ext_resource type="Script" path="res://diceopedia/diceopedia.gd" id="1_th667"]
 [ext_resource type="Texture2D" uid="uid://twp1y6wpaox6" path="res://art/diceopedia/diceopbg.png" id="2_c5nh5"]
 [ext_resource type="Texture2D" uid="uid://waxm1wajjcjc" path="res://dice/six sided die.png" id="3_f1t2t"]
+[ext_resource type="Texture2D" uid="uid://e3skw71morq1" path="res://art/bleeding_effect.png" id="4_23h66"]
+[ext_resource type="Texture2D" uid="uid://csvdwmv1we" path="res://art/blindness_effect.png" id="5_n2tta"]
+[ext_resource type="Texture2D" uid="uid://blsotykefvjhn" path="res://art/curse_effect.png" id="6_i3b5i"]
+[ext_resource type="Texture2D" uid="uid://rmirodehfpcq" path="res://art/fire_effect.png" id="7_vpc63"]
+[ext_resource type="Texture2D" uid="uid://dqhirn8ioy5ni" path="res://art/frozen_effect.png" id="8_61qf1"]
+[ext_resource type="Texture2D" uid="uid://q8xlnlpyellg" path="res://art/hypnosis_effect.png" id="9_q7xv6"]
+[ext_resource type="Texture2D" uid="uid://62823u1acicd" path="res://art/poison_effect.png" id="10_nescw"]
+[ext_resource type="Texture2D" uid="uid://b4bush8wxuto" path="res://art/water_effect.png" id="11_xhq4p"]
+[ext_resource type="FontFile" uid="uid://ddlob0n3ylvkt" path="res://art/Minecraft.ttf" id="12_qv1l7"]
+[ext_resource type="Texture2D" uid="uid://b70r3xe46pgeq" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc/Orc/Orc-Idle.png" id="13_mvbn0"]
+[ext_resource type="Texture2D" uid="uid://bbd372vk6i1ki" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard/Wizard-Idle.png" id="14_q8f1f"]
+[ext_resource type="Texture2D" uid="uid://kh5a3p4o3m65" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf/Werewolf-Idle.png" id="15_8msoq"]
+[ext_resource type="Texture2D" uid="uid://6ubsx2wg1ga" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton-Idle.png" id="16_gxhnj"]
+[ext_resource type="Texture2D" uid="uid://cgcfg4ushew6g" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Lancer/Lancer/Lancer-Idle.png" id="17_blysp"]
+[ext_resource type="Texture2D" uid="uid://o424dp3cax7y" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider-Idle.png" id="18_1716g"]
+[ext_resource type="Texture2D" uid="uid://j4pwuu7s61yk" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight Templar/Knight Templar/Knight Templar.png" id="19_dqy1w"]
+[ext_resource type="Texture2D" uid="uid://c8p8m8ws30ilk" path="res://art/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="20_qowmb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxgvr"]
 atlas = ExtResource("3_f1t2t")
@@ -154,6 +171,126 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bd66"]
+atlas = ExtResource("13_mvbn0")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rpix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bd66")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1qd3"]
+atlas = ExtResource("14_q8f1f")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vsb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1qd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgtkp"]
+atlas = ExtResource("15_8msoq")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4p75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgtkp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44b86"]
+atlas = ExtResource("16_gxhnj")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftoj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44b86")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6weai"]
+atlas = ExtResource("17_blysp")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luk7y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6weai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjj6q"]
+atlas = ExtResource("18_1716g")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwa72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjj6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixgd6"]
+atlas = ExtResource("19_dqy1w")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jk0sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixgd6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_735tm"]
+atlas = ExtResource("20_qowmb")
+region = Rect2(0, 0, 100, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pljkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_735tm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Diceopedia" type="Node2D"]
 script = ExtResource("1_th667")
 
@@ -163,33 +300,490 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 0.564706)
 metadata/_edit_lock_ = true
 
-[node name="Title" type="Label" parent="."]
-z_index = 1
-offset_left = 469.0
-offset_top = 87.0
-offset_right = 583.0
-offset_bottom = 103.0
-scale = Vector2(2, 2)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "DICE-O-PEDIA"
-
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(582, 303)
 scale = Vector2(10.7969, 10.7969)
 texture = ExtResource("2_c5nh5")
 metadata/_edit_lock_ = true
 
+[node name="Title" type="Label" parent="BG"]
+z_index = 1
+offset_left = -15.0043
+offset_top = -20.3762
+offset_right = 98.9957
+offset_bottom = -4.37622
+scale = Vector2(0.269, 0.269)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DICE-O-PEDIA"
+
+[node name="Standard" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(-34.8943, -11.9247)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_p5nqp")
+
+[node name="Healing" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(-34.8943, -5.44138)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_qywvi")
+
+[node name="Risky" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(-34.8943, 1.04197)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_ts1ex")
+
+[node name="Poison" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(-34.8943, 7.52531)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_n2x6i")
+
+[node name="Frozen" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(-34.8943, 14.0086)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_exmmj")
+
+[node name="Blinding" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(5.18672, -11.9247)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_8n5j0")
+
+[node name="Water" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(5.18672, -5.44138)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_w7olu")
+
+[node name="Fire" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(5.18672, 1.04197)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_y3e7r")
+
+[node name="Hypnosis" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(5.18672, 7.52531)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_wbgma")
+
+[node name="Chance" type="AnimatedSprite2D" parent="BG"]
+z_index = 1
+position = Vector2(5.18672, 14.0087)
+scale = Vector2(0.269174, 0.269174)
+sprite_frames = SubResource("SpriteFrames_hhvr0")
+
+[node name="StandardLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = -31.4905
+offset_top = -13.7076
+offset_right = 317.509
+offset_bottom = 21.2924
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Standard Dice
+D6. Damages based on roll number"
+
+[node name="HealingLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = -31.4905
+offset_top = -7.2243
+offset_right = 340.509
+offset_bottom = 27.7757
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Healing Dice
+D6. Heals player based on roll number"
+
+[node name="RiskyLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = -31.4905
+offset_top = -0.740953
+offset_right = 340.509
+offset_bottom = 34.259
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Risky Dice
+D6. One side does 21 damage. 
+Others, 0 damage"
+
+[node name="PoisonLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = -31.4905
+offset_top = 5.74239
+offset_right = 346.509
+offset_bottom = 59.7424
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Poison Dice
+D3. Applies poison damage to enemy. 
+Some enemies are immune."
+
+[node name="FrozenLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = -31.4905
+offset_top = 12.2257
+offset_right = 346.509
+offset_bottom = 66.2257
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Frozen Dice
+D6. Might freeze enemy. Enemy  misses
+turn or does half-damage when frozen."
+
+[node name="BlindingLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = 8.59052
+offset_top = -13.7076
+offset_right = 287.591
+offset_bottom = 40.2924
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Blinding Dice
+D6. Applies blinding status which
+increases chance of enemy missing"
+
+[node name="WaterLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = 8.59052
+offset_top = -7.2243
+offset_right = 287.591
+offset_bottom = 46.7757
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Water Dice
+D3. Chance to submerge enemy, so 
+they lose air. Deal massive damage."
+
+[node name="FireLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = 8.59052
+offset_top = -0.740967
+offset_right = 295.591
+offset_bottom = 53.259
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fire Dice
+D6. Set enemy dice on fire, so enemy 
+can only do 1 damage."
+
+[node name="HypnoLabel" type="Label" parent="BG"]
+z_index = 1
+offset_left = 8.59052
+offset_top = 5.7424
+offset_right = 287.591
+offset_bottom = 59.7424
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hypnosis Dice
+D6. Might apply hypnosis effects 
+where enemy sleeps through turn. "
+
+[node name="HypnoLabel2" type="Label" parent="BG"]
+z_index = 1
+offset_left = 8.59052
+offset_top = 12.2257
+offset_right = 287.591
+offset_bottom = 66.2257
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Chance Dice
+D2. One side does 999 damage, the 
+other side will kill you. Gamble!"
+
 [node name="StatusBG" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(582, 303)
 scale = Vector2(10.7969, 10.7969)
 texture = ExtResource("2_c5nh5")
 metadata/_edit_lock_ = true
 
+[node name="Title" type="Label" parent="StatusBG"]
+z_index = 1
+offset_left = -17.505
+offset_top = -20.8393
+offset_right = 125.495
+offset_bottom = -4.83932
+scale = Vector2(0.269, 0.269)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "STATUS EFFECTS"
+
+[node name="Bleeding" type="Sprite2D" parent="StatusBG"]
+position = Vector2(-31.2127, -12.2315)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("4_23h66")
+
+[node name="Blindness" type="Sprite2D" parent="StatusBG"]
+position = Vector2(-31.3053, -3.42691)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("5_n2tta")
+
+[node name="Curse" type="Sprite2D" parent="StatusBG"]
+position = Vector2(-31.3979, 5.46453)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("6_i3b5i")
+
+[node name="Fire" type="Sprite2D" parent="StatusBG"]
+position = Vector2(-31.3979, 13.9855)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("7_vpc63")
+
+[node name="Frozen" type="Sprite2D" parent="StatusBG"]
+position = Vector2(5.00143, 14.0781)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("8_61qf1")
+
+[node name="Hypnosis" type="Sprite2D" parent="StatusBG"]
+position = Vector2(5.18666, -12.0463)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("9_q7xv6")
+
+[node name="Poison" type="Sprite2D" parent="StatusBG"]
+position = Vector2(5.09406, -3.24167)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("10_nescw")
+
+[node name="Drowning" type="Sprite2D" parent="StatusBG"]
+position = Vector2(5.00143, 5.64977)
+scale = Vector2(0.404848, 0.404848)
+texture = ExtResource("11_xhq4p")
+
+[node name="BleedingLabel" type="Label" parent="StatusBG"]
+offset_left = -26.8524
+offset_top = -14.5412
+offset_right = 95.1476
+offset_bottom = 1.4588
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Bleeding Effect"
+
+[node name="BlindingLabel" type="Label" parent="StatusBG"]
+offset_left = -26.8596
+offset_top = -5.82051
+offset_right = 90.1404
+offset_bottom = 10.1795
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Blinding Effect
+Reduces damage accuracy 
+down to a minimum of 30%"
+
+[node name="CurseLabel" type="Label" parent="StatusBG"]
+offset_left = -26.8596
+offset_top = 3.44144
+offset_right = 138.14
+offset_bottom = 38.4414
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Cursed Effect 
+Healing damages you!"
+
+[node name="CharLabel" type="Label" parent="StatusBG"]
+offset_left = -26.767
+offset_top = 11.4993
+offset_right = 169.233
+offset_bottom = 65.4993
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Fire / Char Effect 
+Burn the enemy dice 
+Burned Dice do 1 damage"
+
+[node name="HypnosisLabel" type="Label" parent="StatusBG"]
+offset_left = 10.288
+offset_top = -14.5412
+offset_right = 217.288
+offset_bottom = 39.4588
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Hypnosis Effect 
+Can last 1 - 3 turns 
+Enemy cannot do damage!"
+
+[node name="PoisonLabel" type="Label" parent="StatusBG"]
+offset_left = 10.3734
+offset_top = -5.54266
+offset_right = 209.373
+offset_bottom = 48.4573
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Poison Effect 
+Duration 1 - 3 
+Each turn does 2 damage"
+
+[node name="DrowningLabel" type="Label" parent="StatusBG"]
+offset_left = 10.3734
+offset_top = 3.25632
+offset_right = 141.373
+offset_bottom = 19.2563
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Drowning Effect
+After a couple turns, does 
+increasing damage "
+
+[node name="FrozenLabel" type="Label" parent="StatusBG"]
+offset_left = 10.4666
+offset_top = 11.4848
+offset_right = 233.467
+offset_bottom = 65.4848
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Frozen Effect 
+Duration 1 - 3 
+Misses roll or do half damage"
+
 [node name="EnemyBG" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(582, 303)
 scale = Vector2(10.7969, 10.7969)
 texture = ExtResource("2_c5nh5")
 metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="EnemyBG"]
+z_index = 1
+offset_left = -25.0072
+offset_top = -21.3024
+offset_right = 163.993
+offset_bottom = -5.30241
+scale = Vector2(0.269, 0.269)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ENEMY ENCYCLOPEDIA"
+
+[node name="Goblin" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(-29.3603, -12.2315)
+scale = Vector2(0.404848, 0.404848)
+sprite_frames = SubResource("SpriteFrames_6rpix")
+
+[node name="Wizard" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(-29.4529, -3.42691)
+scale = Vector2(0.404848, 0.404848)
+sprite_frames = SubResource("SpriteFrames_0vsb0")
+
+[node name="Direwolf" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(-29.5455, 5.46453)
+scale = Vector2(0.404848, 0.404848)
+sprite_frames = SubResource("SpriteFrames_w4p75")
+
+[node name="Skeleton" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(-29.5455, 13.9855)
+scale = Vector2(0.404848, 0.404848)
+sprite_frames = SubResource("SpriteFrames_ftoj2")
+
+[node name="Frozen" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(7.13167, 15.56)
+scale = Vector2(0.24, 0.24)
+sprite_frames = SubResource("SpriteFrames_luk7y")
+
+[node name="Hypnosis" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(7.40952, -10.4717)
+scale = Vector2(0.24, 0.24)
+sprite_frames = SubResource("SpriteFrames_iwa72")
+
+[node name="Knight" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(7.31692, -3.24167)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_jk0sl")
+
+[node name="Headsman" type="AnimatedSprite2D" parent="EnemyBG"]
+position = Vector2(7.03905, 3.14905)
+scale = Vector2(0.34, 0.34)
+sprite_frames = SubResource("SpriteFrames_pljkh")
+
+[node name="Goblin2" type="Label" parent="EnemyBG"]
+offset_left = -21.4876
+offset_top = -15.0969
+offset_right = 130.512
+offset_bottom = 19.9031
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Goblin. 
+Rolls once per turn."
+
+[node name="Wizard2" type="Label" parent="EnemyBG"]
+offset_left = -21.4876
+offset_top = -6.66858
+offset_right = 144.512
+offset_bottom = 28.3314
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Wizard. 
+Rolls 3 times per turn"
+
+[node name="Direwolf2" type="Label" parent="EnemyBG"]
+offset_left = -21.3024
+offset_top = 2.13024
+offset_right = 0.697588
+offset_bottom = 18.1302
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Wolf"
+
+[node name="Skeleton2" type="Label" parent="EnemyBG"]
+offset_left = -20.7467
+offset_top = 10.8364
+offset_right = 92.2533
+offset_bottom = 26.8364
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Risen Skeleton
+Rolls twice per turn.
+Immune to Poison"
+
+[node name="HypnosisLabel" type="Label" parent="EnemyBG"]
+offset_left = 12.6034
+offset_top = -13.7076
+offset_right = 34.6034
+offset_bottom = 2.29236
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+
+[node name="Knight2" type="Label" parent="EnemyBG"]
+offset_left = 15.2822
+offset_top = -7.03906
+offset_right = 62.2822
+offset_bottom = 8.96094
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Knight"
+
+[node name="Headsman2" type="Label" parent="EnemyBG"]
+offset_left = 14.9117
+offset_top = 2.31548
+offset_right = 96.9117
+offset_bottom = 18.3155
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
+text = "Headsman
+Extremely Strong, but
+somewhat innacurate"
+
+[node name="FrozenLabel" type="Label" parent="EnemyBG"]
+offset_left = 13.0593
+offset_top = 12.3183
+offset_right = 35.0593
+offset_bottom = 28.3183
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_qv1l7")
 
 [node name="Back" type="Button" parent="."]
 offset_left = 526.0
@@ -198,156 +792,9 @@ offset_right = 577.0
 offset_bottom = 595.0
 text = "BACK"
 
-[node name="Back2" type="Button" parent="."]
+[node name="Next" type="Button" parent="."]
 offset_left = 583.0
 offset_top = 571.0
 offset_right = 635.0
 offset_bottom = 595.0
 text = "NEXT"
-
-[node name="Standard" type="AnimatedSprite2D" parent="."]
-position = Vector2(205.25, 174.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_p5nqp")
-
-[node name="Healing" type="AnimatedSprite2D" parent="."]
-position = Vector2(205.25, 244.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_qywvi")
-
-[node name="Risky" type="AnimatedSprite2D" parent="."]
-position = Vector2(205.25, 314.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_ts1ex")
-
-[node name="Poison" type="AnimatedSprite2D" parent="."]
-position = Vector2(205.25, 384.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_n2x6i")
-
-[node name="Frozen" type="AnimatedSprite2D" parent="."]
-position = Vector2(205.25, 454.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_exmmj")
-
-[node name="Blinding" type="AnimatedSprite2D" parent="."]
-position = Vector2(651, 174.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_8n5j0")
-
-[node name="Water" type="AnimatedSprite2D" parent="."]
-position = Vector2(651, 244.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_w7olu")
-
-[node name="Fire" type="AnimatedSprite2D" parent="."]
-position = Vector2(651, 314.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_y3e7r")
-
-[node name="Hypnosis" type="AnimatedSprite2D" parent="."]
-position = Vector2(651, 384.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_wbgma")
-
-[node name="Chance" type="AnimatedSprite2D" parent="."]
-position = Vector2(651, 454.25)
-scale = Vector2(2.90625, 2.90625)
-sprite_frames = SubResource("SpriteFrames_hhvr0")
-
-[node name="StandardLabel" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 155.0
-offset_right = 591.0
-offset_bottom = 190.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Standard Dice
-D6. Damages based on roll number"
-
-[node name="HealingLabel" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 225.0
-offset_right = 614.0
-offset_bottom = 260.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Healing Dice
-D6. Heals player based on roll number"
-
-[node name="RiskyLabel" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 295.0
-offset_right = 614.0
-offset_bottom = 330.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Risky Dice
-D6. One side does 21 damage. Others, 0"
-
-[node name="PoisonLabel" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 365.0
-offset_right = 620.0
-offset_bottom = 419.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Poison Dice
-D3. Applies poison damage to enemy based on
-roll number. Some enemies are immune."
-
-[node name="FrozenLabel" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 435.0
-offset_right = 620.0
-offset_bottom = 489.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Frozen Dice
-D6. Might freeze enemy. Enemy either misses
-turn or does half-damage when frozen."
-
-[node name="BlindingLabel" type="Label" parent="."]
-offset_left = 687.75
-offset_top = 155.0
-offset_right = 966.75
-offset_bottom = 209.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Blinding Dice
-D6. Applies blinding status which
-increases chance of enemy missing"
-
-[node name="WaterLabel" type="Label" parent="."]
-offset_left = 687.75
-offset_top = 225.0
-offset_right = 966.75
-offset_bottom = 279.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Water Dice
-D3. Chance to submerge enemy, so 
-they lose air. Deal massive damage."
-
-[node name="FireLabel" type="Label" parent="."]
-offset_left = 687.75
-offset_top = 295.0
-offset_right = 974.75
-offset_bottom = 349.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Fire Dice
-D6. Set enemy dice on fire, so enemy 
-can only do 1 damage."
-
-[node name="HypnoLabel" type="Label" parent="."]
-offset_left = 687.75
-offset_top = 365.0
-offset_right = 966.75
-offset_bottom = 419.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Hypnosis Dice
-D6. Might apply hypnosis effects 
-where enemy sleeps through turn. "
-
-[node name="HypnoLabel2" type="Label" parent="."]
-offset_left = 687.75
-offset_top = 435.0
-offset_right = 966.75
-offset_bottom = 489.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Chance Dice
-D2. One side does 999 damage, the 
-other side will kill you. Gamble!"
